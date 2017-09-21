@@ -1,0 +1,36 @@
+.product-wrap {
+  background-color: yellow;
+  height: 100px;
+  width: 100%;
+}
+
+.product-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #faea29;
+  height: 40px;
+}
+
+.product-title h3 {
+  letter-spacing: .1rem;
+}
+
+.description {
+  width: 100%;
+  background-color: #343434;
+  color: #fff;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  min-height: 30px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.description h5 {
+  line-height: 20px;
+  font-size: .9em;
+}
+
+
+

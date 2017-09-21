@@ -30,3 +30,17 @@ ul {
 p {
   margin: 0;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+}
+
+/* Media Query
+--------------------------------------------------*/
+@media (min-width: 1024px) and (max-width: 1920px) {
+  .lg-screen {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
