@@ -1,5 +1,15 @@
-html,
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
-  height: 100%;
-  width: 100%;
+  margin: 0;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 }
