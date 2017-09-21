@@ -12,6 +12,7 @@
  */
 
 import React from 'react';
+import NavigationBar from 'containers/NavigationBar'
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -22,7 +23,10 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
-        {React.Children.toArray(this.props.children)}
+        <NavigationBar />
+        <div>
+          {React.Children.toArray(this.props.children)}
+        </div>
       </div>
     );
   }
