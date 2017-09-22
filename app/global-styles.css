@@ -29,6 +29,7 @@ ul {
 
 p {
   margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,5 +43,9 @@ h1, h2, h3, h4, h5, h6 {
   .lg-screen {
     padding-left: 100px;
     padding-right: 100px;
+  }
+  .md-screen {
+    padding-left: 50px;
+    padding-right: 50px;
   }
 }

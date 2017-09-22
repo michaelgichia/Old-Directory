@@ -32,5 +32,64 @@
   font-size: .9em;
 }
 
+.description-wrap {
+  width: 100%;
+  height: 78vh;
+  padding-top: 40px;
+  padding-bottom: 16px;
+}
+
+div.grid-33 {
+  padding-left: 100px;
+  padding-right: 25px;
+}
+
+.information {
+  padding-left: 25px;
+  padding-right: 16px;
+  float: left;
+}
+
+.information header {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.information span {
+  float: left;
+  width: 100%;
+}
+
+.information span:nth-child(1n + 2) {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.information span:nth-child(3) {
+  padding-bottom: 16px;
+}
+
+.information p {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 80%;
+  font-size: 13px;
+}
+
+.grid-33 {
+  width: 30%;
+  float: left;
+}
+
+.grid-33 img {
+  width: 100%;
+}
+
+.grid-66 {
+  width: 70%;
+}
 
 
