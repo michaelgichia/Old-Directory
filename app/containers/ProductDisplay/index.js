@@ -13,7 +13,7 @@ import productImage from './product-banner.jpg';
 export class ProductDisplay extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="product-wrap">
+      <div>
         <div className="product-title lg-screen">
           <h3>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h3>
         </div>
