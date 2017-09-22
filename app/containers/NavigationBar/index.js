@@ -4,9 +4,9 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import mookhLogo from './logo-dark.png';
+import React from 'react';
 import '!!style-loader!css-loader!./navigation-bar.css';
+import mookhLogo from './logo-dark.png';
 
 export class NavigationBar extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
