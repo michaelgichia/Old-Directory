@@ -52,6 +52,24 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/buy-ticket',
+      name: 'buyTickets',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/BuyTickets/reducer'),
+          import('containers/BuyTickets'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('buyTickets', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

@@ -1,0 +1,35 @@
+.buy-ticket-information {
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  padding-left: 100px;
+}
+
+.buy-ticket-information span:first-child {
+  margin-right: 50px;
+}
+
+.description-wrap {
+  width: 100%;
+  height: 78vh;
+  padding-top: 40px;
+  padding-bottom: 16px;
+}
+
+div.grid-33 {
+  padding-left: 100px;
+  padding-right: 25px;
+}
+
+.grid-33 {
+  width: 30%;
+  float: left;
+}
+
+.grid-33 img {
+  width: 100%;
+}
+
+.grid-66 {
+  width: 70%;
+}
