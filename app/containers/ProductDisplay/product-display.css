@@ -8,8 +8,6 @@
 
 .description {
   width: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
   min-height: 30px;
 }
 
@@ -19,7 +17,7 @@
   font-weight: 700;
 }
 
-div.description.lg-screen {
+.description.header {
   background-color: #343A41;
   color: #F6F3ED;
 }
@@ -46,7 +44,16 @@ div.description.lg-screen {
 }
 
 /* Large Screen styles */
-@media screen and (min-width: 900px) and (max-width: 1920px) {
+@media screen and (min-width: 990px) and (max-width: 1920px) {
+  .description.header {
+    padding: 16px 100px 16px 100px;
+  }
+
+  .product-title {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
   .product-image-wrapper {
     float: left;
     padding-left: 100px;
@@ -95,6 +102,15 @@ div.description.lg-screen {
 
 /* Tablet and Medium Screens */
 @media screen and (min-width: 768px) and (max-width: 990px) {
+  .product-title {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .description.header {
+    padding: 16px;
+  }
+
   .product-image-wrapper {
     float: left;
     padding-right: 16px;
