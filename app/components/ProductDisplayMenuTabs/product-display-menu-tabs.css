@@ -1,5 +1,5 @@
 nav.product-tabs {
-  background-color: rgba(0,0,0,.1);
+  background-color: #f6f3ed;
   overflow: hidden;
 }
 
@@ -23,25 +23,30 @@ nav.product-tabs {
   display: block;
   flex-grow: 1;
   padding: 9px 0;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   width: calc(100% - / 8);
   color: rgba(52, 52, 52, .6);
-  border-right: 2px solid rgba(0,0,0,.1);
-  border-bottom: 2px solid rgba(0,0,0,.05);
+  border-right: 1px solid rgba(0,0,0,.1);
+  border-bottom: 2px solid rgba(0,0,0,.1);
   text-decoration: none;
   text-align: center;
   transition: border-bottom .2s;
+  letter-spacing: .5px;
 }
 
+.wide-div a:last-child:active,
+.wide-div a:first-child:active,
 .wide-div a:last-child:hover,
 .wide-div a:first-child:hover  {
-  border-bottom: 2px solid rgba(0,0,0,.2);
+  border-bottom: 2px solid rgba(0,0,0,.05);
+  pointer-events: none;
+  cursor: default;
 }
 
 .wide-div a:hover {
   border-bottom: 2px solid #faea29;
-  color: rgba(52, 52, 52, 1);
+  color: #000;
 }
 
 nav a:visited {

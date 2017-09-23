@@ -24,14 +24,14 @@ class ProductDisplayMenuTabs extends React.PureComponent { // eslint-disable-lin
       <nav className="product-tabs">
         <div className="nav-wide">
           <div className="wide-div">
-            <a href="#pause" alt="pause" />
+            <a alt="pause" />
             <a href="/buy-ticket" alt="buy tickets">BUY TICKETS</a>
             <a href="event-information" alt="event information">EVENT INFO</a>
             <a href="/gallery" alt="gallery">GALLERY</a>
             <a href="/site map" alt="site map">SITE MAP</a>
             <a href="/schedules-speakers" alt="schedules and speakers">SCHEDULES $ SPEAKERS</a>
             <a href="/sponsors" alt="sponsors">SPONSORS</a>
-            <a href="#pause" alt="pause" />
+            <a alt="pause" />
           </div>
         </div>
         <div className="nav-narrow">

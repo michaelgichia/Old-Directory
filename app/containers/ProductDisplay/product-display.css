@@ -2,28 +2,37 @@
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: #faea29;
+  background-color: #f5f900;
   height: 40px;
-}
-
-.product-title h3 {
-  letter-spacing: .1rem;
 }
 
 .description {
   width: 100%;
-  background-color: #343434;
-  color: #fff;
   padding-top: 16px;
   padding-bottom: 16px;
   min-height: 30px;
-  font-size: 1rem;
-  font-weight: 700;
 }
 
 .description h5 {
   line-height: 20px;
-  font-size: .9em;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+div.description.lg-screen {
+  background-color: #343434;
+  color: #fff;
+}
+
+.description [href] {
+  color: #f5f900;
+  text-decoration: underline;
+  background-color: #343434;
+  margin-left: 4px;
+}
+
+.description [href]:hover {
+  text-decoration: none;
 }
 
 .description-wrap {
@@ -38,41 +47,6 @@ div.grid-33 {
   padding-right: 25px;
 }
 
-.information {
-  padding-left: 25px;
-  padding-right: 16px;
-  float: left;
-}
-
-.information header {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid rgba(0,0,0,.1);
-}
-
-.information span {
-  float: left;
-  width: 100%;
-}
-
-.information span:nth-child(1n + 2) {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.information span:nth-child(3) {
-  padding-bottom: 16px;
-}
-
-.information p {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  width: 80%;
-  font-size: 13px;
-}
-
 .grid-33 {
   width: 30%;
   float: left;
@@ -80,10 +54,61 @@ div.grid-33 {
 
 .grid-33 img {
   width: 100%;
+  min-width: 300px;
 }
 
 .grid-66 {
   width: 70%;
 }
 
+/* Large Screen styles */
+@media screen and (min-width: 900px) and (max-width: 1920px){
+  .product-image-wrapper {
+    float: left;
+    padding-left: 100px;
+    padding-right: 24px;
+    width: 424px;
+    height: 400px;
+  }
+
+  .product-image-wrapper img {
+    width: 300px;
+    height: 400px;
+  }
+
+  .information {
+    width: calc(100% - 424px);
+    padding: 0 100px 24px 24px;
+    height: 400px;
+    float: left;
+  }
+
+  .information header {
+    font-size: 13px;
+    font-weight: 700;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+
+  .information span {
+    float: left;
+    width: 100%;
+  }
+
+  .information span:nth-child(1n + 2) {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .information span:nth-child(3) {
+    padding-bottom: 16px;
+  }
+
+  .information p {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 100%;
+    font-size: 13px;
+  }
+}
 
