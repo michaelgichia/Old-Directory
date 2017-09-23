@@ -20,8 +20,8 @@
 }
 
 div.description.lg-screen {
-  background-color: #343434;
-  color: #fff;
+  background-color: #343A41;
+  color: #F6F3ED;
 }
 
 .description [href] {
@@ -40,25 +40,6 @@ div.description.lg-screen {
   height: 78vh;
   padding-top: 40px;
   padding-bottom: 16px;
-}
-
-div.grid-33 {
-  padding-left: 100px;
-  padding-right: 25px;
-}
-
-.grid-33 {
-  width: 30%;
-  float: left;
-}
-
-.grid-33 img {
-  width: 100%;
-  min-width: 300px;
-}
-
-.grid-66 {
-  width: 70%;
 }
 
 /* Large Screen styles */

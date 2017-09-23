@@ -25,10 +25,10 @@ nav.product-tabs {
   padding: 9px 0;
   font-size: 10px;
   font-weight: 600;
-  width: calc(100% - / 8);
-  color: rgba(52, 52, 52, .6);
-  border-right: 1px solid rgba(0,0,0,.1);
-  border-bottom: 2px solid rgba(0,0,0,.1);
+  width: calc(100% / 8);
+  color: #999895;
+  border-right: 1px solid #D2D2D2;
+  border-bottom: 2px solid #D2D2D2;
   text-decoration: none;
   text-align: center;
   transition: border-bottom .2s;
@@ -46,11 +46,11 @@ nav.product-tabs {
 
 .wide-div a:hover {
   border-bottom: 2px solid #faea29;
-  color: #000;
+  color: #343A41;
 }
 
 nav a:visited {
-  color:  #343434;
+  color:  #999895;
 }
 
 .nav-wide {
