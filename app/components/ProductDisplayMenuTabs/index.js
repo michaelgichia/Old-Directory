@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
+import mookhLogo from './logo-dark.png';
 import '!!style-loader!css-loader!./product-display-menu-tabs.css';
 
 class ProductDisplayMenuTabs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -35,7 +36,8 @@ class ProductDisplayMenuTabs extends React.PureComponent { // eslint-disable-lin
           </div>
         </div>
         <div className="nav-narrow">
-          <div  className="tabs-menu">
+          <div  className="tabs-menu open">
+            <span className="logo"><img src={mookhLogo} alt=""/></span>
             <Icon size="large" className="tabs-menu-icon" name="sidebar" onClick={this.burgerToggle} />
           </div>
           <div className="narrow-links">

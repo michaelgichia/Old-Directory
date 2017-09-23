@@ -159,3 +159,10 @@
     font-size: 13px;
   }
 }
+
+/* Large Screen styles */
+@media screen and (max-width: 768px) {
+  .product-image-wrapper {
+    display: none;
+  }
+}

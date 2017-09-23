@@ -68,3 +68,11 @@
   color: #faea29;
   text-decoration: none;
 }
+
+/* Small Screen styles */
+@media screen and (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+}
+
