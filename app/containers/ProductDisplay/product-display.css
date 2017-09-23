@@ -9,6 +9,8 @@
 .description {
   width: 100%;
   min-height: 30px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .description h5 {
@@ -46,7 +48,8 @@
 /* Large Screen styles */
 @media screen and (min-width: 990px) and (max-width: 1920px) {
   .description.header {
-    padding: 16px 100px 16px 100px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
 
   .product-title {
