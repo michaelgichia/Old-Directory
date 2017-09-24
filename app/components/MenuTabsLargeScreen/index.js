@@ -1,15 +1,15 @@
 /**
 *
-* ProductDisplayMenuTabs
+* MenuTabsLargeScreen
 *
 */
 
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import mookhLogo from './logo-dark.png';
-import '!!style-loader!css-loader!./product-display-menu-tabs.css';
+import '!!style-loader!css-loader!./menu-tabs-large-screen.css';
 
-class ProductDisplayMenuTabs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   burgerToggle = () => {
     const linksEl = document.querySelector('.narrow-links');
@@ -54,5 +54,5 @@ class ProductDisplayMenuTabs extends React.PureComponent { // eslint-disable-lin
   }
 }
 
-export default ProductDisplayMenuTabs;
+export default MenuTabsLargeScreen;
 

@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import ProductDisplayMenuTabs from 'components/ProductDisplayMenuTabs';
+import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
 import { Button, Form } from 'semantic-ui-react';
 import '!!style-loader!css-loader!./buy-tickets.css';
 import productImage from './product-banner.jpg';
@@ -19,7 +19,7 @@ export class BuyTickets extends React.PureComponent {
           <span>FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO</span>
           <span>BRAEBURN THEATER OFF GITANGA // GET DIRECTIONS</span>
         </div>
-        <ProductDisplayMenuTabs />
+        <MenuTabsLargeScreen />
         <div className="description-wrap">
           <div className="grid-33">
             <div>

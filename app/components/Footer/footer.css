@@ -1,5 +1,5 @@
 footer {
-  background-color: #343A41;
+  background-color: #32383F;
   padding: 24px 16px;
   width: 100%;
   font-size: 16px;
@@ -13,7 +13,7 @@ footer {
 }
 
 .copyright-wrap:hover {
-  color:  #F6F3ED;
+  color:  #F6F3EE;
 }
 
 div.social-media-wrap {
@@ -26,11 +26,11 @@ div.social-media-wrap {
 }
 
 .social-media-wrap .icon:hover {
-  background-color: #f6f3ed !important;
+  background-color: #F6F3EE !important;
 }
 
 div.social-media-wrap > a {
-  color: #343A41;
+  color: #32383F;
   display: inline-block;
   text-decoration: none;
   margin: 0 24px 0 0;
@@ -55,5 +55,5 @@ div.footer-links > a {
 }
 
 div.footer-links > a:hover {
-  color: #F6F3ED;
+  color: #F6F3EE;
 }

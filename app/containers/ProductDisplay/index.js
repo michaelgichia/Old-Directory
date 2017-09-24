@@ -5,15 +5,26 @@
  */
 
 import React from 'react';
-import ProductDisplayMenuTabs from 'components/ProductDisplayMenuTabs';
-import { Icon } from 'semantic-ui-react';
+import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
+import { Icon, Menu } from 'semantic-ui-react';
 import '!!style-loader!css-loader!./product-display.css';
 import productImage from './product-banner.jpg';
 
 export class ProductDisplay extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  state = { activeItem: 'home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
   render() {
+    const { activeItem } = this.state;
     return (
       <div>
+        <div className="product-image-wrapper">
+          <div>
+            <img src={productImage} alt="product" />
+          </div>
+        </div>
+
         <div className="product-title">
           <h4>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h4>
         </div>
@@ -27,11 +38,17 @@ export class ProductDisplay extends React.PureComponent { // eslint-disable-line
           </h5>
         </div>
 
-        <ProductDisplayMenuTabs />
+        <Menu className="mobile" pointing secondary fluid widths={3}>
+          <Menu.Item name="BUY TICKETS" active={activeItem === 'BUY TICKETS'} onClick={this.handleItemClick} />
+          <Menu.Item name="EVENT INFO" active={activeItem === 'EVENT INFO'} onClick={this.handleItemClick} />
+          <Menu.Item name="GALLERY" active={activeItem === 'GALLERY'} onClick={this.handleItemClick} />
+        </Menu>
+
+        <MenuTabsLargeScreen />
 
         <div className="description-wrap">
 
-          <div className="product-image-wrapper">
+          <div className="desktop product-image-wrapper">
             <div>
               <img src={productImage} alt="product" />
             </div>
@@ -48,22 +65,27 @@ export class ProductDisplay extends React.PureComponent { // eslint-disable-line
                 <a href="/maps">GET DIRECTIONS</a>
               </h5>
             </div>
-            <p>
-              Amplify the voice of Kenyan women on a global platform through TED
-              Talks. Print this page to PDF for thr complete set of vectors. Or
-              to use thr desltop, install FontAwesome.ptf, set it as thr font in
-              your application, and copy and paste the icons (not the unicode)
-              directly from this page intp your designs
-            </p>
-            <p>
-              Strictly age 21 and over. No animals will be permitted to enter.
-            </p>
-            <p>
-              <span>CONTACT: 0710123123</span>
-              <span>hello@example.com</span>
-              <span>www.example.com</span>
-            </p>
+
+            <div className="more-details">
+              <p>
+                Amplify the voice of Kenyan women on a global platform through TED
+                Talks. Print this page to PDF for thr complete set of vectors. Or
+                to use thr desltop, install FontAwesome.ptf, set it as thr font in
+                your application, and copy and paste the icons (not the unicode)
+                directly from this page intp your designs
+              </p>
+              <p>
+                Strictly age 21 and over. No animals will be permitted to enter.
+              </p>
+              <p>
+                <span>CONTACT: 0710123123</span>
+                <span>hello@example.com</span>
+                <span>www.example.com</span>
+              </p>
+            </div>
+
           </div>
+
         </div>
       </div>
     );

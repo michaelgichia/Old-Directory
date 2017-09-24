@@ -65,14 +65,14 @@ button.btn-payment {
 }
 
 [type="number"] {
-  background-color: #f6f3ed !important;
+  background-color: #F6F3EE !important;
   width: 70px;
   border-radius: 3px;
 }
 
 [type="text"],
 [type="number"] {
-  background-color: #f6f3ed !important;
+  background-color: #F6F3EE !important;
 }
 
 .price-table [type="number"] {

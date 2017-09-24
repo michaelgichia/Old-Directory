@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: #f5f900;
-  height: 40px;
+  background-color: #FBE92A;
 }
 
 .description {
@@ -20,12 +19,12 @@
 }
 
 .description.header {
-  background-color: #343A41;
-  color: #F6F3ED;
+  background-color: #32383F;
+  color: #F6F3EE;
 }
 
 .description [href] {
-  color: #f5f900;
+  color: #FBE92A;
   text-decoration: underline;
   background-color: #343434;
   margin-left: 4px;
@@ -36,17 +35,24 @@
 }
 
 .information span {
-  float: left;
+  display: block;
   width: 100%;
 }
 
 .information span:nth-child(1n + 2) {
-  font-size: 12px;
   font-weight: 700;
 }
 
+.mobile {
+  display: none !important;
+}
+
 /* Large Screen styles */
-@media screen and (min-width: 990px) and (max-width: 1920px) {
+@media  (min-width: 990px) and (max-width: 1920px) {
+  .product-title {
+    height: 40px;
+  }
+
   .description.header {
     padding-left: 100px;
     padding-right: 100px;
@@ -104,7 +110,7 @@
 }
 
 /* Tablet and Medium Screens */
-@media screen and (min-width: 768px) and (max-width: 990px) {
+@media  (min-width: 768px) and (max-width: 990px) {
   .product-title {
     padding-left: 16px;
     padding-right: 16px;
@@ -160,9 +166,88 @@
   }
 }
 
-/* Large Screen styles */
-@media screen and (max-width: 768px) {
-  .product-image-wrapper {
+/* Small Screen styles */
+@media  (max-width: 768px) {
+  .desktop {
     display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .information {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 100%;
+    background-color: #ffffff;
+  }
+
+  .information .description > h5 {
+    color: #32383F;
+  }
+
+  .description {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  .information header {
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px;
+  }
+
+  .description i {
+    display: none;
+  }
+
+  .description {
+    background-color: #F6F3EE;
+    letter-spacing: .5px;
+  }
+
+  .header h5 i {
+    display: none;
+  }
+
+  .ui.secondary.pointing.menu .item:hover,
+  .ui.secondary.pointing.menu .active.item,
+  .ui.secondary.pointing.menu .active.item:hover {
+    border-color: #FBE92A !important;
+    color: #32383F !important;
+  }
+
+  .ui.menu .item {
+    color: #B5B5B3 !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+  }
+
+  .product-image-wrapper img {
+    max-width: 100%;
+    max-height: 133%;
+    background: #ECECED;
+    overflow: hidden;
+  }
+
+  .product-title {
+    padding: 16px 8px;
+    min-height: 40px;
+    margin-top: 0;
+  }
+
+  .product-title h4 {
+    font-size: 16px;
+  }
+
+  .more-details {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .information span:nth-child(1) {
+    padding-top: 8px;
   }
 }
