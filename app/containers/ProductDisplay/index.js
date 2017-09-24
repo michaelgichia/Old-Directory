@@ -19,7 +19,7 @@ export class ProductDisplay extends React.PureComponent { // eslint-disable-line
     const { activeItem } = this.state;
     return (
       <div>
-        <div className="product-image-wrapper">
+        <div className="tablet product-image-wrapper">
           <div>
             <img src={productImage} alt="product" />
           </div>

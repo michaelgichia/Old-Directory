@@ -47,6 +47,10 @@
   display: none !important;
 }
 
+.tablet {
+  display: none;
+}
+
 /* Large Screen styles */
 @media  (min-width: 990px) and (max-width: 1920px) {
   .product-title {
@@ -112,8 +116,7 @@
 /* Tablet and Medium Screens */
 @media  (min-width: 768px) and (max-width: 990px) {
   .product-title {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 16px;
   }
 
   .description.header {
@@ -170,6 +173,10 @@
 @media  (max-width: 768px) {
   .desktop {
     display: none;
+  }
+
+  .tablet {
+    display: block;
   }
 
   .mobile {

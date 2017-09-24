@@ -85,7 +85,42 @@ nav a:visited {
   min-height: 40px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 990px) {
+  .tabs-menu {
+    border-bottom: 1px solid #32383F;
+  }
+  .nav-wide {
+    display: none;
+  }
+
+  .nav-narrow {
+    padding-right: 0px;
+  }
+
+  .nav-narrow {
+    display: block;
+  }
+
+  .nav-narrow i {
+    margin-right: 16px;
+  }
+
+  .nav-narrow .narrow-links a:nth-child(1n-6) {
+    transition: background-color .2s, color .4s;
+  }
+
+  .nav-narrow .narrow-links a:nth-child(1n-6):active,
+  .nav-narrow .narrow-links a:nth-child(1n-6):hover {
+    background-color: #999895;
+    color: #F6F3EE;
+  }
+
+  .nav-narrow .narrow-links a:nth-child(6) {
+    box-shadow: 0 2px 2px hsla(0, 0%, 0%, .2);
+  }
+}
+
+@media screen and (min-width: 990px) {
   .nav-wide {
     display: block;
   }
