@@ -25,9 +25,10 @@ export class BuyTickets extends React.PureComponent {
             <img src={productImage} alt="product" />
           </div>
 
-          <div className="ticket-title">
-            <h4>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h4>
-          </div>
+        </div>
+
+        <div className="ticket-title">
+          <h4>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h4>
         </div>
 
         <div className="buy-ticket-information lg-screen">

@@ -21,7 +21,6 @@
   display: none;
 }
 
-
 .payment-btn-wrap .ui.button {
   background-color: rgb(251, 233, 42);
   color: #31383E;
@@ -89,6 +88,36 @@ th, td {
     padding: 16px;
   }
 
+  .ticket-title h4 {
+    padding: 16px;
+  }
+
+  .ticket-title h4 {
+    font-weight: bolder;
+    font-size: 18px;
+  }
+
+  .buy-ticket-information a {
+    display: inline-block;
+    padding: 2px 10px 2px 5px;
+  }
+
+  .buy-ticket-information [href] {
+    color: #fbe930;
+    text-decoration: underline;
+    background-color: #31383E;
+  }
+
+  .buy-ticket-information {
+    padding: 8px;
+    min-height: 50px;
+  }
+
+  .buy-ticket-information h5 {
+    margin-right: 40px;
+    font-size: 13px;
+  }
+
   .price-table {
     height: 100%;
   }
@@ -109,7 +138,7 @@ th, td {
     float: left;
     height: 100%;
   }
-  
+
   .grid-33 img {
     width: 270px;
     height: 360px;
@@ -181,6 +210,26 @@ th, td {
 
   .mobile {
     display: none !important;
+  }
+
+  .ticket-title h4 {
+    padding: 16px;
+  }
+
+  .ticket-title h4 {
+    font-weight: bolder;
+    font-size: 18px;
+  }
+
+  .buy-ticket-information a {
+    display: inline-block;
+    padding: 2px 10px 2px 5px;
+  }
+
+  .buy-ticket-information [href] {
+    color: #fbe930;
+    text-decoration: underline;
+    background-color: #31383E;
   }
 
   .buy-ticket-information {
