@@ -290,8 +290,9 @@ th,td {
 }
 
 @media screen and (max-width: 768px) {
-  .titcket-image-wrap img {
+  .ticket-image-wrap img {
     max-width: 100%;
+    width: 100%;
     max-height: 133%;
     background: #ECECED;
     overflow: hidden;
