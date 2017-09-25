@@ -4,6 +4,7 @@ footer {
   width: 100%;
   font-size: 16px;
   color: #999895;
+  float: left;
 }
 
 .copyright-wrap {

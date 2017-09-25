@@ -4,22 +4,23 @@
  *
  */
 
-import React from 'react';
-import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
-import { Button, Form, Menu } from 'semantic-ui-react';
-import '!!style-loader!css-loader!./buy-tickets.css';
-import productImage from './product-banner.jpg';
+import React from "react";
+import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
+import { Button, Form, Menu } from "semantic-ui-react";
+import "!!style-loader!css-loader!./buy-tickets.css";
+import productImage from "./product-banner.jpg";
 
-export class BuyTickets extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  state = { activeItem: 'home' }
- 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+export class BuyTickets extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
+  state = { activeItem: "home" };
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { activeItem } = this.state;  
+    const { activeItem } = this.state;
     return (
       <div>
-        <div className="mobile titcket-image-wrap grid-33">
+        <div className="mobile ticket-image-wrap grid-33">
           <div>
             <img src={productImage} alt="product" />
           </div>
@@ -31,19 +32,32 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
 
         <div className="buy-ticket-information lg-screen">
           <h5>FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO</h5>
-          <h5>BRAEBURN THEATER OFF GITANGA // <a href="">GET DIRECTIONS</a></h5>
+          <h5>
+            BRAEBURN THEATER OFF GITANGA // <a href="">GET DIRECTIONS</a>
+          </h5>
         </div>
 
         <Menu className="mobile" pointing secondary fluid widths={3}>
-          <Menu.Item name="BUY TICKETS" active={activeItem === 'BUY TICKETS'} onClick={this.handleItemClick} />
-          <Menu.Item name="EVENT INFO" active={activeItem === 'EVENT INFO'} onClick={this.handleItemClick} />
-          <Menu.Item name="GALLERY" active={activeItem === 'GALLERY'} onClick={this.handleItemClick} />
+          <Menu.Item
+            name="BUY TICKETS"
+            active={activeItem === "BUY TICKETS"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="EVENT INFO"
+            active={activeItem === "EVENT INFO"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="GALLERY"
+            active={activeItem === "GALLERY"}
+            onClick={this.handleItemClick}
+          />
         </Menu>
 
         <MenuTabsLargeScreen />
 
         <div className="ticket-description-wrap">
-        
           <div className="desktop grid-33">
             <div>
               <img src={productImage} alt="product" />
@@ -51,7 +65,7 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
           </div>
 
           <div className="grid-66 price-table">
-            <table>
+            <table className="mobile">
               <tbody>
                 <tr>
                   <th>TYPE</th>
@@ -61,31 +75,37 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
                 <tr>
                   <td>EARLY BIRD</td>
                   <td>KES. 800</td>
-                  <td><input type="number" defaultValue={0} min="0" /></td>
+                  <td>
+                    <input type="number" defaultValue={0} min="0" />
+                  </td>
                 </tr>
                 <tr>
                   <td>Sub-total</td>
-                  <td></td>
+                  <td />
                   <td>KES. 0.00</td>
                 </tr>
                 <tr>
                   <td>EARLY BIRD EARLY BIRD</td>
                   <td>KES. 800</td>
-                  <td><input type="number" defaultValue={0} min="0" /></td>
+                  <td>
+                    <input type="number" defaultValue={0} min="0" />
+                  </td>
                 </tr>
                 <tr>
                   <td>Sub-total</td>
-                  <td></td>
+                  <td />
                   <td>KES. 0.00</td>
                 </tr>
                 <tr>
                   <td>EARLY BIRD EARLY BIRD</td>
                   <td>KES. 800</td>
-                  <td><input type="number" defaultValue={0} min="0" /></td>
+                  <td>
+                    <input type="number" defaultValue={0} min="0" />
+                  </td>
                 </tr>
                 <tr>
                   <td>Sub-total</td>
-                  <td></td>
+                  <td />
                   <td>KES. 0.00</td>
                 </tr>
                 <tr>
@@ -95,7 +115,6 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
                 </tr>
               </tbody>
             </table>
-
 
             <table className="desktop-tablet">
               <tbody>
@@ -149,6 +168,7 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
                 <Form.Input placeholder="cornfirm email" />
               </Form.Group>
             </Form>
+
             <Form className="pay-tickets">
               <label>PROMO CODE (optional)</label>
               <Form.Group widths={2}>
@@ -167,6 +187,7 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
                 </div>
               </Form.Group>
             </Form>
+
           </div>
         </div>
       </div>
