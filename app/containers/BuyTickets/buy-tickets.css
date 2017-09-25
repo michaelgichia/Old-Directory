@@ -5,10 +5,6 @@
   background-color: #FBE92A;
 }
 
-.mobile {
-  display: none;
-}
-
 .tablet {
   display: none;
 }
@@ -17,10 +13,49 @@
   display: none;
 }
 
+.desktop-tablet {
+  display: none;
+}
+
+.payment-btn-wrap .ui.button {
+  background-color: rgb(251, 233, 42);
+  color: #32383F;
+  transition: background-color .5s;
+}
+
+.payment-btn-wrap .ui.button:hover {
+  background-color: #ffc600;
+  color: #32383F;
+}
+
+.input input {
+  background-color: #F6F3EE !important;
+}
+
+.input input::placeholder {
+  color: #32383F !important
+}
+
+.input input::-ms-input-placeholder {
+  color: #32383F !important
+}
+
+.input input::-moz-placeholde {
+  color: #32383F !important
+}
+
 /* Large Screen styles */
 @media  (min-width: 990px) and (max-width: 1920px) {
   .desktop {
     display: block;
+  }
+
+  .desktop-tablet {
+    display: block;
+  }
+
+  .mobile {
+    display: none !important;
   }
 
   .buy-ticket-information {
@@ -33,13 +68,8 @@
     font-weight: 700;
   }
 
-  .buy-ticket-information span:first-child {
-    margin-right: 50px;
-  }
-
   .ticket-description-wrap {
     background-color: #ffffff;
-  } {
     width: 100%;
     height: 78vh;
     padding-top: 40px;
@@ -144,7 +174,7 @@
   .mobile {
     display: block;
   }
-  
+
   .titcket-image-wrap img {
     max-width: 100%;
     max-height: 133%;
@@ -263,22 +293,6 @@
     letter-spacing: .5px;
   }
 
-  .input input {
-    background-color: #F6F3EE !important;
-  }
-
-  .input input::placeholder {
-    color: #32383F !important
-  }
-
-  .input input::-ms-input-placeholder {
-    color: #32383F !important
-  }
-
-  .input input::-moz-placeholde {
-    color: #32383F !important
-  }
-
   div.payment-btn-wrap {
     width: 100%;
     padding-right: 7px;
@@ -295,16 +309,5 @@
     width: 50%;
     float: right;
     padding-left: 12px;
-  }
-
-  .payment-btn-wrap .ui.button {
-    background-color: rgb(251, 233, 42);
-    color: #32383F;
-    transition: background-color .5s;
-  }
-
-  .payment-btn-wrap .ui.button:hover {
-    background-color: #ffc600;
-    color: #32383F;
   }
 }

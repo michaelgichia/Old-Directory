@@ -97,7 +97,7 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
             </table>
 
 
-            <table className="desktop">
+            <table className="desktop-tablet">
               <tbody>
                 <tr>
                   <th>TYPE</th>
