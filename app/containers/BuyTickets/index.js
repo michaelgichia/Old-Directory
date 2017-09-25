@@ -6,7 +6,7 @@
 
 import React from "react";
 import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
-import { Button, Form, Menu } from "semantic-ui-react";
+import { Form, Menu } from "semantic-ui-react";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
 
@@ -176,14 +176,10 @@ export class BuyTickets extends React.PureComponent {
                 <Form.Input placeholder="promo code" />
                 <div className="payment-btn-wrap">
                   <div>
-                    <Button className="btn-payment" fluid>
-                      MOBILE PAYMENT
-                    </Button>
+                    <button className="payment-button">MOBILE PAYMENT</button>
                   </div>
                   <div>
-                    <Button className="btn-payment" fluid>
-                      CARD PAYMENT
-                    </Button>
+                    <button className="payment-button">CARD PAYMENT</button>
                   </div>
                 </div>
               </Form.Group>

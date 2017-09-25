@@ -527,3 +527,28 @@ th, td {
     padding-left: 12px;
   }
 }
+
+/* Buttons
+---------------------------------------------------*/
+.payment-button {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  color: #31383E;
+  font-size: 14px;
+  font-family:  Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 600;
+  background-color: #FAEA29;
+  padding: 8px 8px;
+  width: 100%;
+  border: solid #FAEA29 2px;
+  text-decoration: none;
+  transition: background-color .3s, border .3s;
+}
+
+.payment-button:hover {
+  background-color: #31383E;
+  border: solid #31383E 2px;
+  text-decoration: none;
+  color: #D9DDD9;
+}
