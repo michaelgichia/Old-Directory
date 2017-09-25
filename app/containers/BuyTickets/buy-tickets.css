@@ -244,6 +244,20 @@ th, td {
 
   .payment-btn-wrap {
     margin-left: 8px;
+    width: 50%;
+  }
+
+  .payment-btn-wrap div {
+    width: 50%;
+    display: inline-block;
+  }
+
+  .payment-btn-wrap div:first-of-type {
+    padding-right: 16px;
+  }
+
+  .payment-btn-wrap div:last-of-type {
+    padding-left: 16px;
   }
 
   [type="number"] {
