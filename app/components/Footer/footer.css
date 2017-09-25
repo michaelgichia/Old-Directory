@@ -1,5 +1,5 @@
 footer {
-  background-color: #32383F;
+  background-color: #31383E;
   padding: 24px 16px;
   width: 100%;
   font-size: 16px;
@@ -31,7 +31,7 @@ div.social-media-wrap {
 }
 
 div.social-media-wrap > a {
-  color: #32383F;
+  color: #31383E;
   display: inline-block;
   text-decoration: none;
   margin: 0 24px 0 0;
