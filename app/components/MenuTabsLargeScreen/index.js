@@ -25,14 +25,14 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
       <nav className="product-tabs">
         <div className="nav-wide">
           <div className="wide-div">
-            <a alt="pause" />
+            <a alt="#" />
             <a href="/buy-ticket" alt="buy tickets">BUY TICKETS</a>
-            <a href="event-information" alt="event information">EVENT INFO</a>
-            <a href="/gallery" alt="gallery">GALLERY</a>
-            <a href="/site map" alt="site map">SITE MAP</a>
-            <a href="/schedules-speakers" alt="schedules and speakers">SCHEDULES $ SPEAKERS</a>
-            <a href="/sponsors" alt="sponsors">SPONSORS</a>
-            <a alt="pause" />
+            <a href="/event-information" alt="event information">EVENT INFO</a>
+            <a href="#" alt="gallery">GALLERY</a>
+            <a href="#" alt="site map">SITE MAP</a>
+            <a href="#" alt="schedules and speakers">SCHEDULES $ SPEAKERS</a>
+            <a href="#" alt="sponsors">SPONSORS</a>
+            <a alt="#" />
           </div>
         </div>
         <div className="nav-narrow">
@@ -42,11 +42,11 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
           </div>
           <div className="narrow-links">
             <a href="/buy-ticket" onClick={this.burgerToggle} alt="buy tickets">BUY TICKETS</a>
-            <a href="event-information" onClick={this.burgerToggle} alt="event information">EVENT INFO</a>
-            <a href="/gallery" onClick={this.burgerToggle} alt="gallery">GALLERY</a>
-            <a href="/site map" onClick={this.burgerToggle} alt="site map">SITE MAP</a>
-            <a href="/schedules-speakers" onClick={this.burgerToggle} alt="schedules and speakers">SCHEDULES $ SPEAKERS</a>
-            <a href="/sponsors" onClick={this.burgerToggle} alt="sponsors">SPONSORS</a>
+            <a href="/event-information" onClick={this.burgerToggle} alt="event information">EVENT INFO</a>
+            <a href="#" onClick={this.burgerToggle} alt="gallery">GALLERY</a>
+            <a href="#" onClick={this.burgerToggle} alt="site map">SITE MAP</a>
+            <a href="#" onClick={this.burgerToggle} alt="schedules and speakers">SCHEDULES $ SPEAKERS</a>
+            <a href="#" onClick={this.burgerToggle} alt="sponsors">SPONSORS</a>
           </div>
         </div>
       </nav>

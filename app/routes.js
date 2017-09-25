@@ -36,7 +36,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/tickets/event/',
+      path: '/event-information',
       name: 'productDisplay',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
