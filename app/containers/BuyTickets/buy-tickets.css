@@ -73,6 +73,7 @@ th, td {
   padding: 2px;
 }
 
+
 /* Styles for Tablets and medium screen
 ------------------------------------------------------- */
 @media  (min-width: 768px) and (max-width: 990px) {
@@ -171,6 +172,19 @@ th, td {
   th:nth-last-of-type(3),
   td:nth-last-of-type(3) {
     width: 20%;
+  }
+
+  th {
+    background-color: none;
+    color: #000;
+    border-bottom: 1px solid black;
+  }
+
+  tr:last-of-type {
+    border-top: 1px solid #595959;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: #595959;
   }
 
   [type="number"] {

@@ -150,10 +150,10 @@ export class BuyTickets extends React.PureComponent {
                   <td>KES. 0.00</td>
                 </tr>
                 <tr>
+                  <td className="ticket-total">Total</td>
                   <td />
                   <td />
-                  <td />
-                  <td className="ticket-total">Total KES. 0.00</td>
+                  <td className="ticket-total">KES. 0.00</td>
                 </tr>
               </tbody>
             </table>
