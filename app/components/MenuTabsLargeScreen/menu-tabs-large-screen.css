@@ -137,6 +137,7 @@ nav a:visited {
 
   .nav-narrow {
     display: block;
+    z-index: 4;
   }
 }
 
