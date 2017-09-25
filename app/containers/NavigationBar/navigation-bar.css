@@ -6,6 +6,7 @@
   padding: 0;
   background-color: #F6F3EE;
   max-height: 82px;
+  z-index: 4;
 }
 
 .nav li {

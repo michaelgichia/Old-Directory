@@ -287,6 +287,20 @@ th, td {
     font-size: 13px;
   }
 
+  .wide-div {
+    border-top: 2px solid #d2d2d2;
+  }
+
+  .buy-ticket-information {
+    padding: 16px;
+    height: 50px;
+  }
+
+  .buy-ticket-information h5 {
+    margin-right: 40px;
+    font-size: 13px;
+  }
+
   /* Table
   ---------------------------------------------*/
   th:first-of-type,
