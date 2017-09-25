@@ -116,7 +116,7 @@ export class BuyTickets extends React.PureComponent {
               </tbody>
             </table>
 
-            <table className="desktop-tablet">
+            <table>
               <tbody>
                 <tr>
                   <th>TYPE</th>
