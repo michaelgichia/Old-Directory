@@ -15,8 +15,6 @@
   border-bottom: 2px solid #D2D2D2;
   text-decoration: none;
   text-align: center;
-  transition: border-bottom .2s;
-  -webkit-transition: border-bottom .2s;
   letter-spacing: .5px;
 }
 
@@ -55,16 +53,30 @@ nav a:visited {
   padding-right: 16px;
 }
 
-.nav-narrow i {
+.nav-narrow .open i {
   float: right;
   cursor: pointer;
-  color: #fff;
+  color: #343A41;
   height: 40px;
   padding: 8px;
 }
 
+.narrow-links a {
+  font-size: 13px;
+}
+
+.narrow-links a i {
+  float: left;
+  font-size: 13px;
+  padding-right: 26px;
+}
+
 .nav-narrow .narrow-links {
   display: none;
+}
+
+.nav-narrow .narrow-links a:first-of-type {
+  padding-top: 18px;
 }
 
 .nav-narrow .narrow-links a {
@@ -72,7 +84,7 @@ nav a:visited {
   display: block;
   float: left;
   clear: left;
-  padding: 8px 32px 8px 24px;
+  padding: 14px 32px 14px 24px;
   color: #31383E;
   width: 100%;
 }
@@ -86,29 +98,28 @@ nav a:visited {
   min-height: 40px;
 }
 
+/* Small screen style resets */
+
+.logo {
+  display: none;
+}
+
 @media screen and (min-width: 768px) and (max-width: 990px) {
   .tabs-menu {
     border-bottom: 1px solid #31383E;
   }
+
   .nav-wide {
     display: none;
   }
 
   .nav-narrow {
     padding-right: 0px;
-  }
-
-  .nav-narrow {
     display: block;
   }
 
-  .nav-narrow i {
+  .nav-narrow .open i {
     margin-right: 16px;
-  }
-
-  .nav-narrow .narrow-links a:nth-child(1n-6) {
-    transition: background-color .2s, color .4s;
-    -webkit-transition: background-color .2s, color .4s;
   }
 
   .nav-narrow .narrow-links a:nth-child(1n-6):active,
@@ -122,7 +133,10 @@ nav a:visited {
   }
 }
 
-@media screen and (min-width: 990px) {
+
+/* Media Queries
+-------------------------------------------------------------------------*/
+@media screen and (min-width: 990px) and (max-width: 1024px){
   .nav-wide {
     display: block;
   }
@@ -130,7 +144,14 @@ nav a:visited {
   .nav-narrow {
     display: none;
   }
+
+  .wide-div a:first-child,
+  .wide-div a:last-child {
+    max-width: 30px;
+  }
 }
+
+/* Small screen Screen styles */
 
 @media screen and (max-width: 768px) {
   .nav-wide {
@@ -138,50 +159,32 @@ nav a:visited {
   }
 
   .nav-narrow {
+    padding-right: 0px;
+    position: fixed;
+    width: 100%;
+    background-color:  #31383E;
     display: block;
     z-index: 4;
   }
-}
 
-/* Small screen style resets */
-
-.logo {
-  display: none;
-}
-
-/* Media Queries
--------------------------------------------------------------------------*/
-@media  (max-width: 1024px) {
-  .wide-div a:first-child,
-  .wide-div a:last-child {
-    max-width: 30px;
-  }
-}
-
-
-/* Small screen Screen styles */
-
-@media  (max-width: 768px) {
   .nav-narrow .narrow-links a:nth-child(1n-6) {
-    transition: background-color .2s, color .4s;
-    -webkit-transition: background-color .2s, color .4s;
+    background-color: #31383E;
+    color: #D9DDD9;
+    border-left: 3px solid #31383E;
   }
 
+  .nav-narrow .narrow-links a:nth-child(1n-6):focus,
   .nav-narrow .narrow-links a:nth-child(1n-6):active,
   .nav-narrow .narrow-links a:nth-child(1n-6):hover {
-    background-color: #999895;
+    background-color: rgba(140, 140, 140, 0.43);
     color: #F6F3EE;
+    border-left: 3px solid #FAEA29;
+    width: 70%;
+    border-radius: 0 50px 50px 0;
   }
 
   .nav-narrow .narrow-links a:nth-child(6) {
     box-shadow: 0 2px 2px hsla(0, 0%, 0%, .2);
-  }
-
-  .nav-narrow {
-    padding-right: 0px;
-    position: fixed;
-    width: 100%;
-    background-color: #F6F3EE;
   }
 
   .open {
@@ -193,6 +196,7 @@ nav a:visited {
     width: 100%;
     padding-top: 8px;
     padding-bottom: 8px;
+    background-color: #F6F3EE;
   }
 
   .product-tabs {
@@ -202,7 +206,7 @@ nav a:visited {
     right: 0;
   }
 
-  .product-tabs i {
+  .open i {
     margin-right: 8px;
     width: 40px;
     height: 40px;

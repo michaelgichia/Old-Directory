@@ -41,12 +41,14 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
             <Icon size="large" className="tabs-menu-icon" name="sidebar" onClick={this.burgerToggle} />
           </div>
           <div className="narrow-links">
-            <a href="/buy-ticket" onClick={this.burgerToggle} alt="buy tickets">BUY TICKETS</a>
-            <a href="/event-information" onClick={this.burgerToggle} alt="event information">EVENT INFO</a>
-            <a href="#" onClick={this.burgerToggle} alt="gallery">GALLERY</a>
-            <a href="#" onClick={this.burgerToggle} alt="site map">SITE MAP</a>
-            <a href="#" onClick={this.burgerToggle} alt="schedules and speakers">SCHEDULES $ SPEAKERS</a>
-            <a href="#" onClick={this.burgerToggle} alt="sponsors">SPONSORS</a>
+            <a href="/buy-ticket" onClick={this.burgerToggle} alt="buy tickets">BUY TICKETS<Icon name="ticket" /></a>
+            <a href="/event-information" onClick={this.burgerToggle} alt="event information">
+              EVENT INFO<Icon name="users" />
+            </a>
+            <a href="#" onClick={this.burgerToggle} alt="gallery">GALLERY<Icon name="image" /></a>
+            <a href="#" onClick={this.burgerToggle} alt="site map">SITE MAP<Icon name="map" /></a>
+            <a href="#" onClick={this.burgerToggle} alt="schedules and speakers">SCHEDULES $ SPEAKERS<Icon name="calendar minus" /></a>
+            <a href="#" onClick={this.burgerToggle} alt="sponsors">SPONSORS<Icon name="cubes" /></a>
           </div>
         </div>
       </nav>
