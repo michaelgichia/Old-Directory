@@ -258,24 +258,23 @@ table input[type="number"] {
   }
 
   div.grid-33 {
-    padding-left: 100px;
+    padding-left: 10%;
     padding-right: 25px;
   }
 
   .grid-33 {
-    width: 250px;
+    width: 300px;
     float: left;
   }
 
   .grid-33 img {
-    height: 350px;
+    height: 400px;
     min-width: 100%;
-
   }
 
   div.grid-66 {
-    width: calc(100% - 350px);
-    padding-right: 100px;
+    width: calc(90% - 300px);
+    padding-right: 10%;
     padding-left: 25px;
   }
 
@@ -303,6 +302,7 @@ table input[type="number"] {
   .payment-btn-wrap {
     margin-left: 8px;
     width: 50%;
+    min-width: 50%;
   }
 
   .payment-btn-wrap div {
@@ -479,7 +479,7 @@ table input[type="number"] {
   font-family:  Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   font-weight: 600;
   background-color: #FAEA29;
-  padding: 8px 8px;
+  padding: 10px 20px;
   width: 100%;
   border: solid #FAEA29 2px;
   text-decoration: none;
