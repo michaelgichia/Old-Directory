@@ -24,6 +24,7 @@ div.social-media-wrap {
 .social-media-wrap .icon {
   background-color: #999895 !important;
   transition: background-color .5s;
+  -webkit-transition: background-color .5s;
 }
 
 .social-media-wrap .icon:hover {
@@ -36,7 +37,7 @@ div.social-media-wrap > a {
   text-decoration: none;
   margin: 0 24px 0 0;
   padding: 0;
-  transition: all .5s ease;
+  -webkit-transition: all .5s ease;
 }
 
 div.footer-links {

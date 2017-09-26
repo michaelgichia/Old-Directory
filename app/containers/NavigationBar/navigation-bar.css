@@ -49,25 +49,27 @@
 }
 
 .nav li:last-child a {
-  color: #FAEA29;
+  color: #D9DDD9;
   font-size: 1rem;
   font-weight: 700;
   line-height: 2rem;
   padding: .5rem 1rem;
   border: 2px solid #343434;
   text-decoration: none;
-  background-color: rgba(0, 0, 0, .5);
-  border-radius: 5px;
-  -webkit-border-radius: 5;
-  -moz-border-radius: 5;
-  transition: background-color .5s, color .5s;
-  -webkit-transition: background-color .5s, color .3s;
+  background-color: #31383E;
+  border-radius: 10px;
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  transition: background-color .3s, color .3s;
+  -webkit-transition: background-color .3s, color .3s;
+  letter-spacing: .5px;
 }
 
 .nav li:last-child a:hover {
-  background-color: rgba(0, 0, 0, .7);
-  color: #faea29;
+  background-color: transparent;
+  color: #31383E;
   text-decoration: none;
+  border: 2px solid #878E88;
 }
 
 /* Small Screen styles */

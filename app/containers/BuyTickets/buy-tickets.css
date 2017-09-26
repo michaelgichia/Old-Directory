@@ -25,6 +25,7 @@
   background-color: rgb(251, 233, 42);
   color: #31383E;
   transition: background-color .5s;
+  -webkit-transition: background-color .5s;
 }
 
 .payment-btn-wrap .ui.button:hover {
@@ -544,6 +545,7 @@ th, td {
   border: solid #FAEA29 2px;
   text-decoration: none;
   transition: background-color .3s, border .3s;
+  -webkit-transition: background-color .3s, border .3s;
 }
 
 .payment-button:hover {

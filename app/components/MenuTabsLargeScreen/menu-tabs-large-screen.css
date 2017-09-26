@@ -16,6 +16,7 @@
   text-decoration: none;
   text-align: center;
   transition: border-bottom .2s;
+  -webkit-transition: border-bottom .2s;
   letter-spacing: .5px;
 }
 
@@ -107,6 +108,7 @@ nav a:visited {
 
   .nav-narrow .narrow-links a:nth-child(1n-6) {
     transition: background-color .2s, color .4s;
+    -webkit-transition: background-color .2s, color .4s;
   }
 
   .nav-narrow .narrow-links a:nth-child(1n-6):active,
@@ -162,6 +164,7 @@ nav a:visited {
 @media  (max-width: 768px) {
   .nav-narrow .narrow-links a:nth-child(1n-6) {
     transition: background-color .2s, color .4s;
+    -webkit-transition: background-color .2s, color .4s;
   }
 
   .nav-narrow .narrow-links a:nth-child(1n-6):active,
