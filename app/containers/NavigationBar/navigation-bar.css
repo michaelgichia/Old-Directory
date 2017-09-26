@@ -53,13 +53,13 @@
   font-size: 1rem;
   font-weight: 700;
   line-height: 2rem;
-  padding: .5rem 1rem;
+  padding: 10px 20px;
   border: 2px solid #343434;
   text-decoration: none;
   background-color: #31383E;
-  border-radius: 10px;
-  -webkit-border-radius: 10;
-  -moz-border-radius: 10;
+  border-radius: 24px;
+  -webkit-border-radius: 24;
+  -moz-border-radius: 24;
   transition: background-color .3s, color .3s;
   -webkit-transition: background-color .3s, color .3s;
   letter-spacing: .5px;
