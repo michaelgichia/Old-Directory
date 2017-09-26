@@ -28,12 +28,6 @@ export class EventInfo extends React.PureComponent { // eslint-disable-line reac
 
         <EventInfoMenu/>
 
-        <Menu className="mobile" pointing secondary fluid widths={3}>
-          <Menu.Item name="BUY TICKETS" active={activeItem === 'BUY TICKETS'} onClick={this.handleItemClick} />
-          <Menu.Item name="EVENT INFO" active={activeItem === 'EVENT INFO'} onClick={this.handleItemClick} />
-          <Menu.Item name="GALLERY" active={activeItem === 'GALLERY'} onClick={this.handleItemClick} />
-        </Menu>
-
         <MenuTabsLargeScreen />
 
         <div className="description-wrap">
