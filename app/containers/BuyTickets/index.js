@@ -66,56 +66,6 @@ export class BuyTickets extends React.PureComponent {
           </div>
 
           <div className="grid-66 price-table">
-            <table className="mobile">
-              <tbody>
-                <tr>
-                  <th>TYPE</th>
-                  <th>PRICE</th>
-                  <th>QUANTITY</th>
-                </tr>
-                <tr>
-                  <td>EARLY BIRD</td>
-                  <td>KES. 800</td>
-                  <td>
-                    <input type="number" defaultValue={0} min="0" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Sub-total</td>
-                  <td />
-                  <td>KES. 0.00</td>
-                </tr>
-                <tr>
-                  <td>EARLY BIRD EARLY BIRD</td>
-                  <td>KES. 800</td>
-                  <td>
-                    <input type="number" defaultValue={0} min="0" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Sub-total</td>
-                  <td />
-                  <td>KES. 0.00</td>
-                </tr>
-                <tr>
-                  <td>EARLY BIRD EARLY BIRD</td>
-                  <td>KES. 800</td>
-                  <td>
-                    <input type="number" defaultValue={0} min="0" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Sub-total</td>
-                  <td />
-                  <td>KES. 0.00</td>
-                </tr>
-                <tr>
-                  <td>TOTAL</td>
-                  <td />
-                  <td className="ticket-total">KES. 0.00</td>
-                </tr>
-              </tbody>
-            </table>
 
             <table>
               <tbody>

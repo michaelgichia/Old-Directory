@@ -71,7 +71,7 @@ nav a:visited {
   padding-right: 26px;
 }
 
-.nav-narrow .narrow-links {
+.nav-narrow {
   display: none;
 }
 
@@ -110,7 +110,11 @@ nav a:visited {
   }
 
   .nav-wide {
-    display: none;
+    display: none !important;
+  }
+
+  .wide-div {
+    display: none !important;
   }
 
   .nav-narrow {
@@ -144,7 +148,9 @@ nav a:visited {
   .nav-narrow {
     display: none;
   }
+}
 
+@media screen and (min-width: 990px) and (max-width: 1340px){
   .wide-div a:first-child,
   .wide-div a:last-child {
     max-width: 30px;
