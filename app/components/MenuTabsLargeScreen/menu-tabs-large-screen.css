@@ -241,4 +241,17 @@ nav a:visited {
     max-width: 63px;
     max-height: 21px
   }
+
+  .ui.secondary.pointing.menu .item:hover,
+  .ui.secondary.pointing.menu .active.item,
+  .ui.secondary.pointing.menu .active.item:hover {
+    border-color: #FAEA29 !important;
+    color: #31383E !important;
+  }
+
+  .ui.menu .item {
+    color: #B5B5B3 !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+  }
 }

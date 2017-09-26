@@ -1,16 +1,17 @@
 /*
  *
- * ProductDisplay
+ * EventInfo
  *
  */
 
 import React from 'react';
 import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
+import EventInfoMenu from 'components/EventInfoMenu';
 import { Icon, Menu } from 'semantic-ui-react';
-import '!!style-loader!css-loader!./product-display.css';
+import '!!style-loader!css-loader!./event-info.css';
 import productImage from './product-banner.jpg';
 
-export class ProductDisplay extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class EventInfo extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -25,18 +26,7 @@ export class ProductDisplay extends React.PureComponent { // eslint-disable-line
           </div>
         </div>
 
-        <div className="product-title">
-          <h4>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h4>
-        </div>
-        <div className="description header">
-          <h5>
-            <Icon name="clock" />FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO
-          </h5>
-          <h5>
-            <Icon name="marker" />BRAEBURN THEATER OFF GITANGA //
-            <a href="/maps">GET DIRECTIONS</a>
-          </h5>
-        </div>
+        <EventInfoMenu/>
 
         <Menu className="mobile" pointing secondary fluid widths={3}>
           <Menu.Item name="BUY TICKETS" active={activeItem === 'BUY TICKETS'} onClick={this.handleItemClick} />
@@ -92,4 +82,4 @@ export class ProductDisplay extends React.PureComponent { // eslint-disable-line
   }
 }
 
-export default ProductDisplay;
+export default EventInfo;

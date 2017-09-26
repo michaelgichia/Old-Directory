@@ -19,17 +19,17 @@ export default function createRoutes(store) {
   return [
     {
       path: '/',
-      name: 'productDisplay',
+      name: 'eventInfo',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/ProductDisplay/reducer'),
-          import('containers/ProductDisplay'),
+          import('containers/EventInfo/reducer'),
+          import('containers/EventInfo'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, component]) => {
-          injectReducer('productDisplay', reducer.default);
+          injectReducer('eventInfo', reducer.default);
           renderRoute(component);
         });
 
@@ -37,17 +37,17 @@ export default function createRoutes(store) {
       },
     }, {
       path: '/event-information',
-      name: 'productDisplay',
+      name: 'eventInfo',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/ProductDisplay/reducer'),
-          import('containers/ProductDisplay'),
+          import('containers/EventInfo/reducer'),
+          import('containers/EventInfo'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, component]) => {
-          injectReducer('productDisplay', reducer.default);
+          injectReducer('eventInfo', reducer.default);
           renderRoute(component);
         });
 

@@ -6,18 +6,15 @@
 
 import React from "react";
 import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
+import EventInfoMenu from "components/EventInfoMenu";
 import { Form, Menu } from "semantic-ui-react";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
 
-export class BuyTickets extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
-  state = { activeItem: "home" };
+export class BuyTickets extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { activeItem } = this.state;
     return (
       <div>
         <div className="mobile ticket-image-wrap grid-33">
@@ -27,34 +24,7 @@ export class BuyTickets extends React.PureComponent {
 
         </div>
 
-        <div className="ticket-title">
-          <h4>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h4>
-        </div>
-
-        <div className="buy-ticket-information lg-screen">
-          <h5>FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO</h5>
-          <h5>
-            BRAEBURN THEATER OFF GITANGA // <a href="">GET DIRECTIONS</a>
-          </h5>
-        </div>
-
-        <Menu className="mobile" pointing secondary fluid widths={3}>
-          <Menu.Item
-            name="BUY TICKETS"
-            active={activeItem === "BUY TICKETS"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="EVENT INFO"
-            active={activeItem === "EVENT INFO"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="GALLERY"
-            active={activeItem === "GALLERY"}
-            onClick={this.handleItemClick}
-          />
-        </Menu>
+        <EventInfoMenu />
 
         <MenuTabsLargeScreen />
 
