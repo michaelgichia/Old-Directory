@@ -19,7 +19,7 @@ body {
   margin: 0;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
-  max-width: 1920px;
+  max-width: 1440px;
 }
 
 
@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Media Query
 --------------------------------------------------*/
-@media (min-width: 1024px) and (max-width: 1920px) {
+@media (min-width: 1024px) and (max-width: 1440px) {
   .lg-screen {
     padding-left: 100px;
     padding-right: 100px;

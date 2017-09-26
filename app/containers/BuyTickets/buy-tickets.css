@@ -34,7 +34,7 @@
 }
 
 .input input {
-  background-color: #F6F3EE !important;
+  background-color: #e8e4df !important;
 }
 
 .input input::placeholder {
@@ -210,7 +210,7 @@ th, td {
 }
 
 /* Large Screen styles */
-@media  (min-width: 990px) and (max-width: 1920px) {
+@media  (min-width: 990px) and (max-width: 1440px) {
   .desktop {
     display: block;
   }
@@ -503,7 +503,7 @@ th, td {
     padding: 2px;
     text-align: left;
   }
-  
+
   .pay-tickets label {
     font-weight: bolder;
     font-size: 13px;
