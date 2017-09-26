@@ -16,7 +16,7 @@
 }
 
 /* Large Screen styles */
-@media  (min-width: 990px) and (max-width: 1440px) {
+@media  (min-width: 990px) and (max-width: 1920px) {
   .product-title {
     height: 40px;
   }

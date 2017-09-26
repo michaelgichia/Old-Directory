@@ -70,7 +70,7 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
                   <td>KES. 0.00</td>
                 </tr>
                 <tr>
-                  <td className="ticket-total">Total</td>
+                  <td />
                   <td />
                   <td />
                   <td className="ticket-total">KES. 0.00</td>
@@ -79,16 +79,20 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
             </table>
 
             <Form className="pay-tickets">
-              <label>SEND TICKECTS TO:</label>
+              <label>SEND TICKETS TO:</label>
               <Form.Group widths={2}>
                 <Form.Input placeholder="name" />
-                <Form.Input placeholder="email" />
+                <Form.Input placeholder="phone number" />
               </Form.Group>
               <Form.Group widths={2}>
-                <Form.Input placeholder="phone number" />
-                <Form.Input placeholder="cornfirm email" />
+                <Form.Input placeholder="email" />
+                <Form.Input placeholder="confirm email" />
               </Form.Group>
             </Form>
+
+            <hr className="buy-ticket-optional"/>
+
+            <span className="buy-ticket-optional-info">OPTIONAL INFORMATION:</span>
 
             <Form className="pay-tickets">
               <label>PROMO CODE (optional)</label>

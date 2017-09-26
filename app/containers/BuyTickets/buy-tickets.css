@@ -54,26 +54,29 @@ table {
   width: 100%;
 }
 
-tr:nth-child(2n+3) {
-  background-color: rgba(246, 243, 238, .5);
-  color: #595959;
-}
-
-tr:nth-child(2n+2) td {
-  padding-bottom: 8px
-}
-
-tr:last-of-type td {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
 th, td {
   text-align: left;
   font-size: 13px;
-  padding: 2px;
+  padding: 4px 2px;
 }
 
+tr:first-child {
+  border-bottom: 1px solid rgba(202, 202, 202, 0.5);
+}
+
+tr:nth-child(2) td {
+  padding: 8px 2px 4px 2px !important;
+}
+
+table input[type="number"] {
+  background-color: #f6f3ee;
+  padding-left: 12px;
+  padding-right: 4px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  color: #999895;
+  border-radius: 5px;
+}
 
 /* Styles for Tablets and medium screen
 ------------------------------------------------------- */
@@ -155,48 +158,6 @@ th, td {
     margin-bottom: 32px;
   }
 
-  th:first-of-type,
-  td:first-of-type {
-    width: 40%;
-  }
-
-  th:last-of-type,
-  td:last-of-type {
-    width: 20%;
-  }
-
-  th:nth-last-of-type(2),
-  td:nth-last-of-type(2) {
-    width: 20%;
-  }
-
-  th:nth-last-of-type(3),
-  td:nth-last-of-type(3) {
-    width: 20%;
-  }
-
-  th {
-    background-color: none;
-    color: #000;
-    border-bottom: 1px solid black;
-  }
-
-  tr:last-of-type {
-    border-top: 1px solid #595959;
-    font-weight: bolder;
-    letter-spacing: 1px;
-    color: #595959;
-  }
-
-  [type="number"] {
-    background-color: #F6F3EE !important;
-    width: 70px;
-    border-radius: 3px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 8px;
-  }
-
   .payment-btn-wrap {
     width: 50%
   }
@@ -209,8 +170,39 @@ th, td {
 
 }
 
+/* Large and medium size screen styles */
+@media  (min-width: 768px) and (max-width: 1920px) {
+  hr.buy-ticket-optional {
+    border: 1px solid #e8e4df;
+  }
+
+  span.buy-ticket-optional-info {
+    color: black;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    margin-top: 8px;
+    display: inline-block;
+    letter-spacing: 2px;
+  }
+
+  .pay-tickets {
+    margin-bottom: 32px;
+  }
+
+  table input[type="number"] {
+    max-width: 70px;
+  }
+
+  tr:nth-child(4) td:last-child {
+    border-bottom: 2px solid rgba(202, 202, 202, 0.5);
+  }
+}
+
 /* Large Screen styles */
-@media  (min-width: 990px) and (max-width: 1440px) {
+@media  (min-width: 990px) and (max-width: 1920px) {
   .desktop {
     display: block;
   }
@@ -266,26 +258,28 @@ th, td {
   }
 
   div.grid-33 {
-    padding-left: 48px;
-    padding-right: 24px;
+    padding-left: 100px;
+    padding-right: 25px;
   }
 
   .grid-33 {
-    width: 30%;
+    width: 250px;
     float: left;
   }
 
   .grid-33 img {
-    width: 100%;
+    height: 350px;
+    min-width: 100%;
+
   }
 
   div.grid-66 {
-    padding-right: 48px;
-    padding-left: 24px;
+    width: calc(100% - 350px);
+    padding-right: 100px;
+    padding-left: 25px;
   }
 
   .grid-66 {
-    width: 70%;
     float: right;
   }
 
@@ -335,11 +329,6 @@ th, td {
     background-color: #F6F3EE !important;
   }
 
-  .price-table [type="number"] {
-    padding: 4px;
-    text-align: right;
-  }
-
   .ticket-total {
     font-size: 14px;
     font-weight: bolder;
@@ -349,10 +338,6 @@ th, td {
   .price-table label {
     font-weight: bolder;
     font-size: 13px;
-  }
-
-  .wide-div {
-    border-top: 2px solid #d2d2d2;
   }
 
   .buy-ticket-information {
@@ -367,27 +352,10 @@ th, td {
 
   /* Table
   ---------------------------------------------*/
-  th:first-of-type,
-  td:first-of-type {
-    width: 50%;
-  }
-
-  th {
-    background-color: none;
-    color: #000;
-    border-bottom: 1px solid black;
-  }
-
   .price-table table {
     margin-bottom: 30px;
   }
 
-  tr:last-of-type {
-    border-top: 1px solid #595959;
-    font-weight: bolder;
-    letter-spacing: 1px;
-    color: #595959;
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -398,7 +366,7 @@ th, td {
     background: #ECECED;
     overflow: hidden;
   }
-  
+
   .ticket-title {
     padding: 16px 8px;
     min-height: 40px;
@@ -429,7 +397,7 @@ th, td {
     background-color: #343434;
     margin-left: 4px;
   }
-  
+
   .buy-ticket-information [href]:hover {
     text-decoration: none;
   }
@@ -454,54 +422,25 @@ th, td {
   table {
     width: 100%;
     table-layout: fixed;
-    font-size: 14px;
     margin-bottom: 32px;
+    font-size: 11px !important;
   }
 
   table input[type="number"] {
     max-width: 50px;
-    background-color: #f6f3ee;
-    padding-left: 2px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-  }
-  th:first-of-type,
-  td:first-of-type {
-    width: 50%;
-  }
-
-  th,td {
-    font-size: 13px;
-  }
-
-  tr:nth-child(2n+3) {
-    background-color: rgba(246, 243, 238, .5);
-    color: #595959;
   }
 
   tr:nth-child(2n+3) td {
     padding-bottom: 8px
   }
 
-  tr:last-of-type {
-    border-top: 1px solid #595959;
-    font-weight: bolder;
-    letter-spacing: 1px;
-    color: #595959;
-  }
-
-  tr:last-of-type td {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
   table, th, td {
     border-collapse: collapse;
   }
 
-  th, td {
-    padding: 2px;
-    text-align: left;
+  table input[type="number"] {
+    padding-left: 6px;
+    padding-right: 2px;
   }
 
   .pay-tickets label {

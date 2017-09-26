@@ -27,7 +27,7 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
     const { activeItem } = this.state;
     return (
       <div>
-        <Menu className="mobile" pointing secondary fluid widths={3}>
+        <Menu className="hide-desktop-tablet" pointing secondary fluid widths={3}>
           <Menu.Item
             name="BUY TICKETS"
             active={activeItem === "BUY TICKETS"}
