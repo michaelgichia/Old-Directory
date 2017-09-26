@@ -1,32 +1,3 @@
-.description {
-  width: 100%;
-  min-height: 30px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-.description h5 {
-  line-height: 20px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.description.header {
-  background-color: #31383E;
-  color: #F6F3EE;
-}
-
-.description [href] {
-  color: #FAEA29;
-  text-decoration: underline;
-  background-color: #343434;
-  margin-left: 4px;
-}
-
-.description [href]:hover {
-  text-decoration: none;
-}
-
 .information span {
   display: block;
   width: 100%;

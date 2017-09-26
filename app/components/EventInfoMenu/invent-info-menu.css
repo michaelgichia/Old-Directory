@@ -12,6 +12,7 @@
   padding-bottom: 16px;
 }
 
+.description a,
 .description h5 {
   line-height: 20px;
   font-size: 13px;
@@ -23,11 +24,13 @@
   color: #F6F3EE;
 }
 
-.description [href] {
+.description a {
   color: #FAEA29;
   text-decoration: underline;
-  background-color: #343434;
-  margin-left: 4px;
+}
+
+.description a i {
+  text-decoration: none;
 }
 
 .description [href]:hover {

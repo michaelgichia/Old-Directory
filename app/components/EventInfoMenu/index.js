@@ -19,10 +19,9 @@ class EventInfoMenu extends React.Component { // eslint-disable-line react/prefe
           <h5>
             <Icon name="clock" />FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO
           </h5>
-          <h5>
-            <Icon name="marker" />BRAEBURN THEATER OFF GITANGA //
-            <a href="/maps">GET DIRECTIONS</a>
-          </h5>
+          <a href="#">
+            <Icon name="marker" />BRAEBURN THEATER OFF GITANGA
+          </a>
         </div>
       </div>
     );
