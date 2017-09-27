@@ -174,7 +174,7 @@ nav a:visited {
 
 /* Small screen Screen styles */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .nav-wide {
     display: none;
   }

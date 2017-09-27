@@ -15,7 +15,6 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   burgerToggle = () => {
-    const navToggle = document.getElementsByClassName("ticket")[0];
     const isMouseDown = false;
     window.addEventListener("click", this.pageIsRegistered, false);
   };

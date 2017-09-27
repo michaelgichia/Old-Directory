@@ -63,7 +63,7 @@
 }
 
 /* Small Screen styles */
-@media  (max-width: 768px) {
+@media  (max-width: 767px) {
   .product-title {
     padding: 16px 8px;
     min-height: 40px;

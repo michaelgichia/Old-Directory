@@ -40,16 +40,6 @@ export class EventInfo extends React.PureComponent { // eslint-disable-line reac
 
           <div className="information">
             <header>ABOUT THIS EVENT</header>
-            <div className="description">
-              <h5>
-                <Icon name="clock" />FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO
-              </h5>
-              <h5>
-                <Icon name="marker" />BRAEBURN THEATER OFF GITANGA //{' '}
-                <a href="/maps">GET DIRECTIONS</a>
-              </h5>
-            </div>
-
             <div className="more-details">
               <p>
                 Amplify the voice of Kenyan women on a global platform through TED

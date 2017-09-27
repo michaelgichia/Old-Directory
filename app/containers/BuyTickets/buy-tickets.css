@@ -358,7 +358,7 @@ table input[type="number"] {
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .ticket-image-wrap img {
     max-width: 100%;
     width: 100%;
