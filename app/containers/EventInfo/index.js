@@ -17,7 +17,7 @@ export class EventInfo extends React.PureComponent { // eslint-disable-line reac
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { activeItem } = this.state;
+    // const { activeItem } = this.state;
     return (
       <div>
         <div className="tablet product-image-wrapper">
@@ -26,7 +26,7 @@ export class EventInfo extends React.PureComponent { // eslint-disable-line reac
           </div>
         </div>
 
-        <EventInfoMenu/>
+        <EventInfoMenu />
 
         <MenuTabsLargeScreen />
 

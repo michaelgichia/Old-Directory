@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import { Icon, Menu } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import "!!style-loader!css-loader!./invent-info-menu.css";
 
 class EventInfoMenu extends React.Component { // eslint-disable-line react/prefer-stateless-function

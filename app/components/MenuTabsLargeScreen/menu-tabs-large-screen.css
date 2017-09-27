@@ -65,6 +65,10 @@ nav a:visited {
   padding: 8px;
 }
 
+.narrow-links {
+  display: none
+}
+
 .narrow-links a {
   font-size: 13px;
 }
@@ -85,7 +89,6 @@ nav a:visited {
 
 .nav-narrow .narrow-links a {
   text-decoration: none;
-  display: block;
   float: left;
   clear: left;
   padding: 14px 32px 14px 24px;

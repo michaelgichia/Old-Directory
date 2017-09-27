@@ -4,12 +4,12 @@
  *
  */
 
-import React from "react";
-import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
-import EventInfoMenu from "components/EventInfoMenu";
-import { Form, Menu } from "semantic-ui-react";
-import "!!style-loader!css-loader!./buy-tickets.css";
-import productImage from "./product-banner.jpg";
+import React from 'react';
+import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
+import EventInfoMenu from 'components/EventInfoMenu';
+import { Form, Menu } from 'semantic-ui-react';
+import '!!style-loader!css-loader!./buy-tickets.css';
+import productImage from './product-banner.jpg';
 
 export class BuyTickets extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -90,7 +90,7 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
               </Form.Group>
             </Form>
 
-            <hr className="buy-ticket-optional"/>
+            <hr className="buy-ticket-optional" />
 
             <span className="buy-ticket-optional-info">OPTIONAL INFORMATION:</span>
 
