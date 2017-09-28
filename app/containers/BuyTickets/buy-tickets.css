@@ -24,8 +24,8 @@
 .payment-btn-wrap .ui.button {
   background-color: rgb(251, 233, 42);
   color: #31383E;
-  transition: background-color .5s;
-  -webkit-transition: background-color .5s;
+  transition: all .5s ease-in;
+  -webkit-transition: all .5s ease-in;
 }
 
 .payment-btn-wrap .ui.button:hover {
@@ -483,8 +483,8 @@ table input[type="number"] {
   width: 100%;
   border: solid #FAEA29 2px;
   text-decoration: none;
-  transition: background-color .3s, border .3s;
-  -webkit-transition: background-color .3s, border .3s;
+  transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
 }
 
 .payment-button:hover {
