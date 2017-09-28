@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import EventNavBar from 'containers/EventNavBar';
 import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
 import EventInfoMenu from 'components/EventInfoMenu';
 import PosterModal from 'components/PosterModal';
@@ -24,12 +25,6 @@ export class EventInfo extends React.PureComponent { // eslint-disable-line reac
 
   handleOpenModal =  () => {
     this.setState(() => ({ openModal: true }));
-    window.onclick = function(e) {
-      console.log({e: e.target.className})
-      if(e.target.id === "modal-show") {
-        console.log("yes")
-      }
-    }
   }
 
 
@@ -37,6 +32,8 @@ export class EventInfo extends React.PureComponent { // eslint-disable-line reac
     const { openModal } = this.state;
     return (
       <div>
+
+      <EventNavBar />
 
         <PosterModal
           productImage={productImage}

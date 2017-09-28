@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import EventNavBar from 'containers/EventNavBar';
 import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
 import EventInfoMenu from 'components/EventInfoMenu';
 import { Form } from 'semantic-ui-react';
@@ -17,6 +18,7 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
   render() {
     return (
       <div>
+        <EventNavBar />
         <div className="mobile ticket-image-wrap grid-33">
           <div>
             <img src={productImage} alt="product" />

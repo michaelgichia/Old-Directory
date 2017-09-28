@@ -12,7 +12,6 @@
  */
 
 import React from 'react';
-import NavigationBar from 'containers/NavigationBar';
 import Footer from 'components/Footer';
 import '!!style-loader!css-loader!./app.css';
 
@@ -25,7 +24,6 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
-        <NavigationBar />
         <div className="main">
           {React.Children.toArray(this.props.children)}
         </div>

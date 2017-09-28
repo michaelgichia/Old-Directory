@@ -19,17 +19,17 @@ export default function createRoutes(store) {
   return [
     {
       path: '/',
-      name: 'eventInfo',
+      name: 'directoryLandingPage',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/EventInfo/reducer'),
-          import('containers/EventInfo'),
+          import('containers/DirectoryLandingPage/reducer'),
+          import('containers/DirectoryLandingPage'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, component]) => {
-          injectReducer('eventInfo', reducer.default);
+          injectReducer('directoryLandingPage', reducer.default);
           renderRoute(component);
         });
 
