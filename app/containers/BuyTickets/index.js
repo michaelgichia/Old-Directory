@@ -7,7 +7,7 @@
 import React from 'react';
 import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
 import EventInfoMenu from 'components/EventInfoMenu';
-import { Form, Menu } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import '!!style-loader!css-loader!./buy-tickets.css';
 import productImage from './product-banner.jpg';
 

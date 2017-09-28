@@ -6,26 +6,25 @@
 
 import React from 'react';
 import { Icon, Menu } from 'semantic-ui-react';
-import mookhLogo from './logo-dark.png';
 import '!!style-loader!css-loader!./menu-tabs-large-screen.css';
+import mookhLogo from './logo-dark.png';
 
 class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  state = { activeItem: "home" };
+  state = { activeItem: 'home' };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   burgerToggle = () => {
-    const isMouseDown = false;
-    window.addEventListener("click", this.pageIsRegistered, false);
+    window.addEventListener('click', this.pageIsRegistered, false);
   };
 
-  pageIsRegistered = e => {
-    const narrowLinks = document.querySelector(".narrow-links");
-    if (narrowLinks.style.display === "block") {
-      narrowLinks.style.display = "none";
-      window.removeEventListener("click", this.pageIsRegistered, false);
+  pageIsRegistered = () => {
+    const narrowLinks = document.querySelector('.narrow-links');
+    if (narrowLinks.style.display === 'block') {
+      narrowLinks.style.display = 'none';
+      window.removeEventListener('click', this.pageIsRegistered, false);
     } else {
-      narrowLinks.style.display = "block";
+      narrowLinks.style.display = 'block';
     }
   };
 
@@ -62,21 +61,27 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
               <a alt="#" />
               <a href="/buy-ticket" alt="buy tickets">
                 BUY TICKETS
+                <span />
               </a>
               <a href="/event-information" alt="event information">
                 EVENT INFO
+                <span />
               </a>
               <a href="#" alt="gallery">
                 GALLERY
+                <span />
               </a>
               <a href="#" alt="site map">
                 SITE MAP
+                <span />
               </a>
               <a href="#" alt="schedules and speakers">
                 SCHEDULES $ SPEAKERS
+                <span />
               </a>
               <a href="#" alt="sponsors">
                 SPONSORS
+                <span />
               </a>
               <a alt="#" />
             </div>

@@ -30,11 +30,11 @@
 
 .payment-btn-wrap .ui.button:hover {
   background-color: #ffc600;
-  color: #31383E;
+  color: #FAEA29;
 }
 
 .input input {
-  background-color: #e8e4df !important;
+  background-color: #f6f3ee !important;
 }
 
 .input input::placeholder {
@@ -491,5 +491,5 @@ table input[type="number"] {
   background-color: #31383E;
   border: solid #31383E 2px;
   text-decoration: none;
-  color: #D9DDD9;
+  color: #FAEA29;
 }

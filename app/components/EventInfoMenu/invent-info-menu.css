@@ -1,3 +1,7 @@
+.event-information-wrap {
+  position: relative;
+}
+
 .product-title {
   display: flex;
   align-items: center;

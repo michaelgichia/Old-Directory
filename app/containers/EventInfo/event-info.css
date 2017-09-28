@@ -1,3 +1,8 @@
+.information {
+  color: #343434;
+  font-family: 'Open Sans', sans-serif;
+}
+
 .information span {
   display: block;
   width: 100%;
@@ -5,6 +10,15 @@
 
 .information span:nth-child(1n + 2) {
   font-weight: 700;
+}
+
+.information header {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.information p {
+  font-size: 16px;
 }
 
 .mobile {
@@ -52,8 +66,6 @@
   }
 
   .information header {
-    font-size: 13px;
-    font-weight: 700;
     padding-bottom: 4px;
     border-bottom: 1px solid rgba(0,0,0,.1);
   }
@@ -63,10 +75,9 @@
   }
 
   .information p {
-    padding-top: 8px;
+    padding-top: 16px;
     padding-bottom: 8px;
     width: 100%;
-    font-size: 13px;
   }
 
   .description-wrap {
@@ -115,8 +126,6 @@
   }
 
   .information header {
-    font-size: 12px;
-    font-weight: 700;
     padding-bottom: 3px;
     border-bottom: 1px solid rgba(0,0,0,.1);
   }
@@ -129,7 +138,7 @@
     padding-top: 8px;
     padding-bottom: 8px;
     width: 100%;
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -166,9 +175,13 @@
   .information header {
     padding-bottom: 3px;
     border-bottom: 1px solid rgba(0,0,0,.1);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     padding: 8px;
+  }
+
+  .information p {
+    font-size: 14px;
   }
 
   .description i {
@@ -180,16 +193,42 @@
     letter-spacing: .5px;
   }
 
+  .tablet.product-image-wrapper {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .tablet.product-image-wrapper button {
+    position: absolute;
+    color: #FCFFFC;
+    font-size: 20px;
+    background-color: rgba(5, 6, 6,.7);
+    border: 1px solid rgba(5, 6, 6,1);
+    padding: 8px 20px;
+    width: 150px;
+    border-radius: 24px;
+    top: 230px;
+    right: 20px;
+    transition: background-color .3s,;
+  }
+
+  .tablet.product-image-wrapper button:active,
+  .tablet.product-image-wrapper button:focus,
+  .tablet.product-image-wrapper button:hover {
+    background-color: rgba(5, 6, 6,1);
+  }
+
   .product-image-wrapper img {
-    max-width: 100%;
-    max-height: 133%;
+    width: 100%;
     background: #ECECED;
     overflow: hidden;
   }
 
   .more-details {
     font-size: 14px;
-    padding: 8px;
+    padding: 16px;
   }
   .information span:nth-child(1) {
     padding-top: 8px;

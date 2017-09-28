@@ -13,7 +13,7 @@ export class NavigationBar extends React.PureComponent { // eslint-disable-line 
     return (
       <div className="nav">
         <ul>
-          <li><a href="#"><img src={mookhLogo} alt=""/></a></li>
+          <li><a href="#"><img src={mookhLogo} alt="" /></a></li>
           <li><a href="#">START SELLING</a></li>
         </ul>
       </div>

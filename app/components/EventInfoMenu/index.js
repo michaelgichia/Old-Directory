@@ -6,12 +6,12 @@
 
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
-import "!!style-loader!css-loader!./invent-info-menu.css";
+import '!!style-loader!css-loader!./invent-info-menu.css';
 
 class EventInfoMenu extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
+      <div className="event-information-wrap">
         <div className="product-title">
           <h4>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h4>
         </div>

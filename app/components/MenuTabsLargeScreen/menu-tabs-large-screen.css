@@ -7,19 +7,43 @@
   border-right: none;
 }
 
+.wide-div a:visited,
 .wide-div a {
   display: block;
   flex-grow: 1;
   padding: 9px 0;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
+  font-family: 'Roboto',sans-serief;
   width: calc(100% / 8);
-  color: #999895;
+  color: #858585;
   border-right: 1px solid #D2D2D2;
-  border-bottom: 2px solid #D2D2D2;
+  border-bottom: 1px solid #D2D2D2;
+  border-top: 3px solid #f6f3ee;
   text-decoration: none;
   text-align: center;
   letter-spacing: .5px;
+  position: relative;
+  transition: all .3s ease-in;
+}
+
+.wide-div a span {
+  position: absolute;
+  display: block;
+  height: 0px;
+  width: 100%;
+  top: 100%;
+}
+
+.wide-div a:hover {
+  border-bottom: 2px solid #FAEA29;
+  color: #000;
+}
+
+.wide-div a:hover span {
+  background-color: #FAEA29;
+  height: 3px;
+  top: calc(100% - 3px);
 }
 
 .wide-div a:first-child {
@@ -30,14 +54,9 @@
 .wide-div a:first-child:active,
 .wide-div a:last-child:hover,
 .wide-div a:first-child:hover {
-  border-bottom: 2px solid rgba(0, 0, 0, .05);
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
   pointer-events: none;
   cursor: default;
-}
-
-.wide-div a:hover {
-  border-bottom: 2px solid #FAEA29;
-  color: #31383E;
 }
 
 .nav-wide .wide-div {
@@ -45,7 +64,7 @@
 }
 
 nav.product-tabs {
-  background-color: #F6F3EE;
+  background-color: #f6f2ed;
   overflow: hidden;
 }
 
