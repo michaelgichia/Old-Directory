@@ -1,3 +1,16 @@
+.nav {
+  margin-top: 82px;
+}
+
+/* Small Screen styles */
+@media  (max-width: 767px) {
+  .nav {
+    background-color: #F6F3EE;
+    margin-top: 56px;
+    padding: 0 2% 2% 2%;
+  }
+}
+
 .nav ul {
   position: fixed;
   top: 0; left: 0; right: 0;

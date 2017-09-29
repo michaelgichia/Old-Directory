@@ -1,12 +1,1 @@
-.main {
-  margin-top: 82px;
-}
 
-/* Small Screen styles */
-@media  (max-width: 767px) {
-  .main {
-    background-color: #F6F3EE;
-    margin-top: 56px;
-    padding: 0 2% 2% 2%;    
-  }
-}
