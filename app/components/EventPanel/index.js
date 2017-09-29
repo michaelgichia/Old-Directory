@@ -5,6 +5,7 @@
 */
 
 import React from "react";
+import { Icon } from "semantic-ui-react";
 import "style-loader!css-loader!./event-panel.css";
 
 class EventPanel extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -34,6 +35,7 @@ class EventPanel extends React.PureComponent { // eslint-disable-line react/pref
           </div>
           <a href="" className="panel-event-buy">
             VIEW STORE
+            <Icon name="arrow right" />
           </a>
         </div>
 
@@ -60,6 +62,7 @@ class EventPanel extends React.PureComponent { // eslint-disable-line react/pref
           </div>
           <a href="" className="panel-event-buy">
             VIEW STORE
+            <Icon name="arrow right" />
           </a>
         </div>
 
@@ -86,6 +89,7 @@ class EventPanel extends React.PureComponent { // eslint-disable-line react/pref
           </div>
           <a href="" className="panel-event-buy">
             VIEW STORE
+            <Icon name="arrow right" />
           </a>
         </div>
 
@@ -112,6 +116,7 @@ class EventPanel extends React.PureComponent { // eslint-disable-line react/pref
           </div>
           <a href="" className="panel-event-buy">
             VIEW STORE
+            <Icon name="arrow right" />
           </a>
         </div>
 
@@ -138,6 +143,7 @@ class EventPanel extends React.PureComponent { // eslint-disable-line react/pref
           </div>
           <a href="" className="panel-event-buy">
             VIEW STORE
+            <Icon name="arrow right" />
           </a>
         </div>
 
@@ -164,6 +170,7 @@ class EventPanel extends React.PureComponent { // eslint-disable-line react/pref
           </div>
           <a href="" className="panel-event-buy">
             VIEW STORE
+            <Icon name="arrow right" />
           </a>
         </div>
 
@@ -190,6 +197,7 @@ class EventPanel extends React.PureComponent { // eslint-disable-line react/pref
           </div>
           <a href="" className="panel-event-buy">
             VIEW STORE
+            <Icon name="arrow right" />
           </a>
         </div>
       </div>
