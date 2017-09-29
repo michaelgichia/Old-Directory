@@ -14,7 +14,7 @@ import SiteLogo from './site-logo.png';
 export class DirectoryLandingPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
+      <div className="directory-main">
         <div className="search-main">
           <div className="site-logo">
             <img src={SiteLogo} alt=""/>

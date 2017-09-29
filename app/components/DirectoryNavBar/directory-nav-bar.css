@@ -1,13 +1,7 @@
-.directory-navbar a {
-  text-decoration: none;
-  color: #444;
-}
-
-.directory-navbar a:hover {
-  color: #222;
-}
-
 .directory-navbar {
+  font-weight: 500;
+  font-size: 16px;
+  font-family: 'Roboto', Roboto,sans-serief;
   width: 100%;
   display: table;
   margin: 0;
@@ -22,15 +16,10 @@
 
 .directory-navbar a {
   display: block;
-  color: #343A41;
+  text-decoration: none;
   width: 100%;
   padding: 1em 0;
-  text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
   position: relative;
-}
-
-.directory-navbar a:active {
-  background-color: #e0e0e0;
 }
 
 .directory-navbar a span:not(.nav-item-name) {
@@ -51,17 +40,13 @@
   border-bottom: 2px solid #e6e6e6;
 }
 
-.directory-navbar li:first-of-type:hover,
-.directory-navbar li:last-of-type:hover {
-  border-bottom: 2px solid #e6e6e6;
-}
-
 .directory-navbar li:last-of-type,
 .directory-navbar li:last-of-type:hover,
 .directory-navbar li:last-of-type:active,
 .directory-navbar li:first-of-type,
 .directory-navbar li:first-of-type:active,
 .directory-navbar li:first-of-type:hover {
+  border-bottom: 2px solid #e6e6e6;
   pointer-events: none;
   cursor: default;
 }
@@ -76,25 +61,22 @@
   height: 3px;
 }
 
+.directory-navbar li:active span.nav-item-name ,
+.directory-navbar li:hover span.nav-item-name,
+.directory-navbar li:hover i.icon,
+.directory-navbar li:hover i.icon {
+  color: #343A41;
+}
+
 .directory-navbar i.icon {
   margin-right: 11%;
   color: #858585;
-}
-
-.directory-navbar i.icon {
-  color: #343A41;
+  font-size: 20px;
 }
 
 .directory-navbar span.nav-item-name {
-  color: #858585;
+  color: #807d7d;
   font-weight: 500;
-  font-size: 16px;
-  font-family: 'Roboto',sans-serief;
-}
-
-.directory-navbar span.nav-item-name:active,
-.directory-navbar span.nav-item-name:hover {
-  color: #343A41;
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {

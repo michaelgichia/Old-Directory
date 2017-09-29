@@ -23,14 +23,14 @@ class DirectoryNavBar extends React.PureComponent {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/buy-ticket">
             <Icon name="ticket" />
             <span className="nav-item-name">Tickets</span>
             <span />
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/event-information">
             <Icon name="shopping basket" />
             <span className="nav-item-name">Products</span>
             <span />
