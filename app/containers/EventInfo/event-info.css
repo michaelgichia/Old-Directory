@@ -1,6 +1,6 @@
 .information {
   color: #343434;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .information span {
@@ -9,12 +9,12 @@
 }
 
 .information span:nth-child(1n + 2) {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .information header {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .information p {
@@ -176,7 +176,7 @@
     padding-bottom: 3px;
     border-bottom: 1px solid rgba(0,0,0,.1);
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 500;
     padding: 8px;
   }
 

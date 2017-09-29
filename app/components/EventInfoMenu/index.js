@@ -13,7 +13,7 @@ class EventInfoMenu extends React.Component { // eslint-disable-line react/prefe
     return (
       <div className="event-information-wrap">
         <div className="product-title">
-          <h4>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h4>
+          <h3>TEDx LAVINGTON WOMEN: INDEPENDENT EVENT</h3>
         </div>
         <div className="description header">
           <h5>

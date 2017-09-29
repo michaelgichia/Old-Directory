@@ -1,7 +1,7 @@
 .directory-navbar {
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  font-family: 'Roboto', Roboto,sans-serief;
   width: 100%;
   display: table;
   margin: 0;
@@ -79,14 +79,14 @@
   font-weight: 500;
 }
 
-@media screen and (min-width: 480px) and (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 900px) {
   .directory-navbar li:first-of-type,
   .directory-navbar li:last-of-type {
     width: 1%;
   }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 768px) {
   .directory-navbar li:first-of-type,
   .directory-navbar li:last-of-type {
     width: 1%;
