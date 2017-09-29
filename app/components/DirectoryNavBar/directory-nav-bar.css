@@ -1,0 +1,116 @@
+.directory-navbar a {
+  text-decoration: none;
+  color: #444;
+}
+
+.directory-navbar a:hover {
+  color: #222;
+}
+
+.directory-navbar {
+  width: 100%;
+  display: table;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border-radius: 0;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  background-color: #f6f3ee;
+}
+
+.directory-navbar a {
+  display: block;
+  color: #343A41;
+  width: 100%;
+  padding: 1em 0;
+  text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+  position: relative;
+}
+
+.directory-navbar a:active {
+  background-color: #e0e0e0;
+}
+
+.directory-navbar a span:not(.nav-item-name) {
+  position: absolute;
+  display: block;
+  height: 0;
+  width: 100%;
+  top: calc(100% - 3px);
+}
+
+.directory-navbar li {
+  display: table-cell;
+  width: 10%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  box-sizing: border-box;
+  border-bottom: 2px solid #e6e6e6;
+}
+
+.directory-navbar li:first-of-type:hover,
+.directory-navbar li:last-of-type:hover {
+  border-bottom: 2px solid #e6e6e6;
+}
+
+.directory-navbar li:last-of-type,
+.directory-navbar li:last-of-type:hover,
+.directory-navbar li:last-of-type:active,
+.directory-navbar li:first-of-type,
+.directory-navbar li:first-of-type:active,
+.directory-navbar li:first-of-type:hover {
+  pointer-events: none;
+  cursor: default;
+}
+
+.directory-navbar li:hover {
+  border-bottom: 2px solid #faea29;
+}
+
+.directory-navbar a:hover span:not(.nav-item-name),
+.directory-navbar a:active span:not(.nav-item-name) {
+  background-color: #faea29;
+  height: 3px;
+}
+
+.directory-navbar i.icon {
+  margin-right: 11%;
+  color: #858585;
+}
+
+.directory-navbar i.icon {
+  color: #343A41;
+}
+
+.directory-navbar span.nav-item-name {
+  color: #858585;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: 'Roboto',sans-serief;
+}
+
+.directory-navbar span.nav-item-name:active,
+.directory-navbar span.nav-item-name:hover {
+  color: #343A41;
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .directory-navbar li:first-of-type,
+  .directory-navbar li:last-of-type {
+    width: 1%;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .directory-navbar li:first-of-type,
+  .directory-navbar li:last-of-type {
+    width: 1%;
+  }
+
+  .directory-navbar a .nav-item-name {
+    display: none;
+  }
+}

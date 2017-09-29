@@ -42,7 +42,6 @@ export class EventInfo extends React.PureComponent { // eslint-disable-line reac
 
         <div className="tablet product-image-wrapper">
           <img src={productImage} alt="product" />
-          <button onClick={this.handleOpenModal} className="product-image-btn">view poster</button>
         </div>
 
         <EventInfoMenu />
