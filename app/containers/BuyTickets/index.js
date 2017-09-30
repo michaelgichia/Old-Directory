@@ -4,16 +4,16 @@
  *
  */
 
-import React from 'react';
-import EventNavBar from 'containers/EventNavBar';
-import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
-import EventInfoMenu from 'components/EventInfoMenu';
-import { Form } from 'semantic-ui-react';
-import '!!style-loader!css-loader!./buy-tickets.css';
-import productImage from './product-banner.jpg';
+import React from "react";
+import EventNavBar from "containers/EventNavBar";
+import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
+import EventInfoMenu from "components/EventInfoMenu";
+import { Form } from "semantic-ui-react";
+import "!!style-loader!css-loader!./buy-tickets.css";
+import productImage from "./product-banner.jpg";
 
-export class BuyTickets extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
+export class BuyTickets extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
@@ -23,7 +23,6 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
           <div>
             <img src={productImage} alt="product" />
           </div>
-
         </div>
 
         <EventInfoMenu />
@@ -38,7 +37,6 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
           </div>
 
           <div className="grid-66 price-table">
-
             <table>
               <tbody>
                 <tr>
@@ -94,7 +92,9 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
 
             <hr className="buy-ticket-optional" />
 
-            <span className="buy-ticket-optional-info">OPTIONAL INFORMATION:</span>
+            <span className="buy-ticket-optional-info">
+              OPTIONAL INFORMATION:
+            </span>
 
             <Form className="pay-tickets">
               <label>PROMO CODE (optional)</label>
@@ -110,7 +110,6 @@ export class BuyTickets extends React.PureComponent { // eslint-disable-line rea
                 </div>
               </Form.Group>
             </Form>
-
           </div>
         </div>
       </div>

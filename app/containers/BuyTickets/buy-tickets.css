@@ -21,18 +21,6 @@
   display: none;
 }
 
-.payment-btn-wrap .ui.button {
-  background-color: rgb(251, 233, 42);
-  color: #31383E;
-  transition: all .5s ease-in;
-  -webkit-transition: all .5s ease-in;
-}
-
-.payment-btn-wrap .ui.button:hover {
-  background-color: #ffc600;
-  color: #FAEA29;
-}
-
 .input input {
   background-color: #f6f3ee !important;
 }
@@ -159,7 +147,7 @@ table input[type="number"] {
   }
 
   .payment-btn-wrap {
-    width: 50%
+    width: 50%;
   }
 
   .payment-btn-wrap div {
@@ -314,9 +302,6 @@ table input[type="number"] {
     padding-right: 16px;
   }
 
-  .payment-btn-wrap div:last-of-type {
-    padding-left: 16px;
-  }
 
   [type="number"] {
     background-color: #F6F3EE !important;
@@ -471,9 +456,9 @@ table input[type="number"] {
 /* Buttons
 ---------------------------------------------------*/
 .payment-button {
-  -webkit-border-radius: 10;
-  -moz-border-radius: 10;
-  border-radius: 10px;
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
   color: #31383E;
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
@@ -483,8 +468,12 @@ table input[type="number"] {
   width: 100%;
   border: solid #FAEA29 2px;
   text-decoration: none;
-  transition: all .3s ease-in;
-  -webkit-transition: all .3s ease-in;
+  transition: 0.4s all ease;
+  -webkit-transition: 0.4s all ease;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: 0;
 }
 
 .payment-button:hover {
