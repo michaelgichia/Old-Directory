@@ -1,0 +1,115 @@
+.not-found-main  > div {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.not-found-main  > div h1 {
+  margin-bottom: 16px;
+}
+
+.footer-nav ul {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #F6F3EE;
+  z-index: 4;
+}
+
+.footer-nav li:first-child {
+  padding-left: 0;
+}
+
+.footer-nav li a {
+  display: block;
+  padding: 8px;
+  text-align: center;
+}
+
+.footer-nav li:first-child a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #FAEA29;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0px 4px 10px rgba(125, 121, 125,.2);
+  -webkit-box-shadow: 0px 4px 10px rgba(125, 121, 125,.2);
+  -moz-box-shadow: 0px 4px 10px rgba(125, 121, 125,.2);
+}
+
+.footer-nav li:first-child img {
+  max-width: 74px;
+  max-height: 24px
+}
+
+.footer-nav li:last-child {
+  float: right;
+}
+
+.footer-nav li:last-child a {
+  color: #D9DDD9;
+  font-weight: 500;
+  border: 2px solid #343434;
+  text-decoration: none;
+  background-color: #31383E;
+  border-radius: 24px;
+  -webkit-border-radius: 24;
+  -moz-border-radius: 24;
+  transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+  letter-spacing: .5px;
+}
+
+.footer-nav li:last-child a:hover {
+  background-color: transparent;
+  color: #31383E;
+  text-decoration: none;
+  border: 2px solid #878E88;
+}
+
+/* Small Screen styles */
+@media  (max-width: 767px) {
+  .footer-nav {
+    background-color: #F6F3EE;
+    margin-top: 56px;
+    padding: 0;
+  }
+  .footer-nav li:first-child a {
+    width: 120px;
+  }
+  .footer-nav li:last-child {
+    display: none
+  }
+
+  .footer-nav li {
+    float: left;
+    padding: 8px 4px;
+  }
+}
+
+/* Small Screen styles */
+@media  (min-width: 767px) {
+  .footer-nav li:first-child a {
+    width: 150px;
+  }
+  .footer-nav li:last-child a {
+    padding: 10px 20px;
+    line-height: 2rem;
+    font-size: 1rem;
+  }
+  .footer-nav li {
+    float: left;
+    padding: 16px;
+  }
+}
