@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import DirectoryNavBar from 'components/DirectoryNavBar';
-import EventPanel from 'components/EventPanel';
+import EventPanels from 'containers/EventPanels';
 import "!!style-loader!css-loader!./dlp-desktop.css";
 import SiteLogo from './site-logo.png';
 
@@ -34,7 +34,7 @@ export class DirectoryLandingPage extends React.Component { // eslint-disable-li
         </div>
         <main>
           <DirectoryNavBar />
-          <EventPanel />
+          <EventPanels />
         </main>
       </div>
     );

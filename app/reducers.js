@@ -7,6 +7,8 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import eventPanelsReducer from 'containers/EventPanels/reducer';
+import buyTicketReducer from 'containers/BuyTicket/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -14,6 +16,8 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 export default function createReducer(asyncReducers) {
   return combineReducers({
     routing: routerReducer,
+    buyTicket: buyTicketReducer,
+    eventPanels: eventPanelsReducer,
     language: languageProviderReducer,
     ...asyncReducers,
   });

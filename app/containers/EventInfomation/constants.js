@@ -1,6 +1,6 @@
 /*
  *
- * ProductDisplay constants
+ * EventInfomation constants
  *
  */
 

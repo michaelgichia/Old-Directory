@@ -9,7 +9,6 @@
   display: block;
   float: left;
   margin-bottom: 45px;
-  height: 100%;
   background-color: #FFFEFF;
   margin-right: 1.1%;
   -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
@@ -18,8 +17,9 @@
   border-radius: 4px;
 }
 
-.panel-img-wrap {
-  background-color: #FAEA29;
+/*background-color: #FAEA29;
+background-image: url('https://mymookh.com/tickets/uploads/posters/big-image-6651526b6fb8f29a00507de6a49ce30f.jpg');
+*/.panel-img-wrap {
   padding: 0;
   height: 100%;
   width: 100%;
@@ -27,7 +27,6 @@
   max-height: 300px;
   background-size: cover;
   border: 1px solid #ebebeb;
-  background-image: url('https://mymookh.com/tickets/uploads/posters/big-image-6651526b6fb8f29a00507de6a49ce30f.jpg');
 }
 .panel-img-wrap a {
   height: 0 !important;
@@ -83,7 +82,7 @@
   -webkit-line-clamp: 2;
   line-height: 20px;
   max-height: 40px;
-  margin: 0 0 30px 0;
+  margin: 0;
 }
 
 a.panel-event-buy {

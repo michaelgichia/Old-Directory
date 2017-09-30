@@ -4,27 +4,28 @@
 *
 */
 
-import React from 'react';
-import { Icon, Menu } from 'semantic-ui-react';
-import '!!style-loader!css-loader!./menu-tabs-large-screen.css';
-import mookhLogo from './logo-dark.png';
+import React from "react";
+import { Icon, Menu } from "semantic-ui-react";
+import "!!style-loader!css-loader!./menu-tabs-large-screen.css";
+import mookhLogo from "./logo-dark.png";
 
-class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  state = { activeItem: 'home' };
+class MenuTabsLargeScreen extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
+  state = { activeItem: "home" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   burgerToggle = () => {
-    window.addEventListener('click', this.pageIsRegistered, false);
+    window.addEventListener("click", this.pageIsRegistered, false);
   };
 
   pageIsRegistered = () => {
-    const narrowLinks = document.querySelector('.narrow-links');
-    if (narrowLinks.style.display === 'block') {
-      narrowLinks.style.display = 'none';
-      window.removeEventListener('click', this.pageIsRegistered, false);
+    const narrowLinks = document.querySelector(".narrow-links");
+    if (narrowLinks.style.display === "block") {
+      narrowLinks.style.display = "none";
+      window.removeEventListener("click", this.pageIsRegistered, false);
     } else {
-      narrowLinks.style.display = 'block';
+      narrowLinks.style.display = "block";
     }
   };
 
@@ -63,7 +64,10 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
                 BUY TICKETS
                 <span />
               </a>
-              <a href="/event-information" alt="event information">
+              <a
+                href={`/tickets/event/${eventId}/info`}
+                alt="event information"
+              >
                 EVENT INFO
                 <span />
               </a>
@@ -107,7 +111,7 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
                 BUY TICKETS<Icon name="ticket" />
               </a>
               <a
-                href="/event-information"
+                href={`/tickets/event/${eventId}/info`}
                 onClick={this.burgerToggle}
                 alt="event information"
               >

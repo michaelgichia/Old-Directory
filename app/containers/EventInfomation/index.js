@@ -1,44 +1,39 @@
 /*
  *
- * EventInfo
+ * EventInfomation
  *
  */
 
-import React from 'react';
-import EventNavBar from 'containers/EventNavBar';
-import MenuTabsLargeScreen from 'components/MenuTabsLargeScreen';
-import EventInfoMenu from 'components/EventInfoMenu';
-import PosterModal from 'components/PosterModal';
-import '!!style-loader!css-loader!./event-info.css';
-import productImage from './product-banner.jpg';
+import React from "react";
+import EventNavBar from "containers/EventNavBar";
+import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
+import EventInfoMenu from "components/EventInfoMenu";
+import PosterModal from "components/PosterModal";
+import "!!style-loader!css-loader!./event-info.css";
+import productImage from "./product-banner.jpg";
 
-export class EventInfo extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class EventInfomation extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   state = {
-    activeItem: 'home',
-    openModal: false 
+    activeItem: "home",
+    openModal: false
   };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-  handleClosePosterModal = () =>
-    this.setState(() => ({ openModal: false }));
+  handleClosePosterModal = () => this.setState(() => ({ openModal: false }));
 
-  handleOpenModal =  () => {
+  handleOpenModal = () => {
     this.setState(() => ({ openModal: true }));
-  }
-
+  };
 
   render() {
     const { openModal } = this.state;
     return (
       <div>
+        <EventNavBar />
 
-      <EventNavBar />
-
-        <PosterModal
-          productImage={productImage}
-          openModal={openModal}
-        />
+        <PosterModal productImage={productImage} openModal={openModal} />
 
         <div className="tablet product-image-wrapper">
           <img src={productImage} alt="product" />
@@ -73,11 +68,10 @@ export class EventInfo extends React.PureComponent { // eslint-disable-line reac
               </p>
             </div>
           </div>
-
         </div>
       </div>
     );
   }
 }
 
-export default EventInfo;
+export default EventInfomation;

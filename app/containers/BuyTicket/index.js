@@ -1,21 +1,38 @@
 /*
  *
- * BuyTickets
+ * BuyTicket
  *
  */
 
 import React from "react";
+import { connect } from "react-redux";
 import EventNavBar from "containers/EventNavBar";
 import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
 import EventInfoMenu from "components/EventInfoMenu";
 import { Form } from "semantic-ui-react";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
+import { fetchEvent } from "./actions";
 
-export class BuyTickets extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
+export class BuyTicket extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  state = {
+    event: {}
+  }
+
+  componentDidMount() {
+    const { eventId } = this.props.params;
+    this.props.fetchEvent(eventId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.event !== this.state.event) {
+      this.setState(() => ({ event: nextProps.event }));
+    }
+  }
 
   render() {
+    const { event } = this.state;
+    console.log({event})
     return (
       <div>
         <EventNavBar />
@@ -117,4 +134,12 @@ export class BuyTickets extends React.PureComponent {
   }
 }
 
-export default BuyTickets;
+const mapStateToProps = ({ buyTicket }) => ({
+  event: buyTicket.event
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchEvent: (eventId) => dispatch(fetchEvent(eventId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyTicket);

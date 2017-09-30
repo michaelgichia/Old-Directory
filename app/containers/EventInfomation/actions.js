@@ -1,6 +1,6 @@
 /*
  *
- * BuyTickets actions
+ * EventInfomation actions
  *
  */
 

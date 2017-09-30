@@ -36,12 +36,12 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/event-information',
-      name: 'eventInfo',
+      path: '/tickets/event/:eventId/info',
+      name: 'EventInfomation',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/EventInfo/reducer'),
-          import('containers/EventInfo'),
+          import('containers/EventInfomation/reducer'),
+          import('containers/EventInfomation'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -54,18 +54,18 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/buy-ticket',
-      name: 'buyTickets',
+      path: '/tickets/event/:eventId',
+      name: 'buyTicket',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/BuyTickets/reducer'),
-          import('containers/BuyTickets'),
+          import('containers/BuyTicket/reducer'),
+          import('containers/BuyTicket'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, component]) => {
-          injectReducer('buyTickets', reducer.default);
+          injectReducer('buyTicket', reducer.default);
           renderRoute(component);
         });
 

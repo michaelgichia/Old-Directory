@@ -1,6 +1,6 @@
 /*
  *
- * ProductDisplay reducer
+ * EventInfomation reducer
  *
  */
 
@@ -10,7 +10,7 @@ import {
 
 const initialState = {};
 
-function productDisplayReducer(state = initialState, action) {
+function eventInfomationReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -19,4 +19,4 @@ function productDisplayReducer(state = initialState, action) {
   }
 }
 
-export default productDisplayReducer;
+export default eventInfomationReducer;

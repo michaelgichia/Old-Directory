@@ -5,6 +5,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import createReducer from './reducers';
+import thunk from 'redux-thunk';
 
 export default function configureStore(initialState = {}, history) {
   // Create the store with two middlewares
@@ -30,7 +31,11 @@ export default function configureStore(initialState = {}, history) {
   const store = createStore(
     createReducer(),
     initialState,
-    composeEnhancers(...enhancers)
+    composeEnhancers(...enhancers,
+      applyMiddleware(
+        thunk,
+      )
+    )
   );
 
   // Extensions
