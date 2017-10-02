@@ -6,6 +6,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import LoadSpinner from "components/LoadSpinner";
 import { Icon } from "semantic-ui-react";
 import "style-loader!css-loader!./event-panel.css";
 import { randomColor } from "utils/color-generator";
@@ -32,6 +33,9 @@ class EventPanels extends React.PureComponent {
 
   render() {
     const { events } = this.state;
+    if (events.length < 1) {
+      return <LoadSpinner />
+    }
     return (
       <div className="panel-wrap">
         {events.map(event => (

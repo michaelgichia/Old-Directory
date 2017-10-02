@@ -13,10 +13,6 @@ import mookhLogo from "./logo-dark.png";
 class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = { activeItem: "home" };
 
-  componentDidMount() {
-    console.log({props: this.props})
-  }
-
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   burgerToggle = () => {
@@ -36,7 +32,6 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
   render() {
     const { activeItem } = this.state;
     const { eventId, pathname } = this.props;
-    console.log({eventId, pathname})
     const onActive = 'getPathname(pathname)';
     return (
       <div>
