@@ -3,3 +3,29 @@ export const asyncActionType = (type) => ({
   SUCCESS: `${type}_SUCCESS`,
   ERROR: `${type}_ERROR`,
 })
+
+
+export const getFormattedDate = (dateObject) => {
+  const newDate = new Date(dateObject).toDateString().slice(0, -5);
+  return newDate;
+}
+
+export const getStartTime = schedule => {
+  const startTimeArray = schedule.map(time => time.start);
+  const startTime = startTimeArray.reduce((a, b) => Math.max(a, b));
+  return startTime;
+}
+
+export const getEndTime = schedule => {
+  const endTimeArray = schedule.map(time => time.end);
+  const endTime = endTimeArray.reduce((a, b) => Math.max(a, b));
+  return endTime;
+}
+
+export const getPathname = pathString => {
+  const newString = pathString.split('/');
+
+  if (newString.slice(0, 3).join(" ").trim() === "tickets event") {
+    return "tickets event";
+  }
+}
