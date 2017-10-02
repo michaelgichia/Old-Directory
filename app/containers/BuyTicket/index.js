@@ -33,6 +33,7 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
 
   render() {
     const { event } = this.state;
+    const { pathname } = this.props.location;
 
     if (Object.keys(event).length < 1) {
       return (
@@ -52,9 +53,15 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
           </div>
         </div>
 
-        <EventInfoMenu />
+        <EventInfoMenu
+          eventName={event.event_name}
+          eventVenue={event.event_venue}
+        />
 
-        <MenuTabsLargeScreen />
+        <MenuTabsLargeScreen
+          pathname={pathname}
+          eventId={event.id}
+        />
 
         <div className="ticket-description-wrap">
           <div className="desktop grid-33">
@@ -72,14 +79,16 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
                   <th>QUANTITY</th>
                   <th>SUBTOTAL</th>
                 </tr>
-                <tr>
-                  <td>EARLY BIRD</td>
-                  <td>KES. 800</td>
-                  <td>
-                    <input type="number" defaultValue={0} min="0" />
-                  </td>
-                  <td>KES. 0.00</td>
-                </tr>
+                {event.tickets_count_by_category.map((ticket, index) => (
+                  <tr key={index}>
+                    <td>{ ticket.ticket_name }</td>
+                    <td>{`KES. ${ticket.ticket_value}`}</td>
+                    <td>
+                      <input type="number" defaultValue={0} min="0" />
+                    </td>
+                    <td>KES. 0.00</td>
+                  </tr>
+                  ))}
                 <tr>
                   <td />
                   <td />

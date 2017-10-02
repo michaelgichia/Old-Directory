@@ -184,8 +184,8 @@ table input[type="number"] {
     max-width: 70px;
   }
 
-  tr:nth-child(4) td:last-child {
-    border-bottom: 2px solid rgba(202, 202, 202, 0.5);
+  tr:last-child td:last-child {
+    border-top: 2px solid rgba(202, 202, 202, 0.5);
   }
 }
 
