@@ -31,6 +31,7 @@ class MenuTabsLargeScreen extends React.PureComponent {
 
   render() {
     const { activeItem } = this.state;
+    const { eventId } = this.props;
     return (
       <div>
         <Menu

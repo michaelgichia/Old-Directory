@@ -6,6 +6,8 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
+import { BuyTicketLoader } from "components/BuyTicketLoader";
 import EventNavBar from "containers/EventNavBar";
 import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
 import EventInfoMenu from "components/EventInfoMenu";
@@ -32,7 +34,6 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
 
   render() {
     const { event } = this.state;
-    console.log({event})
     return (
       <div>
         <EventNavBar />
@@ -65,22 +66,6 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
                 <tr>
                   <td>EARLY BIRD</td>
                   <td>KES. 800</td>
-                  <td>
-                    <input type="number" defaultValue={0} min="0" />
-                  </td>
-                  <td>KES. 0.00</td>
-                </tr>
-                <tr>
-                  <td>ADVANCE</td>
-                  <td>KES. 1500</td>
-                  <td>
-                    <input type="number" defaultValue={0} min="0" />
-                  </td>
-                  <td>KES. 0.00</td>
-                </tr>
-                <tr>
-                  <td>GATE</td>
-                  <td>KES. 2000</td>
                   <td>
                     <input type="number" defaultValue={0} min="0" />
                   </td>
@@ -142,4 +127,6 @@ const mapDispatchToProps = dispatch => ({
   fetchEvent: (eventId) => dispatch(fetchEvent(eventId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyTicket);
+const enhanced = _.flowRight([BuyTicketLoader, connect(mapStateToProps, mapDispatchToProps)])
+
+export default enhanced(BuyTicket);
