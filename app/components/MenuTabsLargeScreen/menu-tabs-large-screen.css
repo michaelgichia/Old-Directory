@@ -38,6 +38,12 @@
   color: #343A41;
 }
 
+a.on-active {
+  border-bottom: 2px solid #FAEA29 !important;
+  color: #343A41 !important;
+}
+
+.wide-div .on-active span,
 .wide-div a:hover span {
   background-color: #FAEA29;
   height: 3px;

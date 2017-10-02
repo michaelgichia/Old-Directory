@@ -6,12 +6,16 @@
 
 import React from "react";
 import { Icon, Menu } from "semantic-ui-react";
+import { getPathname } from "utils/helperFunctions";
 import "!!style-loader!css-loader!./menu-tabs-large-screen.css";
 import mookhLogo from "./logo-dark.png";
 
-class MenuTabsLargeScreen extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
+class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = { activeItem: "home" };
+
+  componentDidMount() {
+    console.log({props: this.props})
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -31,7 +35,9 @@ class MenuTabsLargeScreen extends React.PureComponent {
 
   render() {
     const { activeItem } = this.state;
-    const { eventId } = this.props;
+    const { eventId, pathname } = this.props;
+    console.log({eventId, pathname})
+    const onActive = 'getPathname(pathname)';
     return (
       <div>
         <Menu
@@ -61,30 +67,51 @@ class MenuTabsLargeScreen extends React.PureComponent {
           <div className="nav-wide">
             <div className="wide-div">
               <a alt="#" />
-              <a href="/buy-ticket" alt="buy tickets">
+              <a
+                href="/buy-ticket"
+                alt="buy tickets"
+                className={onActive === "tickets event" ? "on-active" : ""}
+              >
                 BUY TICKETS
                 <span />
               </a>
               <a
                 href={`/tickets/event/${eventId}/info`}
                 alt="event information"
+                className={onActive === "event information" ? "on-active" : ""}
               >
                 EVENT INFO
                 <span />
               </a>
-              <a href="#" alt="gallery">
+              <a
+                href="#"
+                alt="gallery"
+                className={onActive === "gallery" ? "on-active" : ""}
+              >
                 GALLERY
                 <span />
               </a>
-              <a href="#" alt="site map">
+              <a
+                href="#"
+                alt="site map"
+                className={onActive === "site ma" ? "on-active" : ""}
+              >
                 SITE MAP
                 <span />
               </a>
-              <a href="#" alt="schedules and speakers">
+              <a
+                href="#"
+                alt="schedules and speakers"
+                className={onActive === "schedules and speakers" ? "on-active" : ""}
+              >
                 SCHEDULES $ SPEAKERS
                 <span />
               </a>
-              <a href="#" alt="sponsors">
+              <a
+                href="#"
+                alt="sponsors"
+                className={onActive === "sponsors" ? "on-active" : ""}
+              >
                 SPONSORS
                 <span />
               </a>
