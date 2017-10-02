@@ -58,3 +58,10 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 50px;
   }
 }
+
+/* Loading spinner exit the screen */
+.loading-exit {
+  transition: opacity 1s, visibility 0s 1s;
+  -webkit-transition: opacity 1s, visibility 0s 1s;
+  -moz-transition:  opacity 1s, visibility 0s 1s;
+}

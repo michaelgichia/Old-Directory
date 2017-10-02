@@ -6,8 +6,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
-import { BuyTicketLoader } from "components/BuyTicketLoader";
+import LoadSpinner from "components/LoadSpinner";
 import EventNavBar from "containers/EventNavBar";
 import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
 import EventInfoMenu from "components/EventInfoMenu";
@@ -19,7 +18,7 @@ import { fetchEvent } from "./actions";
 export class BuyTicket extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
     event: {}
-  }
+  };
 
   componentDidMount() {
     const { eventId } = this.props.params;
@@ -34,6 +33,16 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
 
   render() {
     const { event } = this.state;
+
+    if (Object.keys(event).length < 1) {
+      return (
+        <div className="loading-exit">
+          <EventNavBar />
+          <LoadSpinner />
+        </div>
+      );
+    }
+
     return (
       <div>
         <EventNavBar />
@@ -121,12 +130,10 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
 
 const mapStateToProps = ({ buyTicket }) => ({
   event: buyTicket.event
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-  fetchEvent: (eventId) => dispatch(fetchEvent(eventId))
-})
+  fetchEvent: eventId => dispatch(fetchEvent(eventId))
+});
 
-const enhanced = _.flowRight([BuyTicketLoader, connect(mapStateToProps, mapDispatchToProps)])
-
-export default enhanced(BuyTicket);
+export default connect(mapStateToProps, mapDispatchToProps)(BuyTicket);
