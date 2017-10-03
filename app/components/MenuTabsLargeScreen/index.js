@@ -32,7 +32,7 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
   render() {
     const { activeItem } = this.state;
     const { eventId, pathname } = this.props;
-    const onActive = 'getPathname(pathname)';
+    const onActive = getPathname(pathname);
     return (
       <div>
         <Menu
@@ -63,7 +63,7 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
             <div className="wide-div">
               <a alt="#" />
               <a
-                href="/buy-ticket"
+                href={`/tickets/event/${eventId}`}
                 alt="buy tickets"
                 className={onActive === "tickets event" ? "on-active" : ""}
               >
@@ -73,7 +73,7 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
               <a
                 href={`/tickets/event/${eventId}/info`}
                 alt="event information"
-                className={onActive === "event information" ? "on-active" : ""}
+                className={onActive === "event info" ? "on-active" : ""}
               >
                 EVENT INFO
                 <span />

@@ -9,6 +9,7 @@ import { routerReducer } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import eventPanelsReducer from 'containers/EventPanels/reducer';
 import buyTicketReducer from 'containers/BuyTicket/reducer';
+import eventInfomationReducer from 'containers/EventInfomation/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -18,6 +19,7 @@ export default function createReducer(asyncReducers) {
     routing: routerReducer,
     buyTicket: buyTicketReducer,
     eventPanels: eventPanelsReducer,
+    eventInfomation: eventInfomationReducer,
     language: languageProviderReducer,
     ...asyncReducers,
   });

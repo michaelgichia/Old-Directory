@@ -5,15 +5,21 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  EVENT_INFO,
 } from './constants';
 
-const initialState = {};
+const initialState = {
+  eventInfo: {}
+};
 
 function eventInfomationReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case EVENT_INFO.SUCCESS:
+      return {
+        ...state,
+        eventInfo: action.eventInfo
+      };
+
     default:
       return state;
   }

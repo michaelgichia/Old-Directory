@@ -30,6 +30,10 @@ export const getPathname = pathString => {
 
   const newString = pathString.split('/');
 
+  if (newString.slice(-1).join() === "info") {
+    return "event info"
+  }
+
   if (newString.slice(0, 3).join(" ").trim() === "tickets event") {
     return "tickets event";
   }

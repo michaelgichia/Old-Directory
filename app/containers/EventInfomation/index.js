@@ -5,19 +5,34 @@
  */
 
 import React from "react";
+import { connect } from "react-redux";
 import EventNavBar from "containers/EventNavBar";
 import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
 import EventInfoMenu from "components/EventInfoMenu";
 import PosterModal from "components/PosterModal";
 import "!!style-loader!css-loader!./event-info.css";
 import productImage from "./product-banner.jpg";
+import { fetctEventInfo } from "./actions";
 
-export class EventInfomation extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
+export class EventInfomation extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
     activeItem: "home",
-    openModal: false
+    openModal: false,
+    eventInfo: {}
   };
+
+  componentDidMount() {
+    const { eventId } = this.props.params;
+    this.props.fetctEventInfo(eventId);
+  }
+
+  componetWillReceiveProps(nextProps) {
+    if (nextProps.eventInfo !== this.state.eventInfo) {
+      this.setState(() => ({
+        eventInfo: nextProps.eventInfo
+      }))
+    }
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -29,6 +44,8 @@ export class EventInfomation extends React.PureComponent {
 
   render() {
     const { openModal } = this.state;
+    const { pathname } = this.props.location;
+    const { eventId } = this.props.params;
     return (
       <div>
         <EventNavBar />
@@ -41,7 +58,10 @@ export class EventInfomation extends React.PureComponent {
 
         <EventInfoMenu />
 
-        <MenuTabsLargeScreen />
+        <MenuTabsLargeScreen
+          pathname={pathname}
+          eventId={eventId}
+        />
 
         <div className="description-wrap">
           <div className="desktop product-image-wrapper">
@@ -74,4 +94,12 @@ export class EventInfomation extends React.PureComponent {
   }
 }
 
-export default EventInfomation;
+const mapStateToProps = ({ eventInfomation }) => ({
+  eventInfo: eventInfomation.eventInfo
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetctEventInfo: (eventId) => dispatch(fetctEventInfo(eventId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventInfomation);
