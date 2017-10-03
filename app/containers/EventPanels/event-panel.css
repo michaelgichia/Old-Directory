@@ -93,6 +93,13 @@ a.panel-event-buy {
   color: #31383e;
   box-sizing: border-box;
   border-top: 1px solid #F7F2EF;
+  transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+a.panel-event-buy:hover {
+  background-color: rgba(0,0,0,.025);
 }
 
 .panel-event-buy i {

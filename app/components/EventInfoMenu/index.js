@@ -15,7 +15,7 @@ class EventInfoMenu extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     const { eventName, eventVenue } = this.props;
-    const location = eventVenue.toLocaleLowerCase().replace(/,/g, "+");
+    const location = eventVenue !== eventVenue ? eventVenue.toLocaleLowerCase().replace(/,/g, "+"):"";
 
     return (
       <div className="event-information-wrap">
