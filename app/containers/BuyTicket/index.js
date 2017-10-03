@@ -76,7 +76,7 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
                 <tr>
                   <th>TYPE</th>
                   <th>PRICE</th>
-                  <th>QUANTITY</th>
+                  <th />
                   <th>SUBTOTAL</th>
                 </tr>
                 {event.tickets_count_by_category.map((ticket, index) => (
