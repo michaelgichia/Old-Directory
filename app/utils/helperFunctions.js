@@ -23,6 +23,11 @@ export const getEndTime = schedule => {
 }
 
 export const getPathname = pathString => {
+
+  if (pathString === '/') {
+    return "landing page";
+  }
+
   const newString = pathString.split('/');
 
   if (newString.slice(0, 3).join(" ").trim() === "tickets event") {

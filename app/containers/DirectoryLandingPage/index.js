@@ -13,6 +13,7 @@ import SiteLogo from './site-logo.png';
 
 export class DirectoryLandingPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const { pathname } = this.props.location;
     return (
       <div className="directory-main">
         <div className="search-main">
@@ -33,7 +34,9 @@ export class DirectoryLandingPage extends React.Component { // eslint-disable-li
           </div>
         </div>
         <main>
-          <DirectoryNavBar />
+          <DirectoryNavBar
+            pathname={pathname}
+          />
           <EventPanels />
         </main>
       </div>

@@ -51,8 +51,19 @@
   cursor: default;
 }
 
+.directory-navbar li.dnb-active,
 .directory-navbar li:hover {
   border-bottom: 2px solid #faea29;
+}
+
+.dnb-active a span:last-of-type {
+  background-color: #faea29;
+  height: 3px;
+}
+
+.dnb-active i.icon,
+li.dnb-active .nav-item-name {
+  color: #343A41 !important; 
 }
 
 .directory-navbar a:hover span:not(.nav-item-name),
