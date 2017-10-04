@@ -9,19 +9,33 @@
  * the linting exception.
  */
 
-import React from 'react';
-import mookhLogo from './logo-dark.png';
-import EventNavBar from 'containers/EventNavBar';
+import React from "react";
+import mookhLogo from "./logo-dark.png";
+import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import "!!style-loader!css-loader!./not-found-page.css";
 
-export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class NotFound extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div style={{minHeight: "90vh", position: "relative", color: "#343A41", backgroundColor: "#faea29"}}>
+      <div
+        style={{
+          minHeight: "90vh",
+          position: "relative",
+          color: "#343A41",
+          backgroundColor: "#faea29"
+        }}
+      >
         <nav className="footer-nav">
           <ul>
-            <li><a href="/#"><img src={mookhLogo} alt="" /></a></li>
-            <li><a href="#">START SELLING</a></li>
+            <li>
+              <a href="/#">
+                <img src={mookhLogo} alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="#">START SELLING</a>
+            </li>
           </ul>
         </nav>
         <main className="not-found-main">

@@ -2,13 +2,14 @@
 *
 * Footer
 *
+* The for of the website.
 */
 
-import React from 'react';
-import { Icon } from 'semantic-ui-react';
-import '!!style-loader!css-loader!./footer.css';
+import React from "react";
+import { Icon } from "semantic-ui-react";
+import "!!style-loader!css-loader!./footer.css";
 
-class Footer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class Footer extends React.PureComponent {
   render() {
     return (
       <footer>
@@ -22,9 +23,15 @@ class Footer extends React.PureComponent { // eslint-disable-line react/prefer-s
           <a href="#">Terms of Service</a>
         </div>
         <div className="social-media-wrap">
-          <a href="#"><Icon name="twitter" circular /></a>
-          <a href="#"><Icon name="facebook f" circular /></a>
-          <a href="#"><Icon name="instagram" circular /></a>
+          <a href="#">
+            <Icon name="twitter" circular />
+          </a>
+          <a href="#">
+            <Icon name="facebook f" circular />
+          </a>
+          <a href="#">
+            <Icon name="instagram" circular />
+          </a>
         </div>
       </footer>
     );

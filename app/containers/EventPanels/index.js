@@ -2,11 +2,14 @@
 *
 * EventPanels
 *
+* Event panels are the components that display events -
+* information on directory landing page.
+*
 */
 
 import React from "react";
 import { connect } from "react-redux";
-import LoadSpinner from "components/LoadSpinner";
+import LoadingSpinner from "components/LoadingSpinner";
 import { Icon } from "semantic-ui-react";
 import "style-loader!css-loader!./event-panel.css";
 import { randomColor } from "utils/color-generator";
@@ -14,9 +17,7 @@ import { randomColor } from "utils/color-generator";
 import { fetchEvents } from "./actions";
 import { eventPosterBaseUrl } from "./constants";
 
-
 class EventPanels extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
   state = {
     events: []
   };
@@ -34,14 +35,17 @@ class EventPanels extends React.PureComponent {
   render() {
     const { events } = this.state;
     if (events.length < 1) {
-      return <LoadSpinner />
+      return <LoadingSpinner />;
     }
     return (
       <div className="panel-wrap">
         {events.map(event => (
           <div className="panel-container" key={event.id}>
             <span className="panel-event-logo" />
-            <div className="panel-img-wrap" style={{ backgroundColor: `${randomColor()}` }}>
+            <div
+              className="panel-img-wrap"
+              style={{ backgroundColor: `${randomColor()}` }}
+            >
               <a href="">&nbsp;</a>
             </div>
             <div className="panel-event-info">
@@ -49,13 +53,19 @@ class EventPanels extends React.PureComponent {
                 {event.event_name}
               </a>
               <a href="" alt="event">
-                by{" "}{event.store_name}
+                by {event.store_name}
               </a>
-              <div dangerouslySetInnerHTML={{
+              <div
+                dangerouslySetInnerHTML={{
                   __html: event.event_description
-                }} />
+                }}
+              />
             </div>
-            <a href={`/tickets/event/${event.id}`} target="_self" className="panel-event-buy">
+            <a
+              href={`/tickets/event/${event.id}`}
+              target="_self"
+              className="panel-event-buy"
+            >
               VIEW STORE
               <Icon name="arrow right" />
             </a>

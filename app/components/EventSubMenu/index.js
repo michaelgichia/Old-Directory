@@ -1,21 +1,24 @@
 /**
 *
-* EventInfoMenu
+* EventSubMenu
+*
+* This components displays event name, venue and schedule.
 *
 */
 
 import React from "react";
 import { Icon } from "semantic-ui-react";
-import { getFormattedDate } from "utils/helperFunctions";
 import "!!style-loader!css-loader!./invent-info-menu.css";
 
 const getDirectionBaseAPI = "https://www.google.com/maps/search/?api=1&query=";
 
-class EventInfoMenu extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
+class EventSubMenu extends React.Component {
   render() {
     const { eventName, eventVenue } = this.props;
-    const location = eventVenue !== eventVenue ? eventVenue.toLocaleLowerCase().replace(/,/g, "+"):"";
+    const location =
+      eventVenue !== eventVenue
+        ? eventVenue.toLocaleLowerCase().replace(/,/g, "+")
+        : "";
 
     return (
       <div className="event-information-wrap">
@@ -36,6 +39,6 @@ class EventInfoMenu extends React.Component {
   }
 }
 
-EventInfoMenu.propTypes = {};
+EventSubMenu.propTypes = {};
 
-export default EventInfoMenu;
+export default EventSubMenu;

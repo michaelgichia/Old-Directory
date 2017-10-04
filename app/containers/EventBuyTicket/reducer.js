@@ -1,12 +1,10 @@
 /*
  *
- * BuyTicket reducer
+ * EventBuyTicket reducer
  *
  */
 
-
 import { EVENT } from "./constants";
-
 
 const initialState = {
   event: {}

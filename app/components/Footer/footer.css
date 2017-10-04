@@ -1,24 +1,24 @@
 footer {
-  background-color: #31383E;
+  background-color: #31383e;
   padding: 24px 16px;
   width: 100%;
   font-size: 16px;
-  color: #B1B2B5;
+  color: #b1b2b5;
   float: left;
-  transition: all .3s ease-in;
-  -webkit-transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
 }
 
 .copyright-wrap {
   width: 100%;
   margin-bottom: 16px;
   text-align: center;
-  transition: all .3s ease-in;
-  -webkit-transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
 }
 
 .copyright-wrap:hover {
-  color:  #F6F3EE;
+  color: #f6f3ee;
 }
 
 div.social-media-wrap {
@@ -26,23 +26,23 @@ div.social-media-wrap {
 }
 
 .social-media-wrap .icon {
-  background-color: #B1B2B5 !important;
-  transition: all .3s ease-in;
-  -webkit-transition: all .3s ease-in;
+  background-color: #b1b2b5 !important;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
 }
 
 .social-media-wrap .icon:hover {
-  background-color: #F6F3EE !important;
+  background-color: #f6f3ee !important;
 }
 
 div.social-media-wrap > a {
-  color: #31383E;
+  color: #31383e;
   display: inline-block;
   text-decoration: none;
   margin: 0 24px 0 0;
   padding: 0;
-  transition: all .3s ease;
-  -webkit-transition: all .3s ease;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
 }
 
 div.footer-links {
@@ -52,17 +52,17 @@ div.footer-links {
 }
 
 div.footer-links > a {
-  color: #B1B2B5;
+  color: #b1b2b5;
   display: inline-block;
   font-weight: 300;
   margin-bottom: 8px;
   padding: 0 8px;
   text-align: center;
   text-decoration: none;
-  transition: all .3s ease-in;
-  -webkit-transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
 }
 
 div.footer-links > a:hover {
-  color: #F6F3EE;
+  color: #f6f3ee;
 }

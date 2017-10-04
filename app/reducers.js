@@ -3,13 +3,13 @@
  * If we were to do this in store.js, reducers wouldn't be hot reloadable.
  */
 
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { combineReducers } from "redux";
+import { routerReducer } from "react-router-redux";
 
-import languageProviderReducer from 'containers/LanguageProvider/reducer';
-import eventPanelsReducer from 'containers/EventPanels/reducer';
-import buyTicketReducer from 'containers/BuyTicket/reducer';
-import eventInfomationReducer from 'containers/EventInfomation/reducer';
+import languageProviderReducer from "containers/LanguageProvider/reducer";
+import eventPanelsReducer from "containers/EventPanels/reducer";
+import buyTicketReducer from "containers/EventBuyTicket/reducer";
+import eventInfomationReducer from "containers/EventInfomation/reducer";
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -21,6 +21,6 @@ export default function createReducer(asyncReducers) {
     eventPanels: eventPanelsReducer,
     eventInfomation: eventInfomationReducer,
     language: languageProviderReducer,
-    ...asyncReducers,
+    ...asyncReducers
   });
 }

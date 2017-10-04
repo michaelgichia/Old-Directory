@@ -1,22 +1,21 @@
 /*
  *
- * BuyTicket
+ * EventBuyTicket
  *
  */
 
 import React from "react";
 import { connect } from "react-redux";
-import LoadSpinner from "components/LoadSpinner";
-import EventNavBar from "containers/EventNavBar";
+import LoadingSpinner from "components/LoadingSpinner";
+import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import EventMenuBar from "components/EventMenuBar";
-import EventInfoMenu from "components/EventInfoMenu";
+import EventSubMenu from "components/EventSubMenu";
 import { Form } from "semantic-ui-react";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
 import { fetchEvent } from "./actions";
 
-export class BuyTicket extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
+export class EventBuyTicket extends React.PureComponent {
   state = {
     event: {}
   };
@@ -39,22 +38,22 @@ export class BuyTicket extends React.PureComponent {
     if (Object.keys(event).length < 1) {
       return (
         <div className="loading-exit">
-          <EventNavBar />
-          <LoadSpinner />
+          <EventTopPageDisplay />
+          <LoadingSpinner />
         </div>
       );
     }
 
     return (
       <div>
-        <EventNavBar />
+        <EventTopPageDisplay />
         <div className="mobile ticket-image-wrap grid-33">
           <div>
             <img src={productImage} alt="product" />
           </div>
         </div>
 
-        <EventInfoMenu
+        <EventSubMenu
           eventName={event.event_name}
           eventVenue={event.event_venue}
         />
@@ -143,4 +142,4 @@ const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyTicket);
+export default connect(mapStateToProps, mapDispatchToProps)(EventBuyTicket);

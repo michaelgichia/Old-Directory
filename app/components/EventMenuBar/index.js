@@ -15,8 +15,6 @@ import "!!style-loader!css-loader!./menu-tabs-large-screen.css";
 import mookhLogo from "./logo-dark.png";
 
 class EventMenuBar extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
-
   state = { activeItem: "home" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
