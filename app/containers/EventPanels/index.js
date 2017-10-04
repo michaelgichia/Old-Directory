@@ -34,11 +34,16 @@ class EventPanels extends React.PureComponent {
 
   render() {
     const { events } = this.state;
+    const { isFixedNavHeight } = this.props;
     if (events.length < 1) {
       return <LoadingSpinner />;
     }
     return (
-      <div className="panel-wrap">
+      <div
+        className={`panel-wrap ${isFixedNavHeight
+          ? "panel-wrap-fixed"
+          : "panel-wrap-static"}`}
+      >
         {events.map(event => (
           <div className="panel-container" key={event.id}>
             <span className="panel-event-logo" />

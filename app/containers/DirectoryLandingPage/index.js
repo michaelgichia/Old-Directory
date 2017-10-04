@@ -13,20 +13,29 @@ import SiteLogo from "./site-logo.png";
 
 export class DirectoryLandingPage extends React.Component {
   state = {
-    isFixedTopClass: false
+    isFixedTopClass: false,
+    isFixedNavHeight: false
   };
 
   componentDidMount() {
-    const directoryMain = document.querySelector(".directory-navbar").offsetTop;
-    this.setState(() => ({ topOfNav: directoryMain }));
-    window.addEventListener("scroll", this.listenToPageScroll);
+    const directoryMain = document.querySelector(".directory-navbar");
+    this.setState(() => ({ topOfNav: directoryMain.offsetTop }));
+    window.addEventListener("scroll", () =>
+      this.listenToPageScroll(directoryMain)
+    );
   }
 
   listenToPageScroll = () => {
     if (window.scrollY >= this.state.topOfNav) {
-      this.setState(() => ({ isFixedTopClass: true }));
+      this.setState(() => ({
+        isFixedNavHeight: true,
+        isFixedTopClass: true
+      }));
     } else {
-      this.setState(() => ({ isFixedTopClass: false }));
+      this.setState(() => ({
+        isFixedTopClass: false,
+        isFixedNavHeight: false
+      }));
     }
   };
 
@@ -36,7 +45,8 @@ export class DirectoryLandingPage extends React.Component {
 
   render() {
     const { pathname } = this.props.location;
-    const { isFixedTopClass } = this.state;
+    const { isFixedTopClass, isFixedNavHeight } = this.state;
+    console.log({ isFixedNavHeight });
     return (
       <div className="directory-main">
         <div className="search-main">
@@ -61,6 +71,7 @@ export class DirectoryLandingPage extends React.Component {
             pathname={pathname}
             isFixedTopClass={isFixedTopClass}
           />
+          <EventPanels isFixedNavHeight={isFixedNavHeight} />
         </main>
       </div>
     );

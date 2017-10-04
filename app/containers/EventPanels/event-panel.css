@@ -5,15 +5,15 @@
 .panel-container {
   position: relative;
   font-size: 14px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: block;
   float: left;
   margin-bottom: 45px;
-  background-color: #FFFEFF;
+  background-color: #fffeff;
   margin-right: 1.1%;
-  -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
-  -moz-box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
   border-radius: 4px;
 }
 
@@ -43,10 +43,10 @@
   width: 60px;
   left: calc(100% - 70px);
   border-radius: 2px;
-  border: 3px solid #FFFEFF;
+  border: 3px solid #fffeff;
   bottom: -10px;
   background-size: 100% 100%;
-  background-image: url('https://mymookh.com/tickets/uploads/posters/big-image-6651526b6fb8f29a00507de6a49ce30f.jpg');
+  background-image: url("https://mymookh.com/tickets/uploads/posters/big-image-6651526b6fb8f29a00507de6a49ce30f.jpg");
 }
 
 .panel-event-info {
@@ -92,14 +92,14 @@ a.panel-event-buy {
   text-decoration: none;
   color: #31383e;
   box-sizing: border-box;
-  border-top: 1px solid #F7F2EF;
-  transition: all .3s ease-in-out;
-  -webkit-transition: all .3s ease-in-out;
-  -moz-transition: all .3s ease-in-out;
+  border-top: 1px solid #f7f2ef;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
 }
 
 a.panel-event-buy:hover {
-  background-color: rgba(0,0,0,.025);
+  background-color: rgba(0, 0, 0, 0.025);
 }
 
 .panel-event-buy i {
@@ -119,19 +119,25 @@ a.panel-event-buy:hover {
   }
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1280px){
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
   .panel-container {
     width: 31%;
     margin-left: 1.1%;
   }
+
+  .panel-wrap-fixed {
+    padding-top: 90px;
+  }
+
+  .panel-wrap-static {
+    padding-top: 50px;
+  }
+
   .panel-wrap {
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 50px;
   }
 }
-
-
 
 @media screen and (min-width: 990px) and (max-width: 1023px) {
   .panel-container {
@@ -139,10 +145,17 @@ a.panel-event-buy:hover {
     margin-left: 3%;
   }
 
+  .panel-wrap-fixed {
+    padding-top: 90px;
+  }
+
+  .panel-wrap-static {
+    padding-top: 30px;
+  }
+
   .panel-wrap {
     padding-left: 100px;
     padding-right: 100px;
-    padding-top: 30px;
   }
 }
 
@@ -162,7 +175,11 @@ a.panel-event-buy:hover {
     margin-right: 7%;
   }
 
-  .panel-wrap {
+  .panel-wrap-fixed {
+    padding-top: 90px;
+  }
+
+  .panel-wrap-static {
     padding-top: 30px;
   }
 }
@@ -174,7 +191,11 @@ a.panel-event-buy:hover {
     margin-left: 2%;
   }
 
-  .panel-wrap {
+  .panel-wrap-fixed {
+    padding-top: 90px;
+  }
+
+  .panel-wrap-static {
     padding-top: 30px;
   }
 }
@@ -183,7 +204,7 @@ a.panel-event-buy:hover {
   .panel-container {
     width: 80%;
     margin-left: 10%;
-    margin-right: 10%
+    margin-right: 10%;
   }
 
   .panel-event-logo {
@@ -193,10 +214,17 @@ a.panel-event-buy:hover {
     left: calc(100% - 70px);
   }
 
+  .panel-wrap-fixed {
+    padding-top: 90px;
+  }
+
+  .panel-wrap-static {
+    padding-top: 30px;
+  }
+
   .panel-wrap {
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 30px;
   }
 }
 
@@ -207,10 +235,17 @@ a.panel-event-buy:hover {
     margin-left: auto;
   }
 
+  .panel-wrap-fixed {
+    padding-top: 90px;
+  }
+
+  .panel-wrap-static {
+    padding-top: 30px;
+  }
+
   .panel-wrap {
     padding-left: 8px;
     padding-right: 8px;
-    padding-top: 30px;
   }
 
   .panel-event-logo {
