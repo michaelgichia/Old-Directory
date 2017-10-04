@@ -6,7 +6,6 @@
 */
 
 import React from "react";
-import { Icon } from "semantic-ui-react";
 import "!!style-loader!css-loader!./footer.css";
 
 class Footer extends React.PureComponent {

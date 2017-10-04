@@ -11,10 +11,14 @@ import "!!style-loader!css-loader!./directory-nav-bar.css";
 
 class DirectoryNavBar extends React.PureComponent {
   render() {
-    const { pathname } = this.props;
+    const { pathname, isFixedTopClass } = this.props;
     const location = getPathname(pathname);
     return (
-      <ul className="directory-navbar">
+      <ul
+        className={`directory-navbar ${isFixedTopClass
+          ? "directory-fixed"
+          : ""}`}
+      >
         <li>
           <a href="#" />
         </li>

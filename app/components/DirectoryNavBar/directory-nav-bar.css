@@ -1,5 +1,26 @@
+.directory-fixed {
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.directory-navbar.directory-fixed li {
+  border-bottom: none;
+}
+
+.directory-navbar.directory-fixed li:last-of-type,
+.directory-navbar.directory-fixed li:last-of-type:hover,
+.directory-navbar.directory-fixed li:last-of-type:active,
+.directory-navbar.directory-fixed li:first-of-type,
+.directory-navbar.directory-fixed li:first-of-type:active,
+.directory-navbar.directory-fixed li:first-of-type:hover {
+  border-bottom: none;
+}
+
 .directory-navbar {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
   width: 100%;
@@ -8,9 +29,9 @@
   padding: 0;
   border-collapse: collapse;
   border-radius: 0;
-  -webkit-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-color: #f6f3ee;
 }
 
@@ -63,7 +84,7 @@
 
 .dnb-active i.icon,
 li.dnb-active .nav-item-name {
-  color: #343A41 !important; 
+  color: #343a41 !important;
 }
 
 .directory-navbar a:hover span:not(.nav-item-name),
@@ -72,11 +93,11 @@ li.dnb-active .nav-item-name {
   height: 3px;
 }
 
-.directory-navbar li:active span.nav-item-name ,
+.directory-navbar li:active span.nav-item-name,
 .directory-navbar li:hover span.nav-item-name,
 .directory-navbar li:hover i.icon,
 .directory-navbar li:hover i.icon {
-  color: #343A41;
+  color: #343a41;
 }
 
 .directory-navbar i.icon {

@@ -4,21 +4,44 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import DirectoryNavBar from 'components/DirectoryNavBar';
-import EventPanels from 'containers/EventPanels';
+import React, { PropTypes } from "react";
+import { connect } from "react-redux";
+import DirectoryNavBar from "components/DirectoryNavBar";
+import EventPanels from "containers/EventPanels";
 import "!!style-loader!css-loader!./dlp-desktop.css";
-import SiteLogo from './site-logo.png';
+import SiteLogo from "./site-logo.png";
 
-export class DirectoryLandingPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class DirectoryLandingPage extends React.Component {
+  state = {
+    isFixedTopClass: false
+  };
+
+  componentDidMount() {
+    const directoryMain = document.querySelector(".directory-navbar").offsetTop;
+    this.setState(() => ({ topOfNav: directoryMain }));
+    window.addEventListener("scroll", this.listenToPageScroll);
+  }
+
+  listenToPageScroll = () => {
+    if (window.scrollY >= this.state.topOfNav) {
+      this.setState(() => ({ isFixedTopClass: true }));
+    } else {
+      this.setState(() => ({ isFixedTopClass: false }));
+    }
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.listenToPageScroll);
+  }
+
   render() {
     const { pathname } = this.props.location;
+    const { isFixedTopClass } = this.state;
     return (
       <div className="directory-main">
         <div className="search-main">
           <div className="site-logo">
-            <img src={SiteLogo} alt=""/>
+            <img src={SiteLogo} alt="" />
           </div>
           <div className="search-wrap">
             <div>
@@ -33,11 +56,11 @@ export class DirectoryLandingPage extends React.Component { // eslint-disable-li
             </div>
           </div>
         </div>
-        <main>
+        <main style={{ height: "100vh" }}>
           <DirectoryNavBar
             pathname={pathname}
+            isFixedTopClass={isFixedTopClass}
           />
-          <EventPanels />
         </main>
       </div>
     );
@@ -45,12 +68,12 @@ export class DirectoryLandingPage extends React.Component { // eslint-disable-li
 }
 
 DirectoryLandingPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatch
   };
 }
 
