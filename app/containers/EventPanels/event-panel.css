@@ -112,10 +112,18 @@ a.panel-event-buy:hover {
     width: 31%;
     margin-left: 1.1%;
   }
+
+  .panel-wrap-fixed {
+    padding-top: 110px;
+  }
+
+  .panel-wrap-static {
+    padding-top: 50px;
+  }
+
   .panel-wrap {
     padding-left: 100px;
     padding-right: 100px;
-    padding-top: 50px;
   }
 }
 
