@@ -1,6 +1,10 @@
 /**
 *
-* MenuTabsLargeScreen
+* EventMenuBar
+*
+* This component is for easy navigation on an event.
+* The component is only visible on an event.
+* The menu items options are :- Buy tickets, Event Info, Gallery, Site map, Schedule and Sponsors.
 *
 */
 
@@ -10,7 +14,9 @@ import { getPathname } from "utils/helperFunctions";
 import "!!style-loader!css-loader!./menu-tabs-large-screen.css";
 import mookhLogo from "./logo-dark.png";
 
-class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class EventMenuBar extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
+
   state = { activeItem: "home" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -97,7 +103,9 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
               <a
                 href="#"
                 alt="schedules and speakers"
-                className={onActive === "schedules and speakers" ? "on-active" : ""}
+                className={
+                  onActive === "schedules and speakers" ? "on-active" : ""
+                }
               >
                 SCHEDULES $ SPEAKERS
                 <span />
@@ -164,4 +172,4 @@ class MenuTabsLargeScreen extends React.PureComponent { // eslint-disable-line r
   }
 }
 
-export default MenuTabsLargeScreen;
+export default EventMenuBar;

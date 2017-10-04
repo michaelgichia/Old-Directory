@@ -7,7 +7,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import EventNavBar from "containers/EventNavBar";
-import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
+import EventMenuBar from "components/EventMenuBar";
 import EventInfoMenu from "components/EventInfoMenu";
 import PosterModal from "components/PosterModal";
 import "!!style-loader!css-loader!./event-info.css";
@@ -58,7 +58,7 @@ export class EventInfomation extends React.PureComponent { // eslint-disable-lin
 
         <EventInfoMenu />
 
-        <MenuTabsLargeScreen
+        <EventMenuBar
           pathname={pathname}
           eventId={eventId}
         />

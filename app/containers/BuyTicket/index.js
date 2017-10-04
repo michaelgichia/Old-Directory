@@ -8,14 +8,15 @@ import React from "react";
 import { connect } from "react-redux";
 import LoadSpinner from "components/LoadSpinner";
 import EventNavBar from "containers/EventNavBar";
-import MenuTabsLargeScreen from "components/MenuTabsLargeScreen";
+import EventMenuBar from "components/EventMenuBar";
 import EventInfoMenu from "components/EventInfoMenu";
 import { Form } from "semantic-ui-react";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
 import { fetchEvent } from "./actions";
 
-export class BuyTicket extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class BuyTicket extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   state = {
     event: {}
   };
@@ -58,10 +59,7 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
           eventVenue={event.event_venue}
         />
 
-        <MenuTabsLargeScreen
-          pathname={pathname}
-          eventId={event.id}
-        />
+        <EventMenuBar pathname={pathname} eventId={event.id} />
 
         <div className="ticket-description-wrap">
           <div className="desktop grid-33">
@@ -81,14 +79,14 @@ export class BuyTicket extends React.PureComponent { // eslint-disable-line reac
                 </tr>
                 {event.tickets_count_by_category.map((ticket, index) => (
                   <tr key={index}>
-                    <td>{ ticket.ticket_name }</td>
+                    <td>{ticket.ticket_name}</td>
                     <td>{`KES. ${ticket.ticket_value}`}</td>
                     <td>
                       <input type="number" defaultValue={0} min="0" />
                     </td>
                     <td>KES. 0.00</td>
                   </tr>
-                  ))}
+                ))}
                 <tr>
                   <td />
                   <td />
