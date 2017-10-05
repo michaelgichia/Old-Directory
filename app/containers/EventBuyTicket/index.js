@@ -17,6 +17,7 @@ import { fetchEvent } from "./actions";
 
 export class EventBuyTicket extends React.PureComponent {
   state = {
+    ticketCategory: {},
     event: {}
   };
 
@@ -31,9 +32,37 @@ export class EventBuyTicket extends React.PureComponent {
     }
   }
 
+  handleInputChange = e => {
+    const newTicketCategory = { ...this.state.ticketCategory };
+    newTicketCategory[e.target.id] = e.target.value;
+    this.setState({ ticketCategory: newTicketCategory });
+  };
+
+  handleTicketsTotalCost = priceValueForEvent => {
+    const { ticketCategory } = this.state;
+    let total = 0;
+    if (Object.keys(ticketCategory).length < 1) return "0.00";
+    for (let [key, value] of Object.entries(ticketCategory)) {
+      total += priceValueForEvent[key] * value;
+    }
+    return total.toFixed(2);
+  };
+
+  getPriceValue = event => {
+    if (Object.keys(event).length > 1) {
+      const { ticketCategory, event } = this.state;
+      const eventAndPrice = {};
+      event.tickets_count_by_category.map(
+        ticket => (eventAndPrice[ticket.id] = ticket.ticket_value)
+      );
+      return eventAndPrice;
+    }
+  };
+
   render() {
     const { event } = this.state;
     const { pathname } = this.props.location;
+    const priceValueForEvent = this.getPriceValue(event);
 
     if (Object.keys(event).length < 1) {
       return (
@@ -81,16 +110,29 @@ export class EventBuyTicket extends React.PureComponent {
                     <td>{ticket.ticket_name}</td>
                     <td>{`KES. ${ticket.ticket_value}`}</td>
                     <td>
-                      <input type="number" defaultValue={0} min="0" />
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        onChange={this.handleInputChange}
+                        id={ticket.id}
+                      />
                     </td>
-                    <td>KES. 0.00</td>
+                    <td>{`KES. ${isNaN(
+                      this.state.ticketCategory[ticket.id] * ticket.ticket_value
+                    )
+                      ? 0.0
+                      : this.state.ticketCategory[ticket.id] *
+                        ticket.ticket_value}`}</td>
                   </tr>
                 ))}
                 <tr>
                   <td />
                   <td />
                   <td />
-                  <td className="ticket-total">KES. 0.00</td>
+                  <td className="ticket-total">{`KES. ${this.handleTicketsTotalCost(
+                    priceValueForEvent
+                  )}`}</td>
                 </tr>
               </tbody>
             </table>
