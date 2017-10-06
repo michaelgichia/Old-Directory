@@ -317,6 +317,13 @@ span.buy-ticket-optional-info {
     border: 1px solid #e8e4df;
   }
 
+  .ebt-promo-wrap input,
+  .ebt-information > input {
+    font-size: 14px;
+    margin: 8px;
+    padding: 8px 16px;
+  }
+
   span.buy-ticket-optional-info {
     color: black;
     text-transform: uppercase;
@@ -556,5 +563,17 @@ span.buy-ticket-optional-info {
   .payment-button {
     width: 100%;
     margin-left: 0;
+  }
+
+  .ebt-optional-info {
+    position: relative;
+    top: 32px;
+  }
+
+  .ebt-promo-wrap input,
+  .ebt-information > input {
+    font-size: 13px;
+    margin: 8px;
+    padding: 8px;
   }
 }
