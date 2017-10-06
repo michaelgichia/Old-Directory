@@ -93,7 +93,7 @@ class EventMenuBar extends React.PureComponent {
               <a
                 href="#"
                 alt="site map"
-                className={onActive === "site ma" ? "on-active" : ""}
+                className={onActive === "site map" ? "on-active" : ""}
               >
                 SITE MAP
                 <span />
@@ -136,6 +136,7 @@ class EventMenuBar extends React.PureComponent {
                 href="/buy-ticket"
                 onClick={this.burgerToggle}
                 alt="buy tickets"
+                className={onActive === "tickets event" ? "mb-active" : ""}
               >
                 BUY TICKETS<Icon name="ticket" />
               </a>
@@ -143,23 +144,42 @@ class EventMenuBar extends React.PureComponent {
                 href={`/tickets/event/${eventId}/info`}
                 onClick={this.burgerToggle}
                 alt="event information"
+                className={onActive === "event info" ? "mb-active" : ""}
               >
                 EVENT INFO<Icon name="users" />
               </a>
-              <a href="#" onClick={this.burgerToggle} alt="gallery">
+              <a
+                href="#"
+                onClick={this.burgerToggle}
+                alt="gallery"
+                className={onActive === "gallery" ? "mb-active" : ""}
+              >
                 GALLERY<Icon name="image" />
               </a>
-              <a href="#" onClick={this.burgerToggle} alt="site map">
+              <a
+                href="#"
+                onClick={this.burgerToggle}
+                alt="site map"
+                className={onActive === "site map" ? "mb-active" : ""}
+              >
                 SITE MAP<Icon name="map" />
               </a>
               <a
                 href="#"
                 onClick={this.burgerToggle}
                 alt="schedules and speakers"
+                className={
+                  onActive === "schedules and speakers" ? "mb-active" : ""
+                }
               >
                 SCHEDULES $ SPEAKERS<Icon name="calendar minus" />
               </a>
-              <a href="#" onClick={this.burgerToggle} alt="sponsors">
+              <a
+                href="#"
+                onClick={this.burgerToggle}
+                alt="sponsors"
+                className={onActive === "sponsors" ? "mb-active" : ""}
+              >
                 SPONSORS<Icon name="cubes" />
               </a>
             </div>
