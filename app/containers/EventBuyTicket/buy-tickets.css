@@ -577,11 +577,6 @@ span.buy-ticket-optional-info {
     float: left;
   }
 
-  .ebt-optional-info {
-    position: relative;
-    top: 32px;
-  }
-
   .ebt-promo-wrap input,
   .ebt-information > input {
     font-size: 13px;
