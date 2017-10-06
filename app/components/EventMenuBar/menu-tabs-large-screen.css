@@ -114,7 +114,7 @@ nav a:visited {
   text-decoration: none;
   float: left;
   clear: left;
-  padding: 14px 32px 14px 24px;
+  padding: 8px 32px 8px 24px;
   color: #31383E;
   width: 100%;
 }
@@ -204,6 +204,10 @@ nav a:visited {
 
   .hide-desktop-tablet {
     display: flex !important;
+  }
+
+  .narrow-links a {
+    font-size: 13px;
   }
 
   .nav-narrow {

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: #FAEA29;
+  background-color: #faea29;
 }
 
 .tablet {
@@ -26,26 +26,20 @@
 }
 
 .input input::placeholder {
-  color: #31383E !important
+  color: #31383e !important;
 }
 
 .input input::-ms-input-placeholder {
-  color: #31383E !important
+  color: #31383e !important;
 }
 
 .input input::-moz-placeholde {
-  color: #31383E !important
+  color: #31383e !important;
 }
 
 table {
   table-layout: fixed;
   width: 100%;
-}
-
-th, td {
-  text-align: left;
-  font-size: 14px;
-  padding: 4px 2px;
 }
 
 tr:first-child {
@@ -70,6 +64,12 @@ tr:first-of-type th:nth-of-type(3):before {
   content: "QUANTITY";
 }
 
+th,
+td {
+  text-align: left;
+  padding: 4px 2px;
+}
+
 .ebt-information {
   width: 100%;
 }
@@ -80,11 +80,9 @@ tr:first-of-type th:nth-of-type(3):before {
   border: 1px solid #dddddd;
   background-color: #f6f3ee;
   box-sizing: border-box;
-  margin: 8px;
-  padding: 8px 16px;
   border-radius: 3px;
   outline: 0;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .ebt-promo-wrap input:focus,
@@ -97,7 +95,7 @@ tr:first-of-type th:nth-of-type(3):before {
   display: block;
   float: left;
   width: 100%;
-  margin: 32px 16px 0 8px;
+  margin: 32px 16px 0 0;
 }
 
 .ebt-optional-info {
@@ -106,13 +104,8 @@ tr:first-of-type th:nth-of-type(3):before {
   padding-bottom: 16px;
 }
 
-.ebt-promo-wrap input {
-  width: calc(100% - 16px);
-}
-
 span.buy-ticket-optional-info {
   margin-bottom: 8px;
-  margin-left: 8px;
   margin-top: 48px;
 }
 
@@ -125,17 +118,17 @@ span.buy-ticket-optional-info {
   -webkit-border-radius: 3;
   -moz-border-radius: 3;
   border-radius: 3px;
-  color: #31383E;
+  color: #31383e;
   font-size: 13px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
-  background-color: #FAEA29;
+  background-color: #faea29;
   padding: 8px 20px;
-  border: solid #FAEA29 2px;
+  border: solid #faea29 2px;
   text-decoration: none;
   transition: 0.3s all ease-in-out;
   -webkit-transition: 0.3s all ease-in-out;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   cursor: pointer;
   outline: 0;
@@ -144,10 +137,10 @@ span.buy-ticket-optional-info {
 .payment-button:active,
 .payment-button:focus,
 .payment-button:hover {
-  background-color: #31383E;
-  border: solid #31383E 2px;
+  background-color: #31383e;
+  border: solid #31383e 2px;
   text-decoration: none;
-  color: #FAEA29;
+  color: #faea29;
 }
 
 /*
@@ -157,7 +150,7 @@ span.buy-ticket-optional-info {
 */
 
 /* Large Screen styles */
-@media  (min-width: 990px) and (max-width: 1920px) {
+@media (min-width: 990px) and (max-width: 1920px) {
   .desktop {
     display: block;
   }
@@ -191,7 +184,7 @@ span.buy-ticket-optional-info {
   .buy-ticket-information [href] {
     color: #fbe930;
     text-decoration: underline;
-    background-color: #31383E;
+    background-color: #31383e;
   }
 
   .buy-ticket-information {
@@ -242,10 +235,10 @@ span.buy-ticket-optional-info {
     -moz-border-radius: 2;
     margin-right: 8px;
     border-radius: 2px;
-    font-family: 'Roboto', sans-serif;
-    color:  #343434;
+    font-family: "Roboto", sans-serif;
+    color: #343434;
     font-size: 14px;
-    background:  #faea29;
+    background: #faea29;
     padding: 11px 16px 11px 16px;
     text-decoration: none;
   }
@@ -271,14 +264,14 @@ span.buy-ticket-optional-info {
   }
 
   [type="number"] {
-    background-color: #F6F3EE !important;
+    background-color: #f6f3ee !important;
     width: 70px;
     border-radius: 3px;
   }
 
   [type="text"],
   [type="number"] {
-    background-color: #F6F3EE !important;
+    background-color: #f6f3ee !important;
   }
 
   .ticket-total {
@@ -307,12 +300,12 @@ span.buy-ticket-optional-info {
   }
 
   .payment-button {
-    min-width: 170px; 
+    min-width: 170px;
   }
 }
 
 /* Large and medium size screen styles */
-@media  (min-width: 768px) and (max-width: 1920px) {
+@media (min-width: 768px) and (max-width: 1920px) {
   hr.buy-ticket-optional {
     border: 1px solid #e8e4df;
   }
@@ -320,8 +313,20 @@ span.buy-ticket-optional-info {
   .ebt-promo-wrap input,
   .ebt-information > input {
     font-size: 14px;
-    margin: 8px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 0px;
     padding: 8px 16px;
+    float: left;
+  }
+
+  .ebt-promo-wrap input {
+    width: calc(100% - 8px);
+  }
+
+  .ebt-information > input {
+    width: calc(50% - 8px);
   }
 
   span.buy-ticket-optional-info {
@@ -346,9 +351,9 @@ span.buy-ticket-optional-info {
     border-top: 2px solid rgba(202, 202, 202, 0.5);
   }
 
-  .ebt-information > input {
-    width: calc(50% - 16px);
-    float: left;
+  th,
+  td {
+    font-size: 14px;
   }
 
   .payment-button {
@@ -358,7 +363,7 @@ span.buy-ticket-optional-info {
 
 /* Styles for Tablets and medium screen
 ------------------------------------------------------- */
-@media  (min-width: 768px) and (max-width: 990px) {
+@media (min-width: 768px) and (max-width: 990px) {
   .mobile {
     display: none !important;
   }
@@ -388,7 +393,7 @@ span.buy-ticket-optional-info {
   .buy-ticket-information [href] {
     color: #fbe930;
     text-decoration: underline;
-    background-color: #31383E;
+    background-color: #31383e;
   }
 
   .buy-ticket-information {
@@ -439,7 +444,6 @@ span.buy-ticket-optional-info {
   .payment-button {
     margin-left: 8px;
   }
-
 }
 
 @media screen and (max-width: 767px) {
@@ -447,7 +451,7 @@ span.buy-ticket-optional-info {
     max-width: 100%;
     width: 100%;
     max-height: 133%;
-    background: #ECECED;
+    background: #ececed;
     overflow: hidden;
   }
 
@@ -463,7 +467,7 @@ span.buy-ticket-optional-info {
   }
 
   .buy-ticket-information {
-    background-color: #31383E;
+    background-color: #31383e;
     padding: 16px 8px;
   }
 
@@ -471,12 +475,12 @@ span.buy-ticket-optional-info {
     line-height: 20px;
     font-size: 14px;
     font-weight: 500;
-    background-color: #31383E;
-    color: #F6F3EE;
+    background-color: #31383e;
+    color: #f6f3ee;
   }
 
   .buy-ticket-information [href] {
-    color: #FAEA29;
+    color: #faea29;
     text-decoration: underline;
     background-color: #343434;
     margin-left: 4px;
@@ -493,12 +497,12 @@ span.buy-ticket-optional-info {
   .ui.secondary.pointing.menu .item:hover,
   .ui.secondary.pointing.menu .active.item,
   .ui.secondary.pointing.menu .active.item:hover {
-    border-color: #FAEA29 !important;
-    color: #31383E !important;
+    border-color: #faea29 !important;
+    color: #31383e !important;
   }
 
   .ui.menu .item {
-    color: #B5B5B3 !important;
+    color: #b5b5b3 !important;
     font-weight: 700 !important;
     font-size: 14px !important;
   }
@@ -514,11 +518,13 @@ span.buy-ticket-optional-info {
     max-width: 50px;
   }
 
-  tr:nth-child(2n+3) td {
-    padding-bottom: 8px
+  tr:nth-child(2n + 3) td {
+    padding-bottom: 8px;
   }
 
-  table, th, td {
+  table,
+  th,
+  td {
     border-collapse: collapse;
   }
 
@@ -531,16 +537,19 @@ span.buy-ticket-optional-info {
     content: "QYT";
   }
 
+  th,
+  td {
+    font-size: 13px;
+  }
+
   .pay-tickets label {
     font-weight: bolder;
     font-size: 14px;
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
   }
 
   div.payment-btn-wrap {
     width: 100%;
-    padding-right: 7px;
-    padding-left: 7px;
   }
 
   .payment-btn-wrap div:first-child {
@@ -555,14 +564,14 @@ span.buy-ticket-optional-info {
     padding-left: 12px;
   }
 
-  .ebt-information > input {
-    width: calc(100% - 16px);
-    float: left;
-  }
-
   .payment-button {
     width: 100%;
     margin-left: 0;
+  }
+
+  .ebt-information > input {
+    width: 100%;
+    float: left;
   }
 
   .ebt-optional-info {
@@ -573,7 +582,15 @@ span.buy-ticket-optional-info {
   .ebt-promo-wrap input,
   .ebt-information > input {
     font-size: 13px;
-    margin: 8px;
+    margin: 8px 0;
     padding: 8px;
+  }
+
+  .ebt-promo-wrap div:first-child {
+    width: 100%;
+  }
+
+  .ebt-promo-wrap input {
+    width: 100%;
   }
 }
