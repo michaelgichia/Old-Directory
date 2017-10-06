@@ -70,6 +70,14 @@ td {
   padding: 4px 2px;
 }
 
+tr:last-child td:last-child {
+  border-top: 2px solid rgba(202, 202, 202, 0.5);
+}
+
+.ticket-total {
+  font-weight: bolder;
+}
+
 .ebt-information {
   width: 100%;
 }
@@ -276,7 +284,6 @@ span.buy-ticket-optional-info {
 
   .ticket-total {
     font-size: 14px;
-    font-weight: bolder;
     padding-top: 24px;
   }
 
@@ -345,10 +352,6 @@ span.buy-ticket-optional-info {
 
   table input[type="number"] {
     max-width: 70px;
-  }
-
-  tr:last-child td:last-child {
-    border-top: 2px solid rgba(202, 202, 202, 0.5);
   }
 
   th,
