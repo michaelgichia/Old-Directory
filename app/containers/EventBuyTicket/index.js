@@ -10,7 +10,6 @@ import LoadingSpinner from "components/LoadingSpinner";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
-import { Form } from "semantic-ui-react";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
 import { fetchEvent } from "./actions";
@@ -121,7 +120,7 @@ export class EventBuyTicket extends React.PureComponent {
                     <td>{`KES. ${isNaN(
                       this.state.ticketCategory[ticket.id] * ticket.ticket_value
                     )
-                      ? 0.0
+                      ? (0).toFixed(2)
                       : this.state.ticketCategory[ticket.id] *
                         ticket.ticket_value}`}</td>
                   </tr>
@@ -137,38 +136,34 @@ export class EventBuyTicket extends React.PureComponent {
               </tbody>
             </table>
 
-            <Form className="pay-tickets">
+            <div className="ebt-information">
               <label>SEND TICKETS TO:</label>
-              <Form.Group widths={2}>
-                <Form.Input placeholder="name" />
-                <Form.Input placeholder="phone number" />
-              </Form.Group>
-              <Form.Group widths={2}>
-                <Form.Input placeholder="email" />
-                <Form.Input placeholder="confirm email" />
-              </Form.Group>
-            </Form>
+              <input type="text" placeholder="Name" />
+              <input type="password" placeholder="Password" />
+            </div>
+
+            <div className="ebt-information">
+              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Confirm email" />
+            </div>
 
             <hr className="buy-ticket-optional" />
 
-            <span className="buy-ticket-optional-info">
-              OPTIONAL INFORMATION:
-            </span>
+            <div className="ebt-optional-info">
+              <span className="buy-ticket-optional-info">
+                OPTIONAL INFORMATION:
+              </span>
 
-            <Form className="pay-tickets">
-              <label>PROMO CODE (optional)</label>
-              <Form.Group widths={2}>
-                <Form.Input placeholder="promo code" />
-                <div className="payment-btn-wrap">
-                  <div>
-                    <button className="payment-button">MOBILE PAYMENT</button>
-                  </div>
-                  <div>
-                    <button className="payment-button">CARD PAYMENT</button>
-                  </div>
+              <div className="ebt-promo-wrap">
+                <div>
+                  <input type="password" placeholder="Promo code" />
                 </div>
-              </Form.Group>
-            </Form>
+                <div className="payment-btn-wrap">
+                  <button className="payment-button">MOBILE PAYMENT</button>
+                  <button className="payment-button">CARD PAYMENT</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
