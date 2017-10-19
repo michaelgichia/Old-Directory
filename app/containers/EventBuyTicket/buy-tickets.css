@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: #FAEA29;
+  background-color: #faea29;
 }
 
 .tablet {
@@ -26,26 +26,20 @@
 }
 
 .input input::placeholder {
-  color: #31383E !important
+  color: #31383e !important;
 }
 
 .input input::-ms-input-placeholder {
-  color: #31383E !important
+  color: #31383e !important;
 }
 
 .input input::-moz-placeholde {
-  color: #31383E !important
+  color: #31383e !important;
 }
 
 table {
   table-layout: fixed;
   width: 100%;
-}
-
-th, td {
-  text-align: left;
-  font-size: 14px;
-  padding: 4px 2px;
 }
 
 tr:first-child {
@@ -70,131 +64,101 @@ tr:first-of-type th:nth-of-type(3):before {
   content: "QUANTITY";
 }
 
-/* Styles for Tablets and medium screen
-------------------------------------------------------- */
-@media  (min-width: 768px) and (max-width: 990px) {
-  .mobile {
-    display: none !important;
-  }
-
-  .desktop-tablet {
-    display: block;
-  }
-
-  .ticket-description-wrap {
-    padding: 16px;
-  }
-
-  .ticket-title h4 {
-    padding: 16px;
-  }
-
-  .ticket-title h4 {
-    font-weight: bolder;
-    font-size: 18px;
-  }
-
-  .buy-ticket-information a {
-    display: inline-block;
-    padding: 2px 10px 2px 5px;
-  }
-
-  .buy-ticket-information [href] {
-    color: #fbe930;
-    text-decoration: underline;
-    background-color: #31383E;
-  }
-
-  .buy-ticket-information {
-    padding: 8px;
-    min-height: 50px;
-  }
-
-  .buy-ticket-information h5 {
-    margin-right: 40px;
-    font-size: 14px;
-  }
-
-  .price-table {
-    height: 100%;
-  }
-
-  div.grid-33 {
-    display: block;
-    padding-left: 16px;
-    padding-right: 0px;
-  }
-
-  div.grid-66 {
-    padding-right: 16px;
-    padding-left: 0px;
-  }
-
-  .grid-33 {
-    width: 40%;
-    float: left;
-    height: 100%;
-  }
-
-  .grid-33 img {
-    width: 270px;
-    height: 360px;
-  }
-
-  .grid-66 {
-    width: 60%;
-    float: right;
-  }
-
-  table {
-    margin-bottom: 32px;
-  }
-
-  .payment-btn-wrap {
-    width: 50%;
-  }
-
-  .payment-btn-wrap div {
-    width: 100%;
-    margin-bottom: 16px;
-    padding-left: 8px;
-  }
-
+th,
+td {
+  text-align: left;
+  padding: 4px 2px;
 }
 
-/* Large and medium size screen styles */
-@media  (min-width: 768px) and (max-width: 1920px) {
-  hr.buy-ticket-optional {
-    border: 1px solid #e8e4df;
-  }
-
-  span.buy-ticket-optional-info {
-    color: black;
-    text-transform: uppercase;
-    text-align: left;
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin-bottom: 16px;
-    margin-top: 8px;
-    display: inline-block;
-    letter-spacing: 2px;
-  }
-
-  .pay-tickets {
-    margin-bottom: 32px;
-  }
-
-  table input[type="number"] {
-    max-width: 70px;
-  }
-
-  tr:last-child td:last-child {
-    border-top: 2px solid rgba(202, 202, 202, 0.5);
-  }
+tr:last-child td:last-child {
+  border-top: 2px solid rgba(202, 202, 202, 0.5);
 }
+
+.ticket-total {
+  font-weight: bolder;
+}
+
+.ebt-information {
+  width: 100%;
+}
+
+.ebt-promo-wrap input,
+.ebt-information > input {
+  font-size: 14px;
+  border: 1px solid #dddddd;
+  background-color: #f6f3ee;
+  box-sizing: border-box;
+  border-radius: 3px;
+  outline: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.ebt-promo-wrap input:focus,
+.ebt-information > input:focus {
+  border: 1px solid #0366d6;
+  box-shadow: 0 0 1px #0366d6;
+}
+
+.ebt-information > label {
+  display: block;
+  float: left;
+  width: 100%;
+  margin: 32px 16px 0 0;
+}
+
+.ebt-optional-info {
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 16px;
+}
+
+span.buy-ticket-optional-info {
+  margin-bottom: 8px;
+  margin-top: 48px;
+}
+
+/* Payment Buttons
+---------------------------------------------------*/
+.payment-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  color: #31383e;
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  background-color: #faea29;
+  padding: 8px 20px;
+  border: solid #faea29 2px;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: 0;
+}
+
+.payment-button:active,
+.payment-button:focus,
+.payment-button:hover {
+  background-color: #31383e;
+  border: solid #31383e 2px;
+  text-decoration: none;
+  color: #faea29;
+}
+
+/*
+ *
+ * MEDIA QUERIES
+ *
+*/
 
 /* Large Screen styles */
-@media  (min-width: 990px) and (max-width: 1920px) {
+@media (min-width: 990px) and (max-width: 1920px) {
   .desktop {
     display: block;
   }
@@ -228,7 +192,7 @@ tr:first-of-type th:nth-of-type(3):before {
   .buy-ticket-information [href] {
     color: #fbe930;
     text-decoration: underline;
-    background-color: #31383E;
+    background-color: #31383e;
   }
 
   .buy-ticket-information {
@@ -279,48 +243,47 @@ tr:first-of-type th:nth-of-type(3):before {
     -moz-border-radius: 2;
     margin-right: 8px;
     border-radius: 2px;
-    font-family: 'Roboto', sans-serif;
-    color:  #343434;
+    font-family: "Roboto", sans-serif;
+    color: #343434;
     font-size: 14px;
-    background:  #faea29;
+    background: #faea29;
     padding: 11px 16px 11px 16px;
     text-decoration: none;
   }
 
   button.btn-payment {
-    color: #343434 !important;
-  }
-
-  .payment-btn-wrap {
+    color: #343434;
     margin-left: 8px;
+  }
+
+  div.payment-btn-wrap {
     width: 50%;
-    min-width: 50%;
+    display: flex;
   }
 
-  .payment-btn-wrap div {
+  .ebt-promo-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .ebt-promo-wrap div:first-child {
     width: 50%;
-    display: inline-block;
   }
-
-  .payment-btn-wrap div:first-of-type {
-    padding-right: 16px;
-  }
-
 
   [type="number"] {
-    background-color: #F6F3EE !important;
+    background-color: #f6f3ee !important;
     width: 70px;
     border-radius: 3px;
   }
 
   [type="text"],
   [type="number"] {
-    background-color: #F6F3EE !important;
+    background-color: #f6f3ee !important;
   }
 
   .ticket-total {
     font-size: 14px;
-    font-weight: bolder;
     padding-top: 24px;
   }
 
@@ -339,12 +302,151 @@ tr:first-of-type th:nth-of-type(3):before {
     font-size: 14px;
   }
 
-  /* Table
-  ---------------------------------------------*/
   .price-table table {
     margin-bottom: 30px;
   }
 
+  .payment-button {
+    min-width: 170px;
+  }
+}
+
+/* Large and medium size screen styles */
+@media (min-width: 768px) and (max-width: 1920px) {
+  hr.buy-ticket-optional {
+    border: 1px solid #e8e4df;
+  }
+
+  .ebt-promo-wrap input,
+  .ebt-information > input {
+    font-size: 14px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 0px;
+    padding: 8px 16px;
+    float: left;
+  }
+
+  .ebt-promo-wrap input {
+    width: calc(100% - 8px);
+  }
+
+  .ebt-information > input {
+    width: calc(50% - 8px);
+  }
+
+  span.buy-ticket-optional-info {
+    color: black;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.4rem;
+    display: inline-block;
+    letter-spacing: 2px;
+  }
+
+  .pay-tickets {
+    margin-bottom: 32px;
+  }
+
+  table input[type="number"] {
+    max-width: 70px;
+  }
+
+  th,
+  td {
+    font-size: 14px;
+  }
+
+  .payment-button {
+    width: calc(50% - 16px);
+  }
+}
+
+/* Styles for Tablets and medium screen
+------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 990px) {
+  .mobile {
+    display: none !important;
+  }
+
+  .desktop-tablet {
+    display: block;
+  }
+
+  .ticket-description-wrap {
+    padding: 16px;
+  }
+
+  .ticket-title h4 {
+    padding: 16px;
+  }
+
+  .ticket-title h4 {
+    font-weight: bolder;
+    font-size: 18px;
+  }
+
+  .buy-ticket-information a {
+    display: inline-block;
+    padding: 2px 10px 2px 5px;
+  }
+
+  .buy-ticket-information [href] {
+    color: #fbe930;
+    text-decoration: underline;
+    background-color: #31383e;
+  }
+
+  .buy-ticket-information {
+    padding: 8px;
+    min-height: 50px;
+  }
+
+  .buy-ticket-information h5 {
+    margin-right: 40px;
+    font-size: 14px;
+  }
+
+  .price-table {
+    height: 100%;
+  }
+
+  div.grid-33 {
+    display: block;
+    padding-left: 16px;
+    padding-right: 0px;
+  }
+
+  div.grid-66 {
+    padding-right: 16px;
+    padding-left: 0px;
+  }
+
+  .grid-33 {
+    width: 40%;
+    float: left;
+    height: 100%;
+  }
+
+  .grid-33 img {
+    width: 270px;
+    height: 360px;
+  }
+
+  .grid-66 {
+    width: 60%;
+    float: right;
+  }
+
+  table {
+    margin-bottom: 32px;
+  }
+
+  .payment-button {
+    margin-left: 8px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -352,7 +454,7 @@ tr:first-of-type th:nth-of-type(3):before {
     max-width: 100%;
     width: 100%;
     max-height: 133%;
-    background: #ECECED;
+    background: #ececed;
     overflow: hidden;
   }
 
@@ -368,7 +470,7 @@ tr:first-of-type th:nth-of-type(3):before {
   }
 
   .buy-ticket-information {
-    background-color: #31383E;
+    background-color: #31383e;
     padding: 16px 8px;
   }
 
@@ -376,12 +478,12 @@ tr:first-of-type th:nth-of-type(3):before {
     line-height: 20px;
     font-size: 14px;
     font-weight: 500;
-    background-color: #31383E;
-    color: #F6F3EE;
+    background-color: #31383e;
+    color: #f6f3ee;
   }
 
   .buy-ticket-information [href] {
-    color: #FAEA29;
+    color: #faea29;
     text-decoration: underline;
     background-color: #343434;
     margin-left: 4px;
@@ -398,12 +500,12 @@ tr:first-of-type th:nth-of-type(3):before {
   .ui.secondary.pointing.menu .item:hover,
   .ui.secondary.pointing.menu .active.item,
   .ui.secondary.pointing.menu .active.item:hover {
-    border-color: #FAEA29 !important;
-    color: #31383E !important;
+    border-color: #faea29 !important;
+    color: #31383e !important;
   }
 
   .ui.menu .item {
-    color: #B5B5B3 !important;
+    color: #b5b5b3 !important;
     font-weight: 700 !important;
     font-size: 14px !important;
   }
@@ -419,11 +521,13 @@ tr:first-of-type th:nth-of-type(3):before {
     max-width: 50px;
   }
 
-  tr:nth-child(2n+3) td {
-    padding-bottom: 8px
+  tr:nth-child(2n + 3) td {
+    padding-bottom: 8px;
   }
 
-  table, th, td {
+  table,
+  th,
+  td {
     border-collapse: collapse;
   }
 
@@ -436,16 +540,19 @@ tr:first-of-type th:nth-of-type(3):before {
     content: "QYT";
   }
 
+  th,
+  td {
+    font-size: 13px;
+  }
+
   .pay-tickets label {
     font-weight: bolder;
     font-size: 14px;
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
   }
 
   div.payment-btn-wrap {
     width: 100%;
-    padding-right: 7px;
-    padding-left: 7px;
   }
 
   .payment-btn-wrap div:first-child {
@@ -459,34 +566,29 @@ tr:first-of-type th:nth-of-type(3):before {
     float: right;
     padding-left: 12px;
   }
-}
 
-/* Buttons
----------------------------------------------------*/
-.payment-button {
-  -webkit-border-radius: 3;
-  -moz-border-radius: 3;
-  border-radius: 3px;
-  color: #31383E;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  background-color: #FAEA29;
-  padding: 10px 20px;
-  width: 100%;
-  border: solid #FAEA29 2px;
-  text-decoration: none;
-  transition: 0.4s all ease;
-  -webkit-transition: 0.4s all ease;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  outline: 0;
-}
+  .payment-button {
+    width: 100%;
+    margin-left: 0;
+  }
 
-.payment-button:hover {
-  background-color: #31383E;
-  border: solid #31383E 2px;
-  text-decoration: none;
-  color: #FAEA29;
+  .ebt-information > input {
+    width: 100%;
+    float: left;
+  }
+
+  .ebt-promo-wrap input,
+  .ebt-information > input {
+    font-size: 13px;
+    margin: 8px 0;
+    padding: 8px;
+  }
+
+  .ebt-promo-wrap div:first-child {
+    width: 100%;
+  }
+
+  .ebt-promo-wrap input {
+    width: 100%;
+  }
 }

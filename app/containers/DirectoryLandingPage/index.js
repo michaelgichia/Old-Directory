@@ -46,7 +46,6 @@ export class DirectoryLandingPage extends React.Component {
   render() {
     const { pathname } = this.props.location;
     const { isFixedTopClass, isFixedNavHeight } = this.state;
-    console.log({ isFixedNavHeight });
     return (
       <div className="directory-main">
         <div className="search-main">

@@ -5,7 +5,7 @@
  */
 
 import axios from "axios";
-import { baseEventAPI, EVENT } from "./constants";
+import { baseEventAPI, ordersPayAPI, EVENT } from "./constants";
 
 export const fetchEvent = eventId => dispatch => {
   axios.get(`${baseEventAPI}/${eventId}`).then(res => {
@@ -22,3 +22,18 @@ export const fetchEvent = eventId => dispatch => {
     }
   });
 };
+
+export const hadleOrdersPayment = info => dispatch => {
+  axios.post(ordersPayAPI, info).then( res => {
+    console.log({res})
+    if (res.status === 200) {
+      dispatch({
+        type: ORDERS_PAY.SUCCESS
+      })
+    } else {
+      dispatch({
+        type: ORDERS_PAY.ERROR
+      })
+    }
+  })
+}

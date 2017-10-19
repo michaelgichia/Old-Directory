@@ -10,15 +10,41 @@ import LoadingSpinner from "components/LoadingSpinner";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
-import { Form } from "semantic-ui-react";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
-import { fetchEvent } from "./actions";
+import { fetchEvent, hadleOrdersPayment } from "./actions";
+
+const orderInfo = {
+  name: "",
+  event_fk: "Event",
+  item_status: "",
+  items_udf: "",
+  order_item: "",
+  item_price: ""
+};
 
 export class EventBuyTicket extends React.PureComponent {
   state = {
     ticketCategory: {},
-    event: {}
+    event: {},
+    customer: {
+      email: "gichuru.gichi@gmail.com",
+      name: "Gichia",
+      phone_number: "0710853398",
+      confirmEmail: "gichuru.gichi@gmail.com"
+    },
+    extraInfo: {
+      flag_sms_sent: false,
+      flag_email_sent: false,
+      store_fk: "",
+      payment_method: "mpesa",
+      order_amount: "",
+      order_udf: "",
+      manual_completion_reason: "",
+      order_status: "",
+      order_number: "",
+      order_type: ""
+    }
   };
 
   componentDidMount() {
@@ -48,6 +74,11 @@ export class EventBuyTicket extends React.PureComponent {
     return total.toFixed(2);
   };
 
+  handleCustomerInfo = e => {
+    const { customer } = this.state;
+    this.setState({ customer: { ...customer, [e.target.id]: e.target.value } });
+  };
+
   getPriceValue = event => {
     if (Object.keys(event).length > 1) {
       const { ticketCategory, event } = this.state;
@@ -59,8 +90,50 @@ export class EventBuyTicket extends React.PureComponent {
     }
   };
 
+  getTicketsPrices = (category, ticketId) => {
+    let ticketPrice;
+    category.map(ticket => {
+      if (ticket.id === ticketId) {
+        ticketPrice = ticket.ticket_value;
+      }
+    });
+    return ticketPrice;
+  };
+
+  handleMobilePayment = () => {
+    const { id, event_name, tickets_count_by_category, store_fk } = this.state.event;
+    const { ticketCategory, extraInfo, customer } = this.state;
+    const orderArray = [];
+    const orderInfo = {
+      name: event_name,
+      event_fk: id,
+      item_status: "",
+      items_udf: "",
+      item_price: ""
+    };
+
+    Object.entries(ticketCategory).forEach(([key, value]) => {
+      orderArray.push(
+        Object.assign(
+          {},
+          orderInfo,
+          { order_fk: key },
+          { item_quantity: value },
+          { item_price: this.getTicketsPrices(tickets_count_by_category, key) }
+        )
+      );
+    });
+    extraInfo["order_detail"] = orderArray;
+    extraInfo["customer"] = customer;
+    extraInfo["store_fk"] = store_fk;
+    this.props.hadleOrdersPayment(extraInfo)
+  };
+
   render() {
-    const { event } = this.state;
+    const {
+      event,
+      customer: { name, phone_number, email, confirmEmail }
+    } = this.state;
     const { pathname } = this.props.location;
     const priceValueForEvent = this.getPriceValue(event);
 
@@ -121,7 +194,7 @@ export class EventBuyTicket extends React.PureComponent {
                     <td>{`KES. ${isNaN(
                       this.state.ticketCategory[ticket.id] * ticket.ticket_value
                     )
-                      ? 0.0
+                      ? (0).toFixed(2)
                       : this.state.ticketCategory[ticket.id] *
                         ticket.ticket_value}`}</td>
                   </tr>
@@ -137,38 +210,67 @@ export class EventBuyTicket extends React.PureComponent {
               </tbody>
             </table>
 
-            <Form className="pay-tickets">
+            <div className="ebt-information">
               <label>SEND TICKETS TO:</label>
-              <Form.Group widths={2}>
-                <Form.Input placeholder="name" />
-                <Form.Input placeholder="phone number" />
-              </Form.Group>
-              <Form.Group widths={2}>
-                <Form.Input placeholder="email" />
-                <Form.Input placeholder="confirm email" />
-              </Form.Group>
-            </Form>
+              <input
+                onChange={this.handleCustomerInfo}
+                value={name}
+                id="name"
+                type="text"
+                placeholder="Name"
+                required
+              />
+              <input
+                onChange={this.handleCustomerInfo}
+                id="phonenumber"
+                value={phone_number}
+                type="number"
+                placeholder="Phone number"
+                required
+              />
+            </div>
+
+            <div className="ebt-information">
+              <input
+                onChange={this.handleCustomerInfo}
+                id="email"
+                value={email}
+                type="email"
+                placeholder="Email"
+                required
+              />
+              <input
+                onChange={this.handleCustomerInfo}
+                id="confirmEmail"
+                value={confirmEmail}
+                type="email"
+                placeholder="Confirm email"
+                required
+              />
+            </div>
 
             <hr className="buy-ticket-optional" />
 
-            <span className="buy-ticket-optional-info">
-              OPTIONAL INFORMATION:
-            </span>
+            <div className="ebt-optional-info">
+              <span className="buy-ticket-optional-info">
+                OPTIONAL INFORMATION:
+              </span>
 
-            <Form className="pay-tickets">
-              <label>PROMO CODE (optional)</label>
-              <Form.Group widths={2}>
-                <Form.Input placeholder="promo code" />
-                <div className="payment-btn-wrap">
-                  <div>
-                    <button className="payment-button">MOBILE PAYMENT</button>
-                  </div>
-                  <div>
-                    <button className="payment-button">CARD PAYMENT</button>
-                  </div>
+              <div className="ebt-promo-wrap">
+                <div>
+                  <input type="password" placeholder="Promo code" />
                 </div>
-              </Form.Group>
-            </Form>
+                <div className="payment-btn-wrap">
+                  <button
+                    className="payment-button"
+                    onClick={this.handleMobilePayment}
+                  >
+                    MOBILE PAYMENT
+                  </button>
+                  <button className="payment-button">CARD PAYMENT</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -181,7 +283,8 @@ const mapStateToProps = ({ buyTicket }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchEvent: eventId => dispatch(fetchEvent(eventId))
+  fetchEvent: eventId => dispatch(fetchEvent(eventId)),
+  hadleOrdersPayment: info => dispatch(hadleOrdersPayment(info))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventBuyTicket);
