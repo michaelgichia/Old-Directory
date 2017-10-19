@@ -134,8 +134,8 @@ span.buy-ticket-optional-info {
   padding: 8px 20px;
   border: solid #faea29 2px;
   text-decoration: none;
-  transition: 0.3s all ease-in-out;
-  -webkit-transition: 0.3s all ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   cursor: pointer;
