@@ -13,6 +13,11 @@ import EventSubMenu from "components/EventSubMenu";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
 import { fetchEvent, hadleOrdersPayment } from "./actions";
+import {
+  phonenumberValidate,
+  nameValidate,
+  emailValidate
+} from "utils/helperFunctions";
 
 const orderInfo = {
   name: "",
@@ -28,10 +33,10 @@ export class EventBuyTicket extends React.PureComponent {
     ticketCategory: {},
     event: {},
     customer: {
-      email: "gichuru.gichi@gmail.com",
-      name: "Gichia",
-      phone_number: "0710853398",
-      confirmEmail: "gichuru.gichi@gmail.com"
+      email: "",
+      name: "",
+      phone_number: "",
+      confirmEmail: ""
     },
     extraInfo: {
       flag_sms_sent: false,
@@ -47,7 +52,7 @@ export class EventBuyTicket extends React.PureComponent {
     },
     inputErrors: {
       emailError: "",
-      phonenumberError: "",
+      phone_numberError: "",
       confirmEmailError: "",
       nameError: ""
     }
@@ -63,6 +68,50 @@ export class EventBuyTicket extends React.PureComponent {
       this.setState(() => ({ event: nextProps.event }));
     }
   }
+
+  onBlurPhoneNo = phonenumber => {
+    const { inputErrors } = this.state;
+    this.setState({
+      inputErrors: phonenumberValidate(phonenumber)
+        ? { ...inputErrors, phone_numberError: "" }
+        : {
+            ...inputErrors,
+            phone_numberError:
+              "This phone number format is invalid or not recognized."
+          }
+    });
+  };
+
+  onBlurEmail = email => {
+    const { inputErrors } = this.state;
+    this.setState({
+      inputErrors: emailValidate(email)
+        ? { ...inputErrors, emailError: "" }
+        : { ...inputErrors, emailError: "This email address is invalid." }
+    });
+  };
+
+  onBlurName = name => {
+    const { inputErrors } = this.state;
+    this.setState({
+      inputErrors: nameValidate(name)
+        ? { ...inputErrors, nameError: "" }
+        : {
+            ...inputErrors,
+            nameError: "Please use only letters (a-z), numbers, and periods."
+          }
+    });
+  };
+
+  handleConfirmEmail = (email, confirmEmail) => {
+    const { inputErrors } = this.state;
+    this.setState({
+      inputErrors:
+        email === confirmEmail
+          ? { ...inputErrors, confirmEmailError: "" }
+          : { ...inputErrors, confirmEmailError: "Passwords don't match." }
+    });
+  };
 
   handleInputChange = e => {
     const newTicketCategory = { ...this.state.ticketCategory };
@@ -106,7 +155,20 @@ export class EventBuyTicket extends React.PureComponent {
     return ticketPrice;
   };
 
+  handleEmptyCustomerInfo = () => {
+    const { customer } = this.state;
+    const inputerrors = { ...this.state.inputErrors };
+
+    Object.entries(customer).forEach(([key, value]) => {
+      if (value.length < 1) {
+        inputerrors[`${key}Error`] = "You can't leave this empty.";
+      }
+    });
+    this.setState({ inputErrors: inputerrors });
+  };
+
   handleMobilePayment = () => {
+    this.handleEmptyCustomerInfo();
     const {
       id,
       event_name,
@@ -137,7 +199,7 @@ export class EventBuyTicket extends React.PureComponent {
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
-    this.props.hadleOrdersPayment(extraInfo);
+    //this.props.hadleOrdersPayment(extraInfo);
   };
 
   render() {
@@ -146,7 +208,7 @@ export class EventBuyTicket extends React.PureComponent {
       customer: { name, phone_number, email, confirmEmail },
       inputErrors: {
         emailError,
-        phonenumberError,
+        phone_numberError,
         confirmEmailError,
         nameError
       }
@@ -237,19 +299,21 @@ export class EventBuyTicket extends React.PureComponent {
                   type="text"
                   placeholder="Name"
                   required
+                  onBlur={() => this.onBlurName(name)}
                 />
                 <span>{nameError}</span>
               </div>
               <div className="ebt-div-information">
                 <input
                   onChange={this.handleCustomerInfo}
-                  id="phonenumber"
+                  id="phone_number"
                   value={phone_number}
                   type="number"
                   placeholder="Phone number"
                   required
+                  onBlur={() => this.onBlurPhoneNo(phone_number)}
                 />
-                <span>{phonenumberError}</span>
+                <span>{phone_numberError}</span>
               </div>
             </div>
 
@@ -261,7 +325,8 @@ export class EventBuyTicket extends React.PureComponent {
                   value={email}
                   type="email"
                   placeholder="Email"
-                  required
+                  required={true}
+                  onBlur={() => this.onBlurEmail(email)}
                 />
                 <span>{emailError}</span>
               </div>
@@ -273,6 +338,7 @@ export class EventBuyTicket extends React.PureComponent {
                   type="email"
                   placeholder="Confirm email"
                   required
+                  onBlur={() => this.handleConfirmEmail(email, confirmEmail)}
                 />
                 <span>{confirmEmailError}</span>
               </div>

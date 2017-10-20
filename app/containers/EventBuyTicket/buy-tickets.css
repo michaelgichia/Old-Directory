@@ -125,32 +125,29 @@ span.buy-ticket-optional-info {
   margin-top: 8px;
   margin-bottom: 8px;
   margin-right: 8px;
-  -webkit-border-radius: 3;
-  -moz-border-radius: 3;
-  border-radius: 3px;
+  border-radius: 4px;
   color: #31383e;
   font-size: 13px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   background-color: #faea29;
-  padding: 8px 20px;
-  border: solid #faea29 2px;
-  text-decoration: none;
-  transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
-  letter-spacing: 0.5px;
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 1px 2px rgba(0, 0, 0, 0.08);
+  padding: 10px 20px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
   cursor: pointer;
   outline: 0;
 }
 
-.payment-button:active,
-.payment-button:focus,
 .payment-button:hover {
-  background-color: #31383e;
-  border: solid #31383e 2px;
-  text-decoration: none;
-  color: #faea29;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08)
+}
+
+.payment-button:active {
+  background-color: #c6ba29;
 }
 
 span.buy-ticket-optional-info {
@@ -158,6 +155,9 @@ span.buy-ticket-optional-info {
   float: left;
 }
 
+input.error {
+  border-color: red;
+}
 
 /*
  *
@@ -347,6 +347,7 @@ span.buy-ticket-optional-info {
     float: left;
     margin-right: 16px;
     min-width: 200px;
+    margin-bottom: 6px;
   }
 
   .ebt-div-information > span,
