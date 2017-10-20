@@ -26,24 +26,9 @@ module.exports = {
     choices: () => ['PureComponent', 'Component'],
   }, {
     type: 'confirm',
-    name: 'wantHeaders',
-    default: false,
-    message: 'Do you want headers?',
-  }, {
-    type: 'confirm',
     name: 'wantActionsAndReducer',
     default: true,
-    message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
-  }, {
-    type: 'confirm',
-    name: 'wantSagas',
-    default: true,
-    message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
-  }, {
-    type: 'confirm',
-    name: 'wantMessages',
-    default: true,
-    message: 'Do you want i18n messages (i.e. will this component use text)?',
+    message: 'Do you want an actions/constants/reducer tuple for this container?',
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
@@ -58,16 +43,6 @@ module.exports = {
       templateFile: './container/test.js.hbs',
       abortOnFail: true,
     }];
-
-    // If component wants messages
-    if (data.wantMessages) {
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/messages.js',
-        templateFile: './container/messages.js.hbs',
-        abortOnFail: true,
-      });
-    }
 
     // If they want actions and a reducer, generate actions.js, constants.js,
     // reducer.js and the corresponding tests for actions and the reducer
@@ -94,20 +69,6 @@ module.exports = {
         abortOnFail: true,
       });
 
-      // Selectors
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/selectors.js',
-        templateFile: './container/selectors.js.hbs',
-        abortOnFail: true,
-      });
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/selectors.test.js',
-        templateFile: './container/selectors.test.js.hbs',
-        abortOnFail: true,
-      });
-
       // Reducer
       actions.push({
         type: 'add',
@@ -115,26 +76,11 @@ module.exports = {
         templateFile: './container/reducer.js.hbs',
         abortOnFail: true,
       });
+
       actions.push({
         type: 'add',
         path: '../../app/containers/{{properCase name}}/tests/reducer.test.js',
         templateFile: './container/reducer.test.js.hbs',
-        abortOnFail: true,
-      });
-    }
-
-    // Sagas
-    if (data.wantSagas) {
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/sagas.js',
-        templateFile: './container/sagas.js.hbs',
-        abortOnFail: true,
-      });
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/sagas.test.js',
-        templateFile: './container/sagas.test.js.hbs',
         abortOnFail: true,
       });
     }

@@ -44,6 +44,12 @@ export class EventBuyTicket extends React.PureComponent {
       order_status: "",
       order_number: "",
       order_type: ""
+    },
+    inputErrors: {
+      emailError: "",
+      phonenumberError: "",
+      confirmEmailError: "",
+      nameError: ""
     }
   };
 
@@ -101,7 +107,12 @@ export class EventBuyTicket extends React.PureComponent {
   };
 
   handleMobilePayment = () => {
-    const { id, event_name, tickets_count_by_category, store_fk } = this.state.event;
+    const {
+      id,
+      event_name,
+      tickets_count_by_category,
+      store_fk
+    } = this.state.event;
     const { ticketCategory, extraInfo, customer } = this.state;
     const orderArray = [];
     const orderInfo = {
@@ -126,13 +137,19 @@ export class EventBuyTicket extends React.PureComponent {
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
-    this.props.hadleOrdersPayment(extraInfo)
+    this.props.hadleOrdersPayment(extraInfo);
   };
 
   render() {
     const {
       event,
-      customer: { name, phone_number, email, confirmEmail }
+      customer: { name, phone_number, email, confirmEmail },
+      inputErrors: {
+        emailError,
+        phonenumberError,
+        confirmEmailError,
+        nameError
+      }
     } = this.state;
     const { pathname } = this.props.location;
     const priceValueForEvent = this.getPriceValue(event);
@@ -212,41 +229,53 @@ export class EventBuyTicket extends React.PureComponent {
 
             <div className="ebt-information">
               <label>SEND TICKETS TO:</label>
-              <input
-                onChange={this.handleCustomerInfo}
-                value={name}
-                id="name"
-                type="text"
-                placeholder="Name"
-                required
-              />
-              <input
-                onChange={this.handleCustomerInfo}
-                id="phonenumber"
-                value={phone_number}
-                type="number"
-                placeholder="Phone number"
-                required
-              />
+              <div className="ebt-div-information">
+                <input
+                  onChange={this.handleCustomerInfo}
+                  value={name}
+                  id="name"
+                  type="text"
+                  placeholder="Name"
+                  required
+                />
+                <span>{nameError}</span>
+              </div>
+              <div className="ebt-div-information">
+                <input
+                  onChange={this.handleCustomerInfo}
+                  id="phonenumber"
+                  value={phone_number}
+                  type="number"
+                  placeholder="Phone number"
+                  required
+                />
+                <span>{phonenumberError}</span>
+              </div>
             </div>
 
             <div className="ebt-information">
-              <input
-                onChange={this.handleCustomerInfo}
-                id="email"
-                value={email}
-                type="email"
-                placeholder="Email"
-                required
-              />
-              <input
-                onChange={this.handleCustomerInfo}
-                id="confirmEmail"
-                value={confirmEmail}
-                type="email"
-                placeholder="Confirm email"
-                required
-              />
+              <div className="ebt-div-information">
+                <input
+                  onChange={this.handleCustomerInfo}
+                  id="email"
+                  value={email}
+                  type="email"
+                  placeholder="Email"
+                  required
+                />
+                <span>{emailError}</span>
+              </div>
+              <div className="ebt-div-information">
+                <input
+                  onChange={this.handleCustomerInfo}
+                  id="confirmEmail"
+                  value={confirmEmail}
+                  type="email"
+                  placeholder="Confirm email"
+                  required
+                />
+                <span>{confirmEmailError}</span>
+              </div>
             </div>
 
             <hr className="buy-ticket-optional" />

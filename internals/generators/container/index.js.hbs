@@ -13,12 +13,12 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 {{/if}}
 {{#if wantActionsAndReducer}}
-import { createStructuredSelector } from 'reselect';
-import makeSelect{{properCase name}} from './selectors';
+import { defaultAction } from './actions';
 {{/if}}
 {{#if wantMessages}}
 import messages from './messages';
 {{/if}}
+// import "!!style-loader!css-loader!./{{properCase name }}.css";
 
 export class {{ properCase name }} extends React.{{{ component }}} { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -41,20 +41,18 @@ export class {{ properCase name }} extends React.{{{ component }}} { // eslint-d
 }
 
 {{ properCase name }}.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
 };
 
 {{#if wantActionsAndReducer}}
-const mapStateToProps = createStructuredSelector({
-  {{name}}: makeSelect{{properCase name}}(),
+const mapStateToProps = ({}) => ({
+
 });
 {{/if}}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  dispatch
+})
 
 {{#if wantActionsAndReducer}}
 export default connect(mapStateToProps, mapDispatchToProps)({{ properCase name }});

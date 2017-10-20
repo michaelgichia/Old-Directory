@@ -28,11 +28,6 @@ module.exports = {
 
       return 'The name is required';
     },
-  }, {
-    type: 'confirm',
-    name: 'wantMessages',
-    default: true,
-    message: 'Do you want i18n messages (i.e. will this component use text)?',
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
@@ -69,14 +64,14 @@ module.exports = {
     }];
 
     // If they want a i18n messages file
-    if (data.wantMessages) {
-      actions.push({
-        type: 'add',
-        path: '../../app/components/{{properCase name}}/messages.js',
-        templateFile: './component/messages.js.hbs',
-        abortOnFail: true,
-      });
-    }
+    // if (data.wantMessages) {
+    //   actions.push({
+    //     type: 'add',
+    //     path: '../../app/components/{{properCase name}}/messages.js',
+    //     templateFile: './component/messages.js.hbs',
+    //     abortOnFail: true,
+    //   });
+    // }
 
     return actions;
   },
