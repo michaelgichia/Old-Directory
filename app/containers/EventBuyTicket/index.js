@@ -54,9 +54,9 @@ export class EventBuyTicket extends React.PureComponent {
       emailError: "",
       phone_numberError: "",
       confirmEmailError: "",
-      nameError: "",
+      nameError: ""
     },
-    disabled: true,
+    disabled: true
   };
 
   componentDidMount() {
@@ -115,9 +115,12 @@ export class EventBuyTicket extends React.PureComponent {
   };
 
   handleInputChange = e => {
-    const newTicketCategory = { ...this.state.ticketCategory };
-    newTicketCategory[e.target.id] = e.target.value;
-    this.setState({ ticketCategory: newTicketCategory });
+    this.setState({
+      ticketCategory: {
+        ...this.state.ticketCategory,
+        [e.target.id]: e.target.value
+      }
+    });
   };
 
   handleTicketsTotalCost = priceValueForEvent => {
@@ -159,7 +162,6 @@ export class EventBuyTicket extends React.PureComponent {
   handleEmptyCustomerInfo = () => {
     const { customer } = this.state;
     const inputerrors = { ...this.state.inputErrors };
-
     Object.entries(customer).forEach(([key, value]) => {
       if (value.length < 1) {
         inputerrors[`${key}Error`] = "You can't leave this empty.";
@@ -168,14 +170,17 @@ export class EventBuyTicket extends React.PureComponent {
     this.setState(() => ({ inputErrors: inputerrors, disabled: true }));
   };
 
-  disableBtn = (customer) => {
+  disableBtn = customer => {
     let res;
     Object.entries(customer).forEach(([key, value]) => {
-      if (value.length < 1) { res=false;}
-      else { res=true; }
+      if (value.length < 1) {
+        res = false;
+      } else {
+        res = true;
+      }
     });
     return res;
-  }
+  };
 
   handleMobilePayment = () => {
     const {
@@ -208,6 +213,7 @@ export class EventBuyTicket extends React.PureComponent {
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
+    console.log({extraInfo})
     //this.props.hadleOrdersPayment(extraInfo);
   };
 
@@ -225,8 +231,6 @@ export class EventBuyTicket extends React.PureComponent {
     } = this.state;
     const { pathname } = this.props.location;
     const priceValueForEvent = this.getPriceValue(event);
-
-
 
     if (Object.keys(event).length < 1) {
       return (
@@ -370,7 +374,11 @@ export class EventBuyTicket extends React.PureComponent {
                 <div className="payment-btn-wrap">
                   <button
                     className="payment-button"
-                    onClick={!this.disableBtn(this.state.customer)? this.handleEmptyCustomerInfo:this.handleMobilePayment}
+                    onClick={
+                      !this.disableBtn(this.state.customer)
+                        ? this.handleEmptyCustomerInfo
+                        : this.handleMobilePayment
+                    }
                   >
                     MOBILE PAYMENT
                   </button>
