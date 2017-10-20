@@ -54,8 +54,9 @@ export class EventBuyTicket extends React.PureComponent {
       emailError: "",
       phone_numberError: "",
       confirmEmailError: "",
-      nameError: ""
-    }
+      nameError: "",
+    },
+    disabled: true,
   };
 
   componentDidMount() {
@@ -164,11 +165,19 @@ export class EventBuyTicket extends React.PureComponent {
         inputerrors[`${key}Error`] = "You can't leave this empty.";
       }
     });
-    this.setState({ inputErrors: inputerrors });
+    this.setState(() => ({ inputErrors: inputerrors, disabled: true }));
   };
 
+  disableBtn = (customer) => {
+    let res;
+    Object.entries(customer).forEach(([key, value]) => {
+      if (value.length < 1) { res=false;}
+      else { res=true; }
+    });
+    return res;
+  }
+
   handleMobilePayment = () => {
-    this.handleEmptyCustomerInfo();
     const {
       id,
       event_name,
@@ -211,10 +220,13 @@ export class EventBuyTicket extends React.PureComponent {
         phone_numberError,
         confirmEmailError,
         nameError
-      }
+      },
+      disabled
     } = this.state;
     const { pathname } = this.props.location;
     const priceValueForEvent = this.getPriceValue(event);
+
+
 
     if (Object.keys(event).length < 1) {
       return (
@@ -358,7 +370,7 @@ export class EventBuyTicket extends React.PureComponent {
                 <div className="payment-btn-wrap">
                   <button
                     className="payment-button"
-                    onClick={this.handleMobilePayment}
+                    onClick={!this.disableBtn(this.state.customer)? this.handleEmptyCustomerInfo:this.handleMobilePayment}
                   >
                     MOBILE PAYMENT
                   </button>
