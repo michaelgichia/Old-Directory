@@ -33,10 +33,10 @@ export class EventBuyTicket extends React.PureComponent {
     ticketCategory: {},
     event: {},
     customer: {
-      email: "",
-      name: "",
-      phone_number: "",
-      confirmEmail: ""
+      email: "mqyynm@gmail.com",
+      name: "Michael",
+      phone_number: "0710853398",
+      confirmEmail: "mqyynm@gmail.com"
     },
     extraInfo: {
       flag_sms_sent: false,
@@ -110,7 +110,7 @@ export class EventBuyTicket extends React.PureComponent {
       inputErrors:
         email === confirmEmail
           ? { ...inputErrors, confirmEmailError: "" }
-          : { ...inputErrors, confirmEmailError: "Passwords don't match." }
+          : { ...inputErrors, confirmEmailError: "Emails don't match." }
     });
   };
 
@@ -136,6 +136,18 @@ export class EventBuyTicket extends React.PureComponent {
   handleCustomerInfo = e => {
     const { customer } = this.state;
     this.setState({ customer: { ...customer, [e.target.id]: e.target.value } });
+  };
+
+  getOrderAmount = (ticketCategory, event) => {
+    let total = 0;
+    const EventAndPrice = {};
+    event.tickets_count_by_category.map(
+      ticket => (EventAndPrice[ticket.id] = ticket.ticket_value)
+    );
+    for (let [key, value] of Object.entries(ticketCategory)) {
+      total += EventAndPrice[key] * value;
+    }
+    return total;
   };
 
   getPriceValue = event => {
@@ -189,8 +201,9 @@ export class EventBuyTicket extends React.PureComponent {
       tickets_count_by_category,
       store_fk
     } = this.state.event;
-    const { ticketCategory, extraInfo, customer } = this.state;
+    const { ticketCategory, extraInfo, customer, event } = this.state;
     const orderArray = [];
+    const orderAmount = this.getOrderAmount(ticketCategory, event);
     const orderInfo = {
       name: event_name,
       event_fk: id,
@@ -204,7 +217,7 @@ export class EventBuyTicket extends React.PureComponent {
         Object.assign(
           {},
           orderInfo,
-          { order_fk: key },
+          { items_id: key },
           { item_quantity: value },
           { item_price: this.getTicketsPrices(tickets_count_by_category, key) }
         )
@@ -213,8 +226,9 @@ export class EventBuyTicket extends React.PureComponent {
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
-    console.log({extraInfo})
-    //this.props.hadleOrdersPayment(extraInfo);
+    extraInfo["order_amount"] = orderAmount;
+    console.log({extraInfo, event})
+    this.props.hadleOrdersPayment(extraInfo);
   };
 
   render() {
@@ -324,7 +338,7 @@ export class EventBuyTicket extends React.PureComponent {
                   onChange={this.handleCustomerInfo}
                   id="phone_number"
                   value={phone_number}
-                  type="number"
+                  type="tel"
                   placeholder="Phone number"
                   required
                   onBlur={() => this.onBlurPhoneNo(phone_number)}
@@ -369,7 +383,7 @@ export class EventBuyTicket extends React.PureComponent {
 
               <div className="ebt-promo-wrap">
                 <div>
-                  <input type="password" placeholder="Promo code" />
+                  <input type="text" placeholder="Promo code" />
                 </div>
                 <div className="payment-btn-wrap">
                   <button

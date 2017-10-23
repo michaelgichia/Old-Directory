@@ -31,10 +31,11 @@ class EventPanels extends React.PureComponent {
       this.setState(() => ({ events: nextProps.events }));
     }
   }
-
+  
   render() {
     const { events } = this.state;
     const { isFixedNavHeight } = this.props;
+    console.log({events})
     if (events.length < 1) {
       return <LoadingSpinner />;
     }
@@ -46,12 +47,16 @@ class EventPanels extends React.PureComponent {
       >
         {events.map(event => (
           <div className="panel-container" key={event.id}>
-            <span className="panel-event-logo" />
+            <div className="panel-event-logo">
+              <Icon name="shopping basket" />
+            </div>
             <div
               className="panel-img-wrap"
               style={{ backgroundColor: `${randomColor()}` }}
             >
-              <a href="">&nbsp;</a>
+              <a href={`/tickets/event/${event.id}`}>
+              <img src={event.event_poster} alt=""/>
+              </a>
             </div>
             <div className="panel-event-info">
               <a href="" alt="event">

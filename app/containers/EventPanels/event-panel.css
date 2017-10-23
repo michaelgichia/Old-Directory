@@ -23,30 +23,42 @@
   width: 100%;
   overflow: hidden;
   max-height: 300px;
+  height: 300px;
   background-size: cover;
   border: 1px solid #ebebeb;
 }
-.panel-img-wrap a {
-  height: 0 !important;
-  padding-bottom: 100%;
-  text-decoration: none;
-  display: block;
+
+
+.panel-img-wrap img {
   width: 100%;
 }
 
 .panel-event-logo {
   position: absolute;
-  top: 255px;
+  top: 257px;
   display: block;
-  background-color: #31383e;
-  height: 60px;
-  width: 60px;
+  background-color: #fffeff;
+  height: 50px;
+  width: 50px;
   left: calc(100% - 70px);
   border-radius: 50%;
-  border: 3px solid #fffeff;
+  border-top: 1px solid  #ebebeb;
+  border-left:1px solid  #ebebeb;
+  border-right: 1px solid  #ebebeb;
+  border-bottom: 1px solid transparent;
   bottom: -10px;
   background-size: 100% 100%;
-  background-image: url("https://mymookh.com/tickets/uploads/posters/big-image-6651526b6fb8f29a00507de6a49ce30f.jpg");
+  text-align: center;
+  font-size: 30px;
+}
+
+.panel-event-logo  i {
+  color: #858585;
+}
+
+.panel-event-logo  i:hover
+.panel-event-logo  i:focus {
+  color: #343434;
 }
 
 .panel-event-info {
@@ -70,6 +82,7 @@
   font-weight: 700;
 }
 
+.panel-event-info div,
 .panel-event-info p {
   width: 100%;
   font-size: 14px;
@@ -216,10 +229,11 @@ a.panel-event-buy:hover {
   }
 
   .panel-event-logo {
-    top: 250px;
-    height: 60px;
-    width: 60px;
+    top: 257px;
+    height: 50px;
+    width: 50px;
     left: calc(100% - 70px);
+    font-size: 30px;
   }
 
   .panel-wrap-fixed {
@@ -261,5 +275,6 @@ a.panel-event-buy:hover {
     height: 70px;
     width: 70px;
     left: calc(100% - 80px);
+    font-size: 25px;
   }
 }

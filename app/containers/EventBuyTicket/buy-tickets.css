@@ -346,7 +346,7 @@ input.error {
     width: calc(50% - 16px);
     float: left;
     margin-right: 16px;
-    min-width: 200px;
+    min-width: 190px;
     margin-bottom: 6px;
   }
 
