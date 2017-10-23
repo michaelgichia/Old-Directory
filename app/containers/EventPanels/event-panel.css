@@ -269,12 +269,11 @@ a.panel-event-buy:hover {
     padding-left: 8px;
     padding-right: 8px;
   }
-
   .panel-event-logo {
-    top: 245px;
-    height: 70px;
-    width: 70px;
-    left: calc(100% - 80px);
+    top: 256px;
+    height: 50px;
+    width: 50px;
+    left: calc(100% - 60px);
     font-size: 25px;
   }
 }

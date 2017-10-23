@@ -11,7 +11,7 @@ import EventPanels from "containers/EventPanels";
 import "!!style-loader!css-loader!./dlp-desktop.css";
 import SiteLogo from "./site-logo.png";
 
-export class DirectoryLandingPage extends React.Component {
+export class DirectoryLandingPage extends React.PureComponent {
   state = {
     isFixedTopClass: false,
     isFixedNavHeight: false

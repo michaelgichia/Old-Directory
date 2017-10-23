@@ -9,6 +9,7 @@
 */
 
 import React from "react";
+import { browserHistory } from "react-router";
 import { Icon, Menu } from "semantic-ui-react";
 import { getPathname } from "utils/helperFunctions";
 import "!!style-loader!css-loader!./menu-tabs-large-screen.css";
@@ -121,7 +122,7 @@ class EventMenuBar extends React.PureComponent {
           </div>
           <div className="nav-narrow">
             <div className="tabs-menu open">
-              <span className="logo">
+              <span className="logo" onClick={() => browserHistory.push('/#')} style={{cursor: "pointer"}}>
                 <img src={mookhLogo} alt="" />
               </span>
               <Icon
