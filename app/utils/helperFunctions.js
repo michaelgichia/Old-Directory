@@ -1,5 +1,5 @@
 const nameRegex = /^[a-zA-Z ]*$/;
-const phoneNoRegex = /^\d{10}$/;
+const phoneNoRegex = /^\d{12}$/;
 const emailRegex =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export const asyncActionType = (type) => ({

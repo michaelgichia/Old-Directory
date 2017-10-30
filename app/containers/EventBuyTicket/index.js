@@ -35,20 +35,12 @@ export class EventBuyTicket extends React.PureComponent {
     customer: {
       email: "mqyynm@gmail.com",
       name: "Michael",
-      phone_number: "0710853398",
+      phone_number: "254701872069",
       confirmEmail: "mqyynm@gmail.com"
     },
     extraInfo: {
-      flag_sms_sent: false,
-      flag_email_sent: false,
       store_fk: "",
-      payment_method: "mpesa",
-      order_amount: "",
-      order_udf: "",
-      manual_completion_reason: "",
-      order_status: "",
-      order_number: "",
-      order_type: ""
+      payment_method: "mpesa"
     },
     inputErrors: {
       emailError: "",
@@ -138,18 +130,6 @@ export class EventBuyTicket extends React.PureComponent {
     this.setState({ customer: { ...customer, [e.target.id]: e.target.value } });
   };
 
-  getOrderAmount = (ticketCategory, event) => {
-    let total = 0;
-    const EventAndPrice = {};
-    event.tickets_count_by_category.map(
-      ticket => (EventAndPrice[ticket.id] = ticket.ticket_value)
-    );
-    for (let [key, value] of Object.entries(ticketCategory)) {
-      total += EventAndPrice[key] * value;
-    }
-    return total;
-  };
-
   getPriceValue = event => {
     if (Object.keys(event).length > 1) {
       const { ticketCategory, event } = this.state;
@@ -161,15 +141,16 @@ export class EventBuyTicket extends React.PureComponent {
     }
   };
 
-  getTicketsPrices = (category, ticketId) => {
-    let ticketPrice;
-    category.map(ticket => {
-      if (ticket.id === ticketId) {
-        ticketPrice = ticket.ticket_value;
+  getOrderName = (ticketCategory, key) => {
+    let name;
+    ticketCategory.filter(value => {
+      if ( value.id === key) {
+        name = value.ticket_name;
+        return name;
       }
     });
-    return ticketPrice;
-  };
+    return name;
+  }
 
   handleEmptyCustomerInfo = () => {
     const { customer } = this.state;
@@ -203,32 +184,22 @@ export class EventBuyTicket extends React.PureComponent {
     } = this.state.event;
     const { ticketCategory, extraInfo, customer, event } = this.state;
     const orderArray = [];
-    const orderAmount = this.getOrderAmount(ticketCategory, event);
-    const orderInfo = {
-      name: event_name,
-      event_fk: id,
-      item_status: "",
-      items_udf: "",
-      item_price: ""
-    };
 
+    delete customer.confirmEmail;
     Object.entries(ticketCategory).forEach(([key, value]) => {
       orderArray.push(
         Object.assign(
           {},
-          orderInfo,
+          { name: this.getOrderName(tickets_count_by_category, key) },
           { items_id: key },
           { item_quantity: value },
-          { item_price: this.getTicketsPrices(tickets_count_by_category, key) }
         )
       );
     });
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
-    extraInfo["order_amount"] = orderAmount;
-    console.log({extraInfo, event})
-    this.props.hadleOrdersPayment(extraInfo);
+    // this.props.hadleOrdersPayment(extraInfo);
   };
 
   render() {
@@ -377,9 +348,9 @@ export class EventBuyTicket extends React.PureComponent {
             <hr className="buy-ticket-optional" />
 
             <div className="ebt-optional-info">
-              <span className="buy-ticket-optional-info">
+              <label className="buy-ticket-optional-info">
                 OPTIONAL INFORMATION:
-              </span>
+              </label>
 
               <div className="ebt-promo-wrap">
                 <div>

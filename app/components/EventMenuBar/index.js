@@ -35,9 +35,10 @@ class EventMenuBar extends React.PureComponent {
   };
 
   render() {
-    const { activeItem } = this.state;
+    const { activeItem, showModal } = this.state;
     const { eventId, pathname } = this.props;
     const onActive = getPathname(pathname);
+
     return (
       <div>
         <Menu
@@ -122,7 +123,11 @@ class EventMenuBar extends React.PureComponent {
           </div>
           <div className="nav-narrow">
             <div className="tabs-menu open">
-              <span className="logo" onClick={() => browserHistory.push('/#')} style={{cursor: "pointer"}}>
+              <span
+                className="logo"
+                onClick={() => browserHistory.push("/#")}
+                style={{ cursor: "pointer" }}
+              >
                 <img src={mookhLogo} alt="" />
               </span>
               <Icon

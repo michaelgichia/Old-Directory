@@ -73,8 +73,15 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       }
-    },
-    {
+    }, {
+      path: '/modal',
+      name: 'modalPoster',
+      getComponent(location, cb) {
+        import('components/ModalPoster')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: "*",
       name: "notfound",
       getComponent(nextState, cb) {

@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.position-glow-btn {
+  display: none;
+}
+
 .product-title {
   display: flex;
   align-items: center;
@@ -55,6 +59,8 @@
     min-height: 50px;
     padding-left: 100px;
     padding-right: 100px;
+    margin-top: -2px;
+    border-top: 2px solid #faea29;
   }
 
   .description.header {
@@ -67,6 +73,10 @@
 @media  (min-width: 768px) and (max-width: 990px) {
   .description {
     padding-left: 16px;
+  }
+  .product-title {
+    margin-top: -2px;
+    border-top: 2px solid #faea29;
   }
 }
 
@@ -105,6 +115,16 @@
     font-size: 14px;
     font-weight: 500;
     padding: 8px;
+  }
+
+  .position-glow-btn {
+    margin-top: -82px;
+    padding-right: 4px;
+    float: right;
+  }
+
+  .position-glow-btn {
+    display: block;
   }
 
 }

@@ -86,25 +86,25 @@ tr:last-child td:last-child {
 .ebt-promo-wrap input,
 .ebt-div-information > input {
   font-size: 14px;
-  border: 1px solid #dddddd;
-  background-color: #f6f3ee;
+  color: #343434;
+  border:2px solid #ccc;
+  background-color: #f6f3ee63;
   box-sizing: border-box;
-  border-radius: 3px;
   outline: 0;
-  transition: all 0.3s ease-in-out;
+  transition: border-color ease-in-out 0.15s;
 }
 
 .ebt-promo-wrap input:focus,
 .ebt-div-information > input:focus {
-  border: 1px solid #0366d6;
-  box-shadow: 0 0 1px #0366d6;
+  border-color: rgb(250, 234, 41);
+  background-color: rgba(250, 234, 41, 0.05);
 }
 
 .ebt-information > label {
   display: block;
   float: left;
   width: 100%;
-  margin: 32px 16px 0 0;
+  margin: 32px 16px 8px 0;
 }
 
 .ebt-optional-info {
@@ -127,14 +127,17 @@ span.buy-ticket-optional-info {
   margin-right: 8px;
   border-radius: 4px;
   color: #31383e;
-  font-size: 13px;
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   background-color: #faea29;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 1px 2px rgba(0, 0, 0, 0.08);
-  padding: 10px 20px;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s;
+  transform: translateY(0);
+  transition: transform 0.2s, box-shadow 0.2s;
+  -webkit-transition: transform 0.2s, box-shadow 0.2s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
   letter-spacing: 0.3px;
   text-transform: uppercase;
   cursor: pointer;
@@ -147,7 +150,7 @@ span.buy-ticket-optional-info {
 }
 
 .payment-button:active {
-  background-color: #c6ba29;
+  background-color: #eedc00;
 }
 
 span.buy-ticket-optional-info {
@@ -285,11 +288,6 @@ input.error {
     border-radius: 3px;
   }
 
-  [type="text"],
-  [type="number"] {
-    background-color: #f6f3ee !important;
-  }
-
   .ticket-total {
     font-size: 14px;
     padding-top: 24px;
@@ -316,6 +314,7 @@ input.error {
 
   .payment-button {
     min-width: 160px;
+    padding: 10px;
   }
 }
 
@@ -380,7 +379,8 @@ input.error {
   }
 
   .payment-button {
-    width: calc(50% - 16px);
+    width: calc(50% - 8px);
+    padding: 10px;
   }
 }
 
@@ -464,9 +464,10 @@ input.error {
     margin-bottom: 32px;
   }
 
-  .payment-button:last-child {
+  .payment-button: {
     margin-left: 8px;
   }
+
 }
 
 @media screen and (max-width: 767px) {
@@ -590,6 +591,7 @@ input.error {
   .payment-button {
     width: 100%;
     margin-left: 0;
+    padding: 12px 25px;
   }
 
   .ebt-div-information > input {
@@ -599,9 +601,10 @@ input.error {
 
   .ebt-promo-wrap input,
   .ebt-div-information > input {
-    font-size: 13px;
+    font-size: 14px;
     margin: 8px 0;
-    padding: 8px;
+    padding: 6px 12px;
+    height: 40px !important;
   }
 
   .ebt-promo-wrap div:first-child {

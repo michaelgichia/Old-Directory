@@ -5,7 +5,7 @@
  */
 
 import axios from "axios";
-import { baseEventAPI, ordersPayAPI, EVENT } from "./constants";
+import { baseEventAPI, ordersPayAPI, EVENT, ORDERS_PAY } from "./constants";
 
 export const fetchEvent = eventId => dispatch => {
   axios.get(`${baseEventAPI}/${eventId}`).then(res => {
