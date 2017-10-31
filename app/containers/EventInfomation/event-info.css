@@ -183,8 +183,10 @@
 
   .tablet.product-image-wrapper {
     position: relative;
-    overflow: hidden;
     text-align: center;
+    overflow: hidden !important;
+    max-height: 200px !important;
+    height: 200px !important;
   }
 
   .tablet.product-image-wrapper button {

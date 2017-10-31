@@ -139,7 +139,7 @@ class EventMenuBar extends React.PureComponent {
             </div>
             <div className="narrow-links">
               <a
-                href="/buy-ticket"
+                href={`/tickets/event/${eventId}`}
                 onClick={this.burgerToggle}
                 alt="buy tickets"
                 className={onActive === "tickets event" ? "mb-active" : ""}

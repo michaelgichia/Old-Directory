@@ -25,7 +25,6 @@ export const fetchEvent = eventId => dispatch => {
 
 export const hadleOrdersPayment = info => dispatch => {
   axios.post(ordersPayAPI, info).then( res => {
-    console.log({res})
     if (res.status === 200) {
       dispatch({
         type: ORDERS_PAY.SUCCESS

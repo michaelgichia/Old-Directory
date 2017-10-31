@@ -223,6 +223,8 @@ nav a:visited {
     background-color: #31383E;
     color: #D9DDD9;
     border-left: 10px solid #31383E;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
   }
 
   .nav-narrow .narrow-links a.mb-active,
@@ -234,6 +236,8 @@ nav a:visited {
     border-left: 10px solid #FAEA29;
     width: 90%;
     border-radius: 0 50px 50px 0;
+    border-bottom: 1px solid #31383E;
+    border-top: 1px solid #31383E;
   }
 
   .nav-narrow .narrow-links a:nth-child(6) {

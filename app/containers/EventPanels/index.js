@@ -34,13 +34,11 @@ class EventPanels extends React.PureComponent {
 
   handleError = (e) => {
     e.persist()
-    console.log({e})
   }
-  
+
   render() {
     const { events } = this.state;
     const { isFixedNavHeight } = this.props;
-    console.log({events})
     if (events.length < 1) {
       return <LoadingSpinner />;
     }

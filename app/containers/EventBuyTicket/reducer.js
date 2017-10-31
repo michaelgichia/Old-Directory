@@ -19,13 +19,11 @@ function buyTicketReducer(state = initialState, action) {
       };
 
     case ORDERS_PAY.SUCCESS:
-      console.log({success: action})
       return {
         ...state
       };
 
     case ORDERS_PAY.ERROR:
-      console.log({error: action})
       return {
         ...state
       };

@@ -4,7 +4,7 @@ import "!!!style-loader!css-loader!./modal-poster.css";
 
 export default class ModalPoster extends React.PureComponent {
   state = {
-    showModal: true
+    showModal: false
   };
 
   handleCloseModal = () => {
