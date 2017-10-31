@@ -8,9 +8,9 @@ export default class PaymentTabs extends React.PureComponent {
     return(
       <Tabs>
         <TabList>
-          <Tab>1. Information</Tab>
-          <Tab>2. Payment</Tab>
-          <Tab>3. Confirmation</Tab>
+          <Tab>Information</Tab>
+          <Tab>Payment</Tab>
+          <Tab>Confirmation</Tab>
         </TabList>
 
         <TabPanel>

@@ -1,3 +1,12 @@
+ul[role=tablist] {
+  counter-reset: section;
+}
+
+ul[role=tablist] > li::before  {
+  counter-increment: section;
+  content: counter(section) ". ";
+}
+
 .react-tabs__tab-list {
   border-bottom: 5px solid #f6f6f6;
   margin: 0 0 36px 2px;
