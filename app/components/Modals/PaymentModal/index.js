@@ -103,17 +103,21 @@ export default class PaymentModal extends React.PureComponent {
               type="text"
             />
           </div>
-          <div>
-            <PaymentButtons
-              id="store"
-              bsKlass="secondary shadow"
-              label="RETURN TO STORE"
-            />
-           <PaymentButtons
-              id="nextOne"
-              bsKlass="primary shadow"
-              label="CONTINUE"
-           />
+          <div className="mookh-btn-wrap">
+            <div>
+              <PaymentButtons
+                id="store"
+                bsKlass="secondary shadow"
+                label="RETURN TO STORE"
+              />
+            </div>
+            <div>
+             <PaymentButtons
+                id="nextOne"
+                bsKlass="primary shadow"
+                label="CONTINUE"
+             />
+            </div>
           </div>
         </form>
       </ReactModal>
