@@ -130,7 +130,7 @@ ul[role=tablist] > li::before  {
 .react-tabs__tab--selected {
   color: #343434;
   border-radius: 0;
-  border-bottom: 5px solid #ffe500;
+  border-bottom: 5px solid #ffd600;
   margin-bottom: -4px;
 }
 
@@ -155,7 +155,7 @@ ul[role=tablist] > li::before  {
 
 .react-tabs__tab:hover {
   color: #343434;
-  border-bottom: 5px solid #ffe500;
+  border-bottom: 5px solid #ffd600;
   margin-bottom: -4px;
 }
 
@@ -166,7 +166,7 @@ ul[role=tablist] > li::before  {
   left: 0px;
   right: 0px;
   bottom: -5px;
-  background-color: #ffe500;
+  background-color: #ffd600;
 }
 
 

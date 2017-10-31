@@ -33,7 +33,7 @@ ul[role=tablist] > li::before  {
 .react-tabs__tab--selected {
   color: #343434;
   border-radius: 0;
-  border-bottom: 5px solid #ffe500;
+  border-bottom: 5px solid #ffd120;
   margin-bottom: -4px;
 }
 
