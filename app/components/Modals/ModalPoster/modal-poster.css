@@ -11,24 +11,20 @@
   background-color: rgba(0,0,0,0.9);
 }
 
-
 .Modal {
   margin: auto;
   display: block;
   width: 50%;
   max-width: 400px;
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.5s;
+  animation-name: zoom;
+  animation-duration: 0.5s;
 }
 
 .Modal img {
   max-width: 100%;
   min-height: 250px;
-}
-
-.Modal {
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 0.5s;
-  animation-name: zoom;
-  animation-duration: 0.5s;
 }
 
 @-webkit-keyframes zoom {

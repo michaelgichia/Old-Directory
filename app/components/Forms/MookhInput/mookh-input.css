@@ -1,0 +1,43 @@
+/* Forms styles
+=========================================================*/
+
+/*
+Input styles
+==========================================*/
+.mookh-input {
+  font-size: 14px;
+  color: #343434;
+  border: 1px solid #e6e1e1;
+  border-radius: 4px;
+  padding:  10px 12px;
+  outline: 0;
+  width: 100%;
+}
+
+.mookh-input:focus {
+  border-color: #ffd120;
+}
+
+/* Inputs labels
+==========================================*/
+.mookh-label {
+  width: 100%;
+  display: block;
+  margin-bottom: 4px;
+  color: #807d7d;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+/* Span errors
+============================================*/
+.mookh-span-error {
+  display: block;
+  color: #dd4b39;
+  font-size: 14px;
+  width: 100%;
+  min-height: 23px;
+  margin-top: 2px;
+  margin-left: 4px;
+}

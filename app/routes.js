@@ -77,7 +77,7 @@ export default function createRoutes(store) {
       path: '/modal',
       name: 'modalPoster',
       getComponent(location, cb) {
-        import('components/Tabs/PaymentTabs')
+        import('components/Modals/PaymentModal')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
