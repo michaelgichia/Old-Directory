@@ -82,6 +82,24 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/payments',
+      name: 'payments',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Payments/reducer'),
+          import('containers/Payments'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('payments', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: "*",
       name: "notfound",
       getComponent(nextState, cb) {

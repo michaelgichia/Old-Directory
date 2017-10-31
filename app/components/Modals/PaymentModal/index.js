@@ -1,4 +1,5 @@
 import React from "react";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ReactModal from "react-modal";
 import MookhInput from "components/Forms/MookhInput";
 import { PaymentButtons } from "components/Buttons";
@@ -28,6 +29,14 @@ export default class PaymentModal extends React.PureComponent {
         className="Modal"
         overlayClassName="Overlay"
       >
+     <Tabs>
+        <TabList>
+          <Tab>Information</Tab>
+          <Tab>Payment</Tab>
+          <Tab>Confirmation</Tab>
+        </TabList>
+
+        <TabPanel>
         <form action="/action_page.php" onSubmit={e => e.preventDefault()}>
           <header className="pm-header">Personal information</header>
           <div className="pm-row">
@@ -120,6 +129,14 @@ export default class PaymentModal extends React.PureComponent {
             </div>
           </div>
         </form>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 3</h2>
+        </TabPanel>
+      </Tabs>
       </ReactModal>
     );
   }
