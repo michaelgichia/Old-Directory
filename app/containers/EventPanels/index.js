@@ -32,9 +32,9 @@ class EventPanels extends React.PureComponent {
     }
   }
 
-  handleError = (e) => {
-    e.persist()
-  }
+  handleError = e => {
+    e.persist();
+  };
 
   render() {
     const { events } = this.state;
@@ -58,7 +58,12 @@ class EventPanels extends React.PureComponent {
               style={{ backgroundColor: `${randomColor()}` }}
             >
               <a href={`/tickets/event/${event.id}`}>
-              <img src={event.event_poster} alt="" onError={e => this.handleError(e)} id={event.id} />
+                <img
+                  src={event.event_poster}
+                  alt=""
+                  onError={e => this.handleError(e)}
+                  id={event.id}
+                />
               </a>
             </div>
             <div className="panel-event-info">
