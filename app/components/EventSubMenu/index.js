@@ -8,7 +8,7 @@
 
 import React from "react";
 import GlowButton from "components/GlowButton";
-import ModalPoster from "components/ModalPoster";
+import ModalPoster from "components/Modals/ModalPoster";
 import { Icon } from "semantic-ui-react";
 import "!!style-loader!css-loader!./invent-info-menu.css";
 

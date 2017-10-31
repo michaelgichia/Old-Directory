@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
-import "!!style-loader!css-loader!./modal-poster.css";
+import "!!!style-loader!css-loader!./modal-poster.css";
 
 export default class ModalPoster extends React.PureComponent {
   state = {
