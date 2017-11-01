@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import MookhInput from "components/Forms/MookhInput";
+import MookhInputWithBtn from "components/Forms/MookhInputWithBtn";
 import { PaymentButtons } from "components/Buttons";
 import "!!!style-loader!css-loader!./payment-information.css";
 
@@ -72,7 +73,7 @@ export default class PaymentInformationForm extends PureComponent {
             inputError=""
             type="text"
           />
-          <MookhInput
+          <MookhInputWithBtn
             labelName="Delivery cost estimate"
             id="deliveryCost"
             placeholder=""
