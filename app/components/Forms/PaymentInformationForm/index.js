@@ -6,7 +6,7 @@ import "!!!style-loader!css-loader!./payment-information.css";
 export default class PaymentInformationForm extends PureComponent {
   render() {
     return (
-      <form action="/action_page.php" onSubmit={e => e.preventDefault()}>
+      <form onSubmit={e => e.preventDefault()}>
         <header className="pm-header">Personal information</header>
         <div className="pm-row">
           <MookhInput
