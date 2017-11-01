@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ReactModal from "react-modal";
 import PaymentInformationForm from "components/Forms/PaymentInformationForm";
+import { PaymentButtons } from "components/Buttons";
 import "!!style-loader!css-loader!./payments.css";
 
 export class Payments extends React.Component {
@@ -47,6 +48,22 @@ export class Payments extends React.Component {
           </TabPanel>
           </div>
         </Tabs>
+        <div className="mookh-btn-wrap">
+          <div>
+            <PaymentButtons
+              id="store"
+              bsKlass="secondary shadow"
+              label="RETURN TO STORE"
+            />
+          </div>
+          <div>
+            <PaymentButtons
+              id="nextOne"
+              bsKlass="primary shadow"
+              label="CONTINUE"
+            />
+          </div>
+        </div>
       </ReactModal>
     );
   }

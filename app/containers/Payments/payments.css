@@ -12,7 +12,7 @@
   height: 100%;
   overflow: auto;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .Modal {
@@ -118,9 +118,41 @@ ul[role=tablist] > li::before  {
 .information-form {
   display: block;
   width: 100%;
-  max-height: 73vh;
+  max-height: 70vh;
   overflow-x: hidden;
   padding-right: 30px;
   padding-left: 30px;
   padding-bottom: 16px;
+}
+
+/* Payment Buttons
+=====================================================*/
+@media screen and (min-width: 768px) {
+  .pm-row .payment-input {
+    width: calc(50% - 16px);
+    float: left;
+  }
+
+  .mookh-btn-wrap {
+    margin-left: 30px;
+    margin-right: 30px;
+    border-top: 1px solid #f6f3ee;
+    padding-top: 30px;
+  }
+
+  .mookh-btn-wrap:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .mookh-btn-wrap div:first-child {
+    display: block;
+    float: left;
+  }
+
+  .mookh-btn-wrap div:last-child {
+    display: block;
+    float: right;
+  }
 }

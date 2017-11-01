@@ -82,22 +82,6 @@ export default class PaymentInformationForm extends PureComponent {
             type="text"
           />
         </div>
-        <div className="mookh-btn-wrap">
-          <div>
-            <PaymentButtons
-              id="store"
-              bsKlass="secondary shadow"
-              label="RETURN TO STORE"
-            />
-          </div>
-          <div>
-            <PaymentButtons
-              id="nextOne"
-              bsKlass="primary shadow"
-              label="CONTINUE"
-            />
-          </div>
-        </div>
       </form>
     );
   }
