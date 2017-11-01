@@ -49,15 +49,16 @@ Input styles
 =========================================*/
 .mookh-input2-generate {
   position: absolute;
-  font-size: 14px;
+  font-size: 13px;
   color: #343434;
   border: 1px solid #e6e1e1;
   outline: 0;
-  padding:  10px 12px;
+  padding:  11px 12px;
   border-radius:  4px;
   width: 156px;
   cursor: pointer;
   left: 160px;
+  font-weight: 700;
 }
 
 .mookh-input2-generate:hover {

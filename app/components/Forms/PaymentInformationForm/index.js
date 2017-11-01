@@ -76,7 +76,7 @@ export default class PaymentInformationForm extends PureComponent {
           <MookhInputWithBtn
             labelName="Delivery cost estimate"
             id="deliveryCost"
-            placeholder=""
+            placeholder="KSH. 00.00"
             wrapClass="payment-input"
             inputError=""
             type="text"
