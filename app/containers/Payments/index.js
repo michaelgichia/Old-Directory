@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ReactModal from "react-modal";
 import PaymentInformationForm from "components/Forms/PaymentInformationForm";
+import PaymentsMethods from "containers/PaymentsMethods";
 import { PaymentButtons } from "components/Buttons";
 import "!!style-loader!css-loader!./payments.css";
 
@@ -41,7 +42,7 @@ export class Payments extends React.Component {
               <PaymentInformationForm />
           </TabPanel>
           <TabPanel>
-            <PaymentInformationForm />
+            <PaymentsMethods />
           </TabPanel>
           <TabPanel>
             <PaymentInformationForm />
