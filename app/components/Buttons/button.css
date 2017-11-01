@@ -1,3 +1,13 @@
+/* Button States
+=========================================================*/
+.shadow:hover {
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 15px 0 rgba(0,0,0,.1);
+  transform: translateY(-1px);
+}
+
+/* Mookh Button - Least styles for mookh button
+===========================================================*/
+
 .mookh-btn {
   position: relative;
   border: none;
@@ -13,6 +23,9 @@
   cursor: pointer;
 }
 
+/* Primary button - Yellow coloured button
+=====================================================*/
+
 .primary {
   background-color: #ffd120;
   border: 1px solid #ffd120;
@@ -26,13 +39,15 @@
   background-color: #A38615;
 }
 
+/* Secondary Button - White background button.
+===============================================================*/
 .secondary {
   background-color: #ffffff;
   border: 1px solid #807d7d;
   color: #343434;
   border-radius: 4px;
-  box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 15px 0 rgba(0,0,0,.05);
-  -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 15px 0 rgba(0,0,0,.05);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.05);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.05);
 }
 
 .secondary:hover {
@@ -43,8 +58,70 @@
   background-color: #b3afaf;
 }
 
-.shadow:hover {
-  box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 15px 0 rgba(0,0,0,.1);
-  transform: translateY(-1px);
+/* Glowing Button - Used to open poster modal
+=============================================================*/
+  button.button-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  color: #343434;
+  background-color: rgb(250, 234, 41);
+  border: none;
+  cursor: pointer;
+}
+
+.glow-wrap {
+  position: relative;
+  border-radius: 50%;
+  height: 76px;
+  width: 76px
+}
+
+.btn-glow-wrap {
+  position: absolute;
+  display: block;
+  height: 76px;
+  width: 76px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  margin: -38px 0 0 -38px;
+  animation-name: glowing;
+  animation-duration: 2s;
+  animation-iteration-count: 5;
+  -webkit-animation-name: glowing;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: 5;
+  cursor: pointer   ;
+}
+
+.glow-wrap:hover .btn-glow-wrap {
+  background-color: rgba(250, 234, 41, .6);
+}
+
+@keyframes glowing {
+  0% {
+    background-color: rgba(250, 234, 41, .2);
+  }
+  50% {
+    background-color: rgba(250, 234, 41, .6);
+  }
+  100% {
+    background-color: rgba(250, 234, 41, .2);
+  }
+}
+
+.button-glow svg {
+  display: inline-block;
+  color: #343434;
+  fill: currentcolor;
+  height: 24px;
+  width: 24px;
+  user-select: none;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 

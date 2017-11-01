@@ -74,14 +74,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       }
     }, {
-      path: '/modal',
-      name: 'modalPoster',
-      getComponent(location, cb) {
-        import('components/Modals/PaymentModal')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    }, {
       path: '/payments',
       name: 'payments',
       getComponent(nextState, cb) {

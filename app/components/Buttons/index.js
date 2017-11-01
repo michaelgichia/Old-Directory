@@ -4,8 +4,8 @@ import "!!style-loader!css-loader!./button.css";
 
 
 /*
- * Ripple Effect Button
- */
+ * Mookh Button
+*/
 export class PaymentButtons extends React.PureComponent {
   render() {
     const { id, bsKlass, label } = this.props;
@@ -15,8 +15,27 @@ export class PaymentButtons extends React.PureComponent {
   }
 }
 
+/*
+ * Glowing Button
+*/
+export class GlowButton extends React.PureComponent {
+  render() {
+    return (
+      <div className="glow-wrap">
+        <div className="btn-glow-wrap" />
+        <button className="button-glow" onClick={this.props.handleGlowBtn}>
+          <svg viewBox="0 0 24 24">
+            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+          </svg>
+        </button>
+      </div>
+    );
+  }
+}
+
 PaymentButtons.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
-  bsKlass: PropTypes.string
+  bsKlass: PropTypes.string,
+  handleGlowBtn: PropTypes.func
 }

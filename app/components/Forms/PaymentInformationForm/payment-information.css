@@ -1,0 +1,52 @@
+/* Form headers
+==========================================*/
+.pm-header {
+  font-size: 16px;
+  color: #b3afaf;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid #f6f3ee;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  margin-top: 16px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .pm-row .payment-input {
+    width: calc(50% - 16px);
+    float: left;
+  }
+
+  .pm-row .payment-input:first-child {
+    margin-right: 32px;
+  }
+
+  .mookh-btn-wrap:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .mookh-btn-wrap div:first-child {
+    display: block;
+    width: 50%;
+    float: left;
+  }
+
+  .mookh-btn-wrap div:last-child {
+    display: block;
+    float: right;
+  }
+}
+
+/* Clear floats after the columns */
+.pm-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.pm-row {
+  width: 100%;
+}
