@@ -8,10 +8,8 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ReactModal from "react-modal";
-import PaymentsMethods from "containers/PaymentsMethods";
 import PaymentInformationForm from "components/Forms/PaymentInformationForm";
-import TabsBottomWrap from "components/TabsBottomWrap";
-import TabsBodyWrap from "components/TabsBodyWrap";
+import PaymentsMethods from "containers/PaymentsMethods";
 import PaymentConfirmation from "./PaymentConfirmation";
 import { PaymentButtons } from "components/Buttons";
 import { InputConstants } from "./constants";
@@ -113,31 +111,13 @@ export class Payments extends React.Component {
             <Tab className="py__tab">Confirmation</Tab>
           </TabList>
           <TabPanel>
-            <TabsBodyWrap>
-              <PaymentInformationForm
-                customer={customer}
-                onBlur={this.onBlur}
-                inputErrors={inputErrors}
-                handleConfirmEmail={this.handleConfirmEmail}
-                handleCustomerInfo={this.handleCustomerInfo}
-              />
-            </TabsBodyWrap>
-            <TabsBottomWrap>
-              <div>
-                <PaymentButtons
-                  id="store"
-                  bsKlass="secondary shadow"
-                  label="RETURN TO STORE"
-                />
-              </div>
-              <div>
-                <PaymentButtons
-                  id="nextOne"
-                  bsKlass="primary shadow"
-                  label="CONTINUE"
-                />
-              </div>
-            </TabsBottomWrap>
+            <PaymentInformationForm
+              customer={customer}
+              onBlur={this.onBlur}
+              inputErrors={inputErrors}
+              handleConfirmEmail={this.handleConfirmEmail}
+              handleCustomerInfo={this.handleCustomerInfo}
+            />
           </TabPanel>
           <TabPanel>
             <PaymentsMethods />
