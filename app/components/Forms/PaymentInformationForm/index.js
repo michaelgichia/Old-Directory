@@ -1,3 +1,9 @@
+/*
+ *
+ * PaymentInformationForm
+ *
+ */
+
 import React, { PureComponent } from "react";
 import MookhInput from "components/Forms/MookhInput";
 import MookhInputWithBtn from "components/Forms/MookhInputWithBtn";
