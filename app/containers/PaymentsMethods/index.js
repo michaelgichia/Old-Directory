@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PaymentCheckbox from "components/PaymentCheckbox";
 import CardForm from "components/Forms/CardForm";
+import MpesaPush from "./MpesaPush";
 import "!!style-loader!css-loader!./payments-methods.css";
 
 
@@ -25,7 +26,8 @@ export class PaymentsMethods extends Component {
           defaultChecked={false}
         />
       </div>
-        <CardForm />
+      <header className="cd-header" />
+        <MpesaPush />
       </div>
     );
   }

@@ -6,7 +6,6 @@ export default class CardForm extends PureComponent {
   render() {
     return (
       <form onSubmit={e => e.preventDefault()}>
-        <header className="cd-header" />
         <div className="cd-row">
           <MookhInput
             labelName="Card number"
