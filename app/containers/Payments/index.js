@@ -12,6 +12,7 @@ import PaymentInformationForm from "components/Forms/PaymentInformationForm";
 import PaymentsMethods from "containers/PaymentsMethods";
 import PaymentConfirmation from "./PaymentConfirmation";
 import { PaymentButtons } from "components/Buttons";
+import { InputConstants } from "./constants";
 import "!!style-loader!css-loader!./payments.css";
 
 export class Payments extends React.Component {
@@ -26,6 +27,16 @@ export class Payments extends React.Component {
       streetAddress: "Kasarani",
       apartment: "Israel",
       deliveryCost: 1000
+    },
+    inputErrors: {
+      emailError: "",
+      phone_numberError: "",
+      confirmEmailError: "",
+      nameError: "",
+      locationError: "",
+      streetAddressError: "",
+      apartmentError: "",
+      deliveryCostError: ""
     }
   };
 
@@ -38,10 +49,52 @@ export class Payments extends React.Component {
     this.setState({ showModal: false });
   };
 
-  onBlur = () => {}
+  onBlur = (e, name) => {
+    e.persist();
+    const { inputErrors } = this.state;
+    const { value } = e.target;
+    const requiredFields = ["name", "confirmEmail", "phone_number", "email"];
+
+    if (requiredFields.indexOf(name) > -1 && value.length < 1) {
+      this.setState(() => ({
+        inputErrors: {
+          ...inputErrors,
+          [`${name}Error`]: "You can't leave this empty."
+        }
+      }));
+    } else {
+      this.setState(() => ({
+        inputErrors: InputConstants[name]["regex"].test(value)
+          ? { ...inputErrors, [`${name}Error`]: "" }
+          : {
+              ...inputErrors,
+              [`${name}Error`]: InputConstants[name].error
+            }
+      }));
+    }
+  };
+
+  handleConfirmEmail = (email, confirmEmail) => {
+    const { inputErrors } = this.state;
+    if (confirmEmail.length < 1) {
+      this.setState(() => ({
+        inputErrors: {
+          ...inputErrors,
+          confirmEmailError: "You can't leave this empty."
+        }
+      }));
+    } else {
+      this.setState(() => ({
+        inputErrors:
+          email === confirmEmail
+            ? { ...inputErrors, confirmEmailError: "" }
+            : { ...inputErrors, confirmEmailError: "Emails don't match." }
+      }));
+    }
+  };
 
   render() {
-    const { customer } = this.state;
+    const { customer, inputErrors } = this.state;
 
     return (
       <ReactModal
@@ -61,8 +114,10 @@ export class Payments extends React.Component {
             <TabPanel>
               <PaymentInformationForm
                 customer={customer}
-                handleCustomerInfo={this.handleCustomerInfo}
                 onBlur={this.onBlur}
+                inputErrors={inputErrors}
+                handleConfirmEmail={this.handleConfirmEmail}
+                handleCustomerInfo={this.handleCustomerInfo}
               />
             </TabPanel>
             <TabPanel>

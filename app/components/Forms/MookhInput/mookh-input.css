@@ -18,6 +18,11 @@ Input styles
   border-color: #ffd120;
 }
 
+.mookh-input .invalid {
+  border: 1px solid #f75a46
+}
+
+
 /* Inputs labels
 ==========================================*/
 .mookh-label {

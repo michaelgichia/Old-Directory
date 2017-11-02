@@ -17,6 +17,17 @@ export default class PaymentInformationForm extends PureComponent {
       deliveryCost
     } = this.props.customer;
 
+    const {
+      emailError,
+      phone_numberError,
+      confirmEmailError,
+      nameError,
+      locationError,
+      streetAddressError,
+      apartmentError,
+      deliveryCostError
+    } = this.props.inputErrors;
+
     return (
       <form onSubmit={e => e.preventDefault()}>
         <header className="pm-header">Personal information</header>
@@ -26,9 +37,9 @@ export default class PaymentInformationForm extends PureComponent {
             id="name"
             placeholder=""
             wrapClass="payment-input"
-            inputError=""
+            inputError={nameError}
             onChange={this.props.handleCustomerInfo}
-            onBlur={() => this.props.onBlur(name)}
+            onBlur={e => this.props.onBlur(e, "name")}
             value={name}
             type="text"
             required={true}
@@ -38,9 +49,9 @@ export default class PaymentInformationForm extends PureComponent {
             id="phone_number"
             placeholder=""
             wrapClass="payment-input"
-            inputError=""
+            inputError={phone_numberError}
             onChange={this.props.handleCustomerInfo}
-            onBlur={() => this.props.onBlur(phone_number)}
+            onBlur={e => this.props.onBlur(e, "phone_number")}
             value={phone_number}
             type="tel"
             required={true}
@@ -52,9 +63,9 @@ export default class PaymentInformationForm extends PureComponent {
             id="email"
             placeholder=""
             wrapClass="payment-input"
-            inputError=""
+            inputError={emailError}
             onChange={this.props.handleCustomerInfo}
-            onBlur={() => this.props.onBlur(email)}
+            onBlur={e => this.props.onBlur(e, "email")}
             value={email}
             type="email"
             required={true}
@@ -64,9 +75,9 @@ export default class PaymentInformationForm extends PureComponent {
             id="confirmEmail"
             placeholder=""
             wrapClass="payment-input"
-            inputError=""
+            inputError={confirmEmailError}
             onChange={this.props.handleCustomerInfo}
-            onBlur={() => this.props.onBlur(confirmEmail)}
+            onBlur={() => this.props.handleConfirmEmail(email, confirmEmail)}
             value={confirmEmail}
             type="email"
             required={true}
@@ -79,9 +90,9 @@ export default class PaymentInformationForm extends PureComponent {
             id="location"
             placeholder=""
             wrapClass="payment-input"
-            inputError=""
+            inputError={locationError}
             onChange={this.props.handleCustomerInfo}
-            onBlur={() => this.props.onBlur(location)}
+            onBlur={e => this.props.onBlur(e, "location")}
             value={location}
             type="text"
             required={true}
@@ -91,9 +102,9 @@ export default class PaymentInformationForm extends PureComponent {
             id="streetAddress"
             placeholder=""
             wrapClass="payment-input"
-            inputError=""
+            inputError={streetAddressError}
             onChange={this.props.handleCustomerInfo}
-            onBlur={() => this.props.onBlur(streetAddress)}
+            onBlur={e => this.props.onBlur(e, "streetAddress")}
             value={streetAddress}
             type="text"
             required={true}
@@ -105,9 +116,9 @@ export default class PaymentInformationForm extends PureComponent {
             id="apartment"
             placeholder=""
             wrapClass="payment-input"
-            inputError=""
+            inputError={apartmentError}
             onChange={this.props.handleCustomerInfo}
-            onBlur={() => this.props.onBlur(apartment)}
+            onBlur={e => this.props.onBlur(e, "apartment")}
             value={apartment}
             type="text"
             required={true}
@@ -117,9 +128,9 @@ export default class PaymentInformationForm extends PureComponent {
             id="deliveryCost"
             placeholder="KSH. 00.00"
             wrapClass="payment-input"
-            inputError=""
+            inputError={deliveryCostError}
             onChange={this.props.handleCustomerInfo}
-            onBlur={() => this.props.onBlur(deliveryCost)}
+            onBlur={e => this.props.onBlur(e, "deliveryCost")}
             value={deliveryCost}
             type="text"
             required={true}
