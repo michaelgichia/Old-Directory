@@ -1,7 +1,8 @@
 .pc-wrap {
   display: block;
   width: 100%;
-  color: #807d7d;
+  color: #b3afaf;
+  font-weight: 500;
 }
 
 .pc-wrap [type="checkbox"] {
@@ -26,7 +27,7 @@ input:checked + label {
 }
 
 input:checked + label span:first-of-type {
-  color: #343434;
+  color: #31383e;
 }
 
 /* SVG Button

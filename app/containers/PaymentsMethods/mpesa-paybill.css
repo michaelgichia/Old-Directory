@@ -1,7 +1,8 @@
 .header {
   color: #b3afaf;
+  padding-top: 12px;
   padding-bottom: 20px;
-  font-size: 14px;
+  font-size: 16px;
   width: 100%;
   font-weight: 500;
 }
@@ -9,7 +10,7 @@
 .mpesa-paybill-wrap span,
 .mpesa-paybill-wrap p  {
   color: #807d7d;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 14px;
 }
 
@@ -23,19 +24,23 @@
   }
 
   .mpesa-paybill-wrap div {
-    width: 50%;
+    width: calc(50% - 16px);
     float: left;
   }
 
   .mpesa-paybill-wrap div:first-child {
-    padding-right: 34px;
+    margin-right: 16px;
+    padding-right: 80px;
+  }
+
+  .mpesa-paybill-wrap div:last-child {
+    margin-left: 16px;
   }
 
   .mpesa-paybill-wrap div:first-child span {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 1px;
   }
 
   .mpesa-paybill-wrap div:first-child span p:nth-child(2n) {
@@ -50,6 +55,7 @@
 
   .mpesa-paybill-wrap div:nth-child(2n) span:nth-child(3n) {
     font-size: 24px;
-    margin: 20px auto;
+    font-weight: 500;
+    margin: 30px auto;
   }
 }

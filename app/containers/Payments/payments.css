@@ -40,16 +40,16 @@
 
 /* Tabs Styles
 ==========================================*/
-ul[role=tablist] {
+ul.py__tab-list {
   counter-reset: section;
 }
 
-ul[role=tablist] > li::before  {
+ul[role=tablist] > li.py__tab::before  {
   counter-increment: section;
   content: counter(section) ". ";
 }
 
-.react-tabs__tab-list {
+.py__tab-list {
   border-bottom: 5px solid #f6f6f6;
   margin: 0 0 30px 2px;
   padding: 0;
@@ -60,7 +60,7 @@ ul[role=tablist] > li::before  {
   font-weight: 500;
 }
 
-.react-tabs__tab {
+.py__tab {
   display: block;
   border: none;
   bottom: -1px;
@@ -72,7 +72,7 @@ ul[role=tablist] > li::before  {
   text-align: center;
 }
 
-.react-tabs__tab--selected {
+.py__tab.react-tabs__tab--selected {
   color: #343434;
   border-radius: 0;
   border-bottom: 5px solid #ffd600;
@@ -92,19 +92,19 @@ ul[role=tablist] > li::before  {
   cursor: not-allowed;
 }
 
-.react-tabs__tab:focus {
+.py__tab:focus {
   box-shadow: none;
   border-color: none;
   outline: none;
 }
 
-.react-tabs__tab:hover {
+.py__tab:hover {
   color: #343434;
   border-bottom: 5px solid #ffd600;
   margin-bottom: -4px;
 }
 
-.react-tabs__tab:focus:after {
+.py__tab:focus:after {
   content: "";
   position: absolute;
   height: 5px;

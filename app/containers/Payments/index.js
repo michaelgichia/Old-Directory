@@ -105,10 +105,10 @@ export class Payments extends React.Component {
         overlayClassName="Overlay"
       >
         <Tabs>
-          <TabList>
-            <Tab>Information</Tab>
-            <Tab>Payment</Tab>
-            <Tab>Confirmation</Tab>
+          <TabList className="py__tab-list">
+            <Tab className="py__tab">Information</Tab>
+            <Tab className="py__tab">Payment</Tab>
+            <Tab className="py__tab">Confirmation</Tab>
           </TabList>
           <div className="information-form">
             <TabPanel>

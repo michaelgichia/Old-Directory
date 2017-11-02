@@ -11,6 +11,10 @@ export default class CardForm extends PureComponent {
             labelName="Card number"
             id="card-number"
             placeholder="0000"
+            onChange={this.props.handleCustomerInfo}
+            onBlur={e => this.props.onBlur(e, "name")}
+            value=""
+            required={true}
             wrapClass="cd-payment-input"
             inputError=""
             type="number"
@@ -20,6 +24,10 @@ export default class CardForm extends PureComponent {
               labelName="CVC"
               id="cvc"
               placeholder=""
+              onChange={this.props.handleCustomerInfo}
+              onBlur={e => this.props.onBlur(e, "name")}
+              value=""
+              required={true}
               wrapClass="cvc"
               inputError=""
               type="tel"
@@ -28,6 +36,10 @@ export default class CardForm extends PureComponent {
               labelName="Currency"
               id="currency"
               placeholder="USD"
+              onChange={this.props.handleCustomerInfo}
+              onBlur={e => this.props.onBlur(e, "name")}
+              value=""
+              required={true}
               wrapClass="cvc"
               inputError=""
               type="number"
@@ -40,6 +52,10 @@ export default class CardForm extends PureComponent {
             id="expires-on"
             placeholder="MM/YY"
             wrapClass="cd-payment-input"
+            onChange={this.props.handleCustomerInfo}
+            onBlur={e => this.props.onBlur(e, "name")}
+            value=""
+            required={true}
             inputError=""
             type="email"
           />

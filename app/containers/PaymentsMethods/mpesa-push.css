@@ -1,11 +1,11 @@
 .mpesa-push-wrap p:first-of-type {
   color: #b3afaf;
   padding-bottom: 20px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .mpesa-push-wrap p ~ p {
-  color: #807d7d;
+  color: #b3afaf;
   padding-bottom: 8px;
   font-size: 14px;
   font-weight: 500;
