@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from "classnames";
 import PaymentCheckbox from "components/PaymentCheckbox";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import CardForm from "components/Forms/CardForm";
@@ -19,7 +20,7 @@ export class PaymentsMethods extends Component {
       <header className="payment-header">Select payment method</header>
         <Tabs>
           <TabList className="pm__tab-list">
-            <Tab className="pm__tabs">
+            <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
               <PaymentCheckbox
                 id="mobile-payment"
                 onClick={() => console.log('Mobile')}
@@ -28,7 +29,7 @@ export class PaymentsMethods extends Component {
                 defaultChecked={true}
               />
             </Tab>
-            <Tab className="pm__tabs">
+            <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
               <PaymentCheckbox
                 id="card-payment"
                 onClick={() => console.log('Card')}

@@ -9,6 +9,8 @@
   display: none;
 }
 
+
+
 /* Label
 ================================*/
 .pc-wrap label {
@@ -22,11 +24,11 @@
   -webkit-transition-timing-function: ease-in-out;
 }
 
-input:checked + label {
+.pm__tab--selected input + label {
   border: 1px solid #ffd120;
 }
 
-input:checked + label span:first-of-type {
+.pm__tab--selected span:first-of-type {
   color: #31383e;
 }
 
@@ -36,10 +38,10 @@ input:checked + label span:first-of-type {
   height: 20px;
 }
 
-input:not(:checked) + label .pc-svg svg {
+.pc-svg svg {
   display: none;
 }
 
-input:checked + label .pc-svg svg {
+.pm__tab--selected .pc-svg svg {
   display: block;
 }
