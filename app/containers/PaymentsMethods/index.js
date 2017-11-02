@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PaymentCheckbox from "components/PaymentCheckbox";
 import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
+import MpesaPayBill from "./MpesaPayBill";
 import "!!style-loader!css-loader!./payments-methods.css";
 
 
@@ -27,7 +28,7 @@ export class PaymentsMethods extends Component {
         />
       </div>
       <header className="cd-header" />
-        <MpesaPush />
+        <MpesaPayBill />
       </div>
     );
   }
