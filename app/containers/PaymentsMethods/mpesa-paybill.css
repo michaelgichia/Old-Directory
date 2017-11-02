@@ -40,7 +40,7 @@
 
   .mpesa-paybill-wrap div:first-child span p:nth-child(2n) {
     color: #343434;
-  }
+    }
 
   .mpesa-paybill-wrap div:nth-child(2n) span {
     display: block;

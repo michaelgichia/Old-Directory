@@ -16,14 +16,33 @@ import "!!style-loader!css-loader!./payments.css";
 
 export class Payments extends React.Component {
   state = {
-    showModal: true
+    showModal: true,
+    customer: {
+      email: "mqyynm@gmail.com",
+      name: "Michael",
+      phone_number: "254701872069",
+      confirmEmail: "mqyynm@gmail.com",
+      location: "Nairobi",
+      streetAddress: "Kasarani",
+      apartment: "Israel",
+      deliveryCost: 1000
+    }
   };
+
+  handleCustomerInfo = e =>
+    this.setState({
+      customer: { ...this.state.customer, [e.target.id]: e.target.value }
+    });
 
   handleCloseModal = () => {
     this.setState({ showModal: false });
   };
 
+  onBlur = () => {}
+
   render() {
+    const { customer } = this.state;
+
     return (
       <ReactModal
         isOpen={this.state.showModal}
@@ -39,15 +58,19 @@ export class Payments extends React.Component {
             <Tab>Confirmation</Tab>
           </TabList>
           <div className="information-form">
-          <TabPanel>
-              <PaymentInformationForm />
-          </TabPanel>
-          <TabPanel>
-            <PaymentsMethods />
-          </TabPanel>
-          <TabPanel>
-            <PaymentConfirmation />
-          </TabPanel>
+            <TabPanel>
+              <PaymentInformationForm
+                customer={customer}
+                handleCustomerInfo={this.handleCustomerInfo}
+                onBlur={this.onBlur}
+              />
+            </TabPanel>
+            <TabPanel>
+              <PaymentsMethods />
+            </TabPanel>
+            <TabPanel>
+              <PaymentConfirmation />
+            </TabPanel>
           </div>
         </Tabs>
         <div className="mookh-btn-wrap">
