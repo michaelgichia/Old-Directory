@@ -110,15 +110,32 @@ export class Payments extends React.Component {
             <Tab className="py__tab">Payment</Tab>
             <Tab className="py__tab">Confirmation</Tab>
           </TabList>
-          <div className="information-form">
             <TabPanel>
-              <PaymentInformationForm
-                customer={customer}
-                onBlur={this.onBlur}
-                inputErrors={inputErrors}
-                handleConfirmEmail={this.handleConfirmEmail}
-                handleCustomerInfo={this.handleCustomerInfo}
-              />
+              <div className="information-form">
+                <PaymentInformationForm
+                  customer={customer}
+                  onBlur={this.onBlur}
+                  inputErrors={inputErrors}
+                  handleConfirmEmail={this.handleConfirmEmail}
+                  handleCustomerInfo={this.handleCustomerInfo}
+                />
+            </div>
+            <div className="mookh-btn-wrap">
+              <div>
+                <PaymentButtons
+                  id="store"
+                  bsKlass="secondary shadow"
+                  label="RETURN TO STORE"
+                />
+              </div>
+              <div>
+                <PaymentButtons
+                  id="nextOne"
+                  bsKlass="primary shadow"
+                  label="CONTINUE"
+                />
+              </div>
+            </div>
             </TabPanel>
             <TabPanel>
               <PaymentsMethods />
@@ -126,24 +143,7 @@ export class Payments extends React.Component {
             <TabPanel>
               <PaymentConfirmation />
             </TabPanel>
-          </div>
         </Tabs>
-        <div className="mookh-btn-wrap">
-          <div>
-            <PaymentButtons
-              id="store"
-              bsKlass="secondary shadow"
-              label="RETURN TO STORE"
-            />
-          </div>
-          <div>
-            <PaymentButtons
-              id="nextOne"
-              bsKlass="primary shadow"
-              label="CONTINUE"
-            />
-          </div>
-        </div>
       </ReactModal>
     );
   }
