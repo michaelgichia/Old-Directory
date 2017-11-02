@@ -6,7 +6,12 @@ export default class PaymentCheckbox extends PureComponent {
     const { id, onChange, placeholder, wrapKlass, defaultChecked } = this.props;
     return (
       <div className={`pc-wrap ${wrapKlass}`}>
-        <input id={id} type="checkbox" onChange={onChange} defaultChecked={defaultChecked} />
+        <input
+          id={id}
+          type="checkbox"
+          onChange={onChange}
+          defaultChecked={defaultChecked}
+        />
         <label htmlFor={id}>
           <span>{placeholder}</span>
           <span className="pc-svg">
@@ -33,5 +38,5 @@ PaymentCheckbox.proptypes = {
   onChange: React.PropTypes.func,
   id: React.PropTypes.string,
   placeholder: React.PropTypes.string,
-  defaultChecked: React.PropTypes.bool,
-}
+  defaultChecked: React.PropTypes.bool
+};
