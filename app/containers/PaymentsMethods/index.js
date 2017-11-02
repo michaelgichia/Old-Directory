@@ -1,7 +1,14 @@
+/*
+ *
+ * PaymentsMethods
+ *
+ */
+
 import React, { Component } from "react";
 import classnames from "classnames";
 import PaymentCheckbox from "components/PaymentCheckbox";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import TabsBodyWrap from "components/TabsBodyWrap";
 import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
 import MpesaPayBill from "./MpesaPayBill";
@@ -23,28 +30,32 @@ export class PaymentsMethods extends Component {
     const { mpesaPage } = this.state;
     return (
       <div>
-        <header className="payment-header">Select payment method</header>
+        <TabsBodyWrap>
+          <header className="payment-header">Select payment method</header>
+        </TabsBodyWrap>
         <Tabs>
-          <TabList className="pm__tab-list">
-            <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
-              <PaymentCheckbox
-                id="mobile-payment"
-                onClick={() => console.log("Mobile")}
-                placeholder="Mobile money/M-pesa"
-                wrapKlass=""
-                defaultChecked={true}
-              />
-            </Tab>
-            <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
-              <PaymentCheckbox
-                id="card-payment"
-                onClick={() => console.log("Card")}
-                placeholder="Card Payment"
-                wrapKlass=""
-                defaultChecked={false}
-              />
-            </Tab>
-          </TabList>
+          <TabsBodyWrap>
+            <TabList className="pm__tab-list">
+              <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
+                <PaymentCheckbox
+                  id="mobile-payment"
+                  onClick={() => console.log("Mobile")}
+                  placeholder="Mobile money/M-pesa"
+                  wrapKlass=""
+                  defaultChecked={true}
+                />
+              </Tab>
+              <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
+                <PaymentCheckbox
+                  id="card-payment"
+                  onClick={() => console.log("Card")}
+                  placeholder="Card Payment"
+                  wrapKlass=""
+                  defaultChecked={false}
+                />
+              </Tab>
+            </TabList>
+          </TabsBodyWrap>
           <TabPanel>
             {mpesaPage === 1 ? (
               <MpesaPush onClick={this.handleNextPage} />
