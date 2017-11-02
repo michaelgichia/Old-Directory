@@ -1,6 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
+import { PaymentButtons } from "components/Buttons";
+import GooglePlayBadge from "./GooglePlayBadge.png";
 import "!!style-loader!css-loader!./payment-confirmation.css";
-
 
 export class PaymentConfirmation extends PureComponent {
   render() {
@@ -28,12 +29,20 @@ export class PaymentConfirmation extends PureComponent {
         </header>
         <div className="apps-wrap">
           <p>Check out our App to keep track of your downloads and more.</p>
-          <button>Google</button>
-          <button>App Store</button>
+          <div className="app-stores-wrap">
+            <a className="play-store" href="">
+              <img src={GooglePlayBadge} alt="" />
+            </a>
+            <a className="apple-store" href="" />
+          </div>
         </div>
         <div className="feedback-wrap">
           <p>powered by MOOKHPAY.</p>
-          <button>Give us feedback</button>
+          <PaymentButtons
+            id="store"
+            bsKlass="secondary shadow"
+            label="Give us feedback"
+          />
         </div>
       </div>
     );
