@@ -1,0 +1,17 @@
+/* Payment Buttons
+=====================================================*/
+@media screen and (min-width: 768px) {
+  .mookh-btn-wrap {
+    margin-left: 30px;
+    margin-right: 30px;
+    border-top: 1px solid #f6f3ee;
+    padding-top: 30px;
+  }
+
+  .mookh-btn-wrap:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+}

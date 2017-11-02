@@ -121,35 +121,12 @@ ul[role=tablist] > li.py__tab::before  {
 }
 
 
-.information-form {
-  display: block;
-  width: 100%;
-  max-height: 65vh;
-  overflow-x: hidden;
-  padding-right: 30px;
-  padding-left: 30px;
-  padding-bottom: 16px;
-}
-
 /* Payment Buttons
 =====================================================*/
 @media screen and (min-width: 768px) {
   .pm-row .payment-input {
     width: calc(50% - 16px);
     float: left;
-  }
-
-  .mookh-btn-wrap {
-    margin-left: 30px;
-    margin-right: 30px;
-    border-top: 1px solid #f6f3ee;
-    padding-top: 30px;
-  }
-
-  .mookh-btn-wrap:after {
-    content: "";
-    display: table;
-    clear: both;
   }
 
   .mookh-btn-wrap div:first-child {
