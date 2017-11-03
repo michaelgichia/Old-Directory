@@ -2,7 +2,8 @@ import React, { PureComponent } from "react";
 import { PaymentButtons } from "components/Buttons";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
-import GooglePlayBadge from "./GooglePlayBadge.png";
+import GooglePlayBadge from "./google.png";
+import AppleBadge from "./apple.png";
 import "!!style-loader!css-loader!./payment-confirmation.css";
 
 export class PaymentConfirmation extends PureComponent {
@@ -34,10 +35,12 @@ export class PaymentConfirmation extends PureComponent {
             <div className="apps-wrap">
               <p>Check out our App to keep track of your downloads and more.</p>
               <div className="app-stores-wrap">
-                <a className="play-store" href="">
-                  <img src={GooglePlayBadge} alt="" />
+                <a className="play-store" href="#">
+                  <img src={GooglePlayBadge} alt="play store badge" />
                 </a>
-                <a className="apple-store" href="" />
+                <a className="play-store" href="#">
+                  <img src={AppleBadge} alt="app store badge"/>
+                </a>
               </div>
             </div>
             <div className="feedback-wrap">
