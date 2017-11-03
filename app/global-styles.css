@@ -14,6 +14,12 @@ html {
   box-sizing: inherit;
 }
 
+:selection {
+  background-color: transparent !important;
+  color: inherit !important;
+  text-shadow: inherit !important;
+}
+
 body {
   margin: 0;
   font-size: 16px;

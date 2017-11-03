@@ -16,6 +16,18 @@ export class PaymentButtons extends React.PureComponent {
 }
 
 /*
+ * Back Button
+*/
+export class BackButtons extends React.PureComponent {
+  render() {
+    const { id, bsKlass, label } = this.props;
+    return(
+      <button className={`mookh-btn ${bsKlass}`} id={id}>{label}</button>
+    );
+  }
+}
+
+/*
  * Glowing Button
 */
 export class GlowButton extends React.PureComponent {

@@ -29,36 +29,67 @@
   clear: both;
 }
 
+/* Small Screen
+==========================================*/
 @media screen and (max-width: 768px) {
   .Modal {
-    max-width: 100%;
-    width: 90%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 95%;
+    margin-top: 30px;
+  }
+
+  /* Tabs Styles
+  ==========================================*/
+  .py__tab {
+    display: block;
+    padding: 8px 4px;
+    min-width: 50px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .py__tab-list {
+    margin: 0 0 30px 0;
+    padding: 24px 0 0 0;
   }
 }
 
+/* Large Screen
+==========================================*/
 @media screen and (min-width: 768px) {
   .Modal {
     padding: 20px;
     max-width: 768px;
     margin-top: 20px;
   }
+
+  /* Tabs Styles
+  ==========================================*/
+  ul.py__tab-list {
+    counter-reset: section;
+  }
+
+  ul[role=tablist] > li.py__tab::before  {
+    counter-increment: section;
+    content: counter(section) ". ";
+  }
+  .py__tab {
+    padding: 8px 14px;
+    width: 140px;
+  }
+
+  .py__tab-list {
+    margin: 0 0 30px 2px;
+    padding: 0;
+  }
 }
 
 /* Tabs Styles
 ==========================================*/
-ul.py__tab-list {
-  counter-reset: section;
-}
-
-ul[role=tablist] > li.py__tab::before  {
-  counter-increment: section;
-  content: counter(section) ". ";
-}
-
 .py__tab-list {
   border-bottom: 5px solid #f6f6f6;
-  margin: 0 0 30px 2px;
-  padding: 0;
   display: flex;
   justify-content: space-around;
   color: #b3afaf;

@@ -104,7 +104,7 @@ export class Payments extends React.Component {
         className="Modal"
         overlayClassName="Overlay"
       >
-        <Tabs>
+        <Tabs className="py__tabs">
           <TabList className="py__tab-list">
             <Tab className="py__tab">Information</Tab>
             <Tab className="py__tab">Payment</Tab>

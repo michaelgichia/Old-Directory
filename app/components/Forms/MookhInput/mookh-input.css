@@ -47,3 +47,19 @@ Input styles
   margin-top: 2px;
   margin-left: 4px;
 }
+
+/* Small Screen
+==========================================*/
+@media screen and (max-width: 768px) {
+  .mookh-label {
+    font-weight: 400;
+  }
+}
+
+/* Large Screen
+==========================================*/
+@media screen and (min-width: 768px) {
+  .mookh-label {
+    font-weight: 500;
+  }
+}

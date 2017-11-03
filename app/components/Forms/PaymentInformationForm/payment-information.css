@@ -1,13 +1,7 @@
 /* Form headers
 ==========================================*/
 .pm-header {
-  font-size: 16px;
-  color: #b3afaf;
-  font-weight: 500;
   font-family: "Roboto", sans-serif;
-  border-bottom: 1px solid #f6f3ee;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
 }
 
 
@@ -19,6 +13,39 @@
 
   .pm-row .payment-input:first-child {
     margin-right: 32px;
+  }
+
+  /* Form headers
+  ==========================================*/
+  .pm-header {
+    font-size: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 56px;
+    color: #b3afaf;
+    font-weight: 500;
+    border-bottom: 1px solid #e6e1e1;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .pm-row .payment-input {
+    width: calc(100% - 4px);
+    float: left;
+  }
+
+  .pm-row .payment-input:first-child {
+  }
+
+  /* Form headers
+  ==========================================*/
+  .pm-header {
+    font-size: 15px;
+    margin-bottom: 8px;
+    padding-bottom: 2px;
+    color: #807d7d;
+    font-weight: 600;
+    border-bottom: 1px solid #b3afaf;
   }
 }
 
