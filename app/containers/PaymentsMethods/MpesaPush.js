@@ -8,7 +8,7 @@ import React, { PureComponent } from "react";
 import MpesaPushImage from "./MpesaPushImage.png";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
-import { PaymentButtons } from "components/Buttons";
+import { PaymentButtons, BackButton } from "components/Buttons";
 
 import "!!style-loader!css-loader!./mpesa-push.css";
 
@@ -37,15 +37,13 @@ export class MpesaPush extends PureComponent {
             </div>
           </div>
         </TabsBodyWrap>
-        <TabsBodyWrap>
-          <div>
-            <PaymentButtons
-              id="store"
-              bsKlass="secondary shadow"
-              label="PREVIOUS"
-            />
-          </div>
-        </TabsBodyWrap>
+        <TabsBottomWrap>
+          <BackButton
+            id="store"
+            bsKlass=""
+            label="PREVIOUS"
+          />
+        </TabsBottomWrap>
       </div>
     );
   }

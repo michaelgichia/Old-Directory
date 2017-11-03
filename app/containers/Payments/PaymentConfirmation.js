@@ -56,16 +56,9 @@ export class PaymentConfirmation extends PureComponent {
         <TabsBottomWrap>
           <div>
             <PaymentButtons
-              id="store"
-              bsKlass="secondary shadow"
-              label="RETURN TO STORE"
-            />
-          </div>
-          <div>
-            <PaymentButtons
               id="nextOne"
               bsKlass="primary shadow"
-              label="CONTINUE"
+              label="CONTINUE SHOPPING"
             />
           </div>
         </TabsBottomWrap>

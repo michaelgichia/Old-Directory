@@ -7,7 +7,7 @@
 import React, { PureComponent } from "react";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
-import { PaymentButtons } from "components/Buttons";
+import { PaymentButtons, BackButton } from "components/Buttons";
 import "!!style-loader!css-loader!./mpesa-paybill.css";
 
 export class MpesaPayBill extends PureComponent {
@@ -44,9 +44,9 @@ export class MpesaPayBill extends PureComponent {
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <PaymentButtons
+            <BackButton
               id="store"
-              bsKlass="secondary shadow"
+              bsKlass=""
               label="PREVIOUS"
             />
           </div>
