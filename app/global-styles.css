@@ -97,13 +97,25 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 13px;
   font-weight: 700;
   padding: 14px;
-  width: 180px;
   text-align: center;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+ .mookh-btn {
+    width: 180px;
+ }
+}
+
+@media screen and (max-width: 768px) {
+  .mookh-btn {
+    width: 100%;
+    margin-bottom: 12px;
+  }
 }
 
 /* Primary button - Yellow coloured button

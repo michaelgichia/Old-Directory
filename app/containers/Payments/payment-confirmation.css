@@ -12,7 +12,7 @@
 
 .confirmation-wrap p {
   color: #b3afaf;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -75,12 +75,16 @@
   }
 
   .play-store {
-    max-width: 50%;
+    max-width: 60%;
+  }
+
+  .play-store:first-child {
+    max-width: 40%;
   }
 
   .play-store img {
-    height: 35px;
-    min-width: 50px;
+    height: 45px;
+    max-width: 100%;
   }
 }
 

@@ -56,10 +56,22 @@ Input styles
   outline: 0;
   padding:  11px 12px;
   border-radius:  4px;
-  width: 156px;
   cursor: pointer;
-  left: 160px;
   font-weight: 700;
+}
+
+
+@media screen and (min-width: 768px) {
+  .mookh-input2-generate {
+    width: 156px;
+    left: 160px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mookh-input2-generate {
+    left: 163px;
+  }
 }
 
 .mookh-input2-generate:hover {
