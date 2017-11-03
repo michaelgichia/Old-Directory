@@ -70,8 +70,8 @@ Input styles
 
 @media screen and (max-width: 768px) {
   .mookh-input2-generate {
-    left: calc(100% - 180px);
-    width: 180px;
+    left: calc(100% - 150px);
+    width: 150px;
   }
 }
 
