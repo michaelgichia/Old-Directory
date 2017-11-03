@@ -7,14 +7,41 @@
   font-weight: 500;
 }
 
-.mpesa-paybill-wrap span,
-.mpesa-paybill-wrap p  {
+.mpesa-paybill-wrap {
   color: #807d7d;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  font-family: "Roboto", Roboto, sans-serif !important;
 }
 
 @media screen and (max-width: 768px) {
+  .mpesa-paybill-wrap div:first-child {
+    display: block;
+    width: 100%;
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+  .mpesa-paybill-wrap div:first-child span {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .mpesa-paybill-wrap div:first-child span p:nth-child(2n) {
+    color: #343434;
+  }
+  .mpesa-paybill-wrap div:nth-child(2n) span {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .mpesa-paybill-wrap div:nth-child(2n) span:nth-child(3n) {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 30px auto;
+  }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -45,7 +72,7 @@
 
   .mpesa-paybill-wrap div:first-child span p:nth-child(2n) {
     color: #343434;
-    }
+  }
 
   .mpesa-paybill-wrap div:nth-child(2n) span {
     display: block;
