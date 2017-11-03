@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
 import "!!style-loader!css-loader!./button.css";
-
 
 /*
  * Mookh Button
@@ -9,8 +8,10 @@ import "!!style-loader!css-loader!./button.css";
 export class PaymentButtons extends React.PureComponent {
   render() {
     const { id, bsKlass, label } = this.props;
-    return(
-      <button className={`mookh-btn ${bsKlass}`} id={id}>{label}</button>
+    return (
+      <button className={`mookh-btn mookh-btn-wd ${bsKlass}`} id={id}>
+        {label}
+      </button>
     );
   }
 }
@@ -18,11 +19,17 @@ export class PaymentButtons extends React.PureComponent {
 /*
  * Back Button
 */
-export class BackButtons extends React.PureComponent {
+export class BackButton extends React.PureComponent {
   render() {
     const { id, bsKlass, label } = this.props;
-    return(
-      <button className={`mookh-btn ${bsKlass}`} id={id}>{label}</button>
+    return (
+      <button
+        className={`mookh-btn back-btn ${bsKlass}`}
+        id={id}
+        style={{ verticalAlign: "middle" }}
+      >
+        <span> </span><span>{label}</span>
+      </button>
     );
   }
 }
@@ -50,4 +57,4 @@ PaymentButtons.propTypes = {
   id: PropTypes.string,
   bsKlass: PropTypes.string,
   handleGlowBtn: PropTypes.func
-}
+};

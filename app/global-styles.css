@@ -98,21 +98,21 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   padding: 14px;
   text-align: center;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
- .mookh-btn {
+ .mookh-btn-wd {
     width: 180px;
  }
 }
 
 @media screen and (max-width: 768px) {
-  .mookh-btn {
+  .mookh-btn-wd {
     width: 100%;
     margin-bottom: 12px;
   }
@@ -150,4 +150,6 @@ h1, h2, h3, h4, h5, h6 {
 .secondary:active {
   background-color: #b3afaf;
 }
+
+
 
