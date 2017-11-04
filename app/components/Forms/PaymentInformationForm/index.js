@@ -41,7 +41,7 @@ export default class PaymentInformationForm extends PureComponent {
       <div>
         <TabsBodyWrap>
           <form onSubmit={e => e.preventDefault()}>
-            <header className="pm-header">Personal information</header>
+            <header className="payment-header">Personal information</header>
             <div className="pm-row">
               <MookhInput
                 labelName="Full name"
@@ -95,7 +95,7 @@ export default class PaymentInformationForm extends PureComponent {
                 required={true}
               />
             </div>
-            <header className="pm-header">Delivery information</header>
+            <header className="payment-header">Delivery information</header>
             <div className="pm-row">
               <MookhInput
                 labelName="Region/location"

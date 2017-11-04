@@ -7,7 +7,7 @@ Input styles
 .mookh-input {
   font-size: 14px;
   color: #343434;
-  border: 1px solid #e6e1e1;
+  border: 1px solid #ccc;
   border-radius: 4px;
   padding:  10px 12px;
   outline: 0;
@@ -31,7 +31,6 @@ Input styles
   display: block;
   margin-bottom: 4px;
   color: #807d7d;
-  font-weight: 500;
   font-size: 14px;
   margin-left: 4px;
 }

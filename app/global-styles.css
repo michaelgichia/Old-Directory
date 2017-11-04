@@ -151,5 +151,16 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #b3afaf;
 }
 
+/* Form headers
+==========================================*/
+.payment-header {
+  font-size: 14px;
+  color: #b3afaf;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid #f6f3ee;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
 
 

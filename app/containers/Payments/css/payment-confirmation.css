@@ -20,10 +20,6 @@
   margin-bottom: 16px;
 }
 
-.apps-wrap p {
-  margin-bottom: 16px;
-}
-
 .feedback-wrap p {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -86,6 +82,10 @@
     height: 45px;
     max-width: 100%;
   }
+
+  .apps-wrap p {
+    margin-bottom: 16px;
+  }
 }
 
 /* Large Screen
@@ -102,9 +102,9 @@
   .app-stores-wrap {
     display: flex;
     justify-content: space-between;
-    width: 45%;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    width: 290px;
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 
   .confirmation-wrap span:first-of-type {
@@ -113,6 +113,10 @@
 
   .play-store img {
     height: 40px;
+  }
+
+  .feedback-wrap {
+    margin-bottom: 24px;
   }
 }
 

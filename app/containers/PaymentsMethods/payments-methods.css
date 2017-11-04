@@ -24,13 +24,6 @@
 
 /* Form headers
 ==========================================*/
-.payment-header {
-  font-size: 16px;
-  color: #b3afaf;
-  font-weight: 500;
-  font-family: "Roboto", sans-serif;
-}
-
 .cd-header {
   font-size: 16px;
   color: #b3afaf;
@@ -50,13 +43,10 @@
 }
 
 .pm__tab-list {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  border-style: solid;
-  border-width: 1px 0;
-  border-color: #f6f3ee;
+  padding-top: 8px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f6f3ee;
+  margin-bottom: 16px;
 }
 
 .pm__tab-list:after {
