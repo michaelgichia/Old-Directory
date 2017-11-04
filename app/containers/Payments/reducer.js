@@ -4,17 +4,26 @@
  *
  */
 
-import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  PAYMENTS_MODAL,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = {
+  paymentsModal: false,
+};
 
 function paymentsReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case PAYMENTS_MODAL.SUCCESS:
+      return {
+        ...state,
+        paymentsModal: true
+      };
+    case PAYMENTS_MODAL.ERROR:
+      return {
+        ...state,
+        paymentsModal: false
+      };
     default:
       return state;
   }

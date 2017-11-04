@@ -5,11 +5,11 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  PAYMENTS_MODAL,
 } from './constants';
 
-export function defaultAction() {
+export function closeModal() {
   return {
-    type: DEFAULT_ACTION,
+    type: PAYMENTS_MODAL.SUCCESS,
   };
 }

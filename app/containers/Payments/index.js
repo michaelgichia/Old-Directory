@@ -13,11 +13,11 @@ import PaymentsMethods from "containers/PaymentsMethods";
 import PaymentConfirmation from "./PaymentConfirmation";
 import { PaymentButtons } from "components/Buttons";
 import { InputConstants } from "./constants";
-import "!!style-loader!css-loader!./payments.css";
+import "!!style-loader!css-loader!./css/payments.css";
 
 export class Payments extends React.Component {
   state = {
-    showModal: true,
+    paymentModal: true,
     customer: {
       email: "mqyynm@gmail.com",
       name: "Michael",
@@ -61,6 +61,12 @@ export class Payments extends React.Component {
     tabIndex: 0
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (this.state.paymentModal !== nextProps.paymentModal) {
+      this.setState(() => ({ paymentModal: nextProps.paymentModal }));
+    }
+  }
+
   goTabOne = () => this.setState(() => ({ tabIndex: 0 }));
 
   goTabThree = () => this.setState(() => ({ tabIndex: 2 }));
@@ -84,7 +90,7 @@ export class Payments extends React.Component {
     });
 
   handleCloseModal = () => {
-    this.setState({ showModal: false });
+    this.setState({ paymentModal: false });
   };
 
   handleContinue = () => {
@@ -197,7 +203,7 @@ export class Payments extends React.Component {
 
     return (
       <ReactModal
-        isOpen={this.state.showModal}
+        isOpen={this.state.paymentModal}
         contentLabel="onRequestClose Example"
         onRequestClose={this.handleCloseModal}
         className="Modal"
@@ -260,14 +266,12 @@ export class Payments extends React.Component {
   }
 }
 
-Payments.propTypes = {
-  dispatch: PropTypes.func.isRequired
-};
+const mapStateToProps = ({ payments }) => ({
+  paymentModal: payments.paymentModal
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch
-  };
-}
+const mapDispatchToProps = dispatch => ({dispatch});
 
-export default connect(null, mapDispatchToProps)(Payments);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Payments);

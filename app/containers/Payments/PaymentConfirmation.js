@@ -2,9 +2,9 @@ import React, { PureComponent } from "react";
 import { PaymentButtons } from "components/Buttons";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
-import GooglePlayBadge from "./google.png";
-import AppleBadge from "./apple.png";
-import "!!style-loader!css-loader!./payment-confirmation.css";
+import GooglePlayBadge from "./images/google.png";
+import AppleBadge from "./images/apple.png";
+import "!!style-loader!css-loader!./css/payment-confirmation.css";
 
 export class PaymentConfirmation extends PureComponent {
   render() {

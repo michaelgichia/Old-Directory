@@ -4,7 +4,10 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/Payments/DEFAULT_ACTION';
+import { asyncActionType } from "utils/helperFunctions";
+
+// Action Types
+export const PAYMENTS_MODAL = asyncActionType("PAYMENTS_MODAL");
 
 
 /*
