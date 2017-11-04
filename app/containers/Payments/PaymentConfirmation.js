@@ -39,7 +39,7 @@ export class PaymentConfirmation extends PureComponent {
                   <img src={GooglePlayBadge} alt="play store badge" />
                 </a>
                 <a className="play-store" href="#">
-                  <img src={AppleBadge} alt="app store badge"/>
+                  <img src={AppleBadge} alt="app store badge" />
                 </a>
               </div>
             </div>
@@ -59,6 +59,7 @@ export class PaymentConfirmation extends PureComponent {
               id="nextOne"
               bsKlass="primary shadow"
               label="CONTINUE SHOPPING"
+              onClick={this.props.handleCloseModal}
             />
           </div>
         </TabsBottomWrap>
@@ -66,5 +67,9 @@ export class PaymentConfirmation extends PureComponent {
     );
   }
 }
+
+PaymentConfirmation.proptypes = {
+  handleCloseModal: React.PropTypes.func.isRequired
+};
 
 export default PaymentConfirmation;

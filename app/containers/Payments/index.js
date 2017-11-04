@@ -252,7 +252,7 @@ export class Payments extends React.Component {
             />
           </TabPanel>
           <TabPanel>
-            <PaymentConfirmation />
+            <PaymentConfirmation handleCloseModal={this.handleCloseModal} />
           </TabPanel>
         </Tabs>
       </ReactModal>
