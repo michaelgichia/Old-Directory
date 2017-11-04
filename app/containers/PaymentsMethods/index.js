@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import classnames from "classnames";
 import PaymentCheckbox from "components/PaymentCheckbox";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -16,18 +17,28 @@ import "!!style-loader!css-loader!./payments-methods.css";
 
 export class PaymentsMethods extends Component {
   state = {
-    mpesaPage: 1
+    mpesaPage: 1,
+    mpesaInitiated: false,
   };
+
+  componentDidMount() {
+    this.selectedTab.node.classList.remove("pm__tab--selected");
+  }
 
   onBlur = () => {};
 
   handleCustomerInfo = () => {};
 
+  handleMpesaClick = () => {
+    this.selectedTab.node.classList.add("pm__tab--selected");
+    this.setState({mpesaInitiated: true})
+  }
+
   handleNextPage = () =>
     this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1 }));
 
   render() {
-    const { mpesaPage } = this.state;
+    const { mpesaPage, mpesaInitiated } = this.state;
     return (
       <div>
         <TabsBodyWrap>
@@ -36,13 +47,13 @@ export class PaymentsMethods extends Component {
         <Tabs>
           <TabsBodyWrap>
             <TabList className="pm__tab-list">
-              <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
+              <Tab ref={ele => this.selectedTab = ele} className="pm__tabs" selectedClassName="pm__tab--selected">
                 <PaymentCheckbox
                   id="mobile-payment"
-                  onClick={() => console.log("Mobile")}
+                  onChange={this.handleMpesaClick}
                   placeholder="Mobile money/M-pesa"
                   wrapKlass=""
-                  defaultChecked={true}
+                  defaultChecked={false}
                 />
               </Tab>
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
@@ -58,7 +69,7 @@ export class PaymentsMethods extends Component {
           </TabsBodyWrap>
           <TabPanel>
             {mpesaPage === 1 ? (
-              <MpesaPush onClick={this.handleNextPage} />
+              <MpesaPush onClick={this.handleNextPage} mpesaInitiated={mpesaInitiated} />
             ) : (
               <MpesaPayBill />
             )}

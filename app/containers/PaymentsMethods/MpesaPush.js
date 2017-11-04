@@ -23,9 +23,9 @@ export class MpesaPush extends PureComponent {
               <p>
                 Check your phone and follow the instructions on your screen.
               </p>
-              <p>
-                If nothing appears in the next 10 seconds,<a onClick={this.props.onClick}>click here</a>
-              </p>
+              {this.props.mpesaInitiated
+                ? <p>If nothing appears in the next 10 seconds,<a onClick={this.props.onClick}>click here</a></p>
+                : <p />}
             </div>
             <div>
               <img src={MpesaPushImage} alt="" />
