@@ -373,7 +373,6 @@ export class EventBuyTicket extends React.PureComponent {
                 </div>
               </div>
             </div>
-            <Payments />
           </div>
         </div>
       </div>
