@@ -1,7 +1,9 @@
 .mpesa-push-wrap p:first-of-type {
   color: #b3afaf;
-  padding-bottom: 20px;
-  font-size: 13px;
+  padding-bottom: 8px;
+  font-size: 14px;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
 }
 
 .mpesa-push-wrap p ~ p {
@@ -20,10 +22,12 @@
   text-decoration: none;
 }
 
+.mpesa-push-wrap p:nth-child(3n) a,
 .mpesa-push-wrap p:nth-child(3n) a:visited,
 .mpesa-push-wrap p:nth-child(3n) a:focus,
 .mpesa-push-wrap p:nth-child(3n) a:active {
   color: #4fa5e6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -53,7 +57,7 @@
   }
 
   .mpesa-push-wrap p:first-of-type {
-    font-size: 14px;
+    padding-bottom: 20px;
   }
 }
 
@@ -65,7 +69,12 @@
   }
 
   .mpesa-push-wrap p:first-of-type {
-    font-size: 13px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+  }
+
+  .mpesa-push-wrap p:last-child {
+    margin-top: 24px;
   }
 
   .mpesa-push-wrap div {

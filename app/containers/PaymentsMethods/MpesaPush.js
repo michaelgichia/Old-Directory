@@ -24,12 +24,7 @@ export class MpesaPush extends PureComponent {
                 Check your phone and follow the instructions on your screen.
               </p>
               <p>
-                If nothing appears in the next 10 seconds,<a
-                  href="#"
-                  onClick={this.props.onClick}
-                >
-                  click here
-                </a>
+                If nothing appears in the next 10 seconds,<a onClick={this.props.onClick}>click here</a>
               </p>
             </div>
             <div>
