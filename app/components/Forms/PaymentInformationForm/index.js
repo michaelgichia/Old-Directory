@@ -14,27 +14,28 @@ import "!!!style-loader!css-loader!./payment-information.css";
 
 export default class PaymentInformationForm extends PureComponent {
   render() {
+    const { name, phone_number, email, confirmEmail } = this.props.customer;
+
     const {
-      name,
-      phone_number,
-      email,
-      confirmEmail,
       location,
       streetAddress,
       apartment,
       deliveryCost
-    } = this.props.customer;
+    } = this.props.deliveryInfomation;
+
+    const {
+      locationError,
+      streetAddressError,
+      apartmentError,
+      deliveryCostError
+    } = this.props.deliveryInfomationErrors;
 
     const {
       emailError,
       phone_numberError,
       confirmEmailError,
-      nameError,
-      locationError,
-      streetAddressError,
-      apartmentError,
-      deliveryCostError
-    } = this.props.inputErrors;
+      nameError
+    } = this.props.customerErrors;
 
     return (
       <div>
@@ -102,8 +103,8 @@ export default class PaymentInformationForm extends PureComponent {
                 placeholder=""
                 wrapClass="payment-input"
                 inputError={locationError}
-                onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "location")}
+                onChange={this.props.handleDeliveryInfomation}
+                onBlur={() => {}}
                 value={location}
                 type="text"
                 required={true}
@@ -114,8 +115,8 @@ export default class PaymentInformationForm extends PureComponent {
                 placeholder=""
                 wrapClass="payment-input"
                 inputError={streetAddressError}
-                onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "streetAddress")}
+                onChange={this.props.handleDeliveryInfomation}
+                onBlur={() => {}}
                 value={streetAddress}
                 type="text"
                 required={true}
@@ -128,8 +129,8 @@ export default class PaymentInformationForm extends PureComponent {
                 placeholder=""
                 wrapClass="payment-input"
                 inputError={apartmentError}
-                onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "apartment")}
+                onChange={this.props.handleDeliveryInfomation}
+                onBlur={() => {}}
                 value={apartment}
                 type="text"
                 required={true}
@@ -140,8 +141,8 @@ export default class PaymentInformationForm extends PureComponent {
                 placeholder="KSH. 00.00"
                 wrapClass="payment-input"
                 inputError={deliveryCostError}
-                onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "deliveryCost")}
+                onChange={this.props.handleDeliveryInfomation}
+                onBlur={() => {}}
                 value={deliveryCost}
                 type="text"
                 required={true}
@@ -162,6 +163,7 @@ export default class PaymentInformationForm extends PureComponent {
               id="nextOne"
               bsKlass="primary shadow"
               label="CONTINUE"
+              onClick={this.props.handleContinue}
             />
           </div>
         </TabsBottomWrap>

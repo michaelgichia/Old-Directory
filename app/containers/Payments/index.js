@@ -22,7 +22,9 @@ export class Payments extends React.Component {
       email: "mqyynm@gmail.com",
       name: "Michael",
       phone_number: "254701872069",
-      confirmEmail: "mqyynm@gmail.com",
+      confirmEmail: "mqyynm@gmail.com"
+    },
+    deliveryInfomation: {
       location: "Nairobi",
       streetAddress: "Kasarani",
       apartment: "Israel",
@@ -38,11 +40,13 @@ export class Payments extends React.Component {
     //   apartment: "",
     //   deliveryCost: ""
     // },
-    inputErrors: {
+    customerErrors: {
       emailError: "",
       phone_numberError: "",
       confirmEmailError: "",
-      nameError: "",
+      nameError: ""
+    },
+    deliveryInfomationErrors: {
       locationError: "",
       streetAddressError: "",
       apartmentError: "",
@@ -54,6 +58,14 @@ export class Payments extends React.Component {
   handleCustomerInfo = e =>
     this.setState({
       customer: { ...this.state.customer, [e.target.id]: e.target.value }
+    });
+
+  handleDeliveryInfomation = e =>
+    this.setState({
+      deliveryInfomation: {
+        ...this.state.deliveryInfomation,
+        [e.target.id]: e.target.value
+      }
     });
 
   handleCloseModal = () => {
@@ -74,23 +86,23 @@ export class Payments extends React.Component {
 
   onBlur = (e, name) => {
     e.persist();
-    const { inputErrors } = this.state;
+    const { customerErrors } = this.state;
     const { value } = e.target;
     const requiredFields = ["name", "confirmEmail", "phone_number", "email"];
 
     if (requiredFields.indexOf(name) > -1 && value.length < 1) {
       this.setState(() => ({
-        inputErrors: {
-          ...inputErrors,
+        customerErrors: {
+          ...customerErrors,
           [`${name}Error`]: "You can't leave this empty."
         }
       }));
     } else {
       this.setState(() => ({
-        inputErrors: InputConstants[name]["regex"].test(value)
-          ? { ...inputErrors, [`${name}Error`]: "" }
+        customerErrors: InputConstants[name]["regex"].test(value)
+          ? { ...customerErrors, [`${name}Error`]: "" }
           : {
-              ...inputErrors,
+              ...customerErrors,
               [`${name}Error`]: InputConstants[name].error
             }
       }));
@@ -98,28 +110,28 @@ export class Payments extends React.Component {
   };
 
   handleConfirmEmail = (email, confirmEmail) => {
-    const { inputErrors } = this.state;
+    const { customerErrors } = this.state;
     if (confirmEmail.length < 1) {
       this.setState(() => ({
-        inputErrors: {
-          ...inputErrors,
+        customerErrors: {
+          ...customerErrors,
           confirmEmailError: "You can't leave this empty."
         }
       }));
     } else {
       this.setState(() => ({
-        inputErrors:
+        customerErrors:
           email === confirmEmail
-            ? { ...inputErrors, confirmEmailError: "" }
-            : { ...inputErrors, confirmEmailError: "Emails don't match." }
+            ? { ...customerErrors, confirmEmailError: "" }
+            : { ...customerErrors, confirmEmailError: "Emails don't match." }
       }));
     }
   };
 
   handleTabsSwitch = (tabIndex, lastIndex, e) => {
     e.persist();
-    const { customer, inputErrors } = this.state;
-    if (lastIndex === 0 && this.disableBtn(customer, inputErrors)) {
+    const { customer, customerErrors } = this.state;
+    if (lastIndex === 0 && this.disableBtn(customer, customerErrors)) {
       this.setState(() => ({ tabIndex }));
     } else if (lastIndex === 1 || lastIndex === 2) {
       this.setState(() => ({ tabIndex }));
@@ -129,17 +141,17 @@ export class Payments extends React.Component {
   handlePaymentMethod = () => this.setState(() => ({ tabIndex: 1 }));
 
   handleEmptyCustomerInfo = () => {
-    const { customer, inputErrors } = this.state;
-    const inputerrors = { ...inputErrors };
+    const { customer, customerErrors } = this.state;
+    const newCustomerErrors = { ...customerErrors };
     Object.entries(customer).forEach(([key, value]) => {
       if (value.length < 1) {
-        inputerrors[`${key}Error`] = "You can't leave this empty.";
+        newCustomerErrors[`${key}Error`] = "You can't leave this empty.";
       }
     });
-    this.setState(() => ({ inputErrors: inputerrors, disabled: true }));
+    this.setState(() => ({ customerErrors: newCustomerErrors }));
   };
 
-  disableBtn = (customer, inputErrors) => {
+  disableBtn = (customer, customerErrors) => {
     let res = 0;
     Object.entries(customer).forEach(([key, value]) => {
       if (value.length < 1) {
@@ -148,7 +160,7 @@ export class Payments extends React.Component {
         res;
       }
     });
-    Object.entries(inputErrors).forEach(([key, value]) => {
+    Object.entries(customerErrors).forEach(([key, value]) => {
       if (value.length > 1) {
         res += 1;
       } else {
@@ -159,7 +171,13 @@ export class Payments extends React.Component {
   };
 
   render() {
-    const { customer, inputErrors, tabIndex } = this.state;
+    const {
+      customer,
+      customerErrors,
+      tabIndex,
+      deliveryInfomation,
+      deliveryInfomationErrors
+    } = this.state;
 
     return (
       <ReactModal
@@ -195,11 +213,14 @@ export class Payments extends React.Component {
             <PaymentInformationForm
               customer={customer}
               onBlur={this.onBlur}
-              inputErrors={inputErrors}
-              handleConfirmEmail={this.handleConfirmEmail}
+              customerErrors={customerErrors}
+              deliveryInfomation={deliveryInfomation}
               handleCustomerInfo={this.handleCustomerInfo}
+              handleConfirmEmail={this.handleConfirmEmail}
+              deliveryInfomationErrors={deliveryInfomationErrors}
+              handleDeliveryInfomation={this.handleDeliveryInfomation}
               handleContinue={
-                !this.disableBtn(customer, inputErrors)
+                !this.disableBtn(customer, customerErrors)
                   ? this.handleEmptyCustomerInfo
                   : this.handlePaymentMethod
               }
