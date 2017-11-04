@@ -62,7 +62,6 @@ export class Payments extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    console.log({ nextProps });
     if (this.state.paymentModal !== nextProps.paymentModal) {
       this.setState(() => ({ paymentModal: nextProps.paymentModal }));
     }
