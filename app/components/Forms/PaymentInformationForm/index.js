@@ -162,6 +162,7 @@ export default class PaymentInformationForm extends PureComponent {
               id="nextOne"
               bsKlass="primary shadow"
               label="CONTINUE"
+              onClick={this.props.handleContinue}
             />
           </div>
         </TabsBottomWrap>

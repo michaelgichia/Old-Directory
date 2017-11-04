@@ -28,6 +28,16 @@ export class Payments extends React.Component {
       apartment: "Israel",
       deliveryCost: 1000
     },
+    // customer: {
+    //   email: "",
+    //   name: "",
+    //   phone_number: "",
+    //   confirmEmail: "",
+    //   location: "",
+    //   streetAddress: "",
+    //   apartment: "",
+    //   deliveryCost: ""
+    // },
     inputErrors: {
       emailError: "",
       phone_numberError: "",
@@ -37,7 +47,8 @@ export class Payments extends React.Component {
       streetAddressError: "",
       apartmentError: "",
       deliveryCostError: ""
-    }
+    },
+    tabIndex: 0
   };
 
   handleCustomerInfo = e =>
@@ -47,6 +58,18 @@ export class Payments extends React.Component {
 
   handleCloseModal = () => {
     this.setState({ showModal: false });
+  };
+
+  handleContinue = () => {
+    const { customer } = this.state;
+    Object.entries(customer).forEach(([key, value]) => {
+      if (value.length < 1) {
+        res = false;
+      } else {
+        res = true;
+      }
+    });
+    return res;
   };
 
   onBlur = (e, name) => {
@@ -93,8 +116,50 @@ export class Payments extends React.Component {
     }
   };
 
-  render() {
+  handleTabsSwitch = (tabIndex, lastIndex, e) => {
+    e.persist();
     const { customer, inputErrors } = this.state;
+    if (lastIndex === 0 && this.disableBtn(customer, inputErrors)) {
+      this.setState(() => ({ tabIndex }));
+    } else if (lastIndex === 1 || lastIndex === 2) {
+      this.setState(() => ({ tabIndex }));
+    }
+  };
+
+  handlePaymentMethod = () => this.setState(() => ({ tabIndex: 1 }));
+
+  handleEmptyCustomerInfo = () => {
+    const { customer, inputErrors } = this.state;
+    const inputerrors = { ...inputErrors };
+    Object.entries(customer).forEach(([key, value]) => {
+      if (value.length < 1) {
+        inputerrors[`${key}Error`] = "You can't leave this empty.";
+      }
+    });
+    this.setState(() => ({ inputErrors: inputerrors, disabled: true }));
+  };
+
+  disableBtn = (customer, inputErrors) => {
+    let res = 0;
+    Object.entries(customer).forEach(([key, value]) => {
+      if (value.length < 1) {
+        res += 1;
+      } else {
+        res;
+      }
+    });
+    Object.entries(inputErrors).forEach(([key, value]) => {
+      if (value.length > 1) {
+        res += 1;
+      } else {
+        res;
+      }
+    });
+    return res < 1;
+  };
+
+  render() {
+    const { customer, inputErrors, tabIndex } = this.state;
 
     return (
       <ReactModal
@@ -103,12 +168,28 @@ export class Payments extends React.Component {
         onRequestClose={this.handleCloseModal}
         className="Modal"
         overlayClassName="Overlay"
+        aria={{
+          labelledby: "Checkout Form",
+          describedby: "This is checkout form with an mpesa and card options."
+        }}
       >
-        <Tabs className="py__tabs">
+        <Tabs
+          className="py__tabs"
+          defaultFocus
+          selectedIndex={this.state.tabIndex}
+          onSelect={(tabIndex, lastIndex, e) =>
+            this.handleTabsSwitch(tabIndex, lastIndex, e)}
+        >
           <TabList className="py__tab-list">
-            <Tab className="py__tab">Information</Tab>
-            <Tab className="py__tab">Payment</Tab>
-            <Tab className="py__tab">Confirmation</Tab>
+            <Tab className="py__tab" tabIndex="0">
+              Information
+            </Tab>
+            <Tab className="py__tab" tabIndex="1">
+              Payment
+            </Tab>
+            <Tab className="py__tab" tabIndex="2">
+              Confirmation
+            </Tab>
           </TabList>
           <TabPanel>
             <PaymentInformationForm
@@ -117,6 +198,11 @@ export class Payments extends React.Component {
               inputErrors={inputErrors}
               handleConfirmEmail={this.handleConfirmEmail}
               handleCustomerInfo={this.handleCustomerInfo}
+              handleContinue={
+                !this.disableBtn(customer, inputErrors)
+                  ? this.handleEmptyCustomerInfo
+                  : this.handlePaymentMethod
+              }
             />
           </TabPanel>
           <TabPanel>

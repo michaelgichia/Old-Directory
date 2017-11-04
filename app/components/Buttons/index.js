@@ -7,9 +7,9 @@ import "!!style-loader!css-loader!./button.css";
 */
 export class PaymentButtons extends React.PureComponent {
   render() {
-    const { id, bsKlass, label } = this.props;
+    const { id, bsKlass, label, onClick } = this.props;
     return (
-      <button className={`mookh-btn mookh-btn-wd ${bsKlass}`} id={id}>
+      <button onClick={onClick} className={`mookh-btn mookh-btn-wd ${bsKlass}`} id={id}>
         {label}
       </button>
     );
@@ -56,5 +56,6 @@ PaymentButtons.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
   bsKlass: PropTypes.string,
-  handleGlowBtn: PropTypes.func
+  handleGlowBtn: PropTypes.func,
+  onClick: React.PropTypes.func
 };
