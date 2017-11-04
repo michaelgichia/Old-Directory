@@ -9,7 +9,7 @@ import {
 } from './constants';
 
 const initialState = {
-  paymentsModal: false,
+  paymentModal: false,
 };
 
 function paymentsReducer(state = initialState, action) {
@@ -17,12 +17,12 @@ function paymentsReducer(state = initialState, action) {
     case PAYMENTS_MODAL.SUCCESS:
       return {
         ...state,
-        paymentsModal: true
+        paymentModal: true
       };
     case PAYMENTS_MODAL.ERROR:
       return {
         ...state,
-        paymentsModal: false
+        paymentModal: false
       };
     default:
       return state;

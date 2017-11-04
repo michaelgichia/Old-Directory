@@ -17,7 +17,7 @@ import "!!style-loader!css-loader!./css/payments.css";
 
 export class Payments extends React.Component {
   state = {
-    paymentModal: true,
+    paymentModal: false,
     customer: {
       email: "mqyynm@gmail.com",
       name: "Michael",
@@ -62,6 +62,7 @@ export class Payments extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    console.log({ nextProps });
     if (this.state.paymentModal !== nextProps.paymentModal) {
       this.setState(() => ({ paymentModal: nextProps.paymentModal }));
     }
@@ -206,8 +207,8 @@ export class Payments extends React.Component {
         isOpen={this.state.paymentModal}
         contentLabel="onRequestClose Example"
         onRequestClose={this.handleCloseModal}
-        className="Modal"
-        overlayClassName="Overlay"
+        className="py-modal"
+        overlayClassName="py-overlay"
         aria={{
           labelledby: "Checkout Form",
           describedby: "This is checkout form with an mpesa and card options."
@@ -270,8 +271,6 @@ const mapStateToProps = ({ payments }) => ({
   paymentModal: payments.paymentModal
 });
 
-const mapDispatchToProps = dispatch => ({dispatch});
+const mapDispatchToProps = dispatch => ({ dispatch });
 
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Payments);
+export default connect(mapStateToProps, null)(Payments);

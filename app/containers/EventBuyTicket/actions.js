@@ -5,7 +5,7 @@
  */
 
 import axios from "axios";
-import { baseEventAPI, ordersPayAPI, EVENT, ORDERS_PAY } from "./constants";
+import { baseEventAPI, ordersPayAPI, EVENT, ORDERS_PAY, PAYMENTS_MODAL } from "./constants";
 
 export const fetchEvent = eventId => dispatch => {
   axios.get(`${baseEventAPI}/${eventId}`).then(res => {
@@ -23,7 +23,7 @@ export const fetchEvent = eventId => dispatch => {
   });
 };
 
-export const hadleOrdersPayment = info => dispatch => {
+export const handleOrdersPayment = info => dispatch => {
   axios.post(ordersPayAPI, info).then( res => {
     if (res.status === 200) {
       dispatch({
@@ -35,4 +35,16 @@ export const hadleOrdersPayment = info => dispatch => {
       })
     }
   })
+}
+
+export function openModal() {
+  return {
+    type: PAYMENTS_MODAL.SUCCESS,
+  };
+}
+
+export function closeModal() {
+  return {
+    type: PAYMENTS_MODAL.ERROR,
+  };
 }

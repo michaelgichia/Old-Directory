@@ -6,13 +6,14 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import Payments from "containers/Payments";
 import LoadingSpinner from "components/LoadingSpinner";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
-import { fetchEvent, hadleOrdersPayment } from "./actions";
+import { fetchEvent, handleOrdersPayment, openModal, closeModal } from "./actions";
 import {
   phonenumberValidate,
   nameValidate,
@@ -199,7 +200,7 @@ export class EventBuyTicket extends React.PureComponent {
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
-    // this.props.hadleOrdersPayment(extraInfo);
+    // this.props.handleOrdersPayment(extraInfo);
   };
 
   render() {
@@ -241,6 +242,7 @@ export class EventBuyTicket extends React.PureComponent {
         />
 
         <EventMenuBar pathname={pathname} eventId={event.id} />
+
 
         <div className="ticket-description-wrap">
           <div className="desktop grid-33">
@@ -367,10 +369,11 @@ export class EventBuyTicket extends React.PureComponent {
                   >
                     MOBILE PAYMENT
                   </button>
-                  <button className="payment-button">CARD PAYMENT</button>
+                  <button onClick={this.props.openModal} className="payment-button">CARD PAYMENT</button>
                 </div>
               </div>
             </div>
+            <Payments />
           </div>
         </div>
       </div>
@@ -384,7 +387,9 @@ const mapStateToProps = ({ buyTicket }) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId)),
-  hadleOrdersPayment: info => dispatch(hadleOrdersPayment(info))
+  handleOrdersPayment: info => dispatch(handleOrdersPayment(info)),
+  openModal: () => dispatch(openModal()),
+  closeModal: () => dispatch(closeModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventBuyTicket);
