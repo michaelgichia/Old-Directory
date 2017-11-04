@@ -23,9 +23,13 @@ export class MpesaPush extends PureComponent {
               <p>
                 Check your phone and follow the instructions on your screen.
               </p>
-              {this.props.mpesaInitiated
-                ? <p>If nothing appears in the next 10 seconds,<a onClick={this.props.onClick}>click here</a></p>
-                : <p />}
+              {this.props.mpesaInitiated ? (
+                <p>
+                  If nothing appears in the next 10 seconds,<a onClick={this.props.goToPayBill}>click here</a>
+                </p>
+              ) : (
+                <p />
+              )}
             </div>
             <div>
               <img src={MpesaPushImage} alt="" />
@@ -37,11 +41,18 @@ export class MpesaPush extends PureComponent {
             id="store"
             bsKlass=""
             label="PREVIOUS"
+            onClick={this.props.goTabOne}
           />
         </TabsBottomWrap>
       </div>
     );
   }
 }
+
+MpesaPush.proptypes = {
+  goTabOne: React.PropTypes.func.isRequired,
+  mpesaInitiated: React.PropTypes.bool.isRequired,
+  goToPayBill: React.PropTypes.func.isRequired
+};
 
 export default MpesaPush;

@@ -6,7 +6,7 @@
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import classnames from "classnames";
+import classNames from "classnames";
 import PaymentCheckbox from "components/PaymentCheckbox";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import TabsBodyWrap from "components/TabsBodyWrap";
@@ -18,27 +18,23 @@ import "!!style-loader!css-loader!./payments-methods.css";
 export class PaymentsMethods extends Component {
   state = {
     mpesaPage: 1,
-    mpesaInitiated: false,
+    mpesaInitiated: false
   };
-
-  componentDidMount() {
-    this.selectedTab.node.classList.remove("pm__tab--selected");
-  }
 
   onBlur = () => {};
 
   handleCustomerInfo = () => {};
 
-  handleMpesaClick = () => {
-    this.selectedTab.node.classList.add("pm__tab--selected");
-    this.setState({mpesaInitiated: true})
-  }
+  handleMpesaClick = () => this.setState({ mpesaInitiated: true });
+
+  goMpesaPush = () => this.setState(() => ({ mpesaPage: 1 }));
 
   handleNextPage = () =>
     this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1 }));
 
   render() {
     const { mpesaPage, mpesaInitiated } = this.state;
+    const tabClassnames = classNames({ "pm__tab--selected": mpesaInitiated });
     return (
       <div>
         <TabsBodyWrap>
@@ -47,7 +43,7 @@ export class PaymentsMethods extends Component {
         <Tabs>
           <TabsBodyWrap>
             <TabList className="pm__tab-list">
-              <Tab ref={ele => this.selectedTab = ele} className="pm__tabs" selectedClassName="pm__tab--selected">
+              <Tab className="pm__tabs" selectedClassName={tabClassnames}>
                 <PaymentCheckbox
                   id="mobile-payment"
                   onChange={this.handleMpesaClick}
@@ -69,15 +65,25 @@ export class PaymentsMethods extends Component {
           </TabsBodyWrap>
           <TabPanel>
             {mpesaPage === 1 ? (
-              <MpesaPush onClick={this.handleNextPage} mpesaInitiated={mpesaInitiated} />
+              <MpesaPush
+                goTabOne={this.props.goTabOne}
+                goToPayBill={this.handleNextPage}
+                mpesaInitiated={mpesaInitiated}
+              />
             ) : (
-              <MpesaPayBill />
+              <MpesaPayBill
+                goMpesaPush={this.goMpesaPush}
+                goTabThree={this.props.goTabThree}
+              />
             )}
           </TabPanel>
           <TabPanel>
             <CardForm
               onBlur={this.onBlur}
-              handleCustomerInfo={this.handleCustomerInfo}
+              cardInfo={this.props.cardInfo}
+              goTabOne={this.props.goTabOne}
+              handleCardInfo={this.props.handleCardInfo}
+              handleCustomerInfo={this.props.handleCustomerInfo}
             />
           </TabPanel>
         </Tabs>

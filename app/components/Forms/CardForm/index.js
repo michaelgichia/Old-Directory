@@ -13,6 +13,8 @@ import "!!style-loader!css-loader!./card-form.css";
 
 export default class CardForm extends PureComponent {
   render() {
+    const { cardNumber, cvc, currency, expiresOn } = this.props.cardInfo;
+
     return (
       <div>
         <TabsBodyWrap>
@@ -20,12 +22,12 @@ export default class CardForm extends PureComponent {
             <div className="cd-row">
               <MookhInput
                 labelName="Card number"
-                id="card-number"
+                id="cardNumber"
                 placeholder="0000"
-                onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "name")}
-                value=""
-                required={true}
+                onChange={this.props.handleCardInfo}
+                onBlur={e => this.props.onBlur(e, "cardNumber")}
+                value={cardNumber}
+                required={false}
                 wrapClass="cd-payment-input"
                 inputError=""
                 type="number"
@@ -35,22 +37,22 @@ export default class CardForm extends PureComponent {
                   labelName="CVC"
                   id="cvc"
                   placeholder=""
-                  onChange={this.props.handleCustomerInfo}
-                  onBlur={e => this.props.onBlur(e, "name")}
-                  value=""
-                  required={true}
+                  onChange={this.props.handleCardInfo}
+                  onBlur={e => this.props.onBlur(e, "cvc")}
+                  value={cvc}
+                  required={false}
                   wrapClass="cvc"
                   inputError=""
-                  type="tel"
+                  type="number"
                 />
                 <MookhInput
                   labelName="Currency"
                   id="currency"
                   placeholder="USD"
-                  onChange={this.props.handleCustomerInfo}
-                  onBlur={e => this.props.onBlur(e, "name")}
-                  value=""
-                  required={true}
+                  onChange={this.props.handleCardInfo}
+                  onBlur={e => this.props.onBlur(e, "currency")}
+                  value={currency}
+                  required={false}
                   wrapClass="cvc"
                   inputError=""
                   type="number"
@@ -60,19 +62,19 @@ export default class CardForm extends PureComponent {
             <div className="cd-row">
               <MookhInput
                 labelName="Expires on"
-                id="expires-on"
+                id="expiresOn"
                 placeholder="MM/YY"
                 wrapClass="cd-payment-input"
-                onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "name")}
-                value=""
-                required={true}
+                onChange={this.props.handleCardInfo}
+                onBlur={e => this.props.onBlur(e, "expiresOn")}
+                value={expiresOn}
+                required={false}
                 inputError=""
-                type="email"
+                type="number"
               />
               <div className="cd-payment-input total">
                 <span>Total:</span>
-                <span>$165.99</span>
+                <span>$00.00</span>
               </div>
             </div>
           </form>
@@ -83,6 +85,7 @@ export default class CardForm extends PureComponent {
               id="store"
               bsKlass=""
               label="PREVIOUS"
+              onClick={this.props.goTabOne}
             />
           </div>
           <div>
@@ -90,6 +93,7 @@ export default class CardForm extends PureComponent {
               id="nextOne"
               bsKlass="primary shadow"
               label="CONTINUE"
+              onClick={this.props.goTabThree}
             />
           </div>
         </TabsBottomWrap>
@@ -97,3 +101,11 @@ export default class CardForm extends PureComponent {
     );
   }
 }
+
+CardForm.proptypes = {
+  cardInfo: React.PropTypes.object.isRequired,
+  handleCardInfo: React.PropTypes.func.isRequired,
+  onBlur: React.PropTypes.func.isRequired,
+  goTabOne: React.PropTypes.func.isRequired,
+  goTabThree: React.PropTypes.func.isRequired
+};

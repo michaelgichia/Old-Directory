@@ -48,6 +48,7 @@ export class MpesaPayBill extends PureComponent {
               id="store"
               bsKlass=""
               label="PREVIOUS"
+              onClick={this.props.goMpesaPush}
             />
           </div>
           <div>
@@ -55,12 +56,18 @@ export class MpesaPayBill extends PureComponent {
               id="nextOne"
               bsKlass="primary shadow"
               label="CONTINUE"
+              onClick={this.props.goTabThree}
             />
           </div>
         </TabsBottomWrap>
       </div>
     );
   }
+}
+
+MpesaPayBill.proptypes = {
+  goMpesaPush: React.PropTypes.func.isRequired,
+  goTabThree: React.PropTypes.func.isRequired
 }
 
 export default MpesaPayBill;

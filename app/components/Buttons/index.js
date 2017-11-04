@@ -21,12 +21,13 @@ export class PaymentButtons extends React.PureComponent {
 */
 export class BackButton extends React.PureComponent {
   render() {
-    const { id, bsKlass, label } = this.props;
+    const { id, bsKlass, label, onClick } = this.props;
     return (
       <button
         className={`mookh-btn back-btn ${bsKlass}`}
         id={id}
         style={{ verticalAlign: "middle" }}
+        onClick={onClick}
       >
         <span> </span><span>{label}</span>
       </button>

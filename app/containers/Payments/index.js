@@ -52,8 +52,18 @@ export class Payments extends React.Component {
       apartmentError: "",
       deliveryCostError: ""
     },
+    cardInfo: {
+      cardNumber: "",
+      cvc: "",
+      currency: "",
+      expiresOn: ""
+    },
     tabIndex: 0
   };
+
+  goTabOne = () => this.setState(() => ({ tabIndex: 0 }));
+
+  goTabThree = () => this.setState(() => ({ tabIndex: 2 }));
 
   handleCustomerInfo = e =>
     this.setState({
@@ -66,6 +76,11 @@ export class Payments extends React.Component {
         ...this.state.deliveryInfomation,
         [e.target.id]: e.target.value
       }
+    });
+
+  handleCardInfo = e =>
+    this.setState({
+      cardInfo: { ...this.state.cardInfo, [e.target.id]: e.target.value }
     });
 
   handleCloseModal = () => {
@@ -172,9 +187,10 @@ export class Payments extends React.Component {
 
   render() {
     const {
+      cardInfo,
       customer,
-      customerErrors,
       tabIndex,
+      customerErrors,
       deliveryInfomation,
       deliveryInfomationErrors
     } = this.state;
@@ -215,6 +231,7 @@ export class Payments extends React.Component {
               onBlur={this.onBlur}
               customerErrors={customerErrors}
               deliveryInfomation={deliveryInfomation}
+              handleReturnToStore={this.handleCloseModal}
               handleCustomerInfo={this.handleCustomerInfo}
               handleConfirmEmail={this.handleConfirmEmail}
               deliveryInfomationErrors={deliveryInfomationErrors}
@@ -227,7 +244,12 @@ export class Payments extends React.Component {
             />
           </TabPanel>
           <TabPanel>
-            <PaymentsMethods />
+            <PaymentsMethods
+              cardInfo={cardInfo}
+              goTabOne={this.goTabOne}
+              goTabThree={this.goTabThree}
+              handleCardInfo={this.handleCardInfo}
+            />
           </TabPanel>
           <TabPanel>
             <PaymentConfirmation />

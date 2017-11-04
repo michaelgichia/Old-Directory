@@ -156,6 +156,7 @@ export default class PaymentInformationForm extends PureComponent {
               id="store"
               bsKlass="secondary shadow"
               label="RETURN TO STORE"
+              onClick={this.props.handleReturnToStore}
             />
           </div>
           <div>
