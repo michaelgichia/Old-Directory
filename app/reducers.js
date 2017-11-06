@@ -10,6 +10,7 @@ import languageProviderReducer from "containers/LanguageProvider/reducer";
 import eventPanelsReducer from "containers/EventPanels/reducer";
 import buyTicketReducer from "containers/EventBuyTicket/reducer";
 import eventInfomationReducer from "containers/EventInfomation/reducer";
+import paymentsReducer from "containers/Payments/reducer";
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -20,6 +21,7 @@ export default function createReducer(asyncReducers) {
     buyTicket: buyTicketReducer,
     eventPanels: eventPanelsReducer,
     eventInfomation: eventInfomationReducer,
+    payments: paymentsReducer,
     language: languageProviderReducer,
     ...asyncReducers
   });

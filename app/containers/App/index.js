@@ -12,6 +12,7 @@
  */
 
 import React from 'react';
+import Payments from "containers/Payments";
 import Footer from 'components/Footer';
 import '!!style-loader!css-loader!./app.css';
 
@@ -26,6 +27,7 @@ export default class App extends React.PureComponent { // eslint-disable-line re
       <div>
         <div className="main">
           {React.Children.toArray(this.props.children)}
+          <Payments />
         </div>
         <Footer />
       </div>

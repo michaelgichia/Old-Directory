@@ -73,13 +73,31 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       }
-    }, {
+    },  {
       path: '/modal',
       name: 'modalPoster',
       getComponent(location, cb) {
-        import('components/Modals/ModalPoster')
+        import('components/PaymentCheckbox')
           .then(loadModule(cb))
           .catch(errorLoading);
+      },
+    }, {
+      path: '/payments',
+      name: 'payments',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Payments/reducer'),
+          import('containers/Payments'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('payments', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
     }, {
       path: "*",

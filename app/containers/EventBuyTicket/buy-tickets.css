@@ -282,7 +282,7 @@ input.error {
     width: 50%;
   }
 
-  [type="number"] {
+  td [type="number"] {
     background-color: #f6f3ee !important;
     width: 70px;
     border-radius: 3px;
