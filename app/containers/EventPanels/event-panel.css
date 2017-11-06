@@ -1,5 +1,12 @@
 .panel-wrap {
   width: 100%;
+  background-color: #f6f3ee;
+}
+
+.panel-wrap:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .panel-container {
@@ -8,13 +15,19 @@
   font-family: "Roboto", sans-serif;
   display: block;
   float: left;
-  margin-bottom: 45px;
   background-color: #fffeff;
-  margin-right: 1.1%;
-  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-  border-radius: 4px;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transition: box-shadow .3s ease-out, transform .3s ease-out, opacity .2s ease-out;
+  -webkit-transition: box-shadow .3s ease-out, transform .3s ease-out, opacity .2s ease-out;
+}
+
+.panel-container:hover {
+  box-shadow: rgba(45, 45, 45, 0.05) 0px 2px 2px,
+    rgba(49, 49, 49, 0.05) 0px 4px 4px, rgba(42, 42, 42, 0.05) 0px 8px 8px,
+    rgba(32, 32, 32, 0.05) 0px 16px 16px, rgba(49, 49, 49, 0.05) 0px 32px 32px,
+    rgba(35, 35, 35, 0.05) 0px 64px 64px;
+  transform: translate(0, -4px)
 }
 
 .panel-img-wrap {
@@ -27,7 +40,6 @@
   background-size: cover;
   border: 1px solid #ebebeb;
 }
-
 
 .panel-img-wrap img {
   width: 100%;
@@ -42,9 +54,9 @@
   width: 50px;
   left: calc(100% - 70px);
   border-radius: 50%;
-  border-top: 1px solid  #ebebeb;
-  border-left:1px solid  #ebebeb;
-  border-right: 1px solid  #ebebeb;
+  border-top: 1px solid #ebebeb;
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
   border-bottom: 1px solid transparent;
   bottom: -10px;
   background-size: 100% 100%;
@@ -52,12 +64,11 @@
   font-size: 30px;
 }
 
-.panel-event-logo  i {
+.panel-event-logo i {
   color: #858585;
 }
 
-.panel-event-logo  i:hover
-.panel-event-logo  i:focus {
+.panel-event-logo i:hover .panel-event-logo i:focus {
   color: #343434;
 }
 
@@ -67,6 +78,7 @@
   padding-top: 24px;
   padding-right: 16px;
   padding-left: 16px;
+  padding-bottom: 8px;
   box-sizing: border-box;
 }
 
@@ -79,7 +91,7 @@
 }
 
 .panel-event-info a:nth-child(1) {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .panel-event-info div,
@@ -99,22 +111,22 @@
 a.panel-event-buy {
   display: block;
   width: 100%;
-  font-weight: 500;
-  text-align: center;
-  padding: 16px;
+  font-weight: 400;
+  text-align: left;
+  padding: 14px;
   text-decoration: none;
-  color: #31383e;
+  color: #343434;
   box-sizing: border-box;
-  border-top: 1px solid #f7f2ef;
+  border-top: 1px solid #f6f3ee;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
 }
-
+/*
 a.panel-event-buy:hover {
   background-color: rgba(0, 0, 0, 0.025);
 }
-
+*/
 .panel-event-buy i {
   margin-left: 8px;
   font-size: 14px;
@@ -122,8 +134,9 @@ a.panel-event-buy:hover {
 
 @media screen and (min-width: 1280px) {
   .panel-container {
-    width: 31%;
-    margin-left: 1.1%;
+    width: 30%;
+    margin-left: 3.32222%;
+    margin-bottom: 75px;
   }
 
   .panel-wrap-fixed {
@@ -135,8 +148,9 @@ a.panel-event-buy:hover {
   }
 
   .panel-wrap {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box;
   }
 }
 
@@ -144,6 +158,7 @@ a.panel-event-buy:hover {
   .panel-container {
     width: 31%;
     margin-left: 1.1%;
+    margin-bottom: 75px;
   }
 
   .panel-wrap-fixed {
@@ -164,6 +179,7 @@ a.panel-event-buy:hover {
   .panel-container {
     width: 45%;
     margin-left: 3%;
+    margin-bottom: 75px;
   }
 
   .panel-wrap-fixed {
@@ -184,6 +200,7 @@ a.panel-event-buy:hover {
   .panel-container {
     width: 40%;
     max-width: 40%;
+    margin-bottom: 45px;
   }
 
   .panel-container:nth-child(odd) {
@@ -210,6 +227,7 @@ a.panel-event-buy:hover {
     width: 46%;
     margin-right: 2%;
     margin-left: 2%;
+    margin-bottom: 45px;
   }
 
   .panel-wrap-fixed {
@@ -226,6 +244,7 @@ a.panel-event-buy:hover {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 45px;
   }
 
   .panel-event-logo {
@@ -255,6 +274,7 @@ a.panel-event-buy:hover {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 45px;
   }
 
   .panel-wrap-fixed {

@@ -50,9 +50,6 @@ class EventPanels extends React.PureComponent {
       >
         {events.map(event => (
           <div className="panel-container" key={event.id}>
-            <div className="panel-event-logo">
-              <Icon name="shopping basket" />
-            </div>
             <div
               className="panel-img-wrap"
               style={{ backgroundColor: `${randomColor()}` }}
