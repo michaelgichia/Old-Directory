@@ -13,34 +13,26 @@ import SiteLogo from "./site-logo.png";
 
 export class DirectoryLandingPage extends React.PureComponent {
   state = {
-    isFixedTopClass: false,
-    isFixedNavHeight: false
+    topOfNav: 0,
   };
 
   componentDidMount() {
     const directoryMain = document.querySelector(".directory-navbar");
     this.setState(() => ({ topOfNav: directoryMain.offsetTop }));
-    window.addEventListener("scroll", () =>
-      this.listenToPageScroll(directoryMain)
-    );
+    window.addEventListener("scroll", () => this.listenPageScroll());
   }
 
-  listenToPageScroll = () => {
-    if (window.scrollY >= this.state.topOfNav) {
-      this.setState(() => ({
-        isFixedNavHeight: true,
-        isFixedTopClass: true
-      }));
+  listenPageScroll = () => {
+    const nav = document.querySelector('.directory-navbar');
+    if(window.scrollY >= this.state.topOfNav) {
+      nav.classList.add("directory-fixed");
     } else {
-      this.setState(() => ({
-        isFixedTopClass: false,
-        isFixedNavHeight: false
-      }));
+      nav.classList.remove("directory-fixed");
     }
-  };
+  }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.listenToPageScroll);
+    window.removeEventListener("scroll", this.listenPageScroll);
   }
 
   render() {
@@ -68,9 +60,8 @@ export class DirectoryLandingPage extends React.PureComponent {
         <main style={{ height: "100vh" }}>
           <DirectoryNavBar
             pathname={pathname}
-            isFixedTopClass={isFixedTopClass}
           />
-          <EventPanels isFixedNavHeight={isFixedNavHeight} />
+          <EventPanels />
         </main>
       </div>
     );

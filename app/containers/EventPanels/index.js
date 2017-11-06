@@ -44,9 +44,7 @@ class EventPanels extends React.PureComponent {
     }
     return (
       <div
-        className={`panel-wrap ${isFixedNavHeight
-          ? "panel-wrap-fixed"
-          : "panel-wrap-static"}`}
+        className="panel-wrap"
       >
         {events.map(event => (
           <div className="panel-container" key={event.id}>
