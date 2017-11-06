@@ -4,7 +4,7 @@
   light-yellow: #FAEA29;
   dark-gray: #343434;
 */
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,600,700');
 
 html {
   box-sizing: border-box;
@@ -12,6 +12,12 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+:selection {
+  background-color: transparent !important;
+  color: inherit !important;
+  text-shadow: inherit !important;
 }
 
 body {
@@ -30,6 +36,10 @@ h1, h2, h3, h4, h5 {
   line-height: 18px;
   padding: 0;
   margin: 0;
+}
+
+:focus {
+    outline: none;
 }
 
 button {
@@ -69,6 +79,88 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 1s, visibility 0s 1s;
   -webkit-transition: opacity 1s, visibility 0s 1s;
   -moz-transition:  opacity 1s, visibility 0s 1s;
+}
+
+/* Button States
+=========================================================*/
+.shadow:hover {
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 15px 0 rgba(0,0,0,.1);
+  transform: translateY(-1px);
+}
+
+/* Mookh Button - Least styles for mookh button
+===========================================================*/
+
+.mookh-btn {
+  position: relative;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 14px;
+  text-align: center;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+ .mookh-btn-wd {
+    width: 180px;
+ }
+}
+
+@media screen and (max-width: 768px) {
+  .mookh-btn-wd {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}
+
+/* Primary button - Yellow coloured button
+=====================================================*/
+
+.primary {
+  background-color: #ffd120;
+  border: 1px solid #ffd120;
+  color: #343434;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.05);
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.05);
+}
+
+.primary:active {
+  background-color: #A38615;
+}
+
+/* Secondary Button - White background button.
+===============================================================*/
+.secondary {
+  background-color: #ffffff;
+  border: 1px solid #807d7d;
+  color: #343434;
+  border-radius: 4px;
+}
+
+.secondary:hover {
+  background-color: #f6f3ee;
+  color: black;
+}
+.secondary:active {
+  background-color: #b3afaf;
+}
+
+/* Form headers
+==========================================*/
+.payment-header {
+  font-size: 14px;
+  color: #b3afaf;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid #f6f3ee;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
 }
 
 

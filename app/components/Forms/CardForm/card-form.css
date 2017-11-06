@@ -1,0 +1,52 @@
+@media screen and (min-width: 768px) {
+  .cd-payment-input {
+    width: calc(50% - 16px);
+    float: left;
+  }
+
+  .cvc {
+    width: calc(50% - 16px);
+    float: left;
+  }
+
+  .cvc:first-of-type {
+    margin-right: 32px;
+  }
+
+  .cvc:first-of-type label:after {
+    content: "What is CVC?";
+    font-size: 13px;
+    float: right;
+    padding-right: 8px;
+    cursor: pointer;
+    font-weight: 400;
+  }
+
+  .cd-payment-input:first-child {
+    margin-right: 32px;
+  }
+
+  .total {
+    margin-top: 32px;
+    margin-bottom: 0px;
+  }
+
+  .total span {
+    width: calc(50% - 16px);
+    float: left;
+  }
+
+  .total span:last-of-type {
+    margin-left: 32px;
+    text-align: right;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .total span:first-of-type {
+    color: #b3afaf;
+    font-weight: 500;
+  }
+
+}
+

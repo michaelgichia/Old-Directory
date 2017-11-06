@@ -1,0 +1,126 @@
+.confirmation-wrap span:first-of-type {
+  letter-spacing: 0.5px;
+  color: #343434;
+  display: block;
+  font-weight: 700;
+}
+
+.confirmation-wrap svg {
+  height: 16px;
+  margin-left: 16px;
+}
+
+.confirmation-wrap p {
+  color: #b3afaf;
+  font-size: 14px;
+}
+
+.confirmation-wrap p:nth-child(3) {
+  margin-bottom: 16px;
+}
+
+.feedback-wrap p {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.feedback-wrap {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Small Screen
+============================================*/
+@media screen and (max-width: 768px) {
+  .confirmation-wrap span:first-of-type {
+    padding: 14px 0;
+  }
+
+  .apps-wrap {
+    margin-top: 20px;
+  }
+
+  .app-stores-wrap {
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    display: block;
+  }
+
+  .confirmation-wrap {
+    font-size: 18px;
+  }
+
+  .confirmation-wrap span:first-of-type {
+    font-size: 18px;
+  }
+
+  .app-stores-wrap:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .app-stores-wrap a {
+    width: 50%;
+    display: block;
+    float: left;
+  }
+
+  .play-store {
+    max-width: 60%;
+  }
+
+  .play-store:first-child {
+    max-width: 40%;
+  }
+
+  .play-store img {
+    height: 45px;
+    max-width: 100%;
+  }
+
+  .apps-wrap p {
+    margin-bottom: 16px;
+  }
+}
+
+/* Large Screen
+============================================*/
+@media screen and (min-width: 768px) {
+  .confirmation-wrap span:first-of-type {
+    padding: 14px 0;
+  }
+
+  .apps-wrap {
+    margin-top: 50px;
+  }
+
+  .app-stores-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .confirmation-wrap span:first-of-type {
+    font-size: 22px;
+  }
+
+  .play-store img {
+    height: 40px;
+  }
+
+  .feedback-wrap {
+    margin-bottom: 24px;
+  }
+}
+
+/* Play store share button
+============================================*/
+.play-store {
+  display: block;
+}
