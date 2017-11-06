@@ -18,28 +18,30 @@ import "!!style-loader!css-loader!./css/payments.css";
 export class Payments extends React.Component {
   state = {
     paymentModal: false,
-    customer: {
-      email: "mqyynm@gmail.com",
-      name: "Michael",
-      phone_number: "254701872069",
-      confirmEmail: "mqyynm@gmail.com"
-    },
-    deliveryInfomation: {
-      location: "Nairobi",
-      streetAddress: "Kasarani",
-      apartment: "Israel",
-      deliveryCost: 1000
-    },
     // customer: {
-    //   email: "",
-    //   name: "",
-    //   phone_number: "",
-    //   confirmEmail: "",
-    //   location: "",
-    //   streetAddress: "",
-    //   apartment: "",
-    //   deliveryCost: ""
+    //   email: "mqyynm@gmail.com",
+    //   name: "Michael",
+    //   phone_number: "254701872069",
+    //   confirmEmail: "mqyynm@gmail.com"
     // },
+    // deliveryInfomation: {
+    //   location: "Nairobi",
+    //   streetAddress: "Kasarani",
+    //   apartment: "Israel",
+    //   deliveryCost: 1000
+    // },
+    deliveryInfomation: {
+      location: "",
+      streetAddress: "",
+      apartment: "",
+      deliveryCost: ""
+    },
+    customer: {
+      email: "",
+      name: "",
+      phone_number: "",
+      confirmEmail: "",
+    },
     customerErrors: {
       emailError: "",
       phone_numberError: "",
