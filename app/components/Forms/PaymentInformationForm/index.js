@@ -58,7 +58,7 @@ export default class PaymentInformationForm extends PureComponent {
               <MookhInput
                 labelName="Phone number"
                 id="phone_number"
-                placeholder=""
+                placeholder="e.g  2547012345678"
                 wrapClass="payment-input"
                 inputError={phone_numberError}
                 onChange={this.props.handleCustomerInfo}

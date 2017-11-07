@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import "!!!style-loader!css-loader!./mookh-input.css";
 
 export default class MookhInput extends React.PureComponent {
+  checkForError = error => error.length > 0;
+
   render() {
     const {
       id,
@@ -14,19 +17,29 @@ export default class MookhInput extends React.PureComponent {
       wrapClass,
       labelName,
       inputError,
-      placeholder,
+      placeholder
     } = this.props;
-    return(
+
+    console.log({errors: this.checkForError(inputError), inputError})
+
+    const inputClassname = classNames("mookh-input", {
+      "mookh-input-active": !this.checkForError(inputError),
+      "mookh-input-error": this.checkForError(inputError)
+    });
+
+    return (
       <div className={wrapClass}>
-        <label className="mookh-label" htmlFor="fname">{labelName}</label>
+        <label className="mookh-label" htmlFor="fname">
+          {labelName}
+        </label>
         <input
           id={id}
           type={type}
           value={value}
-          required={required}
           onBlur={onBlur}
+          required={required}
           onChange={onChange}
-          className="mookh-input"
+          className={inputClassname}
           placeholder={placeholder}
           name={labelName.toLowerCase()}
         />
@@ -47,4 +60,4 @@ MookhInput.propTypes = {
   onBlur: React.PropTypes.func.isRequired,
   value: React.PropTypes.any.isRequired,
   required: React.PropTypes.bool.isRequired
-}
+};

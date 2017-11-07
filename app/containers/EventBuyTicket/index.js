@@ -6,6 +6,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import { countryList } from "utils/countryList";
 import Payments from "containers/Payments";
 import LoadingSpinner from "components/LoadingSpinner";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
@@ -13,7 +14,12 @@ import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
-import { fetchEvent, handleOrdersPayment, openModal, closeModal } from "./actions";
+import {
+  fetchEvent,
+  handleOrdersPayment,
+  openModal,
+  closeModal
+} from "./actions";
 import {
   phonenumberValidate,
   nameValidate,
@@ -131,6 +137,24 @@ export class EventBuyTicket extends React.PureComponent {
     this.setState({ customer: { ...customer, [e.target.id]: e.target.value } });
   };
 
+  handlePhonenumber = (telNumber, selectedCountry) => {
+    console.log(
+      "input changed. number: ",
+      telNumber,
+      "selected country: ",
+      selectedCountry
+    );
+  };
+
+  handleInputBlur = (telNumber, selectedCountry) => {
+    console.log(
+      "Focus off the ReactTelephoneInput component. Tel number entered is: ",
+      telNumber,
+      " selected country is: ",
+      selectedCountry
+    );
+  };
+
   getPriceValue = event => {
     if (Object.keys(event).length > 1) {
       const { ticketCategory, event } = this.state;
@@ -145,13 +169,13 @@ export class EventBuyTicket extends React.PureComponent {
   getOrderName = (ticketCategory, key) => {
     let name;
     ticketCategory.filter(value => {
-      if ( value.id === key) {
+      if (value.id === key) {
         name = value.ticket_name;
         return name;
       }
     });
     return name;
-  }
+  };
 
   handleEmptyCustomerInfo = () => {
     const { customer } = this.state;
@@ -193,7 +217,7 @@ export class EventBuyTicket extends React.PureComponent {
           {},
           { name: this.getOrderName(tickets_count_by_category, key) },
           { items_id: key },
-          { item_quantity: value },
+          { item_quantity: value }
         )
       );
     });
@@ -242,7 +266,6 @@ export class EventBuyTicket extends React.PureComponent {
         />
 
         <EventMenuBar pathname={pathname} eventId={event.id} />
-
 
         <div className="ticket-description-wrap">
           <div className="desktop grid-33">
@@ -369,7 +392,12 @@ export class EventBuyTicket extends React.PureComponent {
                   >
                     MOBILE PAYMENT
                   </button>
-                  <button onClick={this.props.openModal} className="payment-button">CARD PAYMENT</button>
+                  <button
+                    onClick={this.props.openModal}
+                    className="payment-button"
+                  >
+                    CARD PAYMENT
+                  </button>
                 </div>
               </div>
             </div>
@@ -388,7 +416,7 @@ const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId)),
   handleOrdersPayment: info => dispatch(handleOrdersPayment(info)),
   openModal: () => dispatch(openModal()),
-  closeModal: () => dispatch(closeModal()),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventBuyTicket);

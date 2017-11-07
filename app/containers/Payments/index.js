@@ -91,10 +91,6 @@ export class Payments extends React.Component {
       cardInfo: { ...this.state.cardInfo, [e.target.id]: e.target.value }
     });
 
-  handleCloseModal = () => {
-    this.setState({ paymentModal: false });
-  };
-
   handleContinue = () => {
     const { customer } = this.state;
     Object.entries(customer).forEach(([key, value]) => {
@@ -158,6 +154,8 @@ export class Payments extends React.Component {
       this.setState(() => ({ tabIndex }));
     } else if (lastIndex === 1 || lastIndex === 2) {
       this.setState(() => ({ tabIndex }));
+    } else {
+      this.handleEmptyCustomerInfo()
     }
   };
 
@@ -207,7 +205,7 @@ export class Payments extends React.Component {
       <ReactModal
         isOpen={this.state.paymentModal}
         contentLabel="onRequestClose Example"
-        onRequestClose={this.handleCloseModal}
+        onRequestClose={() => this.props.dispatch({ type: 'PAYMENTS_MODAL_ERROR'})}
         className="py-modal"
         overlayClassName="py-overlay"
         aria={{
@@ -239,7 +237,7 @@ export class Payments extends React.Component {
               onBlur={this.onBlur}
               customerErrors={customerErrors}
               deliveryInfomation={deliveryInfomation}
-              handleReturnToStore={this.handleCloseModal}
+              handleReturnToStore={() => this.props.dispatch({ type: 'PAYMENTS_MODAL_ERROR'})}
               handleCustomerInfo={this.handleCustomerInfo}
               handleConfirmEmail={this.handleConfirmEmail}
               deliveryInfomationErrors={deliveryInfomationErrors}
@@ -260,7 +258,7 @@ export class Payments extends React.Component {
             />
           </TabPanel>
           <TabPanel>
-            <PaymentConfirmation handleCloseModal={this.handleCloseModal} />
+            <PaymentConfirmation handleCloseModal={() => this.props.dispatch({ type: 'PAYMENTS_MODAL_ERROR'})} />
           </TabPanel>
         </Tabs>
       </ReactModal>

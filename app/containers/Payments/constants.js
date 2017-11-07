@@ -27,7 +27,7 @@ export const InputConstants = {
   },
   phone_number: {
     regex: phoneNoRegex,
-    error: "This phone number format is not recognised."
+    error: "The allowed phone number format is 2547012345678"
   },
   location: {
     regex: alphanumerical,
