@@ -4,6 +4,7 @@
  *
  */
 
+import axios from "axios";
 import {
   PAYMENTS_MODAL,
 } from './constants';
@@ -19,3 +20,4 @@ export function closeModal() {
     type: PAYMENTS_MODAL.ERROR,
   };
 }
+

@@ -40,7 +40,7 @@ export class Payments extends React.Component {
       email: "",
       name: "",
       phone_number: "",
-      confirmEmail: "",
+      confirmEmail: ""
     },
     customerErrors: {
       emailError: "",
@@ -149,17 +149,30 @@ export class Payments extends React.Component {
 
   handleTabsSwitch = (tabIndex, lastIndex, e) => {
     e.persist();
-    const { customer, customerErrors } = this.state;
+    const { customer, deliveryInfomation, customerErrors } = this.state;
     if (lastIndex === 0 && this.disableBtn(customer, customerErrors)) {
+      this.props.dispatch({
+        type: "PAYMENTS_FORM_SUCCESS",
+        customer,
+        deliveryInfomation
+      });
       this.setState(() => ({ tabIndex }));
     } else if (lastIndex === 1 || lastIndex === 2) {
       this.setState(() => ({ tabIndex }));
     } else {
-      this.handleEmptyCustomerInfo()
+      this.handleEmptyCustomerInfo();
     }
   };
 
-  handlePaymentMethod = () => this.setState(() => ({ tabIndex: 1 }));
+  handlePaymentMethod = () => {
+    const { customer, deliveryInfomation } = this.state;
+    this.props.dispatch({
+      type: "PAYMENTS_FORM_SUCCESS",
+      customer,
+      deliveryInfomation
+    });
+    this.setState(() => ({ tabIndex: 1 }));
+  };
 
   handleEmptyCustomerInfo = () => {
     const { customer, customerErrors } = this.state;
@@ -205,7 +218,8 @@ export class Payments extends React.Component {
       <ReactModal
         isOpen={this.state.paymentModal}
         contentLabel="onRequestClose Example"
-        onRequestClose={() => this.props.dispatch({ type: 'PAYMENTS_MODAL_ERROR'})}
+        onRequestClose={() =>
+          this.props.dispatch({ type: "PAYMENTS_MODAL_ERROR" })}
         className="py-modal"
         overlayClassName="py-overlay"
         aria={{
@@ -237,7 +251,8 @@ export class Payments extends React.Component {
               onBlur={this.onBlur}
               customerErrors={customerErrors}
               deliveryInfomation={deliveryInfomation}
-              handleReturnToStore={() => this.props.dispatch({ type: 'PAYMENTS_MODAL_ERROR'})}
+              handleReturnToStore={() =>
+                this.props.dispatch({ type: "PAYMENTS_MODAL_ERROR" })}
               handleCustomerInfo={this.handleCustomerInfo}
               handleConfirmEmail={this.handleConfirmEmail}
               deliveryInfomationErrors={deliveryInfomationErrors}
@@ -258,7 +273,10 @@ export class Payments extends React.Component {
             />
           </TabPanel>
           <TabPanel>
-            <PaymentConfirmation handleCloseModal={() => this.props.dispatch({ type: 'PAYMENTS_MODAL_ERROR'})} />
+            <PaymentConfirmation
+              handleCloseModal={() =>
+                this.props.dispatch({ type: "PAYMENTS_MODAL_ERROR" })}
+            />
           </TabPanel>
         </Tabs>
       </ReactModal>
@@ -266,10 +284,8 @@ export class Payments extends React.Component {
   }
 }
 
-const mapStateToProps = ({ payments }) => ({
-  paymentModal: payments.paymentModal
+const mapStateToProps = ({ payments, buyTicket }) => ({
+  paymentModal: payments.paymentModal,
 });
-
-const mapDispatchToProps = dispatch => ({ dispatch });
 
 export default connect(mapStateToProps, null)(Payments);

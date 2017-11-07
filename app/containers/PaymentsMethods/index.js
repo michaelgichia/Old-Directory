@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import classNames from "classnames";
 import PaymentCheckbox from "components/PaymentCheckbox";
@@ -13,24 +14,72 @@ import TabsBodyWrap from "components/TabsBodyWrap";
 import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
 import MpesaPayBill from "./MpesaPayBill";
+import { handleOrdersPayment } from "./actions";
 import "!!style-loader!css-loader!./payments-methods.css";
 
 export class PaymentsMethods extends Component {
   state = {
     mpesaPage: 1,
-    mpesaInitiated: false
+    mpesaInitiated: false,
+    event: {},
+    extraInfo: {
+      store_fk: "",
+      payment_method: "mpesa"
+    },
   };
 
   onBlur = () => {};
 
   handleCustomerInfo = () => {};
 
-  handleMpesaClick = () => this.setState({ mpesaInitiated: true });
+  handleMobilePayment = () => {
+    const {
+      event: { id, event_name, tickets_count_by_category, store_fk },
+      event,
+      ticketCategory,
+      customer
+    } = this.props;
+    const { extraInfo } = this.state;
+    const orderArray = [];
+
+    delete customer.confirmEmail;
+    Object.entries(ticketCategory).forEach(([key, value]) => {
+      orderArray.push(
+        Object.assign(
+          {},
+          { name: this.getOrderName(tickets_count_by_category, key) },
+          { items_id: key },
+          { item_quantity: value }
+        )
+      );
+    });
+    extraInfo["order_detail"] = orderArray;
+    extraInfo["customer"] = customer;
+    extraInfo["store_fk"] = store_fk;
+    console.log({ extraInfo });
+    this.props.handleOrdersPayment(extraInfo);
+  };
+
+  handleMpesaClick = () => {
+    this.setState({ mpesaInitiated: true });
+    this.handleMobilePayment();
+  }
 
   goMpesaPush = () => this.setState(() => ({ mpesaPage: 1 }));
 
   handleNextPage = () =>
     this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1 }));
+
+  getOrderName = (ticketCategory, key) => {
+    let name;
+    ticketCategory.filter(value => {
+      if (value.id === key) {
+        name = value.ticket_name;
+        return name;
+      }
+    });
+    return name;
+  };
 
   render() {
     const { mpesaPage, mpesaInitiated } = this.state;
@@ -92,4 +141,16 @@ export class PaymentsMethods extends Component {
   }
 }
 
-export default PaymentsMethods;
+const mapStateToProps = ({ payments, buyTicket }) => ({
+  deliveryInfomation: payments.deliveryInfomation,
+  deliveryInfomation: payments.deliveryInfomation,
+  customer: payments.customer,
+  ticketCategory: payments.ticketCategory,
+  event: buyTicket.event
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentsMethods);

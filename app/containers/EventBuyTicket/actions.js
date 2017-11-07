@@ -37,9 +37,10 @@ export const handleOrdersPayment = info => dispatch => {
   })
 }
 
-export function openModal() {
+export function openModal(ticketCategory) {
   return {
     type: PAYMENTS_MODAL.SUCCESS,
+    ticketCategory
   };
 }
 

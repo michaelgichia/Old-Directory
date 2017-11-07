@@ -237,7 +237,8 @@ export class EventBuyTicket extends React.PureComponent {
         confirmEmailError,
         nameError
       },
-      disabled
+      disabled,
+      ticketCategory
     } = this.state;
     const { pathname } = this.props.location;
     const priceValueForEvent = this.getPriceValue(event);
@@ -393,7 +394,7 @@ export class EventBuyTicket extends React.PureComponent {
                     MOBILE PAYMENT
                   </button>
                   <button
-                    onClick={this.props.openModal}
+                    onClick={() => this.props.openModal(ticketCategory)}
                     className="payment-button"
                   >
                     CARD PAYMENT
@@ -415,7 +416,7 @@ const mapStateToProps = ({ buyTicket }) => ({
 const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId)),
   handleOrdersPayment: info => dispatch(handleOrdersPayment(info)),
-  openModal: () => dispatch(openModal()),
+  openModal: (ticketCategory) => dispatch(openModal(ticketCategory)),
   closeModal: () => dispatch(closeModal())
 });
 
