@@ -111,7 +111,7 @@
 .py__tab.react-tabs__tab--selected {
   color: #343434;
   border-radius: 0;
-  border-bottom: 3px solid #ffd600;
+  border-bottom: 3px solid #fdde3d;
   margin-bottom: -2px;
 }
 
@@ -136,7 +136,7 @@
 
 .py__tab:hover {
   color: #343434;
-  border-bottom: 3px solid #ffd600;
+  border-bottom: 3px solid #FFE900;
   margin-bottom: -2px;
 }
 
@@ -147,7 +147,7 @@
   left: 0px;
   right: 0px;
   bottom: -3px;
-  background-color: #ffd600;
+  background-color: #FFE900;
 }
 
 

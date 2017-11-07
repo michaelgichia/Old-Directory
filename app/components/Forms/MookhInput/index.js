@@ -4,6 +4,7 @@ import classNames from "classnames";
 import "!!!style-loader!css-loader!./mookh-input.css";
 
 export default class MookhInput extends React.PureComponent {
+
   checkForError = error => error.length > 0;
 
   render() {
@@ -19,8 +20,6 @@ export default class MookhInput extends React.PureComponent {
       inputError,
       placeholder
     } = this.props;
-
-    console.log({errors: this.checkForError(inputError), inputError})
 
     const inputClassname = classNames("mookh-input", {
       "mookh-input-active": !this.checkForError(inputError),

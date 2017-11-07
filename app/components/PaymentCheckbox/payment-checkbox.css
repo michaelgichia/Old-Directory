@@ -20,7 +20,7 @@
 }
 
 .pm__tab--selected input + label {
-  border: 1px solid #ffd120;
+  border: 1px solid #fdde3d;
 }
 
 .pm__tab--selected span:first-of-type {
