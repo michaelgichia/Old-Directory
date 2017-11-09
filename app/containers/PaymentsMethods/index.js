@@ -24,7 +24,7 @@ export class PaymentsMethods extends Component {
     extraInfo: {
       store_fk: "",
       payment_method: "mpesa"
-    },
+    }
   };
 
   onBlur = () => {};
@@ -40,7 +40,7 @@ export class PaymentsMethods extends Component {
     } = this.props;
     const { extraInfo } = this.state;
     const orderArray = [];
-    this.handleMpesaClick()
+    this.handleMpesaClick();
 
     delete customer.confirmEmail;
     Object.entries(ticketCategory).forEach(([key, value]) => {
@@ -83,7 +83,10 @@ export class PaymentsMethods extends Component {
     return (
       <div>
         <TabsBodyWrap>
-          <header className="payment-header">Select payment method</header>
+          <header className="payment-header">
+            <span>Select payment method</span>
+            <span>Your number is 0710853398</span>
+          </header>
         </TabsBodyWrap>
         <Tabs>
           <TabsBodyWrap>

@@ -106,15 +106,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (min-width: 768px) {
- .mookh-btn-wd {
+  .mookh-btn-wd {
     width: 180px;
- }
+  }
+
+  .payment-header {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .mookh-btn-wd {
     width: 100%;
     margin-bottom: 12px;
+  }
+  .payment-header {
+    display: block;
+    width: 100%;
+  }
+
+  .payment-header span {
+    display: block;
+    width: 100%;
   }
 }
 
@@ -162,5 +176,6 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 6px;
   margin-bottom: 16px;
 }
+
 
 
