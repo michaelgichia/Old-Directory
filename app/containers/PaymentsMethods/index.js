@@ -7,7 +7,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ReactDOM from "react-dom";
-import classNames from "classnames";
 import PaymentCheckbox from "components/PaymentCheckbox";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import TabsBodyWrap from "components/TabsBodyWrap";
@@ -80,7 +79,6 @@ export class PaymentsMethods extends Component {
 
   render() {
     const { mpesaPage, mpesaInitiated } = this.state;
-    const tabClassnames = classNames({ "pm__tab--selected": mpesaInitiated });
     return (
       <div>
         <TabsBodyWrap>
@@ -89,13 +87,13 @@ export class PaymentsMethods extends Component {
         <Tabs>
           <TabsBodyWrap>
             <TabList className="pm__tab-list">
-              <Tab className="pm__tabs" selectedClassName={tabClassnames}>
+              <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
                 <PaymentCheckbox
                   id="mobile-payment"
                   onChange={this.handleMpesaClick}
                   placeholder="Mobile money/M-pesa"
                   wrapKlass=""
-                  defaultChecked={true}
+                  defaultChecked={false}
                 />
               </Tab>
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
