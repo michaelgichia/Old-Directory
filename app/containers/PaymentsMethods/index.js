@@ -60,10 +60,7 @@ export class PaymentsMethods extends Component {
     this.props.handleOrdersPayment(extraInfo);
   };
 
-  handleMpesaClick = () => {
-    this.setState({ mpesaInitiated: true });
-    this.handleMobilePayment();
-  }
+  handleMpesaClick = () => this.setState({ mpesaInitiated: true });
 
   goMpesaPush = () => this.setState(() => ({ mpesaPage: 1 }));
 
@@ -98,7 +95,7 @@ export class PaymentsMethods extends Component {
                   onChange={this.handleMpesaClick}
                   placeholder="Mobile money/M-pesa"
                   wrapKlass=""
-                  defaultChecked={false}
+                  defaultChecked={true}
                 />
               </Tab>
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">

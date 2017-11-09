@@ -18,42 +18,6 @@ import "!!style-loader!css-loader!./css/payments.css";
 export class Payments extends React.Component {
   state = {
     paymentModal: false,
-    // customer: {
-    //   email: "mqyynm@gmail.com",
-    //   name: "Michael",
-    //   phone_number: "254701872069",
-    //   confirmEmail: "mqyynm@gmail.com"
-    // },
-    // deliveryInfomation: {
-    //   location: "Nairobi",
-    //   streetAddress: "Kasarani",
-    //   apartment: "Israel",
-    //   deliveryCost: 1000
-    // },
-    deliveryInfomation: {
-      location: "",
-      streetAddress: "",
-      apartment: "",
-      deliveryCost: ""
-    },
-    customer: {
-      email: "",
-      name: "",
-      phone_number: "",
-      confirmEmail: ""
-    },
-    customerErrors: {
-      emailError: "",
-      phone_numberError: "",
-      confirmEmailError: "",
-      nameError: ""
-    },
-    deliveryInfomationErrors: {
-      locationError: "",
-      streetAddressError: "",
-      apartmentError: "",
-      deliveryCostError: ""
-    },
     cardInfo: {
       cardNumber: "",
       cvc: "",
@@ -78,14 +42,6 @@ export class Payments extends React.Component {
       customer: { ...this.state.customer, [e.target.id]: e.target.value }
     });
 
-  handleDeliveryInfomation = e =>
-    this.setState({
-      deliveryInfomation: {
-        ...this.state.deliveryInfomation,
-        [e.target.id]: e.target.value
-      }
-    });
-
   handleCardInfo = e =>
     this.setState({
       cardInfo: { ...this.state.cardInfo, [e.target.id]: e.target.value }
@@ -101,31 +57,6 @@ export class Payments extends React.Component {
       }
     });
     return res;
-  };
-
-  onBlur = (e, name) => {
-    e.persist();
-    const { customerErrors } = this.state;
-    const { value } = e.target;
-    const requiredFields = ["name", "confirmEmail", "phone_number", "email"];
-
-    if (requiredFields.indexOf(name) > -1 && value.length < 1) {
-      this.setState(() => ({
-        customerErrors: {
-          ...customerErrors,
-          [`${name}Error`]: "You can't leave this empty."
-        }
-      }));
-    } else {
-      this.setState(() => ({
-        customerErrors: InputConstants[name]["regex"].test(value)
-          ? { ...customerErrors, [`${name}Error`]: "" }
-          : {
-              ...customerErrors,
-              [`${name}Error`]: InputConstants[name].error
-            }
-      }));
-    }
   };
 
   handleConfirmEmail = (email, confirmEmail) => {
@@ -147,22 +78,7 @@ export class Payments extends React.Component {
     }
   };
 
-  handleTabsSwitch = (tabIndex, lastIndex, e) => {
-    e.persist();
-    const { customer, deliveryInfomation, customerErrors } = this.state;
-    if (lastIndex === 0 && this.disableBtn(customer, customerErrors)) {
-      this.props.dispatch({
-        type: "PAYMENTS_FORM_SUCCESS",
-        customer,
-        deliveryInfomation
-      });
-      this.setState(() => ({ tabIndex }));
-    } else if (lastIndex === 1 || lastIndex === 2) {
-      this.setState(() => ({ tabIndex }));
-    } else {
-      this.handleEmptyCustomerInfo();
-    }
-  };
+  handleTabsSwitch = (tabIndex, lastIndex, e) => this.setState(() => ({ tabIndex }));
 
   handlePaymentMethod = () => {
     const { customer, deliveryInfomation } = this.state;
@@ -235,9 +151,6 @@ export class Payments extends React.Component {
             this.handleTabsSwitch(tabIndex, lastIndex, e)}
         >
           <TabList className="py__tab-list">
-            <Tab className="py__tab" tabIndex="0">
-              Information
-            </Tab>
             <Tab className="py__tab" tabIndex="1">
               Payment
             </Tab>
@@ -245,25 +158,6 @@ export class Payments extends React.Component {
               Confirmation
             </Tab>
           </TabList>
-          <TabPanel>
-            <PaymentInformationForm
-              customer={customer}
-              onBlur={this.onBlur}
-              customerErrors={customerErrors}
-              deliveryInfomation={deliveryInfomation}
-              handleReturnToStore={() =>
-                this.props.dispatch({ type: "PAYMENTS_MODAL_ERROR" })}
-              handleCustomerInfo={this.handleCustomerInfo}
-              handleConfirmEmail={this.handleConfirmEmail}
-              deliveryInfomationErrors={deliveryInfomationErrors}
-              handleDeliveryInfomation={this.handleDeliveryInfomation}
-              handleContinue={
-                !this.disableBtn(customer, customerErrors)
-                  ? this.handleEmptyCustomerInfo
-                  : this.handlePaymentMethod
-              }
-            />
-          </TabPanel>
           <TabPanel>
             <PaymentsMethods
               cardInfo={cardInfo}
