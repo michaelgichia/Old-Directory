@@ -80,12 +80,13 @@ export class PaymentsMethods extends Component {
 
   render() {
     const { mpesaPage, mpesaInitiated } = this.state;
+    const { customer: { phone_number }} = this.props;
     return (
       <div>
         <TabsBodyWrap>
           <header className="payment-header">
             <span>Select payment method</span>
-            <span>Your number is 0710853398</span>
+            <span>Your number is {phone_number}</span>
           </header>
         </TabsBodyWrap>
         <Tabs>
@@ -118,6 +119,7 @@ export class PaymentsMethods extends Component {
                 goToPayBill={this.handleNextPage}
                 mpesaInitiated={mpesaInitiated}
                 handlePayment={this.handleMobilePayment}
+                handleReturnToStore={this.props.handleReturnToStore}
               />
             ) : (
               <MpesaPayBill

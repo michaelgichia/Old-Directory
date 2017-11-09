@@ -137,24 +137,6 @@ export class EventBuyTicket extends React.PureComponent {
     this.setState({ customer: { ...customer, [e.target.id]: e.target.value } });
   };
 
-  handlePhonenumber = (telNumber, selectedCountry) => {
-    console.log(
-      "input changed. number: ",
-      telNumber,
-      "selected country: ",
-      selectedCountry
-    );
-  };
-
-  handleInputBlur = (telNumber, selectedCountry) => {
-    console.log(
-      "Focus off the ReactTelephoneInput component. Tel number entered is: ",
-      telNumber,
-      " selected country is: ",
-      selectedCountry
-    );
-  };
-
   getPriceValue = event => {
     if (Object.keys(event).length > 1) {
       const { ticketCategory, event } = this.state;
@@ -238,7 +220,8 @@ export class EventBuyTicket extends React.PureComponent {
         nameError
       },
       disabled,
-      ticketCategory
+      ticketCategory,
+      customer
     } = this.state;
     const { pathname } = this.props.location;
     const priceValueForEvent = this.getPriceValue(event);
@@ -394,7 +377,7 @@ export class EventBuyTicket extends React.PureComponent {
                     MOBILE PAYMENT
                   </button>
                   <button
-                    onClick={() => this.props.openModal(ticketCategory)}
+                    onClick={() => this.props.openModal(ticketCategory, customer)}
                     className="payment-button"
                   >
                     CARD PAYMENT
@@ -416,7 +399,7 @@ const mapStateToProps = ({ buyTicket }) => ({
 const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId)),
   handleOrdersPayment: info => dispatch(handleOrdersPayment(info)),
-  openModal: (ticketCategory) => dispatch(openModal(ticketCategory)),
+  openModal: (ticketCategory, customer) => dispatch(openModal(ticketCategory, customer)),
   closeModal: () => dispatch(closeModal())
 });
 

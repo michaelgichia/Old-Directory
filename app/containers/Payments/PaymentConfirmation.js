@@ -29,7 +29,7 @@ export class PaymentConfirmation extends PureComponent {
                 </svg>
               </span>
               <p>Your order has been completed</p>
-              <p>Check your email for the items you have bought and receipt</p>
+              <p>Check your email for the tickets you have bought and receipt</p>
               <p>For inquiries contact us: hello@mymookh.com</p>
             </header>
             <div className="apps-wrap">

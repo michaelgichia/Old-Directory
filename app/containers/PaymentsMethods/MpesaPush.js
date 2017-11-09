@@ -40,17 +40,17 @@ export class MpesaPush extends PureComponent {
           <div>
             <PaymentButtons
               id="pay"
-              bsKlass="primary shadow"
+              bsKlass="primary shadow btn-reposition"
               label="PAY NOW"
               onClick={this.props.handlePayment}
             />
           </div>
           <div>
-            <BackButton
+            <PaymentButtons
               id="store"
-              bsKlass=""
-              label="PREVIOUS"
-              onClick={this.props.goTabOne}
+              bsKlass="secondary shadow"
+              label="RETURN TO STORE"
+              onClick={this.props.handleReturnToStore}
             />
           </div>
         </TabsBottomWrap>

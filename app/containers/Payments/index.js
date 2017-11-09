@@ -164,6 +164,7 @@ export class Payments extends React.Component {
               goTabOne={this.goTabOne}
               goTabThree={this.goTabThree}
               handleCardInfo={this.handleCardInfo}
+              handleReturnToStore={() => this.props.dispatch({type: "PAYMENTS_MODAL_ERROR"})}
             />
           </TabPanel>
           <TabPanel>

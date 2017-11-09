@@ -291,6 +291,11 @@ ProductPayment.propTypes = {
 
 const mapStateToProps = ({ payments, buyTicket }) => ({
   paymentModal: payments.paymentModal,
+  deliveryInfomation: payments.deliveryInfomation,
+  deliveryInfomation: payments.deliveryInfomation,
+  customer: payments.customer,
+  ticketCategory: payments.ticketCategory,
+  event: buyTicket.event
 });
 
 export default connect(mapStateToProps, null)(ProductPayment);

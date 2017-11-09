@@ -33,24 +33,13 @@ function paymentsReducer(state = initialState, action) {
       return {
         ...state,
         paymentModal: true,
-        ticketCategory: action.ticketCategory
+        ticketCategory: action.ticketCategory,
+        customer: action.customer
       };
     case PAYMENTS_MODAL.ERROR:
       return {
         ...state,
         paymentModal: false
-      };
-    case PAYMENTS_FORM.SUCCESS:
-      return {
-        ...state,
-        deliveryInfomation: action.deliveryInfomation,
-        customer: action.customer
-      };
-    case PAYMENTS_FORM.ERROR:
-      return {
-        ...state,
-        deliveryInfomation: action.deliveryInfomation,
-        customer: action.customer
       };
     default:
       return state;
