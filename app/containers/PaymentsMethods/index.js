@@ -40,6 +40,7 @@ export class PaymentsMethods extends Component {
     } = this.props;
     const { extraInfo } = this.state;
     const orderArray = [];
+    this.handleMpesaClick()
 
     delete customer.confirmEmail;
     Object.entries(ticketCategory).forEach(([key, value]) => {
@@ -56,7 +57,7 @@ export class PaymentsMethods extends Component {
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
     console.log({ extraInfo });
-    this.props.handleOrdersPayment(extraInfo);
+    // this.props.handleOrdersPayment(extraInfo);
   };
 
   handleMpesaClick = () => this.setState({ mpesaInitiated: true });
@@ -91,7 +92,7 @@ export class PaymentsMethods extends Component {
                 <PaymentCheckbox
                   id="mobile-payment"
                   onChange={this.handleMpesaClick}
-                  placeholder="Mobile money/M-pesa"
+                  placeholder="M-Pesa"
                   wrapKlass=""
                   defaultChecked={false}
                 />
@@ -113,6 +114,7 @@ export class PaymentsMethods extends Component {
                 goTabOne={this.props.goTabOne}
                 goToPayBill={this.handleNextPage}
                 mpesaInitiated={mpesaInitiated}
+                handlePayment={this.handleMobilePayment}
               />
             ) : (
               <MpesaPayBill
