@@ -25,6 +25,7 @@ const initialState = {
   //   confirmEmail: "mqyynm@gmail.com"
   // },
   ticketCategory: {},
+  totalTicketsPrice: 0,
   tabIndex: 0
 };
 
@@ -57,7 +58,8 @@ function paymentsReducer(state = initialState, action) {
           name: "",
           phone_number: "",
           confirmEmail: ""
-        }
+        },
+        totalTicketsPrice: 0
       };
     default:
       return state;

@@ -71,12 +71,12 @@ td {
 }
 
 td.ticket-total.errors {
-  color: red;
+  color: #f04134;
 }
 
 td.ticket-total.errors:after {
   content: "You have not selected a ticket.";
-  color: red;
+  color: #f04134;
   display: block;
   float: left;
   width: 100%;
@@ -102,6 +102,8 @@ td.ticket-total.errors:after {
   transition: border-color ease-in-out 0.15s;
   color: #31383e;
   font-weight: 600;
+  padding: 8px;
+  border-radius: 4px;
 }
 
 .ebt-promo-wrap input:focus,
@@ -164,7 +166,7 @@ span.buy-ticket-optional-info {
 }
 
 input.error {
-  border-color: red;
+  border-color: #f04134;
 }
 
 /*
@@ -331,11 +333,8 @@ input.error {
 
   .ebt-promo-wrap input,
   .ebt-div-information > input {
-    font-size: 14px;
     margin-left: 0px;
-    padding: 8px 16px;
     float: left;
-    border-radius: 4px;
   }
 
   .ebt-promo-wrap input {
@@ -612,9 +611,7 @@ input.error {
 
   .ebt-promo-wrap input,
   .ebt-div-information > input {
-    font-size: 14px;
-    margin: 8px 0;
-    padding: 6px 12px;
+    margin: 8px 0 0 0;
     height: 40px !important;
   }
 
@@ -630,9 +627,10 @@ input.error {
 /* Span errors
 ======================================================*/
 .ebt-div-information span {
-  color: red;
+  color: #f04134;
   float: left;
   min-height: 23px;
   font-size: 14px;
   margin-top: 2px;
+  padding-left: 8px;
 }

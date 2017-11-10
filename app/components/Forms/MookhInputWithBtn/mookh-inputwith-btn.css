@@ -38,7 +38,7 @@ Input styles
 ============================================*/
 .mookh-span-error {
   display: block;
-  color: red;
+  color: #f04134;
   font-size: 14px;
   width: 100%;
   min-height: 23px;

@@ -75,6 +75,9 @@ export class EventBuyTicket extends React.PureComponent {
     if (!_.isEqual(nextProps.customer, this.state.customer)) {
       this.setState(() => ({ customer: nextProps.customer }));
     }
+    if (nextProps.totalTicketsPrice !== this.state.totalTicketsPrice) {
+      this.setState(() => ({ totalTicketsPrice: nextProps.totalTicketsPrice }));
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -192,7 +195,7 @@ export class EventBuyTicket extends React.PureComponent {
     this.setState(() => ({ customerErrors: inputerrors, error }));
   };
 
-  disableBtn = (customer) => {
+  disableBtn = customer => {
     const { totalTicketsPrice } = this.state;
     let res;
     if (totalTicketsPrice < 1) {
@@ -300,7 +303,10 @@ export class EventBuyTicket extends React.PureComponent {
                 </tr>
               </tbody>
             </table>
-            <form onSubmit={e => e.preventDefault()} style={{margin: 0, padding: 0}}>
+            <form
+              onSubmit={e => e.preventDefault()}
+              style={{ margin: 0, padding: 0 }}
+            >
               <div className="ebt-information">
                 <label>SEND TICKETS TO:</label>
                 <div className="ebt-div-information">
@@ -328,70 +334,70 @@ export class EventBuyTicket extends React.PureComponent {
                   <span>{phone_numberError}</span>
                 </div>
               </div>
+
+              <div className="ebt-information">
+                <div className="ebt-div-information">
+                  <input
+                    onChange={this.handleCustomerInfo}
+                    id="email"
+                    value={email}
+                    type="email"
+                    placeholder="Email"
+                    required={true}
+                    onBlur={e => this.onBlur(e, "email")}
+                  />
+                  <span>{emailError}</span>
+                </div>
+                <div className="ebt-div-information">
+                  <input
+                    onChange={this.handleCustomerInfo}
+                    id="confirmEmail"
+                    value={confirmEmail}
+                    type="email"
+                    placeholder="Confirm email"
+                    required
+                    onBlur={() => this.handleConfirmEmail(email, confirmEmail)}
+                  />
+                  <span>{confirmEmailError}</span>
+                </div>
+              </div>
+
+              <hr className="buy-ticket-optional" />
+
+              <div className="ebt-optional-info">
+                <label className="buy-ticket-optional-info">
+                  OPTIONAL INFORMATION:
+                </label>
+
+                <div className="ebt-promo-wrap">
+                  <div>
+                    <input type="text" placeholder="Promo code" />
+                  </div>
+                  <div className="payment-btn-wrap">
+                    <button
+                      className="payment-button ripple"
+                      onClick={
+                        !this.disableBtn(customer)
+                          ? this.handleEmptyCustomerInfo
+                          : this.handleMobilePayment
+                      }
+                    >
+                      MOBILE PAYMENT
+                    </button>
+                    <button
+                      onClick={
+                        !this.disableBtn(customer)
+                          ? this.handleEmptyCustomerInfo
+                          : () => this.props.openModal(ticketCategory, customer)
+                      }
+                      className="payment-button ripple"
+                    >
+                      CARD PAYMENT
+                    </button>
+                  </div>
+                </div>
+              </div>
             </form>
-
-            <div className="ebt-information">
-              <div className="ebt-div-information">
-                <input
-                  onChange={this.handleCustomerInfo}
-                  id="email"
-                  value={email}
-                  type="email"
-                  placeholder="Email"
-                  required={true}
-                  onBlur={e => this.onBlur(e, "email")}
-                />
-                <span>{emailError}</span>
-              </div>
-              <div className="ebt-div-information">
-                <input
-                  onChange={this.handleCustomerInfo}
-                  id="confirmEmail"
-                  value={confirmEmail}
-                  type="email"
-                  placeholder="Confirm email"
-                  required
-                  onBlur={() => this.handleConfirmEmail(email, confirmEmail)}
-                />
-                <span>{confirmEmailError}</span>
-              </div>
-            </div>
-
-            <hr className="buy-ticket-optional" />
-
-            <div className="ebt-optional-info">
-              <label className="buy-ticket-optional-info">
-                OPTIONAL INFORMATION:
-              </label>
-
-              <div className="ebt-promo-wrap">
-                <div>
-                  <input type="text" placeholder="Promo code" />
-                </div>
-                <div className="payment-btn-wrap">
-                  <button
-                    className="payment-button ripple"
-                    onClick={
-                      !this.disableBtn(customer)
-                        ? this.handleEmptyCustomerInfo
-                        : this.handleMobilePayment
-                    }
-                  >
-                    MOBILE PAYMENT
-                  </button>
-                  <button
-                    onClick={
-                      !this.disableBtn(customer)
-                        ? this.handleEmptyCustomerInfo
-                        : () => this.props.openModal(ticketCategory, customer)
-                    }
-                    className="payment-button ripple"
-                  >
-                    CARD PAYMENT
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -401,7 +407,8 @@ export class EventBuyTicket extends React.PureComponent {
 
 const mapStateToProps = ({ buyTicket, payments }) => ({
   event: buyTicket.event,
-  customer: payments.customer
+  customer: payments.customer,
+  totalTicketsPrice: payments.totalTicketsPrice
 });
 
 const mapDispatchToProps = dispatch => ({

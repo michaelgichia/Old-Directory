@@ -24,7 +24,7 @@ Input styles
 }
 
 .mookh-input-error {
-  border-color: red;
+  border-color: #f04134;
 }
 
 .mookh-input:focus {
@@ -32,7 +32,7 @@ Input styles
 }
 
 .mookh-input .mookh-input-error:focus {
-  border-color: red;
+  border-color: #f04134;
 }
 
 .mookh-input .invalid {
@@ -55,7 +55,7 @@ Input styles
 ============================================*/
 .mookh-span-error {
   display: block;
-  color: red;
+  color: #f04134;
   font-size: 14px;
   width: 100%;
   min-height: 23px;
