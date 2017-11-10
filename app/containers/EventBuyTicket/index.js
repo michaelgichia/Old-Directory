@@ -6,12 +6,15 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
+import classNames from "classnames";
 import { countryList } from "utils/countryList";
 import Payments from "containers/Payments";
 import LoadingSpinner from "components/LoadingSpinner";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
+import { InputConstants } from "utils/constants";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
 import {
@@ -39,23 +42,25 @@ export class EventBuyTicket extends React.PureComponent {
   state = {
     ticketCategory: {},
     event: {},
-    customer: {
-      email: "mqyynm@gmail.com",
-      name: "Michael",
-      phone_number: "254701872069",
-      confirmEmail: "mqyynm@gmail.com"
-    },
     extraInfo: {
       store_fk: "",
       payment_method: "mpesa"
     },
-    inputErrors: {
+    customer: {
+      email: "",
+      name: "",
+      phone_number: "",
+      confirmEmail: ""
+    },
+    customerErrors: {
       emailError: "",
       phone_numberError: "",
       confirmEmailError: "",
       nameError: ""
     },
-    disabled: true
+    TicketPrices: {},
+    error: false,
+    totalTicketsPrice: 0
   };
 
   componentDidMount() {
@@ -67,50 +72,65 @@ export class EventBuyTicket extends React.PureComponent {
     if (nextProps.event !== this.state.event) {
       this.setState(() => ({ event: nextProps.event }));
     }
+    if (!_.isEqual(nextProps.customer, this.state.customer)) {
+      this.setState(() => ({ customer: nextProps.customer }));
+    }
   }
 
-  onBlurPhoneNo = phonenumber => {
-    const { inputErrors } = this.state;
-    this.setState({
-      inputErrors: phonenumberValidate(phonenumber)
-        ? { ...inputErrors, phone_numberError: "" }
-        : {
-            ...inputErrors,
-            phone_numberError:
-              "This phone number format is invalid or not recognized."
-          }
-    });
-  };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.ticketCategory !== this.state.ticketCategory) {
+      const priceValueForEvent = this.getTicketPrices(prevState.event);
+      const totalTicketsPrice = this.handleTicketsTotalCost(priceValueForEvent);
+      this.setState(() => ({ totalTicketsPrice }));
+    }
 
-  onBlurEmail = email => {
-    const { inputErrors } = this.state;
-    this.setState({
-      inputErrors: emailValidate(email)
-        ? { ...inputErrors, emailError: "" }
-        : { ...inputErrors, emailError: "This email address is invalid." }
-    });
-  };
+    if (this.state.totalTicketsPrice > 0) {
+      this.setState(() => ({ error: false }));
+    }
+  }
 
-  onBlurName = name => {
-    const { inputErrors } = this.state;
-    this.setState({
-      inputErrors: nameValidate(name)
-        ? { ...inputErrors, nameError: "" }
-        : {
-            ...inputErrors,
-            nameError: "Please use only letters (a-z), numbers, and periods."
-          }
-    });
+  onBlur = (e, name) => {
+    e.persist();
+    const { customerErrors } = this.state;
+    const { value } = e.target;
+    const requiredFields = ["name", "confirmEmail", "phone_number", "email"];
+
+    if (requiredFields.indexOf(name) > -1 && value.length < 1) {
+      this.setState(() => ({
+        customerErrors: {
+          ...customerErrors,
+          [`${name}Error`]: "You can't leave this empty."
+        }
+      }));
+    } else {
+      this.setState(() => ({
+        customerErrors: InputConstants[name]["regex"].test(value)
+          ? { ...customerErrors, [`${name}Error`]: "" }
+          : {
+              ...customerErrors,
+              [`${name}Error`]: InputConstants[name].error
+            }
+      }));
+    }
   };
 
   handleConfirmEmail = (email, confirmEmail) => {
-    const { inputErrors } = this.state;
-    this.setState({
-      inputErrors:
-        email === confirmEmail
-          ? { ...inputErrors, confirmEmailError: "" }
-          : { ...inputErrors, confirmEmailError: "Emails don't match." }
-    });
+    const { customerErrors } = this.state;
+    if (confirmEmail.length < 1) {
+      this.setState(() => ({
+        customerErrors: {
+          ...customerErrors,
+          confirmEmailError: "You can't leave this empty."
+        }
+      }));
+    } else {
+      this.setState(() => ({
+        customerErrors:
+          email === confirmEmail
+            ? { ...customerErrors, confirmEmailError: "" }
+            : { ...customerErrors, confirmEmailError: "Emails don't match." }
+      }));
+    }
   };
 
   handleInputChange = e => {
@@ -125,19 +145,19 @@ export class EventBuyTicket extends React.PureComponent {
   handleTicketsTotalCost = priceValueForEvent => {
     const { ticketCategory } = this.state;
     let total = 0;
-    if (Object.keys(ticketCategory).length < 1) return "0.00";
+    if (Object.keys(ticketCategory).length < 1) return;
     for (let [key, value] of Object.entries(ticketCategory)) {
       total += priceValueForEvent[key] * value;
     }
-    return total.toFixed(2);
+    return total;
   };
 
-  handleCustomerInfo = e => {
-    const { customer } = this.state;
-    this.setState({ customer: { ...customer, [e.target.id]: e.target.value } });
-  };
+  handleCustomerInfo = e =>
+    this.setState({
+      customer: { ...this.state.customer, [e.target.id]: e.target.value }
+    });
 
-  getPriceValue = event => {
+  getTicketPrices = event => {
     if (Object.keys(event).length > 1) {
       const { ticketCategory, event } = this.state;
       const eventAndPrice = {};
@@ -160,71 +180,52 @@ export class EventBuyTicket extends React.PureComponent {
   };
 
   handleEmptyCustomerInfo = () => {
-    const { customer } = this.state;
-    const inputerrors = { ...this.state.inputErrors };
+    const { customer, totalTicketsPrice } = this.state;
+    const inputerrors = { ...this.state.customerErrors };
+    const error = totalTicketsPrice < 1;
     Object.entries(customer).forEach(([key, value]) => {
       if (value.length < 1) {
         inputerrors[`${key}Error`] = "You can't leave this empty.";
       }
     });
-    this.setState(() => ({ inputErrors: inputerrors, disabled: true }));
+
+    this.setState(() => ({ customerErrors: inputerrors, error }));
   };
 
-  disableBtn = customer => {
+  disableBtn = (customer) => {
+    const { totalTicketsPrice } = this.state;
     let res;
-    Object.entries(customer).forEach(([key, value]) => {
-      if (value.length < 1) {
-        res = false;
-      } else {
-        res = true;
-      }
-    });
+    if (totalTicketsPrice < 1) {
+      res = false;
+    } else {
+      Object.entries(customer).forEach(([key, value]) => {
+        if (value.length < 1) {
+          res = false;
+        } else {
+          res = true;
+        }
+      });
+    }
     return res;
-  };
-
-  handleMobilePayment = () => {
-    const {
-      id,
-      event_name,
-      tickets_count_by_category,
-      store_fk
-    } = this.state.event;
-    const { ticketCategory, extraInfo, customer, event } = this.state;
-    const orderArray = [];
-
-    delete customer.confirmEmail;
-    Object.entries(ticketCategory).forEach(([key, value]) => {
-      orderArray.push(
-        Object.assign(
-          {},
-          { name: this.getOrderName(tickets_count_by_category, key) },
-          { items_id: key },
-          { item_quantity: value }
-        )
-      );
-    });
-    extraInfo["order_detail"] = orderArray;
-    extraInfo["customer"] = customer;
-    extraInfo["store_fk"] = store_fk;
-    // this.props.handleOrdersPayment(extraInfo);
   };
 
   render() {
     const {
       event,
       customer: { name, phone_number, email, confirmEmail },
-      inputErrors: {
+      customerErrors: {
         emailError,
         phone_numberError,
         confirmEmailError,
         nameError
       },
-      disabled,
+      error,
       ticketCategory,
+      totalTicketsPrice,
       customer
     } = this.state;
     const { pathname } = this.props.location;
-    const priceValueForEvent = this.getPriceValue(event);
+    const totalPriceClassnames = classNames("ticket-total", { errors: error });
 
     if (Object.keys(event).length < 1) {
       return (
@@ -284,48 +285,50 @@ export class EventBuyTicket extends React.PureComponent {
                       this.state.ticketCategory[ticket.id] * ticket.ticket_value
                     )
                       ? (0).toFixed(2)
-                      : this.state.ticketCategory[ticket.id] *
-                        ticket.ticket_value}`}</td>
+                      : (this.state.ticketCategory[ticket.id] *
+                          ticket.ticket_value
+                        ).toFixed(2)}`}</td>
                   </tr>
                 ))}
                 <tr>
                   <td />
                   <td />
                   <td />
-                  <td className="ticket-total">{`KES. ${this.handleTicketsTotalCost(
-                    priceValueForEvent
-                  )}`}</td>
+                  <td className={totalPriceClassnames}>
+                    KES. {totalTicketsPrice.toFixed(2)}
+                  </td>
                 </tr>
               </tbody>
             </table>
-
-            <div className="ebt-information">
-              <label>SEND TICKETS TO:</label>
-              <div className="ebt-div-information">
-                <input
-                  onChange={this.handleCustomerInfo}
-                  value={name}
-                  id="name"
-                  type="text"
-                  placeholder="Name"
-                  required
-                  onBlur={() => this.onBlurName(name)}
-                />
-                <span>{nameError}</span>
+            <form onSubmit={e => e.preventDefault()} style={{margin: 0, padding: 0}}>
+              <div className="ebt-information">
+                <label>SEND TICKETS TO:</label>
+                <div className="ebt-div-information">
+                  <input
+                    onChange={this.handleCustomerInfo}
+                    value={name}
+                    id="name"
+                    type="text"
+                    placeholder="Name"
+                    required
+                    onBlur={e => this.onBlur(e, "name")}
+                  />
+                  <span>{nameError}</span>
+                </div>
+                <div className="ebt-div-information">
+                  <input
+                    onChange={this.handleCustomerInfo}
+                    id="phone_number"
+                    value={phone_number}
+                    type="tel"
+                    placeholder="Phone number"
+                    required
+                    onBlur={e => this.onBlur(e, "phone_number")}
+                  />
+                  <span>{phone_numberError}</span>
+                </div>
               </div>
-              <div className="ebt-div-information">
-                <input
-                  onChange={this.handleCustomerInfo}
-                  id="phone_number"
-                  value={phone_number}
-                  type="tel"
-                  placeholder="Phone number"
-                  required
-                  onBlur={() => this.onBlurPhoneNo(phone_number)}
-                />
-                <span>{phone_numberError}</span>
-              </div>
-            </div>
+            </form>
 
             <div className="ebt-information">
               <div className="ebt-div-information">
@@ -336,7 +339,7 @@ export class EventBuyTicket extends React.PureComponent {
                   type="email"
                   placeholder="Email"
                   required={true}
-                  onBlur={() => this.onBlurEmail(email)}
+                  onBlur={e => this.onBlur(e, "email")}
                 />
                 <span>{emailError}</span>
               </div>
@@ -367,9 +370,9 @@ export class EventBuyTicket extends React.PureComponent {
                 </div>
                 <div className="payment-btn-wrap">
                   <button
-                    className="payment-button"
+                    className="payment-button ripple"
                     onClick={
-                      !this.disableBtn(this.state.customer)
+                      !this.disableBtn(customer)
                         ? this.handleEmptyCustomerInfo
                         : this.handleMobilePayment
                     }
@@ -377,8 +380,12 @@ export class EventBuyTicket extends React.PureComponent {
                     MOBILE PAYMENT
                   </button>
                   <button
-                    onClick={() => this.props.openModal(ticketCategory, customer)}
-                    className="payment-button"
+                    onClick={
+                      !this.disableBtn(customer)
+                        ? this.handleEmptyCustomerInfo
+                        : () => this.props.openModal(ticketCategory, customer)
+                    }
+                    className="payment-button ripple"
                   >
                     CARD PAYMENT
                   </button>
@@ -392,14 +399,16 @@ export class EventBuyTicket extends React.PureComponent {
   }
 }
 
-const mapStateToProps = ({ buyTicket }) => ({
-  event: buyTicket.event
+const mapStateToProps = ({ buyTicket, payments }) => ({
+  event: buyTicket.event,
+  customer: payments.customer
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId)),
   handleOrdersPayment: info => dispatch(handleOrdersPayment(info)),
-  openModal: (ticketCategory, customer) => dispatch(openModal(ticketCategory, customer)),
+  openModal: (ticketCategory, customer) =>
+    dispatch(openModal(ticketCategory, customer)),
   closeModal: () => dispatch(closeModal())
 });
 

@@ -5,6 +5,7 @@
  */
 
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
 import { PaymentButtons, BackButton } from "components/Buttons";
@@ -56,7 +57,7 @@ export class MpesaPayBill extends PureComponent {
               id="nextOne"
               bsKlass="primary shadow"
               label="CONTINUE"
-              onClick={this.props.goTabThree}
+              onClick={() => this.props.dispatch({type: "PAYMENT_METHODS_TAB", tabIndex: 1})}
             />
           </div>
         </TabsBottomWrap>
@@ -70,4 +71,4 @@ MpesaPayBill.proptypes = {
   goTabThree: React.PropTypes.func.isRequired
 }
 
-export default MpesaPayBill;
+export default connect(null, null)(MpesaPayBill);

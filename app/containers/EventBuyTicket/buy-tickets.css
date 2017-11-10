@@ -70,11 +70,21 @@ td {
   padding: 4px 2px;
 }
 
-tr:last-child td:last-child {
-  border-top: 2px solid rgba(202, 202, 202, 0.5);
+td.ticket-total.errors {
+  color: red;
+}
+
+td.ticket-total.errors:after {
+  content: "You have not selected a ticket.";
+  color: red;
+  display: block;
+  float: left;
+  width: 100%;
+  font-weight: 400;
 }
 
 .ticket-total {
+  border-top: 2px solid rgba(202, 202, 202, 0.5);
   font-weight: bolder;
 }
 
@@ -86,18 +96,17 @@ tr:last-child td:last-child {
 .ebt-promo-wrap input,
 .ebt-div-information > input {
   font-size: 14px;
-  color: #343434;
-  border:2px solid #ccc;
-  background-color: #f6f3ee63;
+  border: 1px solid #ccc;
   box-sizing: border-box;
   outline: 0;
   transition: border-color ease-in-out 0.15s;
+  color: #31383e;
+  font-weight: 600;
 }
 
 .ebt-promo-wrap input:focus,
 .ebt-div-information > input:focus {
-  border-color: rgb(250, 234, 41);
-  background-color: rgba(250, 234, 41, 0.05);
+  border-color: #faea29;
 }
 
 .ebt-information > label {
@@ -116,7 +125,7 @@ tr:last-child td:last-child {
 
 span.buy-ticket-optional-info {
   margin-bottom: 8px;
-  margin-top:   28px;
+  margin-top: 28px;
 }
 
 /* Payment Buttons
@@ -146,11 +155,7 @@ span.buy-ticket-optional-info {
 
 .payment-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08)
-}
-
-.payment-button:active {
-  background-color: #eedc00;
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
 span.buy-ticket-optional-info {
@@ -330,6 +335,7 @@ input.error {
     margin-left: 0px;
     padding: 8px 16px;
     float: left;
+    border-radius: 4px;
   }
 
   .ebt-promo-wrap input {
@@ -464,10 +470,9 @@ input.error {
     margin-bottom: 32px;
   }
 
-  .payment-button: {
+  .payment-button {
     margin-left: 8px;
   }
-
 }
 
 @media screen and (max-width: 767px) {
@@ -625,7 +630,7 @@ input.error {
 /* Span errors
 ======================================================*/
 .ebt-div-information span {
-  color: #dd4b39;
+  color: red;
   float: left;
   min-height: 23px;
   font-size: 14px;

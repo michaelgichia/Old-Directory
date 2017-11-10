@@ -40,7 +40,7 @@ export class MpesaPush extends PureComponent {
           <div>
             <PaymentButtons
               id="pay"
-              bsKlass="primary shadow btn-reposition"
+              bsKlass="primary ripple btn-reposition"
               label="PAY NOW"
               onClick={this.props.handlePayment}
             />
@@ -48,7 +48,7 @@ export class MpesaPush extends PureComponent {
           <div>
             <PaymentButtons
               id="store"
-              bsKlass="secondary shadow"
+              bsKlass="secondary ripple"
               label="RETURN TO STORE"
               onClick={this.props.handleReturnToStore}
             />
@@ -60,7 +60,6 @@ export class MpesaPush extends PureComponent {
 }
 
 MpesaPush.proptypes = {
-  goTabOne: React.PropTypes.func.isRequired,
   mpesaInitiated: React.PropTypes.bool.isRequired,
   goToPayBill: React.PropTypes.func.isRequired
 };

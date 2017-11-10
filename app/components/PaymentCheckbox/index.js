@@ -24,7 +24,7 @@ export default class PaymentCheckbox extends PureComponent {
             >
               <path
                 d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256S397.385,0,256,0z M208,416L102,278l47-49l59,75   l185-151l23,23L208,416z"
-                fill="#fdde3d"
+                fill="#faea29"
               />
             </svg>
           </span>

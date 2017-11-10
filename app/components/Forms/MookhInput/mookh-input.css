@@ -2,7 +2,7 @@
 
 /* Forms styles
 =========================================================*/
-/*Error color: #dd4b39*/
+/*Error color: red*/
 
 /*
 Input styles
@@ -24,15 +24,15 @@ Input styles
 }
 
 .mookh-input-error {
-  border-color: #dd4b39;
+  border-color: red;
 }
 
 .mookh-input:focus {
-  border-color: #fdde3d;
+  border-color: #faea29;
 }
 
 .mookh-input .mookh-input-error:focus {
-  border-color: #dd4b39;
+  border-color: red;
 }
 
 .mookh-input .invalid {
@@ -55,7 +55,7 @@ Input styles
 ============================================*/
 .mookh-span-error {
   display: block;
-  color: #dd4b39;
+  color: red;
   font-size: 14px;
   width: 100%;
   min-height: 23px;

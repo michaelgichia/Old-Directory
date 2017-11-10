@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 import { PaymentButtons } from "components/Buttons";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
@@ -72,4 +73,4 @@ PaymentConfirmation.proptypes = {
   handleCloseModal: React.PropTypes.func.isRequired
 };
 
-export default PaymentConfirmation;
+export default connect(null, null)(PaymentConfirmation);

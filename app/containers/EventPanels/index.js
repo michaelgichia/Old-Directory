@@ -43,9 +43,7 @@ class EventPanels extends React.PureComponent {
       return <LoadingSpinner />;
     }
     return (
-      <div
-        className="panel-wrap"
-      >
+      <div className="panel-wrap">
         {events.map(event => (
           <div className="panel-container" key={event.id}>
             <div
