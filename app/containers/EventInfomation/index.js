@@ -25,16 +25,12 @@ export class EventInfomation extends React.PureComponent {
       <div>
         <EventPoster productImage={productImage} openModal={openModal} />
 
-        <div className="tablet product-image-wrapper">
-          <img src={productImage} alt="product" />
-        </div>
-
         <div className="description-wrap">
-          <div className="desktop product-image-wrapper">
+          <div className="grid-33 event-buy-image">
             <img src={productImage} alt="product" />
           </div>
 
-          <div className="information">
+          <div className="grid-66  information">
             <header>ABOUT THIS EVENT</header>
             <div className="more-details">
               <p>

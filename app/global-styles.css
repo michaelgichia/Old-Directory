@@ -73,6 +73,46 @@ h6 {
 
 /* Media Query
 --------------------------------------------------*/
+
+/* Large and medium size screen styles */
+@media (min-width: 768px) and (max-width: 1920px) {
+  .grid-33 {
+    width: 33%;
+    float: left;
+    border: 1px solid red;
+  }
+
+  .grid-66 {
+    float: left;
+    width: 66%;
+    border: 1px solid green;
+  }
+}
+
+/* Styles for Tablets and medium screen
+------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 990px) {
+  .grid-33 {
+    padding: 8px 16px 8px 8px;
+  }
+
+  .grid-66 {
+    padding: 8px 8px 8px 16px;
+  }
+}
+
+/* Styles for Tablets and medium screen
+------------------------------------------------------- */
+@media screen and (min-width: 990px) and (max-width: 1920px) {
+  .grid-33 {
+    padding: 16px 32px 16px 16px;
+  }
+
+  .grid-66 {
+    padding: 16px 16px 16px 32px;
+  }
+}
+
 @media (min-width: 1024px) and (max-width: 1920px) {
   .lg-screen {
     padding-left: 100px;

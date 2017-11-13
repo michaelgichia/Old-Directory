@@ -213,17 +213,9 @@ export class EventBuyTicket extends React.PureComponent {
 
     return (
       <div>
-        <div className="mobile ticket-image-wrap grid-33">
-          <div>
-            <img src={productImage} alt="product" />
-          </div>
-        </div>
-
         <div className="ticket-description-wrap">
-          <div className="desktop grid-33">
-            <div>
-              <img src={productImage} alt="product" />
-            </div>
+          <div className="grid-33 event-buy-image">
+            <img src={productImage} alt="product" />
           </div>
 
           <div className="grid-66 price-table">
