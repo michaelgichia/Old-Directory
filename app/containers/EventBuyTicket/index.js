@@ -10,19 +10,10 @@ import _ from "lodash";
 import classNames from "classnames";
 import { countryList } from "utils/countryList";
 import Payments from "containers/Payments";
-import LoadingSpinner from "components/LoadingSpinner";
-import EventTopPageDisplay from "containers/EventTopPageDisplay";
-import EventMenuBar from "components/EventMenuBar";
-import EventSubMenu from "components/EventSubMenu";
 import { InputConstants } from "utils/constants";
 import "!!style-loader!css-loader!./buy-tickets.css";
 import productImage from "./product-banner.jpg";
-import {
-  fetchEvent,
-  handleOrdersPayment,
-  openModal,
-  closeModal
-} from "./actions";
+import { handleOrdersPayment, openModal, closeModal } from "./actions";
 import {
   phonenumberValidate,
   nameValidate,
@@ -41,7 +32,6 @@ const orderInfo = {
 export class EventBuyTicket extends React.PureComponent {
   state = {
     ticketCategory: {},
-    event: {},
     extraInfo: {
       store_fk: "",
       payment_method: "mpesa"
@@ -63,15 +53,7 @@ export class EventBuyTicket extends React.PureComponent {
     totalTicketsPrice: 0
   };
 
-  componentDidMount() {
-    const { eventId } = this.props.params;
-    this.props.fetchEvent(eventId);
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (nextProps.event !== this.state.event) {
-      this.setState(() => ({ event: nextProps.event }));
-    }
     if (!_.isEqual(nextProps.customer, this.state.customer)) {
       this.setState(() => ({ customer: nextProps.customer }));
     }
@@ -214,46 +196,28 @@ export class EventBuyTicket extends React.PureComponent {
 
   render() {
     const {
-      event,
-      customer: { name, phone_number, email, confirmEmail },
+      error,
+      customer,
+      ticketCategory,
+      totalTicketsPrice,
       customerErrors: {
         emailError,
         phone_numberError,
         confirmEmailError,
         nameError
       },
-      error,
-      ticketCategory,
-      totalTicketsPrice,
-      customer
+      customer: { name, phone_number, email, confirmEmail }
     } = this.state;
-    const { pathname } = this.props.location;
+    const { pathname, event } = this.props;
     const totalPriceClassnames = classNames("ticket-total", { errors: error });
-
-    if (Object.keys(event).length < 1) {
-      return (
-        <div className="loading-exit">
-          <EventTopPageDisplay />
-          <LoadingSpinner />
-        </div>
-      );
-    }
 
     return (
       <div>
-        <EventTopPageDisplay />
         <div className="mobile ticket-image-wrap grid-33">
           <div>
             <img src={productImage} alt="product" />
           </div>
         </div>
-
-        <EventSubMenu
-          eventName={event.event_name}
-          eventVenue={event.event_venue}
-        />
-
-        <EventMenuBar pathname={pathname} eventId={event.id} />
 
         <div className="ticket-description-wrap">
           <div className="desktop grid-33">
@@ -405,14 +369,12 @@ export class EventBuyTicket extends React.PureComponent {
   }
 }
 
-const mapStateToProps = ({ buyTicket, payments }) => ({
-  event: buyTicket.event,
+const mapStateToProps = ({ payments }) => ({
   customer: payments.customer,
   totalTicketsPrice: payments.totalTicketsPrice
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchEvent: eventId => dispatch(fetchEvent(eventId)),
   handleOrdersPayment: info => dispatch(handleOrdersPayment(info)),
   openModal: (ticketCategory, customer) =>
     dispatch(openModal(ticketCategory, customer)),

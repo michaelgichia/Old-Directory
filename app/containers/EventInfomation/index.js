@@ -5,60 +5,29 @@
  */
 
 import React from "react";
-import { connect } from "react-redux";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
 import EventPoster from "components/EventPoster";
 import "!!style-loader!css-loader!./event-info.css";
 import productImage from "./product-banner.jpg";
-import { fetctEventInfo } from "./actions";
 
 export class EventInfomation extends React.PureComponent {
   state = {
-    activeItem: "home",
     openModal: false,
     eventInfo: {}
   };
 
-  componentDidMount() {
-    const { eventId } = this.props.params;
-    this.props.fetctEventInfo(eventId);
-  }
-
-  componetWillReceiveProps(nextProps) {
-    if (nextProps.eventInfo !== this.state.eventInfo) {
-      this.setState(() => ({
-        eventInfo: nextProps.eventInfo
-      }));
-    }
-  }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
-  handleClosePosterModal = () => this.setState(() => ({ openModal: false }));
-
-  handleOpenModal = () => {
-    this.setState(() => ({ openModal: true }));
-  };
-
   render() {
     const { openModal } = this.state;
-    const { pathname } = this.props.location;
-    const { eventId } = this.props.params;
+    const { pathname, event } = this.props;
     return (
       <div>
-        <EventTopPageDisplay />
-
         <EventPoster productImage={productImage} openModal={openModal} />
 
         <div className="tablet product-image-wrapper">
           <img src={productImage} alt="product" />
         </div>
-
-        <EventSubMenu />
-
-        <EventMenuBar pathname={pathname} eventId={eventId} />
 
         <div className="description-wrap">
           <div className="desktop product-image-wrapper">
@@ -91,12 +60,4 @@ export class EventInfomation extends React.PureComponent {
   }
 }
 
-const mapStateToProps = ({ eventInfomation }) => ({
-  eventInfo: eventInfomation.eventInfo
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetctEventInfo: eventId => dispatch(fetctEventInfo(eventId))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventInfomation);
+export default EventInfomation;

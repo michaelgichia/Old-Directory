@@ -7,10 +7,14 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { fetchEvent } from "./actions";
+import { TabPanel } from "react-tabs";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
+import LoadingSpinner from "components/LoadingSpinner";
 import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
 import EventMenuTab from "components/EventMenuTab";
+import EventInfomation from "containers/EventInfomation";
+import EventBuyTicket from "containers/EventBuyTicket";
 // import "!!style-loader!css-loader!./Event.css";
 
 export class Event extends React.Component {
@@ -21,6 +25,16 @@ export class Event extends React.Component {
 
   render() {
     const { event, location: { pathname } } = this.props;
+
+    if (Object.keys(event).length < 1) {
+      return (
+        <div className="loading-exit">
+          <EventTopPageDisplay />
+          <LoadingSpinner />
+        </div>
+      );
+    }
+
     return (
       <div>
         <EventTopPageDisplay />
@@ -28,7 +42,26 @@ export class Event extends React.Component {
           eventName={event.event_name}
           eventVenue={event.event_venue}
         />
-        <EventMenuTab />
+        <EventMenuTab>
+          <TabPanel>
+            <EventBuyTicket event={event} pathname={pathname} />
+          </TabPanel>
+          <TabPanel>
+            <EventInfomation event={event} pathname={pathname} />
+          </TabPanel>
+          <TabPanel>
+            <h2>GALLERY</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>SITE MAP</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>SCHEDULES $ SPEAKERS</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>SPONSORS</h2>
+          </TabPanel>
+        </EventMenuTab>
       </div>
     );
   }

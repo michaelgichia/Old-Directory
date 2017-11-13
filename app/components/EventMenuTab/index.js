@@ -53,24 +53,7 @@ class EventMenuTab extends React.Component {
             <Cubes /> SPONSORS
           </Tab>
         </TabList>
-        <TabPanel>
-          <h2>BUY TICKETS</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>EVENT INFO1</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>GALLERY</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>SITE MAP</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>SCHEDULES $ SPEAKERS</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>SPONSORS</h2>
-        </TabPanel>
+        {this.props.children}
       </Tabs>
     );
   }
