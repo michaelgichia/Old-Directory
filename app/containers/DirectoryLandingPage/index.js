@@ -19,7 +19,7 @@ export class DirectoryLandingPage extends React.PureComponent {
   componentDidMount() {
     const directoryMain = document.querySelector(".directory-navbar");
     this.setState(() => ({ topOfNav: directoryMain.offsetTop }));
-    window.addEventListener("scroll", () => this.listenPageScroll());
+    window.addEventListener("scroll", () => this.listenPageScroll(), false);
   }
 
   listenPageScroll = () => {
@@ -32,7 +32,7 @@ export class DirectoryLandingPage extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.listenPageScroll);
+    window.removeEventListener("scroll", this.listenPageScroll, false);
   }
 
   render() {

@@ -73,33 +73,36 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       }
-    },  {
-      path: '/modal',
-      name: 'modalPoster',
+    },
+    {
+      path: "/modal",
+      name: "modalPoster",
       getComponent(location, cb) {
-        import('components/PaymentCheckbox')
+        import("components/PaymentCheckbox")
           .then(loadModule(cb))
           .catch(errorLoading);
-      },
-    }, {
-      path: '/payments',
-      name: 'payments',
+      }
+    },
+    {
+      path: "/event/:eventId",
+      name: "event",
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/Payments/reducer'),
-          import('containers/Payments'),
+          import("containers/Event/reducer"),
+          import("containers/Event")
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, component]) => {
-          injectReducer('payments', reducer.default);
+          injectReducer("event", reducer.default);
           renderRoute(component);
         });
 
         importModules.catch(errorLoading);
-      },
-    }, {
+      }
+    },
+    {
       path: "*",
       name: "notfound",
       getComponent(nextState, cb) {

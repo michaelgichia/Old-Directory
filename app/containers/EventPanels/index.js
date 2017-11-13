@@ -50,7 +50,7 @@ class EventPanels extends React.PureComponent {
               className="panel-img-wrap"
               style={{ backgroundColor: `${randomColor()}` }}
             >
-              <a href={`/tickets/event/${event.id}`}>
+              <a href={`/event/${event.id}`}>
                 <img
                   src={event.event_poster}
                   alt=""
@@ -73,7 +73,7 @@ class EventPanels extends React.PureComponent {
               />
             </div>
             <a
-              href={`/tickets/event/${event.id}`}
+              href={`/event/${event.id}`}
               target="_self"
               className="panel-event-buy"
             >
