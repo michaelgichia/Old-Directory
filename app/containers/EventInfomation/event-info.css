@@ -21,14 +21,6 @@
   font-size: 16px;
 }
 
-.mobile {
-  display: none;
-}
-
-.tablet {
-  display: none;
-}
-
 .description-wrap {
   background-color: #ffffff;
   width: 100%;
@@ -124,18 +116,6 @@
 
 /* Small Screen styles */
 @media (max-width: 767px) {
-  .desktop {
-    display: none;
-  }
-
-  .tablet {
-    display: block;
-  }
-
-  .mobile {
-    display: block;
-  }
-
   .information .description > h5 {
     color: #31383e;
   }

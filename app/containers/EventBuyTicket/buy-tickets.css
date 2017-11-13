@@ -5,22 +5,6 @@
   background-color: #faea29;
 }
 
-.tablet {
-  display: none;
-}
-
-.desktop {
-  display: none;
-}
-
-.desktop-tablet {
-  display: none;
-}
-
-.medium-screen {
-  display: none;
-}
-
 .input input {
   background-color: #f6f3ee !important;
 }
@@ -364,14 +348,6 @@ input.error {
 /* Styles for Tablets and medium screen
 ------------------------------------------------------- */
 @media (min-width: 768px) and (max-width: 990px) {
-  .mobile {
-    display: none !important;
-  }
-
-  .desktop-tablet {
-    display: block;
-  }
-
   .ticket-title h4 {
     padding: 16px;
   }
