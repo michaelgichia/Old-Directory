@@ -102,8 +102,8 @@ td.ticket-total.errors:after {
   transition: border-color ease-in-out 0.15s;
   color: #31383e;
   font-weight: 600;
-  padding: 8px;
-  border-radius: 4px;
+  padding: 8px 14px;
+  border-radius: 1px;
 }
 
 .ebt-promo-wrap input:focus,

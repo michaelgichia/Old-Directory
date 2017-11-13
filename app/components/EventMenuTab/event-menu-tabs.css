@@ -25,6 +25,10 @@
     transition: background-color 0.1s ease-in-out;
   }
 
+  .event-menu-tabs__tab:last-of-type {
+    border-right: 1px solid #f6f3ee;
+  }
+
   .event-menu-tabs__tab.event-menu-tabs__tab--selected,
   .event-menu-tabs__tab:hover {
     border-bottom: 1px solid #faea29;
