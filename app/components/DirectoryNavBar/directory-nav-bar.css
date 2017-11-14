@@ -52,12 +52,12 @@
 
 .directory-navbar li {
   display: table-cell;
-  width: 10%;
+  width: 16.5556%;
   margin: 0;
   padding: 0;
   text-align: center;
   box-sizing: border-box;
-  border-bottom: 2px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .directory-navbar li:last-of-type,
@@ -66,7 +66,7 @@
 .directory-navbar li:first-of-type,
 .directory-navbar li:first-of-type:active,
 .directory-navbar li:first-of-type:hover {
-  border-bottom: 2px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
   pointer-events: none;
   cursor: default;
 }
@@ -81,7 +81,7 @@
   height: 3px;
 }
 
-.dnb-active i.icon,
+.dnb-active i,
 li.dnb-active .nav-item-name {
   color: #343a41 !important;
 }
@@ -94,14 +94,14 @@ li.dnb-active .nav-item-name {
 
 .directory-navbar li:active span.nav-item-name,
 .directory-navbar li:hover span.nav-item-name,
-.directory-navbar li:hover i.icon,
-.directory-navbar li:hover i.icon {
+.directory-navbar li:hover i,
+.directory-navbar li:hover i {
   color: #343a41;
 }
 
-.directory-navbar i.icon {
+.directory-navbar i {
   margin-right: 5%;
-  color: #858585;
+  color: #807D79;
   font-size: 20px;
 }
 

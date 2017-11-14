@@ -5,7 +5,6 @@
 */
 
 import React from "react";
-import { Icon } from "semantic-ui-react";
 import { getPathname } from "utils/helperFunctions";
 import "!!style-loader!css-loader!./directory-nav-bar.css";
 
@@ -22,28 +21,28 @@ class DirectoryNavBar extends React.PureComponent {
         </li>
         <li className={location === "landing page" ? "dnb-active" : ""}>
           <a href="#">
-            <Icon name="star" />
+            <i className="fa fa-star fa-2x" aria-hidden="true" />
             <span className="nav-item-name">Featured</span>
             <span />
           </a>
         </li>
         <li>
-          <a href="/buy-ticket">
-            <Icon name="ticket" />
+          <a href="#">
+            <i className="fa fa-ticket fa-2x" aria-hidden="true" />
             <span className="nav-item-name">Tickets</span>
             <span />
           </a>
         </li>
         <li>
-          <a href="/event-information">
-            <Icon name="shopping basket" />
+          <a href="#">
+            <i className="fa fa-shopping-basket fa-2x" aria-hidden="true" />
             <span className="nav-item-name">Products</span>
             <span />
           </a>
         </li>
         <li>
           <a href="#">
-            <Icon name="headphone" />
+            <i className="fa fa-headphones fa-2x" aria-hidden="true" />
             <span className="nav-item-name">Digital Content</span>
             <span />
           </a>

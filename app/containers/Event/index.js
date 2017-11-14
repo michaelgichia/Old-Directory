@@ -10,7 +10,6 @@ import { fetchEvent } from "./actions";
 import { TabPanel } from "react-tabs";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import LoadingSpinner from "components/LoadingSpinner";
-import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
 import EventMenuTab from "components/EventMenuTab";
 import EventInfomation from "containers/EventInfomation";

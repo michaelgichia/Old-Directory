@@ -27,6 +27,13 @@ module.exports = (options) => ({
       include: /node_modules/,
       loaders: ['style-loader', 'css-loader'],
     }, {
+    test: /\.less$/,
+      use: [
+        { loader: "style-loader" },
+        { loader: "css-loader", options: { sourceMap: true } },
+        { loader: "less-loader", options: { sourceMap: true } }
+      ],
+    }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
       loader: 'file-loader',
     }, {

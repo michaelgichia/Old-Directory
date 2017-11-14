@@ -25,22 +25,35 @@ div.social-media-wrap {
   text-align: center;
 }
 
-.social-media-wrap .icon {
+.social-media-wrap i {
   background-color: #b1b2b5 !important;
   transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
 }
 
-.social-media-wrap .icon:hover {
+.social-media-wrap i:hover {
   background-color: #f6f3ee !important;
 }
 
+div.social-media-wrap > a  i,
 div.social-media-wrap > a {
   color: #31383e;
   display: inline-block;
   text-decoration: none;
   margin: 0 24px 0 0;
   padding: 0;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+}
+
+div.social-media-wrap > a  i {
+  border-radius: 50%;
+}
+
+.fa-stack {
+  width: 1.6em !important;
+  height: 1.6em !important;
+  line-height: 1.6em !important;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
 }

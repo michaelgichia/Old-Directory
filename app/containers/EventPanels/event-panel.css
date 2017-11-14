@@ -67,7 +67,7 @@
 }
 
 .panel-event-logo i {
-  color: #858585;
+  color: #807d7d;
 }
 
 .panel-event-logo i:hover .panel-event-logo i:focus {
@@ -224,17 +224,8 @@ a.panel-event-buy {
     font-size: 30px;
   }
 
-  /*  .panel-wrap-fixed {
-    padding-top: 90px;
-  }
-
-  .panel-wrap-static {
-  }*/
-
   .panel-wrap {
     padding-left: 16px;
-    /*    padding-top: 30px;
-*/
     padding-right: 16px;
   }
 }
@@ -247,18 +238,9 @@ a.panel-event-buy {
     margin-bottom: 45px;
   }
 
-  /*  .panel-wrap-fixed {
-    padding-top: 90px;
-  }
-
-  .panel-wrap-static {
-  }
-*/
   .panel-wrap {
     padding-left: 8px;
     padding-right: 8px;
-    /*    padding-top: 30px;
-*/
   }
   .panel-event-logo {
     top: 256px;

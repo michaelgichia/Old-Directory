@@ -75,10 +75,10 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: "/modal",
+      path: "/mobile-tabs",
       name: "modalPoster",
       getComponent(location, cb) {
-        import("components/PaymentCheckbox")
+        import("components/TabsMobile")
           .then(loadModule(cb))
           .catch(errorLoading);
       }

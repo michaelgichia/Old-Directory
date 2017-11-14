@@ -41,29 +41,6 @@ class EventMenuBar extends React.PureComponent {
 
     return (
       <div>
-        <Menu
-          className="hide-desktop-tablet"
-          pointing
-          secondary
-          fluid
-          widths={3}
-        >
-          <Menu.Item
-            name="BUY TICKETS"
-            active={activeItem === "BUY TICKETS"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="EVENT INFO"
-            active={activeItem === "EVENT INFO"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="GALLERY"
-            active={activeItem === "GALLERY"}
-            onClick={this.handleItemClick}
-          />
-        </Menu>
         <nav className="product-tabs">
           <div className="nav-wide">
             <div className="wide-div">

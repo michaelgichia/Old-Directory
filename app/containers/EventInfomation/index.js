@@ -6,7 +6,6 @@
 
 import React from "react";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
-import EventMenuBar from "components/EventMenuBar";
 import EventSubMenu from "components/EventSubMenu";
 import EventPoster from "components/EventPoster";
 import "!!style-loader!css-loader!./event-info.css";

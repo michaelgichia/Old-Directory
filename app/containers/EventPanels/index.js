@@ -10,7 +10,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import LoadingSpinner from "components/LoadingSpinner";
-import { Icon } from "semantic-ui-react";
 import "style-loader!css-loader!./event-panel.css";
 import { randomColor } from "utils/color-generator";
 // Actions
@@ -78,7 +77,7 @@ class EventPanels extends React.PureComponent {
               className="panel-event-buy"
             >
               VIEW STORE
-              <Icon name="arrow right" />
+              <i className="fa fa-arrow-right fa-2x" aria-hidden="true" />
             </a>
           </div>
         ))}

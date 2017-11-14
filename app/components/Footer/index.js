@@ -6,7 +6,6 @@
 */
 
 import React from "react";
-import { Icon } from "semantic-ui-react";
 import "!!style-loader!css-loader!./footer.css";
 
 class Footer extends React.PureComponent {
@@ -24,13 +23,19 @@ class Footer extends React.PureComponent {
         </div>
         <div className="social-media-wrap">
           <a href="#">
-            <Icon name="twitter" circular />
+            <span className="fa-stack fa-lg">
+              <i className="fa fa-twitter fa-stack-1x fa-inverse"></i>
+            </span>
           </a>
           <a href="#">
-            <Icon name="facebook f" circular />
+            <span className="fa-stack fa-lg">
+              <i className="fa fa-facebook fa-stack-1x fa-inverse"></i>
+            </span>
           </a>
           <a href="#">
-            <Icon name="instagram" circular />
+            <span className="fa-stack fa-lg">
+              <i className="fa fa-instagram fa-stack-1x fa-inverse"></i>
+            </span>
           </a>
         </div>
       </footer>

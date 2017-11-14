@@ -9,7 +9,6 @@
 import React from "react";
 import { GlowButton } from "components/Buttons";
 import ModalPoster from "components/Modals/ModalPoster";
-import { Icon } from "semantic-ui-react";
 import "!!style-loader!css-loader!./invent-info-menu.css";
 
 const getDirectionBaseAPI = "https://www.google.com/maps/search/?api=1&query=";
@@ -49,10 +48,10 @@ class EventSubMenu extends React.Component {
         </div>
         <div className="description header">
           <h5>
-            <Icon name="clock" />FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO
+            <i className="fa fa-clock-o fa-2x" aria-hidden="true" />FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO
           </h5>
           <a href={`${getDirectionBaseAPI}${location}`} target="_blank">
-            <Icon name="marker" />
+            <i className="fa fa-map-marker fa-2x" aria-hidden="true" />
             {eventVenue}
           </a>
         </div>
