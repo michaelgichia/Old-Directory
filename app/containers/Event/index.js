@@ -8,13 +8,18 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { fetchEvent } from "./actions";
 import { TabPanel } from "react-tabs";
+import { Tabs as MobileTabs } from "antd";
 import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import LoadingSpinner from "components/LoadingSpinner";
 import EventSubMenu from "components/EventSubMenu";
 import EventMenuTab from "components/EventMenuTab";
 import EventInfomation from "containers/EventInfomation";
 import EventBuyTicket from "containers/EventBuyTicket";
-// import "!!style-loader!css-loader!./Event.css";
+import EventMenuBar from "components/EventMenuBar";
+import "!!style-loader!css-loader!./event.css";
+
+
+const TabPane = MobileTabs.TabPane;
 
 export class Event extends React.Component {
   componentWillMount() {
@@ -41,6 +46,44 @@ export class Event extends React.Component {
           eventName={event.event_name}
           eventVenue={event.event_venue}
         />
+        <div className="show-mobile">
+        <MobileTabs defaultActiveKey="1" tabPosition="top" style={{ height: 220 }}>
+          <TabPane tab="Tab 1" key="1">
+            Content of tab 1
+          </TabPane>
+          <TabPane tab="Tab 2" key="2">
+            Content of tab 2
+          </TabPane>
+          <TabPane tab="Tab 3" key="3">
+            Content of tab 3
+          </TabPane>
+          <TabPane tab="Tab 4" key="4">
+            Content of tab 4
+          </TabPane>
+          <TabPane tab="Tab 5" key="5">
+            Content of tab 5
+          </TabPane>
+          <TabPane tab="Tab 6" key="6">
+            Content of tab 6
+          </TabPane>
+          <TabPane tab="Tab 7" key="7">
+            Content of tab 7
+          </TabPane>
+          <TabPane tab="Tab 8" key="8">
+            Content of tab 8
+          </TabPane>
+          <TabPane tab="Tab 9" key="9">
+            Content of tab 9
+          </TabPane>
+          <TabPane tab="Tab 10" key="10">
+            Content of tab 10
+          </TabPane>
+          <TabPane tab="Tab 11" key="11">
+            Content of tab 11
+          </TabPane>
+        </MobileTabs>
+        </div>
+
         <EventMenuTab>
           <TabPanel>
             <EventBuyTicket event={event} pathname={pathname} />

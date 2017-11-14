@@ -34,6 +34,7 @@
   font-weight: 500;
 }
 
+.description.header h5,
 .description.header {
   background-color: #31383E;
   color: #F6F3EE;
@@ -90,27 +91,25 @@
     margin-top: 0;
   }
 
-  .information .description > h5 {
-    color: #31383E;
+  .description h5 {
+    font-size: 13px;
   }
 
   .description {
     padding-left: 8px;
     padding-right: 8px;
+    background-color: #F6F3EE;
+    letter-spacing: .5px;
   }
 
   .description i {
     display: none;
   }
 
-  .description {
-    background-color: #F6F3EE;
-    letter-spacing: .5px;
-  }
-
  .header h5 i {
     display: none;
   }
+
   .information header {
     padding-bottom: 3px;
     border-bottom: 1px solid rgba(0,0,0,.1);

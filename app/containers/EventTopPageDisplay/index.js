@@ -13,7 +13,7 @@ import mookhLogo from "./logo-dark.png";
 export class EventTopPageDisplay extends React.PureComponent {
   render() {
     return (
-      <div className="nav">
+      <div className="nav-event-page">
         <ul>
           <li>
             <a href="/#">

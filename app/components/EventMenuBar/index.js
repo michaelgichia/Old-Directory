@@ -10,7 +10,6 @@
 
 import React from "react";
 import { browserHistory } from "react-router";
-import { Icon, Menu } from "semantic-ui-react";
 import { getPathname } from "utils/helperFunctions";
 import "!!style-loader!css-loader!./menu-tabs-large-screen.css";
 import mookhLogo from "./logo-dark.png";
@@ -107,12 +106,7 @@ class EventMenuBar extends React.PureComponent {
               >
                 <img src={mookhLogo} alt="" />
               </span>
-              <Icon
-                size="large"
-                className="tabs-menu-icon"
-                name="sidebar"
-                onClick={this.burgerToggle}
-              />
+              <i className="fa fa-sidebar fa-2x" aria-hidden="true" onClick={this.burgerToggle} />
             </div>
             <div className="narrow-links">
               <a
@@ -121,7 +115,7 @@ class EventMenuBar extends React.PureComponent {
                 alt="buy tickets"
                 className={onActive === "tickets event" ? "mb-active" : ""}
               >
-                BUY TICKETS<Icon name="ticket" />
+                BUY TICKETS<i className="fa fa-ticket fa-2x" aria-hidden="true" />
               </a>
               <a
                 href={`/tickets/event/${eventId}/info`}
@@ -129,7 +123,7 @@ class EventMenuBar extends React.PureComponent {
                 alt="event information"
                 className={onActive === "event info" ? "mb-active" : ""}
               >
-                EVENT INFO<Icon name="users" />
+                EVENT INFO<i className="fa fa-users fa-2x" aria-hidden="true" />
               </a>
               <a
                 href="#"
@@ -137,7 +131,7 @@ class EventMenuBar extends React.PureComponent {
                 alt="gallery"
                 className={onActive === "gallery" ? "mb-active" : ""}
               >
-                GALLERY<Icon name="image" />
+                GALLERY<i className="fa fa-image fa-2x" aria-hidden="true" />
               </a>
               <a
                 href="#"
@@ -145,7 +139,7 @@ class EventMenuBar extends React.PureComponent {
                 alt="site map"
                 className={onActive === "site map" ? "mb-active" : ""}
               >
-                SITE MAP<Icon name="map" />
+                SITE MAP<i className="fa fa-map fa-2x" aria-hidden="true" />
               </a>
               <a
                 href="#"
@@ -155,7 +149,7 @@ class EventMenuBar extends React.PureComponent {
                   onActive === "schedules and speakers" ? "mb-active" : ""
                 }
               >
-                SCHEDULES $ SPEAKERS<Icon name="calendar minus" />
+                SCHEDULES $ SPEAKERS<i className="fa fa-calendar-minus fa-2x" aria-hidden="true" />
               </a>
               <a
                 href="#"
@@ -163,7 +157,7 @@ class EventMenuBar extends React.PureComponent {
                 alt="sponsors"
                 className={onActive === "sponsors" ? "mb-active" : ""}
               >
-                SPONSORS<Icon name="cubes" />
+                SPONSORS<i className="fa fa-cubes fa-2x" aria-hidden="true" />
               </a>
             </div>
           </div>

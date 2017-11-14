@@ -143,4 +143,8 @@ button.button-glow {
     opacity: 1;
     left: 0;
   }
+
+  .position-glow-btn {
+    display: none !important;
+  }
 }

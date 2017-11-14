@@ -227,6 +227,7 @@
     "react-dom": "15.4.1",
     "react-helmet": "3.2.2",
     "react-intl": "2.1.5",
+    "react-measure": "^2.0.2",
     "react-medium-image-zoom": "^2.0.3",
     "react-modal": "^3.1.0",
     "react-redux": "4.4.6",
