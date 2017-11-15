@@ -5,6 +5,7 @@
  */
 
 import React, { PropTypes } from "react";
+import Helmet from 'react-helmet';
 import { connect } from "react-redux";
 import { fetchEvent } from "./actions";
 import { TabPanel } from "react-tabs";
@@ -15,6 +16,7 @@ import EventSubMenu from "components/EventSubMenu";
 import EventMenuTab from "components/EventMenuTab";
 import EventInfomation from "containers/EventInfomation";
 import EventBuyTicket from "containers/EventBuyTicket";
+import { getInnerText } from "utils/helperFunctions";
 import "!!style-loader!css-loader!./event.css";
 
 const TabPane = MobileTabs.TabPane;
@@ -39,6 +41,13 @@ export class Event extends React.Component {
 
     return (
       <div>
+        <Helmet
+          titleTemplate={`Mookh | ${event.event_name}`}
+          defaultTitle={`Mookh | ${event.event_name}`}
+          meta={[
+            { name: 'description', content: `${getInnerText(event.event_description)}` },
+          ]}
+        />
         <EventTopPageDisplay />
         <EventSubMenu
           eventName={event.event_name}
@@ -79,16 +88,16 @@ export class Event extends React.Component {
             <EventInfomation event={event} />
           </TabPanel>
           <TabPanel>
-            <h2>GALLERY</h2>
+            <div style={{ minHeight: "80vh" }}><h2>GALLERY</h2></div>
           </TabPanel>
           <TabPanel>
-            <h2>SITE MAP</h2>
+             <div style={{ minHeight: "80vh" }}><h2>SITE MAP</h2></div>
           </TabPanel>
           <TabPanel>
-            <h2>SCHEDULES $ SPEAKERS</h2>
+             <div style={{ minHeight: "80vh" }}><h2>SCHEDULES $ SPEAKERS</h2></div>
           </TabPanel>
           <TabPanel>
-            <h2>SPONSORS</h2>
+             <div style={{ minHeight: "80vh" }}><h2>SPONSORS</h2></div>
           </TabPanel>
         </EventMenuTab>
       </div>

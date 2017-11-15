@@ -8,10 +8,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { IntlProvider } from 'react-intl';
 
-import { makeSelectLocale } from './selectors';
 
 export class LanguageProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -29,11 +27,9 @@ LanguageProvider.propTypes = {
   children: React.PropTypes.element.isRequired,
 };
 
-
-const mapStateToProps = createSelector(
-  makeSelectLocale(),
-  (locale) => ({ locale })
-);
+const mapStateToProps = ({ language }) => ({
+  locale: language.locale
+});
 
 function mapDispatchToProps(dispatch) {
   return {

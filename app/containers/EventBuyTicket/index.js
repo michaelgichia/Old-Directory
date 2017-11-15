@@ -67,7 +67,6 @@ export class EventBuyTicket extends React.PureComponent {
     if (prevState.ticketCategory !== this.state.ticketCategory) {
       const priceValueForEvent = this.getTicketPrices(this.props.event);
       const totalTicketsPrice = this.handleTicketsTotalCost(priceValueForEvent);
-      console.log({prevProps, prevState, totalTicketsPrice})
       this.setState(() => ({ totalTicketsPrice }));
     }
 
@@ -213,6 +212,7 @@ export class EventBuyTicket extends React.PureComponent {
     } = this.state;
     const { event } = this.props;
     const totalPriceClassnames = classNames("ticket-total", { errors: error });
+    const inputClassnames = classNames({ "ebt-input-error": error });
 
     return (
       <div>
@@ -235,6 +235,7 @@ export class EventBuyTicket extends React.PureComponent {
                     <td>{`KES. ${ticket.ticket_value}`}</td>
                     <td>
                       <input
+                        className={inputClassnames}
                         type="number"
                         placeholder="0"
                         min="0"
@@ -269,6 +270,7 @@ export class EventBuyTicket extends React.PureComponent {
                 <label>SEND TICKETS TO:</label>
                 <div className="ebt-div-information">
                   <input
+                    className={inputClassnames}
                     onChange={this.handleCustomerInfo}
                     value={name}
                     id="name"
@@ -281,6 +283,7 @@ export class EventBuyTicket extends React.PureComponent {
                 </div>
                 <div className="ebt-div-information">
                   <input
+                    className={inputClassnames}
                     onChange={this.handleCustomerInfo}
                     id="phone_number"
                     value={phone_number}
@@ -296,6 +299,7 @@ export class EventBuyTicket extends React.PureComponent {
               <div className="ebt-information">
                 <div className="ebt-div-information">
                   <input
+                    className={inputClassnames}
                     onChange={this.handleCustomerInfo}
                     id="email"
                     value={email}
@@ -308,6 +312,7 @@ export class EventBuyTicket extends React.PureComponent {
                 </div>
                 <div className="ebt-div-information">
                   <input
+                    className={inputClassnames}
                     onChange={this.handleCustomerInfo}
                     id="confirmEmail"
                     value={confirmEmail}
@@ -320,7 +325,19 @@ export class EventBuyTicket extends React.PureComponent {
                 </div>
               </div>
 
-              <hr className="buy-ticket-optional" />
+                {error && (
+                  <h3
+                    style={{
+                      color: "red",
+                      margin: "16px 0px",
+                      textAlign: "center",
+                      width: "100%",
+                      display: "block"
+                    }}
+                  >
+                    Please fix the above errors
+                  </h3>
+                )}
 
               <div className="ebt-optional-info">
                 <label className="buy-ticket-optional-info">

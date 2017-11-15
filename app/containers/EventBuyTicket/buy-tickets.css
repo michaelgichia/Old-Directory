@@ -90,6 +90,15 @@ td.ticket-total.errors:after {
   border-radius: 1px;
 }
 
+.ebt-promo-wrap input.untouched,
+.ebt-div-information > input.untouched {
+  border: 1px solid #ccc;
+}
+
+.ebt-input-error {
+  border-color: red !important;
+}
+
 .ebt-promo-wrap input:focus,
 .ebt-div-information > input:focus {
   border-color: #faea29;
@@ -99,7 +108,6 @@ td.ticket-total.errors:after {
   display: block;
   float: left;
   width: 100%;
-  margin: 32px 16px 8px 0;
 }
 
 .ebt-optional-info {
@@ -274,7 +282,7 @@ input.error {
 
   .ticket-total {
     font-size: 14px;
-    padding-top: 24px;
+    padding-top: 8px;
   }
 
   .price-table label {
@@ -292,9 +300,9 @@ input.error {
     font-size: 14px;
   }
 
-  .price-table table {
+/*  .price-table table {
     margin-bottom: 30px;
-  }
+  }*/
 
   .payment-button {
     min-width: 160px;
@@ -306,6 +314,10 @@ input.error {
 @media (min-width: 768px) and (max-width: 1920px) {
   hr.buy-ticket-optional {
     border: 1px solid #e8e4df;
+  }
+
+  .ebt-information > label {
+    margin: 32px 16px 8px 0;
   }
 
   .ebt-promo-wrap input,
@@ -495,7 +507,7 @@ input.error {
   table {
     width: 100%;
     table-layout: fixed;
-    margin-bottom: 32px;
+    margin-bottom: 8px;
     font-size: 11px !important;
   }
 
@@ -579,6 +591,10 @@ input.error {
     display: block;
     width: 100%;
   }
+
+.ebt-information > label {
+  margin: 8px 16px 8px 0;
+}
 }
 
 /* Span errors

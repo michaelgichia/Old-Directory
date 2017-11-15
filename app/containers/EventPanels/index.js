@@ -59,10 +59,10 @@ class EventPanels extends React.PureComponent {
               </a>
             </div>
             <div className="panel-event-info">
-              <a href="" alt="event">
+              <a href={`/event/${event.id}`} alt="event">
                 {event.event_name}
               </a>
-              <a href="" alt="event">
+              <a href={`/event/${event.id}`} alt="event">
                 by {event.store_name}
               </a>
               <div

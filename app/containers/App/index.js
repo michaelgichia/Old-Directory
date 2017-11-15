@@ -12,11 +12,13 @@
  */
 
 import React from 'react';
+import Helmet from 'react-helmet';
 import Payments from "containers/Payments";
 import Footer from 'components/Footer';
+import withProgressBar from 'components/ProgressBar';
 import '!!style-loader!css-loader!./app.css';
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
@@ -25,6 +27,13 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
+        <Helmet
+          titleTemplate="%s - Mookh | Making Commerce Social"
+          defaultTitle="Mookh | Making Commerce Social"
+          meta={[
+            { name: 'description', content: 'Mookh | Making Commerce Social' },
+          ]}
+        />
         <div className="main">
           {React.Children.toArray(this.props.children)}
           <Payments />
@@ -34,3 +43,6 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     );
   }
 }
+
+export default withProgressBar(App);
+

@@ -1,7 +1,3 @@
-const nameRegex = /^[a-zA-Z ]*$/;
-const phoneNoRegex = /^\d{12}$/;
-const emailRegex =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 export const asyncActionType = (type) => ({
   PENDING: `${type}_PENDING`,
   SUCCESS: `${type}_SUCCESS`,
@@ -43,8 +39,8 @@ export const getPathname = pathString => {
   }
 }
 
-export const phonenumberValidate = phoneno => phoneNoRegex.test(phoneno);
-
-export const nameValidate = name => nameRegex.test(name);
-
-export const emailValidate = email => emailRegex.test(email);
+export const getInnerText = (html) => {
+  let el = document.createElement('div');
+  el.innerHTML = html;
+  return el.childNodes[0].innerText;
+}
