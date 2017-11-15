@@ -17,6 +17,7 @@
   cursor: pointer;
   transition-timing-function: ease-in-out;
   -webkit-transition-timing-function: ease-in-out;
+  font-size: 16px;
 }
 
 .pm__tab--selected input + label {

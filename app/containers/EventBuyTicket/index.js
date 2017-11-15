@@ -65,8 +65,9 @@ export class EventBuyTicket extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.ticketCategory !== this.state.ticketCategory) {
-      const priceValueForEvent = this.getTicketPrices(prevState.event);
+      const priceValueForEvent = this.getTicketPrices(this.props.event);
       const totalTicketsPrice = this.handleTicketsTotalCost(priceValueForEvent);
+      console.log({prevProps, prevState, totalTicketsPrice})
       this.setState(() => ({ totalTicketsPrice }));
     }
 
@@ -145,7 +146,8 @@ export class EventBuyTicket extends React.PureComponent {
 
   getTicketPrices = event => {
     if (Object.keys(event).length > 1) {
-      const { ticketCategory, event } = this.state;
+      const { ticketCategory } = this.state;
+      const { event } = this.props;
       const eventAndPrice = {};
       event.tickets_count_by_category.map(
         ticket => (eventAndPrice[ticket.id] = ticket.ticket_value)
@@ -209,7 +211,6 @@ export class EventBuyTicket extends React.PureComponent {
       },
       customer: { name, phone_number, email, confirmEmail }
     } = this.state;
-    console.log({ error });
     const { event } = this.props;
     const totalPriceClassnames = classNames("ticket-total", { errors: error });
 
@@ -336,7 +337,7 @@ export class EventBuyTicket extends React.PureComponent {
                       onClick={
                         !this.disableBtn(customer)
                           ? this.handleEmptyCustomerInfo
-                          : this.handleMobilePayment
+                          : () => this.props.openModal(ticketCategory, customer)
                       }
                     >
                       MOBILE PAYMENT

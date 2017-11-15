@@ -535,6 +535,7 @@ input.error {
 
   div.payment-btn-wrap {
     width: 100%;
+    margin-top: 23px;
   }
 
   .payment-btn-wrap div:first-child {

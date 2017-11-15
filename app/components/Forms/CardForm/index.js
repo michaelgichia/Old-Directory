@@ -81,19 +81,11 @@ export default class CardForm extends PureComponent {
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <BackButton
-              id="store"
-              bsKlass=""
-              label="PREVIOUS"
-              onClick={this.props.goTabOne}
-            />
-          </div>
-          <div>
             <PaymentButtons
               id="nextOne"
               bsKlass="primary shadow"
               label="CONTINUE"
-              onClick={this.props.goTabThree}
+              onClick={this.props.goTabTwo}
             />
           </div>
         </TabsBottomWrap>
@@ -106,6 +98,5 @@ CardForm.proptypes = {
   cardInfo: React.PropTypes.object.isRequired,
   handleCardInfo: React.PropTypes.func.isRequired,
   onBlur: React.PropTypes.func.isRequired,
-  goTabOne: React.PropTypes.func.isRequired,
-  goTabThree: React.PropTypes.func.isRequired
+  goTabTwo: React.PropTypes.func.isRequired
 };

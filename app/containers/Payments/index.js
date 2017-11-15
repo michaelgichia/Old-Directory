@@ -31,7 +31,10 @@ export class Payments extends React.Component {
     }
   }
 
-  goTabOne = () => this.setState({ tabIndex: 0 });
+  goTabOne = () => {
+  console.log('called')
+  this.setState({ tabIndex: 0 });
+  }
 
   goTabThree = () => this.setState({ tabIndex: 1 });
 

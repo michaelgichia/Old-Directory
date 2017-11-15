@@ -80,7 +80,7 @@ export class PaymentsMethods extends Component {
 
   render() {
     const { mpesaPage, mpesaInitiated } = this.state;
-    const { customer: { phone_number }} = this.props;
+    const { customer: { phone_number } } = this.props;
     return (
       <div>
         <TabsBodyWrap>
@@ -132,7 +132,7 @@ export class PaymentsMethods extends Component {
             <CardForm
               onBlur={this.onBlur}
               cardInfo={this.props.cardInfo}
-              goTabOne={this.props.goTabOne}
+              goTabTwo={() => this.props.goTabTwo("PAYMENT_METHODS_TAB", 1)}
               handleCardInfo={this.props.handleCardInfo}
               handleCustomerInfo={this.props.handleCustomerInfo}
             />
@@ -152,7 +152,8 @@ const mapStateToProps = ({ payments, buyTicket }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo))
+  handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo)),
+  goTabTwo: (type, tabIndex) => dispatch({ type, tabIndex })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentsMethods);
