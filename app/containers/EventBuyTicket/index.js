@@ -12,7 +12,6 @@ import { countryList } from "utils/countryList";
 import Payments from "containers/Payments";
 import { InputConstants } from "utils/constants";
 import "!!style-loader!css-loader!./buy-tickets.css";
-import productImage from "./product-banner.jpg";
 import { handleOrdersPayment, openModal, closeModal } from "./actions";
 import {
   phonenumberValidate,
@@ -28,6 +27,9 @@ const orderInfo = {
   order_item: "",
   item_price: ""
 };
+const posterImage =
+  "https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg";
+
 
 export class EventBuyTicket extends React.PureComponent {
   state = {
@@ -208,17 +210,17 @@ export class EventBuyTicket extends React.PureComponent {
       },
       customer: { name, phone_number, email, confirmEmail }
     } = this.state;
+    console.log({error})
     const { event } = this.props;
-    const totalPriceClassnames = classNames("ticket-total", { errors: error });
+    const totalPriceClassnames = classNames("ticket-total", { "errors": error });
 
     return (
       <div>
         <div className="ticket-description-wrap">
-          <div className="grid-33 event-buy-image">
-            <img src={productImage} alt="product" />
+          <div className="event-buy-image">
+            <img src={posterImage} alt="product" />
           </div>
-
-          <div className="grid-66 price-table">
+          <div className="price-table">
             <table>
               <tbody>
                 <tr>

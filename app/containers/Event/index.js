@@ -48,13 +48,13 @@ export class Event extends React.Component {
           <MobileTabs
             defaultActiveKey="1"
             tabPosition="top"
-            style={{ height: "100vh" }}
+            style={{ minHeight: "50vh" }}
           >
             <TabPane tab="BUY TICKETS" key="1">
-              BUY TICKETS
+              <EventBuyTicket event={event} />
             </TabPane>
             <TabPane tab="EVENT INFO" key="2">
-              EVENT INFO
+              <EventInfomation event={event} />
             </TabPane>
             <TabPane tab="GALLERY" key="3">
               GALLERY

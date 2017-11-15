@@ -35,6 +35,9 @@ class EventSubMenu extends React.Component {
 
     return (
       <div className="event-information-wrap">
+        <div className="event-information-image">
+          <img src={posterImage} alt="product" />
+        </div>
         <div className="position-glow-btn">
           <GlowButton handleGlowBtn={this.handleOpenModal} />
         </div>

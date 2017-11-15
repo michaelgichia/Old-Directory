@@ -9,7 +9,10 @@ import EventTopPageDisplay from "containers/EventTopPageDisplay";
 import EventSubMenu from "components/EventSubMenu";
 import EventPoster from "components/EventPoster";
 import "!!style-loader!css-loader!./event-info.css";
-import productImage from "./product-banner.jpg";
+
+const posterImage =
+  "https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg";
+
 
 export class EventInfomation extends React.PureComponent {
   state = {
@@ -22,14 +25,14 @@ export class EventInfomation extends React.PureComponent {
     const { event } = this.props;
     return (
       <div>
-        <EventPoster productImage={productImage} openModal={openModal} />
+        <EventPoster productImage={posterImage} openModal={openModal} />
 
-        <div className="description-wrap">
-          <div className="grid-33 event-buy-image">
-            <img src={productImage} alt="product" />
+        <div className="ticket-description-wrap">
+          <div className="event-buy-image">
+            <img src={posterImage} alt="product" />
           </div>
 
-          <div className="grid-66  information">
+          <div className="information">
             <header>ABOUT THIS EVENT</header>
             <div className="more-details">
               <p>
