@@ -4,7 +4,6 @@ footer {
   width: 100%;
   font-size: 16px;
   color: #b1b2b5;
-  float: left;
   transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
 }

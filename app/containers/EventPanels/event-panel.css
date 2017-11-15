@@ -144,23 +144,10 @@ a.panel-event-buy {
   }
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1280px) {
+@media screen and (min-width: 990px) and (max-width: 1280px) {
   .panel-container {
-    width: 31%;
-    margin-left: 1.1%;
-    margin-bottom: 75px;
-  }
-
-  .panel-wrap {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-
-@media screen and (min-width: 990px) and (max-width: 1023px) {
-  .panel-container {
-    width: 45%;
-    margin-left: 3%;
+    width: 30%;
+    margin-left: 3.333333%;
     margin-bottom: 75px;
   }
 
@@ -170,10 +157,22 @@ a.panel-event-buy {
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 990px) {
+@media (min-width: 990px) and (max-width: 1024px) {
+  .panel-container {
+    width: 30%;
+    margin-left: 3.333333%;
+    margin-bottom: 75px;
+  }
+
+  .panel-wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 990px) {
   .panel-container {
     width: 40%;
-    max-width: 40%;
     margin-bottom: 45px;
   }
 
