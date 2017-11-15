@@ -13,7 +13,6 @@ import "!!style-loader!css-loader!./event-info.css";
 const posterImage =
   "https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg";
 
-
 export class EventInfomation extends React.PureComponent {
   state = {
     openModal: false,

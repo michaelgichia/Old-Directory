@@ -9,7 +9,11 @@ export class PaymentButtons extends React.PureComponent {
   render() {
     const { id, bsKlass, label, onClick } = this.props;
     return (
-      <button onClick={onClick} className={`mookh-btn mookh-btn-wd ${bsKlass}`} id={id}>
+      <button
+        onClick={onClick}
+        className={`mookh-btn mookh-btn-wd ${bsKlass}`}
+        id={id}
+      >
         {label}
       </button>
     );
@@ -29,7 +33,8 @@ export class BackButton extends React.PureComponent {
         style={{ verticalAlign: "middle" }}
         onClick={onClick}
       >
-        <span> </span><span>{label}</span>
+        <span> </span>
+        <span>{label}</span>
       </button>
     );
   }

@@ -12,7 +12,7 @@
   align-items: center;
   width: 100%;
   background-color: #faea29;
-  color: #343A41;
+  color: #343a41;
   padding: 16px;
 }
 
@@ -30,7 +30,6 @@
   padding-bottom: 8px;
 }
 
-
 .description h5 {
   line-height: 20px;
   font-size: 14px;
@@ -39,12 +38,12 @@
 
 .description.header h5,
 .description.header {
-  background-color: #31383E;
-  color: #F6F3EE;
+  background-color: #31383e;
+  color: #f6f3ee;
 }
 
 .description h5 a {
-  color: #FAEA29;
+  color: #faea29;
   text-decoration: underline;
 }
 
@@ -60,7 +59,7 @@
 }
 
 /* Large Screen styles */
-@media  (min-width: 990px) and (max-width: 1920px) {
+@media (min-width: 990px) and (max-width: 1920px) {
   .product-title {
     min-height: 50px;
     padding-left: 100px;
@@ -75,22 +74,21 @@
 }
 
 /* Large Screen styles */
-@media  (min-width: 768px) and (max-width: 990px) {
+@media (min-width: 768px) and (max-width: 990px) {
   .description {
     padding-left: 16px;
   }
-
 }
 
 /* Large and Medium Screen styles */
-@media  (min-width: 768px) and (max-width: 1920px) {
+@media (min-width: 768px) and (max-width: 1920px) {
   .event-information-image {
     display: none;
   }
 }
 
 /* Small Screen styles */
-@media  (max-width: 768px) {
+@media (max-width: 768px) {
   .product-title {
     padding: 16px 8px;
     min-height: 40px;
@@ -104,21 +102,21 @@
   .description {
     padding-left: 8px;
     padding-right: 8px;
-    background-color: #F6F3EE;
-    letter-spacing: .5px;
+    background-color: #f6f3ee;
+    letter-spacing: 0.5px;
   }
 
   .description i {
     display: none;
   }
 
- .header h5 i {
+  .header h5 i {
     display: none;
   }
 
   .information header {
     padding-bottom: 3px;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 14px;
     font-weight: 500;
     padding: 8px;
@@ -147,5 +145,3 @@
     overflow: hidden;
   }
 }
-
-

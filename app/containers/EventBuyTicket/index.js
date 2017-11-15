@@ -30,7 +30,6 @@ const orderInfo = {
 const posterImage =
   "https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg";
 
-
 export class EventBuyTicket extends React.PureComponent {
   state = {
     ticketCategory: {},
@@ -210,9 +209,9 @@ export class EventBuyTicket extends React.PureComponent {
       },
       customer: { name, phone_number, email, confirmEmail }
     } = this.state;
-    console.log({error})
+    console.log({ error });
     const { event } = this.props;
-    const totalPriceClassnames = classNames("ticket-total", { "errors": error });
+    const totalPriceClassnames = classNames("ticket-total", { errors: error });
 
     return (
       <div>

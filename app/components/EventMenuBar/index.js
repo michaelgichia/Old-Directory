@@ -106,7 +106,11 @@ class EventMenuBar extends React.PureComponent {
               >
                 <img src={mookhLogo} alt="" />
               </span>
-              <i className="fa fa-sidebar fa-2x" aria-hidden="true" onClick={this.burgerToggle} />
+              <i
+                className="fa fa-sidebar fa-2x"
+                aria-hidden="true"
+                onClick={this.burgerToggle}
+              />
             </div>
             <div className="narrow-links">
               <a
@@ -115,7 +119,10 @@ class EventMenuBar extends React.PureComponent {
                 alt="buy tickets"
                 className={onActive === "tickets event" ? "mb-active" : ""}
               >
-                BUY TICKETS<i className="fa fa-ticket fa-2x" aria-hidden="true" />
+                BUY TICKETS<i
+                  className="fa fa-ticket fa-2x"
+                  aria-hidden="true"
+                />
               </a>
               <a
                 href={`/tickets/event/${eventId}/info`}
@@ -149,7 +156,10 @@ class EventMenuBar extends React.PureComponent {
                   onActive === "schedules and speakers" ? "mb-active" : ""
                 }
               >
-                SCHEDULES $ SPEAKERS<i className="fa fa-calendar-minus fa-2x" aria-hidden="true" />
+                SCHEDULES $ SPEAKERS<i
+                  className="fa fa-calendar-minus fa-2x"
+                  aria-hidden="true"
+                />
               </a>
               <a
                 href="#"

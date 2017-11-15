@@ -13,9 +13,7 @@ class DirectoryNavBar extends React.PureComponent {
     const { pathname, isFixedTopClass } = this.props;
     const location = getPathname(pathname);
     return (
-      <ul
-        className={`directory-navbar`}
-      >
+      <ul className={`directory-navbar`}>
         <li>
           <a href="#" />
         </li>
