@@ -8,7 +8,7 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import classNames from "classnames";
 import "!!style-loader!css-loader!./event-menu-tabs.css";
-import { Users, Ticket, Schedule, Gallery, Cubes } from "./svg";
+
 
 class EventMenuTab extends React.Component {
   state = {
@@ -34,23 +34,23 @@ class EventMenuTab extends React.Component {
         </div>
         <TabList className={tablistClassnames}>
           <Tab className="event-menu-tabs__tab">
-            <Users />BUY TICKETS
+            <i className="fa fa-users fa-2x" aria-hidden="true" />BUY TICKETS
           </Tab>
           <Tab className="event-menu-tabs__tab">
-            <Ticket /> EVENT INFO
+            <i className="fa fa-ticket fa-2x" aria-hidden="true" />EVENT INFO
           </Tab>
           <Tab className="event-menu-tabs__tab">
-            <Gallery /> GALLERY
+            <i className="fa fa-picture-o fa-2x" aria-hidden="true" />GALLERY
           </Tab>
           <Tab className="event-menu-tabs__tab">
-            <Users /> SITE MAP
+            <i className="fa fa-map fa-2x" aria-hidden="true" />SITE MAP
           </Tab>
 
           <Tab className="event-menu-tabs__tab">
-            <Schedule /> SCHEDULES $ SPEAKERS
+            <i className="fa fa-calendar-minus-o fa-2x" aria-hidden="true" />SCHEDULES $ SPEAKERS
           </Tab>
           <Tab className="event-menu-tabs__tab">
-            <Cubes /> SPONSORS
+            <i className="fa fa-cubes fa-2x" aria-hidden="true" />SPONSORS
           </Tab>
         </TabList>
         {this.props.children}

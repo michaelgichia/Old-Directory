@@ -1,3 +1,7 @@
+.event-menu-tabs__tab {
+  cursor: pointer;
+}
+
 /* Large Screen styles */
 @media screen and (min-width: 990px) {
   .event-menu-tabs__tab-list {
@@ -64,7 +68,7 @@
   div.events-hamburger {
     display: none;
   }
-  .event-menu-tabs__tab > span {
+  .event-menu-tabs__tab > i {
     display: none;
   }
 }
@@ -111,7 +115,11 @@
     background-color: rgba(0, 0, 0, 0.65);
   }
 
-  .event-menu-tabs__tab > span {
+  .event-menu-tabs__tab > i {
+    font-size: 16px;
+  }
+
+  .event-menu-tabs__tab > i {
     padding-right: 16px;
   }
 
