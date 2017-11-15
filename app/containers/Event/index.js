@@ -15,9 +15,7 @@ import EventSubMenu from "components/EventSubMenu";
 import EventMenuTab from "components/EventMenuTab";
 import EventInfomation from "containers/EventInfomation";
 import EventBuyTicket from "containers/EventBuyTicket";
-import EventMenuBar from "components/EventMenuBar";
 import "!!style-loader!css-loader!./event.css";
-
 
 const TabPane = MobileTabs.TabPane;
 
@@ -28,7 +26,7 @@ export class Event extends React.Component {
   }
 
   render() {
-    const { event, location: { pathname } } = this.props;
+    const { event } = this.props;
 
     if (Object.keys(event).length < 1) {
       return (
@@ -47,49 +45,38 @@ export class Event extends React.Component {
           eventVenue={event.event_venue}
         />
         <div className="show-mobile">
-        <MobileTabs defaultActiveKey="1" tabPosition="top" style={{ height: 220 }}>
-          <TabPane tab="Tab 1" key="1">
-            Content of tab 1
-          </TabPane>
-          <TabPane tab="Tab 2" key="2">
-            Content of tab 2
-          </TabPane>
-          <TabPane tab="Tab 3" key="3">
-            Content of tab 3
-          </TabPane>
-          <TabPane tab="Tab 4" key="4">
-            Content of tab 4
-          </TabPane>
-          <TabPane tab="Tab 5" key="5">
-            Content of tab 5
-          </TabPane>
-          <TabPane tab="Tab 6" key="6">
-            Content of tab 6
-          </TabPane>
-          <TabPane tab="Tab 7" key="7">
-            Content of tab 7
-          </TabPane>
-          <TabPane tab="Tab 8" key="8">
-            Content of tab 8
-          </TabPane>
-          <TabPane tab="Tab 9" key="9">
-            Content of tab 9
-          </TabPane>
-          <TabPane tab="Tab 10" key="10">
-            Content of tab 10
-          </TabPane>
-          <TabPane tab="Tab 11" key="11">
-            Content of tab 11
-          </TabPane>
-        </MobileTabs>
+          <MobileTabs
+            defaultActiveKey="1"
+            tabPosition="top"
+            style={{ height: "100vh" }}
+          >
+            <TabPane tab="BUY TICKETS" key="1">
+              BUY TICKETS
+            </TabPane>
+            <TabPane tab="EVENT INFO" key="2">
+              EVENT INFO
+            </TabPane>
+            <TabPane tab="GALLERY" key="3">
+              GALLERY
+            </TabPane>
+            <TabPane tab="SITE MAP" key="4">
+              SITE MAP
+            </TabPane>
+            <TabPane tab="SCHEDULES $ SPEAKERS" key="5">
+              SCHEDULES $ SPEAKERS
+            </TabPane>
+            <TabPane tab="SPONSORS" key="6">
+              SPONSORS
+            </TabPane>
+          </MobileTabs>
         </div>
 
         <EventMenuTab>
           <TabPanel>
-            <EventBuyTicket event={event} pathname={pathname} />
+            <EventBuyTicket event={event} />
           </TabPanel>
           <TabPanel>
-            <EventInfomation event={event} pathname={pathname} />
+            <EventInfomation event={event} />
           </TabPanel>
           <TabPanel>
             <h2>GALLERY</h2>

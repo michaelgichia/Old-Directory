@@ -208,7 +208,7 @@ export class EventBuyTicket extends React.PureComponent {
       },
       customer: { name, phone_number, email, confirmEmail }
     } = this.state;
-    const { pathname, event } = this.props;
+    const { event } = this.props;
     const totalPriceClassnames = classNames("ticket-total", { errors: error });
 
     return (

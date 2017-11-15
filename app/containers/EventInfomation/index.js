@@ -19,7 +19,7 @@ export class EventInfomation extends React.PureComponent {
 
   render() {
     const { openModal } = this.state;
-    const { pathname, event } = this.props;
+    const { event } = this.props;
     return (
       <div>
         <EventPoster productImage={productImage} openModal={openModal} />

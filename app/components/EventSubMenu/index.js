@@ -50,10 +50,11 @@ class EventSubMenu extends React.Component {
           <h5>
             <i className="fa fa-clock-o fa-2x" aria-hidden="true" />FRIDAY 28 OCT 17:00-23:00 // 15 DAYS TO GO
           </h5>
-          <a href={`${getDirectionBaseAPI}${location}`} target="_blank">
+          <h5><a href={`${getDirectionBaseAPI}${location}`} target="_blank">
             <i className="fa fa-map-marker fa-2x" aria-hidden="true" />
             {eventVenue}
           </a>
+          </h5>
         </div>
       </div>
     );
