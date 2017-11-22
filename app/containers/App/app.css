@@ -1,5 +1,4 @@
-div.main::after {
-  content: "";
-  display: table;
-  clear: both;
+.main {
+  min-height: 100vh;
+  position: relative;
 }

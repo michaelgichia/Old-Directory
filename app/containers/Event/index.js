@@ -5,7 +5,7 @@
  */
 
 import React, { PropTypes } from "react";
-import Helmet from 'react-helmet';
+import Helmet from "react-helmet";
 import { connect } from "react-redux";
 import { fetchEvent } from "./actions";
 import { TabPanel } from "react-tabs";
@@ -16,6 +16,11 @@ import EventSubMenu from "components/EventSubMenu";
 import EventMenuTab from "components/EventMenuTab";
 import EventInfomation from "containers/EventInfomation";
 import EventBuyTicket from "containers/EventBuyTicket";
+import EventGallery from "containers/EventGallery";
+import EventSchedules from "containers/EventSchedules";
+import EventSiteMap from "containers/EventSiteMap";
+import EventSponsors from "containers/EventSponsors";
+
 import { getInnerText } from "utils/helperFunctions";
 import "!!style-loader!css-loader!./event.css";
 
@@ -45,7 +50,10 @@ export class Event extends React.Component {
           titleTemplate={`Mookh | ${event.event_name}`}
           defaultTitle={`Mookh | ${event.event_name}`}
           meta={[
-            { name: 'description', content: `${getInnerText(event.event_description)}` },
+            {
+              name: "description",
+              content: `${getInnerText(event.event_description)}`
+            }
           ]}
         />
         <EventTopPageDisplay />
@@ -66,16 +74,16 @@ export class Event extends React.Component {
               <EventInfomation event={event} />
             </TabPane>
             <TabPane tab="GALLERY" key="3">
-              GALLERY
+              <EventGallery />
             </TabPane>
             <TabPane tab="SITE MAP" key="4">
-              SITE MAP
+              <EventSchedules />
             </TabPane>
             <TabPane tab="SCHEDULES $ SPEAKERS" key="5">
-              SCHEDULES $ SPEAKERS
+              <EventSiteMap />
             </TabPane>
             <TabPane tab="SPONSORS" key="6">
-              SPONSORS
+              <EventSponsors />
             </TabPane>
           </MobileTabs>
         </div>
@@ -88,16 +96,16 @@ export class Event extends React.Component {
             <EventInfomation event={event} />
           </TabPanel>
           <TabPanel>
-            <div style={{ minHeight: "80vh" }}><h2>GALLERY</h2></div>
+            <EventGallery />
           </TabPanel>
           <TabPanel>
-             <div style={{ minHeight: "80vh" }}><h2>SITE MAP</h2></div>
+            <EventSchedules />
           </TabPanel>
           <TabPanel>
-             <div style={{ minHeight: "80vh" }}><h2>SCHEDULES $ SPEAKERS</h2></div>
+            <EventSiteMap />
           </TabPanel>
           <TabPanel>
-             <div style={{ minHeight: "80vh" }}><h2>SPONSORS</h2></div>
+            <EventSponsors />
           </TabPanel>
         </EventMenuTab>
       </div>
