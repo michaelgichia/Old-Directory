@@ -354,7 +354,7 @@ export class EventBuyTicket extends React.PureComponent {
                       onClick={
                         !this.disableBtn(customer)
                           ? this.handleEmptyCustomerInfo
-                          : () => this.props.openModal(ticketCategory, customer)
+                          : () => this.props.openModal(ticketCategory, customer, totalTicketsPrice)
                       }
                     >
                       MOBILE PAYMENT
@@ -363,7 +363,7 @@ export class EventBuyTicket extends React.PureComponent {
                       onClick={
                         !this.disableBtn(customer)
                           ? this.handleEmptyCustomerInfo
-                          : () => this.props.openModal(ticketCategory, customer)
+                          : () => this.props.openModal(ticketCategory, customer, totalTicketsPrice)
                       }
                       className="payment-button ripple"
                     >
@@ -386,8 +386,8 @@ const mapStateToProps = ({ payments }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  openModal: (ticketCategory, customer) =>
-    dispatch(openModal(ticketCategory, customer)),
+  openModal: (ticketCategory, customer, totalTicketsPrice) =>
+    dispatch(openModal(ticketCategory, customer, totalTicketsPrice)),
   closeModal: () => dispatch(closeModal())
 });
 

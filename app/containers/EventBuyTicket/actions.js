@@ -23,26 +23,12 @@ export const fetchEvent = eventId => dispatch => {
   });
 };
 
-// export const handleOrdersPayment = info => dispatch => {
-//   axios.post(ordersPayAPI, info).then( res => {
-//     console.log({res})
-//     if (res.status === 200) {
-//       dispatch({
-//         type: ORDERS_PAY.SUCCESS
-//       })
-//     } else {
-//       dispatch({
-//         type: ORDERS_PAY.ERROR
-//       })
-//     }
-//   })
-// }
-
-export function openModal(ticketCategory, customer) {
+export function openModal(ticketCategory, customer, totalTicketsPrice) {
   return {
     type: PAYMENTS_MODAL.SUCCESS,
     ticketCategory,
-    customer
+    customer,
+    totalTicketsPrice
   };
 }
 

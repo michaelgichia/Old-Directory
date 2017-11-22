@@ -144,6 +144,7 @@ export class PaymentsMethods extends Component {
               <MpesaPayBill
                 goMpesaPush={this.goMpesaPush}
                 goTabThree={this.props.goTabThree}
+                totalTicketsPrice={this.props.totalTicketsPrice}
               />
             )}
           </TabPanel>
@@ -170,7 +171,8 @@ const mapStateToProps = ({ payments, buyTicket, paymentsMethods }) => ({
   event: buyTicket.event,
   orderCreated: paymentsMethods.orderCreated,
   mpesaPushStatus: paymentsMethods.mpesaPushStatus,
-  orderPK: paymentsMethods.orderPK
+  orderPK: paymentsMethods.orderPK,
+  totalTicketsPrice: payments.totalTicketsPrice
 });
 
 const mapDispatchToProps = dispatch => ({

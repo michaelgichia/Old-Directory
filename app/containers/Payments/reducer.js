@@ -36,7 +36,8 @@ function paymentsReducer(state = initialState, action) {
         ...state,
         paymentModal: true,
         ticketCategory: action.ticketCategory,
-        customer: action.customer
+        customer: action.customer,
+        totalTicketsPrice: action.totalTicketsPrice
       };
     case PAYMENTS_MODAL.ERROR:
       return {

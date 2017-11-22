@@ -17,17 +17,15 @@ export class DirectoryLandingPage extends React.PureComponent {
   };
 
   componentDidMount() {
-    const directoryMain = document.querySelector(".directory-navbar");
-    this.setState(() => ({ topOfNav: directoryMain.offsetTop }));
+    this.setState(() => ({ topOfNav: this.nav.offsetTop }));
     window.addEventListener("scroll", () => this.listenPageScroll(), false);
   }
 
   listenPageScroll = () => {
-    const nav = document.querySelector('.directory-navbar');
     if(window.scrollY >= this.state.topOfNav) {
-      nav.classList.add("directory-fixed");
+      this.nav.classList.add("directory-fixed");
     } else {
-      nav.classList.remove("directory-fixed");
+      this.nav.classList.remove("directory-fixed");
     }
   }
 
@@ -57,9 +55,10 @@ export class DirectoryLandingPage extends React.PureComponent {
             </div>
           </div>
         </div>
-        <main style={{ height: "100vh" }}>
+        <main style={{ minHeight: "100vh" }}>
           <DirectoryNavBar
             pathname={pathname}
+            navRef={ele => this.nav = ele}
           />
           <EventPanels />
         </main>

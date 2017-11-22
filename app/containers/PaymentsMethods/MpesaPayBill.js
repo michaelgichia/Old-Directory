@@ -19,27 +19,22 @@ export class MpesaPayBill extends PureComponent {
           <p className="header">Follow these instructions to via PAYBILL</p>
           <div className="mpesa-paybill-wrap">
             <div>
-              <p>Go to the M-Pesa menu</p>
-              <p>Select Lipa na M-Pesa</p>
-              <p>Select Paybill</p>
+              <p>1. Go to the M-Pesa menu</p>
+              <p>2. Select Lipa na M-Pesa</p>
+              <p>3. Select Paybill</p>
               <span>
-                <p>Enter Business Number</p>
+                <p>4. Enter Business Number</p>
                 <p>570937</p>
               </span>
               <span>
-                <p>Enter Account Number</p>
+                <p>5. Enter Account Number</p>
                 <p>FKJRBIW4</p>
               </span>
               <span>
-                <p>Enter Amount</p>
-                <p>Ksh. 1750</p>
+                <p>6. Enter Amount</p>
+                <p>Ksh. {this.props.totalTicketsPrice}</p>
               </span>
-              <p>Enter your M-Pesa pin</p>
-            </div>
-            <div>
-              <span>Please wait while your order is being</span>
-              <span>processed...</span>
-              <span>100% Done</span>
+              <p>7. Enter your M-Pesa pin</p>
             </div>
           </div>
         </TabsBodyWrap>
