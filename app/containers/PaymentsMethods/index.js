@@ -13,7 +13,7 @@ import TabsBodyWrap from "components/TabsBodyWrap";
 import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
 import MpesaPayBill from "./MpesaPayBill";
-import { handleOrdersPayment } from "./actions";
+import { handleOrdersPayment, getOrderStatus } from "./actions";
 import "!!style-loader!css-loader!./payments-methods.css";
 
 export class PaymentsMethods extends Component {
@@ -26,6 +26,26 @@ export class PaymentsMethods extends Component {
       payment_method: "mpesa"
     }
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.orderCreated) {
+      this.orderTimeOut = setTimeout(
+        () => this.props.getOrderStatus(this.props.orderPK),
+        30000
+      );
+    }
+
+    if (nextProps.mpesaPushStatus) {
+      this.props.goTabTwo("PAYMENT_METHODS_TAB", 1);
+    }
+    if (nextProps.mpesaPushStatus === false) {
+      this.setState({ mpesaPage: 2 });
+    }
+  }
+
+  componentWillMount() {
+    clearTimeout(this.orderTimeOut);
+  }
 
   onBlur = () => {};
 
@@ -56,7 +76,6 @@ export class PaymentsMethods extends Component {
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
-    console.log({ extraInfo });
     this.props.handleOrdersPayment(extraInfo);
   };
 
@@ -96,7 +115,7 @@ export class PaymentsMethods extends Component {
                 <PaymentCheckbox
                   id="mobile-payment"
                   onChange={this.handleMpesaClick}
-                  placeholder="M-Pesa"
+                  placeholder="Mpesa Payment"
                   wrapKlass=""
                   defaultChecked={false}
                 />
@@ -143,17 +162,21 @@ export class PaymentsMethods extends Component {
   }
 }
 
-const mapStateToProps = ({ payments, buyTicket }) => ({
+const mapStateToProps = ({ payments, buyTicket, paymentsMethods }) => ({
   deliveryInfomation: payments.deliveryInfomation,
   deliveryInfomation: payments.deliveryInfomation,
   customer: payments.customer,
   ticketCategory: payments.ticketCategory,
-  event: buyTicket.event
+  event: buyTicket.event,
+  orderCreated: paymentsMethods.orderCreated,
+  mpesaPushStatus: paymentsMethods.mpesaPushStatus,
+  orderPK: paymentsMethods.orderPK
 });
 
 const mapDispatchToProps = dispatch => ({
   handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo)),
-  goTabTwo: (type, tabIndex) => dispatch({ type, tabIndex })
+  goTabTwo: (type, tabIndex) => dispatch({ type, tabIndex }),
+  getOrderStatus: orderPK => dispatch(getOrderStatus(orderPK))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentsMethods);
