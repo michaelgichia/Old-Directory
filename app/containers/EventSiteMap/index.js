@@ -4,15 +4,15 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { defaultAction } from './actions';
+import React, { PropTypes } from "react";
+import EmptyData from "components/EmptyData";
 // import "!!style-loader!css-loader!./EventSiteMap.css";
 
-export class EventSiteMap extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class EventSiteMap extends React.Component {
   render() {
     return (
       <div>
+        <EmptyData message="Site map data is not available at the moment." />
       </div>
     );
   }
@@ -22,12 +22,4 @@ EventSiteMap.propTypes = {
   // dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({}) => ({
-
-});
-
-const mapDispatchToProps = dispatch => ({
-  dispatch
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventSiteMap);
+export default EventSiteMap;

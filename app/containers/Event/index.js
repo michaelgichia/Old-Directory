@@ -77,10 +77,10 @@ export class Event extends React.Component {
               <EventGallery />
             </TabPane>
             <TabPane tab="SITE MAP" key="4">
-              <EventSchedules />
+              <EventSiteMap />
             </TabPane>
             <TabPane tab="SCHEDULES $ SPEAKERS" key="5">
-              <EventSiteMap />
+              <EventSchedules />
             </TabPane>
             <TabPane tab="SPONSORS" key="6">
               <EventSponsors />
@@ -99,10 +99,10 @@ export class Event extends React.Component {
             <EventGallery />
           </TabPanel>
           <TabPanel>
-            <EventSchedules />
+            <EventSiteMap />
           </TabPanel>
           <TabPanel>
-            <EventSiteMap />
+            <EventSchedules />
           </TabPanel>
           <TabPanel>
             <EventSponsors />

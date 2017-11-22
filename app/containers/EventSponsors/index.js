@@ -4,15 +4,16 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { defaultAction } from './actions';
+import React, { PropTypes } from "react";
+import EmptyData from "components/EmptyData";
 // import "!!style-loader!css-loader!./EventSponsors.css";
 
-export class EventSponsors extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class EventSponsors extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
+        <EmptyData message="Sponsors map data is not available at the moment." />
       </div>
     );
   }
@@ -22,12 +23,4 @@ EventSponsors.propTypes = {
   // dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({}) => ({
-
-});
-
-const mapDispatchToProps = dispatch => ({
-  dispatch
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventSponsors);
+export default EventSponsors;

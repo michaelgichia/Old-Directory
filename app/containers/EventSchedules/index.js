@@ -4,15 +4,15 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { defaultAction } from './actions';
+import React, { PropTypes } from "react";
+import EmptyData from "components/EmptyData";
 // import "!!style-loader!css-loader!./EventSchedules.css";
 
-export class EventSchedules extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class EventSchedules extends React.Component {
   render() {
     return (
       <div>
+        <EmptyData message="Schedules and speakers data is not available at the moment." />
       </div>
     );
   }
@@ -22,12 +22,4 @@ EventSchedules.propTypes = {
   // dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({}) => ({
-
-});
-
-const mapDispatchToProps = dispatch => ({
-  dispatch
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventSchedules);
+export default EventSchedules;

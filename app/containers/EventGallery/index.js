@@ -5,14 +5,14 @@
  */
 
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { defaultAction } from './actions';
-// import "!!style-loader!css-loader!./EventGallery.css";
+import EmptyData from "components/EmptyData";
+import "!!style-loader!css-loader!./event-gallery.css";
 
 export class EventGallery extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
+        <EmptyData message="Photos are not available at the moment." />
       </div>
     );
   }
@@ -21,13 +21,4 @@ export class EventGallery extends React.Component { // eslint-disable-line react
 EventGallery.propTypes = {
   // dispatch: PropTypes.func.isRequired,
 };
-
-const mapStateToProps = ({}) => ({
-
-});
-
-const mapDispatchToProps = dispatch => ({
-  dispatch
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventGallery);
+export default EventGallery;
