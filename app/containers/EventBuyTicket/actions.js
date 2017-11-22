@@ -5,7 +5,7 @@
  */
 
 import axios from "axios";
-import { baseEventAPI, ordersPayAPI, EVENT, ORDERS_PAY, PAYMENTS_MODAL } from "./constants";
+import { baseEventAPI, EVENT, PAYMENTS_MODAL } from "./constants";
 
 export const fetchEvent = eventId => dispatch => {
   axios.get(`${baseEventAPI}/${eventId}`).then(res => {
@@ -23,19 +23,20 @@ export const fetchEvent = eventId => dispatch => {
   });
 };
 
-export const handleOrdersPayment = info => dispatch => {
-  axios.post(ordersPayAPI, info).then( res => {
-    if (res.status === 200) {
-      dispatch({
-        type: ORDERS_PAY.SUCCESS
-      })
-    } else {
-      dispatch({
-        type: ORDERS_PAY.ERROR
-      })
-    }
-  })
-}
+// export const handleOrdersPayment = info => dispatch => {
+//   axios.post(ordersPayAPI, info).then( res => {
+//     console.log({res})
+//     if (res.status === 200) {
+//       dispatch({
+//         type: ORDERS_PAY.SUCCESS
+//       })
+//     } else {
+//       dispatch({
+//         type: ORDERS_PAY.ERROR
+//       })
+//     }
+//   })
+// }
 
 export function openModal(ticketCategory, customer) {
   return {

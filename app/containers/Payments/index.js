@@ -93,7 +93,7 @@ export class Payments extends React.Component {
         overlayClassName="py-overlay"
         aria={{
           labelledby: "Checkout Form",
-          describedby: "This is checkout form with an mpesa and card options."
+          describedby: "This is checkout form with an mpesa and card option."
         }}
       >
         <Tabs

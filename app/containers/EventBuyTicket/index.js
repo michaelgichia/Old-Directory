@@ -12,7 +12,7 @@ import { countryList } from "utils/countryList";
 import Payments from "containers/Payments";
 import { InputConstants } from "utils/constants";
 import "!!style-loader!css-loader!./buy-tickets.css";
-import { handleOrdersPayment, openModal, closeModal } from "./actions";
+import { openModal, closeModal } from "./actions";
 import {
   phonenumberValidate,
   nameValidate,
@@ -325,19 +325,19 @@ export class EventBuyTicket extends React.PureComponent {
                 </div>
               </div>
 
-                {error && (
-                  <h3
-                    style={{
-                      color: "red",
-                      margin: "16px 0px",
-                      textAlign: "center",
-                      width: "100%",
-                      display: "block"
-                    }}
-                  >
-                    Please fix the above errors
-                  </h3>
-                )}
+              {error && (
+                <h3
+                  style={{
+                    color: "red",
+                    margin: "16px 0px",
+                    textAlign: "center",
+                    width: "100%",
+                    display: "block"
+                  }}
+                >
+                  Please fix the above errors
+                </h3>
+              )}
 
               <div className="ebt-optional-info">
                 <label className="buy-ticket-optional-info">
@@ -386,7 +386,6 @@ const mapStateToProps = ({ payments }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleOrdersPayment: info => dispatch(handleOrdersPayment(info)),
   openModal: (ticketCategory, customer) =>
     dispatch(openModal(ticketCategory, customer)),
   closeModal: () => dispatch(closeModal())

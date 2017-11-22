@@ -57,7 +57,7 @@ export class PaymentsMethods extends Component {
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
     console.log({ extraInfo });
-    // this.props.handleOrdersPayment(extraInfo);
+    this.props.handleOrdersPayment(extraInfo);
   };
 
   handleMpesaClick = () => this.setState({ mpesaInitiated: true });
