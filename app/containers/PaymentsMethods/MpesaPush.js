@@ -18,20 +18,21 @@ export class MpesaPush extends PureComponent {
       <div>
         <TabsBodyWrap>
           <div className="mpesa-push-wrap">
-            <div>
+            <div className="mpesa-push-div1">
               <p>Follow these instructions to complete transaction</p>
               <p>
                 Check your phone and follow the instructions on your screen.
               </p>
               {this.props.mpesaInitiated ? (
-                <p>
-                  If nothing appears in the next 10 seconds,<a onClick={this.props.goToPayBill}>click here</a>
-                </p>
+                <div className="mpesa-push-loader-wrap">
+                  <MpesaPushLoader />
+                  <p className="mpesa-push-p3">Please wait a few seconds as we process your order...</p>
+                </div>
               ) : (
                 <p />
               )}
             </div>
-            <div>
+            <div className="mpesa-push-div2">
               <img src={MpesaPushImage} alt="" />
             </div>
           </div>
@@ -65,3 +66,22 @@ MpesaPush.proptypes = {
 };
 
 export default MpesaPush;
+
+/*
+ *
+ * MpesaPush loader
+ *
+*/
+
+class MpesaPushLoader extends React.PureComponent {
+  render() {
+    return (
+      <div className="sk-folding-cube">
+        <div className="sk-cube1 sk-cube" />
+        <div className="sk-cube2 sk-cube" />
+        <div className="sk-cube4 sk-cube" />
+        <div className="sk-cube3 sk-cube" />
+      </div>
+    );
+  }
+}

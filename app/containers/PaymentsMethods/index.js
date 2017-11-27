@@ -31,7 +31,7 @@ export class PaymentsMethods extends Component {
     if (nextProps.orderCreated) {
       this.orderTimeOut = setTimeout(
         () => this.props.getOrderStatus(this.props.orderPK),
-        30000
+        10000
       );
     }
 
@@ -39,7 +39,7 @@ export class PaymentsMethods extends Component {
       this.props.goTabTwo("PAYMENT_METHODS_TAB", 1);
     }
     if (nextProps.mpesaPushStatus === false) {
-      this.setState({ mpesaPage: 2 });
+      this.setState({ mpesaPage: 2, mpesaInitiated:  false });
     }
   }
 
