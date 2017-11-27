@@ -59,7 +59,7 @@ export class PaymentConfirmation extends PureComponent {
             <PaymentButtons
               id="nextOne"
               bsKlass="primary shadow"
-              label="CONTINUE SHOPPING"
+              label="FINISH"
               onClick={this.props.handleCloseModal}
             />
           </div>

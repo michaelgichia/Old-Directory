@@ -2,44 +2,31 @@
   color: #b3afaf;
   padding-bottom: 8px;
   font-size: 14px;
-  transition: all .5s ease-in-out;
-  -webkit-transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
 }
 
-.mpesa-push-wrap p ~ p {
-  color: #b3afaf;
-  padding-bottom: 8px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.mpesa-push-wrap p:nth-child(3n) a {
+.mpesa-push-wrap .mpesa-push-p3 a {
   text-decoration: underline;
   padding-left: 8px;
 }
 
-.mpesa-push-wrap p:nth-child(3n) a:hover {
+.mpesa-push-wrap .mpesa-push-p3 a:hover {
   text-decoration: none;
-}
-
-.mpesa-push-wrap p:nth-child(3n) a,
-.mpesa-push-wrap p:nth-child(3n) a:visited,
-.mpesa-push-wrap p:nth-child(3n) a:focus,
-.mpesa-push-wrap p:nth-child(3n) a:active {
-  color: #4fa5e6;
-  cursor: pointer;
 }
 
 .ebt-phone-no-edit {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  border-bottom: 2px solid red;
+  border-bottom: 1px solid #f6f3ee;
+  padding-top: 7px;
+  margin-bottom: 8px;
 }
 
 .ebt-order-total {
   color: #343434;
-  font-size: 16px;
+  font-size: 20px;
   margin: 8px 16px;
 }
 
@@ -53,8 +40,20 @@
 .go-to-paybill-p2 {
   display: block;
   width: 100%;
+  margin-top: 16px;
   padding-top: 8px;
+  color: #807d7d;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.go-to-paybill-p1 {
+  display: block;
+  width: 100%;
   padding-bottom: 8px;
+  color: #343434;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .primary-pay-mpesa {
@@ -62,19 +61,11 @@
   width: 100%;
 }
 
-.mpesa-push-loader-wrap {
-  display: block;
-  width: 100%;
-  height: 50px;
-  border: 1px solid red;
-}
-
-
 @media screen and (max-width: 768px) {
   .mpesa-push-wrap {
     margin-bottom: 20px;
   }
-  .mpesa-push-wrap div:nth-child(2n) img {
+  .mpesa-push-wrap .mpesa-push-div2 img {
     height: 80px;
   }
 
@@ -84,13 +75,13 @@
     clear: both;
   }
 
-  .mpesa-push-wrap div:first-child {
+  .mpesa-push-wrap .mpesa-push-div1 {
     margin-right: 8px;
     width: calc(80% - 8px);
     float: left;
   }
 
-  .mpesa-push-wrap div:nth-child(2n) {
+  .mpesa-push-wrap .mpesa-push-div2 {
     width: 20%;
     text-align: right;
     float: left;
@@ -103,35 +94,75 @@
 
 @media screen and (min-width: 768px) {
   .mpesa-push-wrap {
-    display: block;
+    display: flex;
     width: 100%;
   }
 
-  .mpesa-push-wrap p:first-of-type {
-    padding-bottom: 8px;
-    padding-top: 8px;
+  .mpesa-push-wrap > * {
+    flex: 1;
   }
 
-  .mpesa-push-wrap p:last-child {
-    margin-top: 24px;
+  .mpesa-push-wrap > *:first-of-type {
+    flex-basis: 60%;
   }
 
-  .mpesa-push-wrap div {
-    float: left;
+  .mpesa-push-wrap > *:last-of-type {
+    flex-basis: 40%;
   }
 
-  .mpesa-push-wrap div:first-child {
-    margin-right: 8px;
-    width: calc(60% - 8px);
-  }
-
-  .mpesa-push-wrap div:nth-child(2n) {
+  .mpesa-push-wrap .mpesa-push-div2 {
     width: calc(40% - 8px);
     text-align: center;
     margin-left: 8px;
   }
 
-  .mpesa-push-wrap div:nth-child(2n) img {
-    height: 150px;
+  .mpesa-push-wrap .mpesa-push-div2 img {
+    height: 120px;
+  }
+}
+
+.mpesa-push-loader-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 70px;
+}
+
+/* Mpesa push loaders
+=========================================================*/
+.mpesa-spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #b3afaf;
+
+  margin: 8px;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
 }

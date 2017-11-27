@@ -16,12 +16,11 @@ import { InputConstants } from "utils/constants";
 import "!!style-loader!css-loader!./mpesa-push.css";
 
 export class MpesaPush extends PureComponent {
-
   state = {
     customerErrors: {
-      phone_numberError: "",
-    },
-  }
+      phone_numberError: ""
+    }
+  };
 
   onBlur = (e, name) => {
     e.persist();
@@ -52,65 +51,63 @@ export class MpesaPush extends PureComponent {
     const error = "";
     const inputClassnames = classNames({ "ebt-input-error": error });
     const { customer: { phone_number } } = this.props;
-    const {
-      customerErrors: {
-        phone_numberError,
-      }
-    } = this.state;
+    const { customerErrors: { phone_numberError } } = this.state;
     return (
       <div>
         <TabsBodyWrap>
-        <div className="ebt-phone-no-edit">
-          <div className="mpesa-push-input">
-            <label htmlFor="phone_number"> Confirm Mpesa No:</label>
-            <div className="ebt-div-information">
-              <input
-                style={{padding: "4px 14px",}}
-                className={inputClassnames}
-                onChange={() => ({})}
-                id="phone_number"
-                defaultValue={phone_number}
-                type="tel"
-                placeholder="Phone number"
-                required
-                onBlur={e => this.onBlur(e, "phone_number")}
-              />
-              <span>{phone_numberError}</span>
+          <div className="ebt-phone-no-edit">
+            <div className="mpesa-push-input">
+              <label htmlFor="phone_number"> Confirm Mpesa No:</label>
+              <div className="ebt-div-information">
+                <input
+                  style={{ padding: "4px 14px" }}
+                  className={inputClassnames}
+                  onChange={() => ({})}
+                  id="phone_number"
+                  defaultValue={phone_number}
+                  type="tel"
+                  placeholder="Phone number"
+                  required
+                  onBlur={e => this.onBlur(e, "phone_number")}
+                />
+                <span>{phone_numberError}</span>
+              </div>
             </div>
+            <div className="ebt-order-total">AMOUNT KES 1000</div>
           </div>
-          <div className="ebt-order-total">AMOUNT KES 1000</div>
-        </div>
-        </TabsBodyWrap>
-        <TabsBodyWrap>
           <div className="mpesa-push-wrap">
-            <div>
+            <div className="mpesa-push-div1">
               <p />
-              <p>
-                Click PAY NOW and check your phone and follow the instructions on your screen.
+              <p className="go-to-paybill-p1">
+                Click PAY NOW and check your phone and follow the instructions
+                on your screen.
               </p>
 
-              <section className="mpesa-push-loader-wrap">
-                <div className="mpesa-spinner" />
-              </section>
+              {this.props.mpesaInitiated ? (
+                <section className="mpesa-push-loader-wrap">
+                  <div className="mpesa-spinner" />
+                </section>
+              ) : (
+                <div style={{minHeight: 20}}/>
+              )}
 
-
-            <section className="primary-pay-mpesa">
-              <PaymentButtons
-                id="pay"
-                bsKlass="primary ripple btn-reposition"
-                label="PAY NOW"
-                onClick={this.props.handlePayment}
-              />
-            </section>
+              <div className="primary-pay-mpesa">
+                <PaymentButtons
+                  id="pay"
+                  bsKlass="primary ripple"
+                  label="PAY NOW"
+                  onClick={this.props.handlePayment}
+                />
+              </div>
               {this.props.mpesaInitiated ? (
                 <p className="go-to-paybill-p2">
-                  If nothing appears in the next 10 seconds,<a onClick={this.props.goToPayBill}>click here</a>
+                  Did not see prompt on your phone? To pay manually via Paybill, <a onClick={this.props.goToPayBill}>click here</a>
                 </p>
               ) : (
                 <p />
               )}
             </div>
-            <div>
+            <div className="mpesa-push-div2">
               <img src={MpesaPushImage} alt="" />
             </div>
           </div>

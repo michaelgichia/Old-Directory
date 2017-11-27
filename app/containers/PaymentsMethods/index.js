@@ -29,22 +29,16 @@ export class PaymentsMethods extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.orderCreated) {
-      this.props.getOrderStatus(this.props.orderPK);
+      this.props.getOrderStatus(nextProps.orderPK);
     }
 
     if (nextProps.mpesaPushStatus) {
       this.props.goTabTwo("PAYMENT_METHODS_TAB", 1);
     }
     if (nextProps.mpesaPushStatus === false) {
-      this.setState({ mpesaPage: 2 });
+      this.setState({ mpesaPage: 2, mpesaInitiated: false });
     }
   }
-
-  // componentWillMount() {
-  //   clearTimeout(this.orderTimeOut);
-  // }
-
-  onBlur = () => {};
 
   handleCustomerInfo = () => {};
 
@@ -81,7 +75,7 @@ export class PaymentsMethods extends Component {
   goMpesaPush = () => this.setState(() => ({ mpesaPage: 1 }));
 
   handleNextPage = () =>
-    this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1 }));
+    this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1, mpesaInitiated: false }));
 
   getOrderName = (ticketCategory, key) => {
     let name;
@@ -141,7 +135,7 @@ export class PaymentsMethods extends Component {
           </TabPanel>
           <TabPanel>
             <CardForm
-              onBlur={this.onBlur}
+              onBlur={() => ({})}
               cardInfo={this.props.cardInfo}
               goTabTwo={() => this.props.goTabTwo("PAYMENT_METHODS_TAB", 1)}
               handleCardInfo={this.props.handleCardInfo}
