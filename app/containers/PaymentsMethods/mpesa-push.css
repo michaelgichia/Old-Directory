@@ -18,16 +18,9 @@
 .ebt-phone-no-edit {
   display: flex;
   width: 100%;
-  justify-content: space-between;
   border-bottom: 1px solid #f6f3ee;
   padding-top: 7px;
   margin-bottom: 8px;
-}
-
-.ebt-order-total {
-  color: #343434;
-  font-size: 20px;
-  margin: 8px 16px;
 }
 
 .mpesa-push-input label {
@@ -90,6 +83,24 @@
   .mpesa-push-wrap p:first-of-type {
     padding-bottom: 20px;
   }
+
+  .ebt-phone-no-edit {
+    flex-direction: column;
+  }
+
+  .ebt-phone-no-edit > *:last-of-type {
+    order: 0;
+  }
+
+  .ebt-phone-no-edit > *:first-of-type {
+    order: 1;
+  }
+
+  .ebt-order-total {
+    color: #343434;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -118,6 +129,16 @@
 
   .mpesa-push-wrap .mpesa-push-div2 img {
     height: 120px;
+  }
+
+  .ebt-phone-no-edit {
+    justify-content: space-between;
+  }
+
+  .ebt-order-total {
+    color: #343434;
+    font-size: 20px;
+    margin: 8px 16px;
   }
 }
 

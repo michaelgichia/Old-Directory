@@ -99,7 +99,7 @@ export class PaymentsMethods extends Component {
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
                 <PaymentCheckbox
                   id="mobile-payment"
-                  onChange={this.handleMpesaClick}
+                  onChange={() => console.log("Mpesa")}
                   placeholder="Mpesa Payment"
                   wrapKlass=""
                   defaultChecked={false}
@@ -108,7 +108,7 @@ export class PaymentsMethods extends Component {
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
                 <PaymentCheckbox
                   id="card-payment"
-                  onClick={() => console.log("Card")}
+                  onChange={() => console.log("Card")}
                   placeholder="Card Payment"
                   wrapKlass=""
                   defaultChecked={false}
