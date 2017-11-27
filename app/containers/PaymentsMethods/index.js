@@ -29,23 +29,20 @@ export class PaymentsMethods extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.orderCreated) {
-      this.orderTimeOut = setTimeout(
-        () => this.props.getOrderStatus(this.props.orderPK),
-        30000
-      );
+      this.props.getOrderStatus(this.props.orderPK);
     }
 
     if (nextProps.mpesaPushStatus) {
       this.props.goTabTwo("PAYMENT_METHODS_TAB", 1);
     }
     if (nextProps.mpesaPushStatus === false) {
-      this.setState({ mpesaPage: 2, mpesaInitiated:  false });
+      this.setState({ mpesaPage: 2 });
     }
   }
 
-  componentWillMount() {
-    clearTimeout(this.orderTimeOut);
-  }
+  // componentWillMount() {
+  //   clearTimeout(this.orderTimeOut);
+  // }
 
   onBlur = () => {};
 
@@ -102,12 +99,6 @@ export class PaymentsMethods extends Component {
     const { customer: { phone_number } } = this.props;
     return (
       <div>
-        <TabsBodyWrap>
-          <header className="payment-header">
-            <span>Select payment method</span>
-            <span>Your number is {phone_number}</span>
-          </header>
-        </TabsBodyWrap>
         <Tabs>
           <TabsBodyWrap>
             <TabList className="pm__tab-list">
