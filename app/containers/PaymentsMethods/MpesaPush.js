@@ -73,7 +73,7 @@ export class MpesaPush extends PureComponent {
                 <span>{phone_numberError}</span>
               </div>
             </div>
-            <div className="ebt-order-total">AMOUNT KES 1000</div>
+            <div className="ebt-order-total">AMOUNT KES {this.props.totalTicketsPrice}</div>
           </div>
           <div className="mpesa-push-wrap">
             <div className="mpesa-push-div1">

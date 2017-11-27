@@ -123,6 +123,7 @@ export class PaymentsMethods extends Component {
                 goToPayBill={this.handleNextPage}
                 mpesaInitiated={mpesaInitiated}
                 handlePayment={this.handleMobilePayment}
+                totalTicketsPrice={this.props.totalTicketsPrice}
                 handleReturnToStore={this.props.handleReturnToStore}
               />
             ) : (
