@@ -16,7 +16,7 @@ export class MpesaPayBill extends PureComponent {
     return (
       <div>
         <TabsBodyWrap>
-          <p className="header">Follow these instructions to via PAYBILL</p>
+          <p className="header">Payment was not successful. Please follow the instructions to via PAYBILL.</p>
           <div className="mpesa-paybill-wrap">
             <div>
               <p>1. Go to the M-Pesa menu</p>

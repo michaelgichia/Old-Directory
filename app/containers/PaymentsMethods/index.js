@@ -31,7 +31,7 @@ export class PaymentsMethods extends Component {
     if (nextProps.orderCreated) {
       this.orderTimeOut = setTimeout(
         () => this.props.getOrderStatus(this.props.orderPK),
-        10000
+        30000
       );
     }
 
