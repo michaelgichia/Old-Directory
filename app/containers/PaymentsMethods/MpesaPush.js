@@ -25,7 +25,7 @@ export class MpesaPush extends PureComponent {
               </p>
               {this.props.mpesaInitiated ? (
                 <div className="mpesa-push-loader-wrap">
-                  <MpesaPushLoader />
+                  <div className="mpesa-spinner" />
                   <p className="mpesa-push-p3">Please wait a few seconds as we process your order...</p>
                 </div>
               ) : (
@@ -66,22 +66,3 @@ MpesaPush.proptypes = {
 };
 
 export default MpesaPush;
-
-/*
- *
- * MpesaPush loader
- *
-*/
-
-class MpesaPushLoader extends React.PureComponent {
-  render() {
-    return (
-      <div className="sk-folding-cube">
-        <div className="sk-cube1 sk-cube" />
-        <div className="sk-cube2 sk-cube" />
-        <div className="sk-cube4 sk-cube" />
-        <div className="sk-cube3 sk-cube" />
-      </div>
-    );
-  }
-}

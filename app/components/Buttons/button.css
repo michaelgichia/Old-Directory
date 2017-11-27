@@ -92,7 +92,7 @@ button.button-glow {
   content: "\00ab";
   position: absolute;
   opacity: 0;
-  top: -11px;
+  top: -13px;
   left: -10px;
   transition: 0.5s;
 }
