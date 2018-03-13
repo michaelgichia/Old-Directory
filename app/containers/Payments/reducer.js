@@ -7,7 +7,8 @@
 import {
   PAYMENTS_MODAL,
   PAYMENT_METHODS_TAB,
-  PAYMENTS_MODAL_CLOSE
+  PAYMENTS_MODAL_CLOSE,
+  CHANGE_CUSTOMER_NO
 } from "./constants";
 
 const initialState = {
@@ -39,11 +40,13 @@ function paymentsReducer(state = initialState, action) {
         customer: action.customer,
         totalTicketsPrice: action.totalTicketsPrice
       };
+
     case PAYMENTS_MODAL.ERROR:
       return {
         ...state,
         paymentModal: false
       };
+
     case PAYMENT_METHODS_TAB:
       return {
         ...state,
@@ -62,6 +65,14 @@ function paymentsReducer(state = initialState, action) {
         },
         totalTicketsPrice: 0
       };
+
+    case CHANGE_CUSTOMER_NO.SUCCESS:
+      const newCustomer = {...state.customer, phone_number: action.phone_number};
+      return {
+        ...state,
+        customer: newCustomer
+      };
+
     default:
       return state;
   }

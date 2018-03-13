@@ -62,7 +62,11 @@ export class MpesaPush extends PureComponent {
                 <input
                   style={{ padding: "4px 14px" }}
                   className={inputClassnames}
-                  onChange={() => ({})}
+                  onChange={e =>
+                    this.props.dispatch({
+                      type: "CHANGE_CUSTOMER_NO_SUCCESS",
+                      phone_number: e.target.value
+                    })}
                   id="phone_number"
                   defaultValue={phone_number}
                   type="tel"
@@ -73,7 +77,9 @@ export class MpesaPush extends PureComponent {
                 <span>{phone_numberError}</span>
               </div>
             </div>
-            <div className="ebt-order-total">AMOUNT KES {this.props.totalTicketsPrice}</div>
+            <div className="ebt-order-total">
+              AMOUNT KES {this.props.totalTicketsPrice}
+            </div>
           </div>
           <div className="mpesa-push-wrap">
             <div className="mpesa-push-div1">
@@ -88,7 +94,7 @@ export class MpesaPush extends PureComponent {
                   <div className="mpesa-spinner" />
                 </section>
               ) : (
-                <div style={{minHeight: 20}}/>
+                <div style={{ minHeight: 20 }} />
               )}
 
               <div className="primary-pay-mpesa">
@@ -101,7 +107,8 @@ export class MpesaPush extends PureComponent {
               </div>
               {this.props.mpesaInitiated ? (
                 <p className="go-to-paybill-p2">
-                  Did not see prompt on your phone? To pay manually via Paybill, <a onClick={this.props.goToPayBill}>click here</a>
+                  Did not see prompt on your phone? To pay manually via Paybill,{" "}
+                  <a onClick={this.props.goToPayBill}>click here</a>
                 </p>
               ) : (
                 <p />

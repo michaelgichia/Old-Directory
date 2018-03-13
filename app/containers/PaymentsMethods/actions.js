@@ -29,9 +29,9 @@ export const handleOrdersPayment = info => dispatch => {
 };
 
 export const getOrderStatus = orderPK => dispatch => {
-  console.log({orderPK})
+  // console.log({orderPK})
   axios.get(`${orderStatusAPI}/${orderPK}`).then(res => {
-    console.log({res})
+    // console.log({res})
     if (res.status === 200 && res.data.order_status !== null) {
       dispatch({
         type: ORDERS_STATUS.SUCCESS

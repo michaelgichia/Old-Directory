@@ -75,7 +75,10 @@ export class PaymentsMethods extends Component {
   goMpesaPush = () => this.setState(() => ({ mpesaPage: 1 }));
 
   handleNextPage = () =>
-    this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1, mpesaInitiated: false }));
+    this.setState(() => ({
+      mpesaPage: this.state.mpesaPage + 1,
+      mpesaInitiated: false
+    }));
 
   getOrderName = (ticketCategory, key) => {
     let name;
