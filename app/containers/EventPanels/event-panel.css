@@ -1,6 +1,5 @@
 .panel-wrap {
   width: 100%;
-  background-color: #f6f3ee;
 }
 
 .panel-wrap:after {
@@ -15,7 +14,7 @@
   font-family: "Roboto", sans-serif;
   display: block;
   float: left;
-  background-color: #fffeff;
+  background-color: #f6f3ee;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transition: box-shadow 0.3s ease-out, transform 0.3s ease-out,
