@@ -4,16 +4,49 @@
  *
  */
 
-import React, { PureComponent } from "react";
-import TabsBottomWrap from "components/TabsBottomWrap";
-import TabsBodyWrap from "components/TabsBodyWrap";
-import MookhInput from "components/Forms/MookhInput";
-import { PaymentButtons, BackButton } from "components/Buttons";
-import "!!style-loader!css-loader!./card-form.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Select } from 'antd';
+import TabsBottomWrap from 'components/TabsBottomWrap';
+import TabsBodyWrap from 'components/TabsBodyWrap';
+import MookhInput from 'components/Forms/MookhInput';
+import {
+  formatCreditCardNumber,
+  formatCVC,
+  formatExpirationDate,
+  formatFormData
+} from 'utils/creditCard';
+import { PaymentButtonPrimary } from 'components/Buttons';
+import './card-form.css';
 
-export default class CardForm extends PureComponent {
+const Option = Select.Option;
+
+function handleChange(value) {
+  console.log(value); // { key: "lucy", label: "Lucy (101)" }
+}
+
+export default class CardForm extends Component {
+  state = {
+    currency: "ksh"
+  };
+
+  handleInputChange = ({ target }) => {
+    if (target.name === 'number') {
+      target.value = formatCreditCardNumber(target.value);
+    } else if (target.name === 'expiry') {
+      target.value = formatExpirationDate(target.value);
+    } else if (target.name === 'cvc') {
+      target.value = formatCVC(target.value);
+    }
+    this.setState({ [target.name]: target.value });
+  };
+
+  handleChange = value => {
+    this.setState({ currency: value });
+  }
+
   render() {
-    const { cardNumber, cvc, currency, expiresOn } = this.props.cardInfo;
+    const { cardNumber, cvc, currency, expiry } = this.props.cardInfo;
 
     return (
       <div>
@@ -21,56 +54,53 @@ export default class CardForm extends PureComponent {
           <form onSubmit={e => e.preventDefault()}>
             <div className="cd-row">
               <MookhInput
-                labelName="Card number"
-                id="cardNumber"
-                placeholder="0000"
-                onChange={this.props.handleCardInfo}
-                onBlur={e => this.props.onBlur(e, "cardNumber")}
-                value={cardNumber}
-                required={false}
+                labelName="Card Number"
+                id="number"
+                placeholder="CARD NO"
+                onChange={this.handleInputChange}
+                pattern="[\d| ]{16,22}"
+                required
                 wrapClass="cd-payment-input"
-                inputError=""
-                type="number"
+                type="tel"
               />
               <div className="cd-payment-input">
                 <MookhInput
                   labelName="CVC"
                   id="cvc"
-                  placeholder=""
-                  onChange={this.props.handleCardInfo}
-                  onBlur={e => this.props.onBlur(e, "cvc")}
-                  value={cvc}
-                  required={false}
+                  placeholder="CVC"
+                  onChange={this.handleInputChange}
+                  pattern="\d{3,4}"
+                  required
                   wrapClass="cvc"
-                  inputError=""
-                  type="number"
+                  type="tel"
                 />
-                <MookhInput
-                  labelName="Currency"
-                  id="currency"
-                  placeholder="USD"
-                  onChange={this.props.handleCardInfo}
-                  onBlur={e => this.props.onBlur(e, "currency")}
-                  value={currency}
-                  required={false}
-                  wrapClass="cvc"
-                  inputError=""
-                  type="number"
-                />
+                <div className="cvc">
+                  <label className="mookh-label" htmlFor="fname">
+                    Currency
+                  </label>
+                  <Select
+                    dropdownStyle={{ zIndex: 9999 }}
+                    defaultValue="ksh"
+                    style={{ width: 120 }}
+                    onChange={this.handleChange}
+                    size="large"
+                  >
+                    <Option  stle={{color: "red"}}value="usd">USD</Option>
+                    <Option value="ksh">KSH</Option>
+                  </Select>
+                </div>
               </div>
             </div>
             <div className="cd-row">
               <MookhInput
-                labelName="Expires on"
-                id="expiresOn"
+                labelName="Valid Thru"
+                id="expiry"
                 placeholder="MM/YY"
                 wrapClass="cd-payment-input"
-                onChange={this.props.handleCardInfo}
-                onBlur={e => this.props.onBlur(e, "expiresOn")}
-                value={expiresOn}
-                required={false}
-                inputError=""
-                type="number"
+                onChange={this.handleInputChange}
+                pattern="\d\d/\d\d"
+                required
+                type="tel"
               />
               <div className="cd-payment-input total">
                 <span>Total:</span>
@@ -81,12 +111,9 @@ export default class CardForm extends PureComponent {
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <PaymentButtons
-              id="nextOne"
-              bsKlass="primary shadow"
-              label="CONTINUE"
-              onClick={this.props.goTabTwo}
-            />
+            <PaymentButtonPrimary id="nextOne" onClick={this.props.goTabTwo}>
+              CONTINUE
+            </PaymentButtonPrimary>
           </div>
         </TabsBottomWrap>
       </div>
@@ -95,8 +122,8 @@ export default class CardForm extends PureComponent {
 }
 
 CardForm.proptypes = {
-  cardInfo: React.PropTypes.object.isRequired,
-  handleCardInfo: React.PropTypes.func.isRequired,
-  onBlur: React.PropTypes.func.isRequired,
-  goTabTwo: React.PropTypes.func.isRequired
+  cardInfo: PropTypes.object.isRequired,
+  handleCardInfo: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  goTabTwo: PropTypes.func.isRequired
 };

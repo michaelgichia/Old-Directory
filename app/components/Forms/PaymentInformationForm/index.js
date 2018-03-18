@@ -10,7 +10,7 @@ import MookhInputWithBtn from "components/Forms/MookhInputWithBtn";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
 import { PaymentButtons } from "components/Buttons";
-import "!!!style-loader!css-loader!./payment-information.css";
+import "./payment-information.css";
 
 export default class PaymentInformationForm extends PureComponent {
   render() {

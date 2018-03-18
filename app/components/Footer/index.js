@@ -6,7 +6,7 @@
 */
 
 import React from "react";
-import "!!style-loader!css-loader!./footer.css";
+import "./footer.css";
 
 class Footer extends React.PureComponent {
   render() {

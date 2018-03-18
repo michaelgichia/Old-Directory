@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from "prop-types";
-import "!!!style-loader!css-loader!./mookh-inputwith-btn.css";
+import "./mookh-inputwith-btn.css";
 
 export default class MookhInputWithBtn extends PureComponent {
   render() {
@@ -50,8 +50,8 @@ MookhInputWithBtn.propTypes = {
   wrapClass: PropTypes.string,
   inputError: PropTypes.string,
   type: PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  onBlur: React.PropTypes.func.isRequired,
-  value: React.PropTypes.any.isRequired,
-  required: React.PropTypes.bool.isRequired
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  value: PropTypes.any.isRequired,
+  required: PropTypes.bool.isRequired
 }

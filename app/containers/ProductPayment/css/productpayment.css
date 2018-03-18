@@ -41,19 +41,19 @@
 
   /* Tabs Styles
   ==========================================*/
-  .py__tab {
+/*  .py__tab {
     display: block;
     padding: 8px 4px;
     min-width: 50px;
     width: 100%;
     font-size: 14px;
     font-weight: 700;
-  }
+  }*/
 
-  .py__tab-list {
+/*  .py__tab-list {
     margin: 0 0 30px 0;
     padding: 34px 0 0 0;
-  }
+  }*/
 }
 
 /* Large Screen
@@ -67,7 +67,7 @@
 
   /* Tabs Styles
   ==========================================*/
-  ul.py__tab-list {
+/*  ul.py__tab-list {
     counter-reset: section;
   }
 
@@ -83,11 +83,11 @@
   .py__tab-list {
     margin: 8px 30px 24px 30px;
   }
-}
+}*/
 
 /* Tabs Styles
 ==========================================*/
-.py__tab-list {
+/*.py__tab-list {
   border-bottom: 3px solid #f6f3ee;
   display: flex;
   justify-content: space-around;
@@ -149,7 +149,7 @@
   bottom: -3px;
   background-color: #FFE900;
 }
-
+*/
 
 /* Payment Buttons
 =====================================================*/

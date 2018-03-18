@@ -58,14 +58,14 @@ td.ticket-total.errors {
   color: #f04134;
 }
 
-td.ticket-total.errors:after {
+/*td.ticket-total.errors:after {
   content: "You have not selected a ticket.";
   color: #f04134;
   display: block;
   float: left;
   width: 100%;
   font-weight: 400;
-}
+}*/
 
 .ticket-total {
   border-top: 2px solid rgba(202, 202, 202, 0.5);
@@ -85,8 +85,7 @@ td.ticket-total.errors:after {
   outline: 0;
   transition: border-color ease-in-out 0.15s;
   color: #31383e;
-  font-weight: 600;
-  padding: 4px 14px;
+  padding: 8px 11px;
   border-radius: 1px;
 }
 
@@ -99,9 +98,16 @@ td.ticket-total.errors:after {
   border-color: red !important;
 }
 
+.ebt-promo-wrap input:hover,
+.ebt-div-information > input:hover {
+  border-color: #fff652;
+}
+
 .ebt-promo-wrap input:focus,
 .ebt-div-information > input:focus {
-  border-color: #faea29;
+  border-color: #fff652;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(250, 234, 41, 0.2);
 }
 
 .ebt-information > label {
@@ -419,10 +425,6 @@ input.error {
 
   .price-table {
     height: 100%;
-  }
-
-  table {
-    margin-bottom: 32px;
   }
 
   .payment-button {

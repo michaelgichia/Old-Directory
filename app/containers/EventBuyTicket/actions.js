@@ -23,12 +23,13 @@ export const fetchEvent = eventId => dispatch => {
   });
 };
 
-export function openModal(ticketCategory, customer, totalTicketsPrice) {
+export function openModal(ticketCategory, customer, totalTicketsPrice, event) {
   return {
     type: PAYMENTS_MODAL.SUCCESS,
     ticketCategory,
     customer,
-    totalTicketsPrice
+    totalTicketsPrice,
+    event
   };
 }
 

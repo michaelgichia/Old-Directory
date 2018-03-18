@@ -14,13 +14,14 @@
   .event-menu-tabs__tab {
     display: block;
     padding: 9px 0;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
     width: calc(100% / 6);
-    color: #807d7d;
+    color: #343434;
     border-top: 1px solid #f6f3ee;
-    border-right: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #e6e1e1;
+    border-bottom: 1px solid #e6e1e1;
     text-align: center;
     position: relative;
     cursor: pointer;

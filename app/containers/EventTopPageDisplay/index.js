@@ -7,7 +7,7 @@
  */
 
 import React from "react";
-import "!!style-loader!css-loader!./navigation-bar.css";
+import "./navigation-bar.css";
 import mookhLogo from "./logo-dark.png";
 
 export class EventTopPageDisplay extends React.PureComponent {

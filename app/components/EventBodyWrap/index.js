@@ -5,7 +5,7 @@
 */
 
 import React from "react";
-import "!!style-loader!css-loader!./event-body-wrap.css";
+import "./event-body-wrap.css";
 
 class EventBodyWrap extends React.Component {
   render() {

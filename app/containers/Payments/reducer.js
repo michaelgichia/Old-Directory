@@ -12,19 +12,14 @@ import {
 } from "./constants";
 
 const initialState = {
-  paymentModal: false,
+  paymentModal: true,
   customer: {
     email: "",
     name: "",
     phone_number: "",
     confirmEmail: ""
   },
-  // customer: {
-  //   email: "mqyynm@gmail.com",
-  //   name: "Michael",
-  //   phone_number: "254701872069",
-  //   confirmEmail: "mqyynm@gmail.com"
-  // },
+  event: {},
   ticketCategory: {},
   totalTicketsPrice: 0,
   tabIndex: 0
@@ -38,7 +33,8 @@ function paymentsReducer(state = initialState, action) {
         paymentModal: true,
         ticketCategory: action.ticketCategory,
         customer: action.customer,
-        totalTicketsPrice: action.totalTicketsPrice
+        totalTicketsPrice: action.totalTicketsPrice,
+        event: action.event
       };
 
     case PAYMENTS_MODAL.ERROR:

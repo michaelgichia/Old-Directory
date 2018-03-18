@@ -14,7 +14,7 @@ import PaymentsMethods from "containers/PaymentsMethods";
 import PaymentConfirmation from "./PaymentConfirmation";
 import { PaymentButtons } from "components/Buttons";
 import { InputConstants } from "./constants";
-import "!!style-loader!css-loader!./css/productpayment.css";
+import "./css/productpayment.css";
 
 export class ProductPayment extends React.Component {
   state = {

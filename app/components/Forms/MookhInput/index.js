@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import "!!!style-loader!css-loader!./mookh-input.css";
+import "./mookh-input.css";
 
 export default class MookhInput extends React.PureComponent {
 
-  checkForError = error => error.length > 0;
+  // checkForError = error => error.length > 0;
 
   render() {
     const {
@@ -13,18 +13,19 @@ export default class MookhInput extends React.PureComponent {
       type,
       value,
       onBlur,
+      onFocus,
+      pattern,
       required,
       onChange,
       wrapClass,
       labelName,
-      inputError,
       placeholder
     } = this.props;
 
-    const inputClassname = classNames("mookh-input", {
-      "mookh-input-active": !this.checkForError(inputError),
-      "mookh-input-error": this.checkForError(inputError)
-    });
+    // const inputClassname = classNames("mookh-input", {
+    //   "mookh-input-active": !this.checkForError(inputError),
+    //   "mookh-input-error": this.checkForError(inputError)
+    // });
 
     return (
       <div className={wrapClass}>
@@ -38,11 +39,12 @@ export default class MookhInput extends React.PureComponent {
           onBlur={onBlur}
           required={required}
           onChange={onChange}
-          className={inputClassname}
+          className="mookh-input mookh-input-active"
           placeholder={placeholder}
-          name={labelName.toLowerCase()}
+          name={id}
+          pattern={pattern}
+          onFocus={onFocus}
         />
-        <span className="mookh-span-error">{inputError}</span>
       </div>
     );
   }
@@ -53,10 +55,12 @@ MookhInput.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   wrapClass: PropTypes.string,
-  inputError: PropTypes.string,
+  // inputError: PropTypes.string,
   type: PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  onBlur: React.PropTypes.func.isRequired,
-  value: React.PropTypes.any.isRequired,
-  required: React.PropTypes.bool.isRequired
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  value: PropTypes.any,
+  required: PropTypes.bool,
+  pattern: PropTypes.string,
+  onFocus: PropTypes.func
 };

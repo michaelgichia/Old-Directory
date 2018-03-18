@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from "react";
 import EmptyData from "components/EmptyData";
-// import "!!style-loader!css-loader!./EventSchedules.css";
+// import "./EventSchedules.css";
 
 export class EventSchedules extends React.Component {
   render() {

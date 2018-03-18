@@ -4,38 +4,39 @@
  *
  */
 
-import React, { PropTypes } from "react";
-import Helmet from "react-helmet";
-import { connect } from "react-redux";
-import { fetchEvent } from "./actions";
-import { TabPanel } from "react-tabs";
-import { Tabs as MobileTabs } from "antd";
-import EventTopPageDisplay from "containers/EventTopPageDisplay";
-import LoadingSpinner from "components/LoadingSpinner";
-import EventSubMenu from "components/EventSubMenu";
-import EventMenuTab from "components/EventMenuTab";
-import EventInfomation from "containers/EventInfomation";
-import EventBuyTicket from "containers/EventBuyTicket";
-import EventGallery from "containers/EventGallery";
-import EventSchedules from "containers/EventSchedules";
-import EventSiteMap from "containers/EventSiteMap";
-import EventSponsors from "containers/EventSponsors";
-
-import { getInnerText } from "utils/helperFunctions";
-import "!!style-loader!css-loader!./event.css";
+import React, { PropTypes, Fragment } from 'react';
+import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { TabPanel } from 'react-tabs';
+import { Tabs as MobileTabs } from 'antd';
+import filter from "lodash/filter";
+import size from "lodash/size";
+import { fetchEvent } from './actions';
+import EventTopPageDisplay from 'containers/EventTopPageDisplay';
+import LoadingSpinner from 'components/LoadingSpinner';
+import EventSubMenu from 'components/EventSubMenu';
+import EventMenuTab from 'components/EventMenuTab';
+import EventInfomation from 'containers/EventInfomation';
+import EventBuyTicket from 'containers/EventBuyTicket';
+import EventGallery from 'containers/EventGallery';
+import EventSchedules from 'containers/EventSchedules';
+import EventSiteMap from 'containers/EventSiteMap';
+import EventSponsors from 'containers/EventSponsors';
+import TabsWrap from './TabsWrap'
+import { getInnerText } from 'utils/helperFunctions';
 
 const TabPane = MobileTabs.TabPane;
 
+
 export class Event extends React.Component {
-  componentWillMount() {
-    const { eventId } = this.props.params;
-    this.props.fetchEvent(eventId);
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
   }
 
   render() {
     const { event } = this.props;
-
-    if (Object.keys(event).length < 1) {
+    if (size(event) < 1) {
       return (
         <div className="loading-exit">
           <EventTopPageDisplay />
@@ -45,13 +46,13 @@ export class Event extends React.Component {
     }
 
     return (
-      <div>
+      <Fragment>
         <Helmet
           titleTemplate={`Mookh | ${event.event_name}`}
           defaultTitle={`Mookh | ${event.event_name}`}
           meta={[
             {
-              name: "description",
+              name: 'description',
               content: `${getInnerText(event.event_description)}`
             }
           ]}
@@ -61,11 +62,11 @@ export class Event extends React.Component {
           eventName={event.event_name}
           eventVenue={event.event_venue}
         />
-        <div className="show-mobile">
+        <TabsWrap>
           <MobileTabs
             defaultActiveKey="1"
             tabPosition="top"
-            style={{ minHeight: "50vh" }}
+            style={{ minHeight: '50vh' }}
           >
             <TabPane tab="BUY TICKETS" key="1">
               <EventBuyTicket event={event} />
@@ -86,7 +87,7 @@ export class Event extends React.Component {
               <EventSponsors />
             </TabPane>
           </MobileTabs>
-        </div>
+        </TabsWrap>
 
         <EventMenuTab>
           <TabPanel>
@@ -108,14 +109,17 @@ export class Event extends React.Component {
             <EventSponsors />
           </TabPanel>
         </EventMenuTab>
-      </div>
+      </Fragment>
     );
   }
 }
 
-const mapStateToProps = ({ event }) => ({
-  event: event.event
-});
+const mapStateToProps = ({ event , eventPanels }, ownProps) => {
+  const newEvent = filter(eventPanels.events, { id: ownProps.match.params.id })[0];
+  return {
+    event: newEvent,
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId))

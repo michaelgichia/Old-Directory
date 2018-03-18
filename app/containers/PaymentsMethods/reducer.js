@@ -11,7 +11,8 @@ import {
 
 const initialState = {
   orderCreated: false,
-  orderPK: null
+  orderPK: null,
+  mpesaPushStatus: null
 };
 
 function paymentsMethodsReducer(state = initialState, action) {
@@ -27,7 +28,8 @@ function paymentsMethodsReducer(state = initialState, action) {
     case ORDERS_PAY.ERROR:
       return {
         ...state,
-        orderCreated: false
+        orderCreated: false,
+        mpesaPushStatus: false
       };
 
     case ORDERS_STATUS.SUCCESS:

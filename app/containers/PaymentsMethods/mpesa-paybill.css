@@ -1,5 +1,5 @@
-.header {
-  color: #b3afaf;
+.mpb__header {
+  color: #343434;
   padding-top: 12px;
   padding-bottom: 20px;
   font-size: 16px;
@@ -8,8 +8,7 @@
 }
 
 .mpesa-paybill-wrap {
-  color: #807d7d;
-  font-weight: 500 !important;
+  color: #343434;
   font-size: 14px !important;
   font-family: "Roboto", Roboto, sans-serif !important;
 }

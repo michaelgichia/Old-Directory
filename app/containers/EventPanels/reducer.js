@@ -5,17 +5,19 @@
  */
 
 import { EVENTS } from './constants';
+import data from './data';
 
 const initialState = {
-  events: []
+  events: data
 };
 
 function eventPanelsReducer(state = initialState, action) {
+
   switch (action.type) {
     case EVENTS.SUCCESS:
       return {
         ...state,
-        events: action.events
+        events: action.events,
       };
 
     default:

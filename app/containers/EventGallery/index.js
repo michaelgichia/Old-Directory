@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import EmptyData from "components/EmptyData";
-import "!!style-loader!css-loader!./event-gallery.css";
+import "./event-gallery.css";
 
 export class EventGallery extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

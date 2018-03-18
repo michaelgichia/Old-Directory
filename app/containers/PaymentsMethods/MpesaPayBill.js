@@ -4,19 +4,28 @@
  *
  */
 
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import TabsBottomWrap from "components/TabsBottomWrap";
-import TabsBodyWrap from "components/TabsBodyWrap";
-import { PaymentButtons, BackButton } from "components/Buttons";
-import "!!style-loader!css-loader!./mpesa-paybill.css";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import TabsBottomWrap from 'components/TabsBottomWrap';
+import TabsBodyWrap from 'components/TabsBodyWrap';
+import { PaymentButtons, BackButton } from 'components/Buttons';
+import {
+  PaymentButtonSecondary,
+  PaymentButtonRipples
+} from 'components/Buttons';
+
+import './mpesa-paybill.css';
 
 export class MpesaPayBill extends PureComponent {
   render() {
     return (
       <div>
         <TabsBodyWrap>
-          <p className="header">Payment was not successful. Please follow the instructions to via PAYBILL.</p>
+          <p className="mpb__header">
+            Payment was not successful. Please follow the instructions to via
+            PAYBILL.
+          </p>
           <div className="mpesa-paybill-wrap">
             <div>
               <p>1. Go to the M-Pesa menu</p>
@@ -40,20 +49,22 @@ export class MpesaPayBill extends PureComponent {
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <BackButton
-              id="store"
-              bsKlass=""
-              label="PREVIOUS"
-              onClick={this.props.goMpesaPush}
-            />
+            <PaymentButtonSecondary id="store" onClick={this.props.goMpesaPush}>
+              PREVIOUS
+            </PaymentButtonSecondary>
           </div>
           <div>
-            <PaymentButtons
+            <PaymentButtonRipples
               id="nextOne"
-              bsKlass="primary shadow"
-              label="CONTINUE"
-              onClick={() => this.props.dispatch({type: "PAYMENT_METHODS_TAB", tabIndex: 1})}
-            />
+              onClick={() =>
+                this.props.dispatch({
+                  type: 'PAYMENT_METHODS_TAB',
+                  tabIndex: 1
+                })
+              }
+            >
+              CONTINUE
+            </PaymentButtonRipples>
           </div>
         </TabsBottomWrap>
       </div>
@@ -62,8 +73,8 @@ export class MpesaPayBill extends PureComponent {
 }
 
 MpesaPayBill.proptypes = {
-  goMpesaPush: React.PropTypes.func.isRequired,
-  goTabThree: React.PropTypes.func.isRequired
-}
+  goMpesaPush: PropTypes.func.isRequired,
+  goTabThree: PropTypes.func.isRequired
+};
 
-export default connect(null, null)(MpesaPayBill);
+export default connect()(MpesaPayBill);

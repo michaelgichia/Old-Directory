@@ -6,7 +6,7 @@
 */
 
 import React from "react";
-import "!!style-loader!css-loader!./loading-spinner.css";
+import "./loading-spinner.css";
 
 class LoadingSpinner extends React.PureComponent {
   render() {

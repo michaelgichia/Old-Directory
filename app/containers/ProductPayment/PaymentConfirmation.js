@@ -1,10 +1,11 @@
 import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
 import { PaymentButtons } from "components/Buttons";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
 import GooglePlayBadge from "./images/google.png";
 import AppleBadge from "./images/apple.png";
-import "!!style-loader!css-loader!./css/product-confirmation.css";
+import "./css/product-confirmation.css";
 
 
 export class PaymentConfirmation extends PureComponent {
@@ -70,7 +71,7 @@ export class PaymentConfirmation extends PureComponent {
 }
 
 PaymentConfirmation.proptypes = {
-  handleCloseModal: React.PropTypes.func.isRequired
+  handleCloseModal: PropTypes.func.isRequired
 };
 
 export default PaymentConfirmation;

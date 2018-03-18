@@ -1,11 +1,12 @@
 import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import { PaymentButtons } from "components/Buttons";
+import { PaymentButtonSecondary, PaymentButtonRipples } from "components/Buttons";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
 import GooglePlayBadge from "./images/google.png";
 import AppleBadge from "./images/apple.png";
-import "!!style-loader!css-loader!./css/payment-confirmation.css";
+import "./css/payment-confirmation.css";
 
 export class PaymentConfirmation extends PureComponent {
   render() {
@@ -14,7 +15,7 @@ export class PaymentConfirmation extends PureComponent {
         <TabsBodyWrap>
           <div className="confirmation-wrap">
             <header>
-              <span>
+              <h3>
                 PAYMENT SUCCESSFUL
                 <svg
                   enableBackground="new 0 0 512 512"
@@ -28,7 +29,7 @@ export class PaymentConfirmation extends PureComponent {
                     fill="#31D34C"
                   />
                 </svg>
-              </span>
+              </h3>
               <p>Your order has been completed</p>
               <p>Check your email for the tickets you have bought and receipt</p>
               <p>For inquiries contact us: hello@mymookh.com</p>
@@ -46,22 +47,15 @@ export class PaymentConfirmation extends PureComponent {
             </div>
             <div className="feedback-wrap">
               <p>powered by MOOKHPAY.</p>
-              <PaymentButtons
-                id="store"
-                bsKlass="secondary shadow"
-                label="Give us feedback"
-              />
+              <PaymentButtonSecondary id="store">Give us feedback</PaymentButtonSecondary>
             </div>
           </div>
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <PaymentButtons
+            <PaymentButtonRipples
               id="nextOne"
-              bsKlass="primary shadow"
-              label="FINISH"
-              onClick={this.props.handleCloseModal}
-            />
+              onClick={this.props.handleCloseModal}>FINISH</PaymentButtonRipples>
           </div>
         </TabsBottomWrap>
       </div>
@@ -70,7 +64,7 @@ export class PaymentConfirmation extends PureComponent {
 }
 
 PaymentConfirmation.proptypes = {
-  handleCloseModal: React.PropTypes.func.isRequired
+  handleCloseModal: PropTypes.func.isRequired
 };
 
-export default connect(null, null)(PaymentConfirmation);
+export default PaymentConfirmation;

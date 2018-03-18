@@ -8,12 +8,13 @@
 
 import React from "react";
 import { GlowButton } from "components/Buttons";
-import ModalPoster from "components/Modals/ModalPoster";
-import "!!style-loader!css-loader!./invent-info-menu.css";
+import ModalPoster from "components/ModalPoster";
+import EventInfoWrap from './EventInfoWrap';
+import DescHeader from './DescHeader';
 
 const getDirectionBaseAPI = "https://www.google.com/maps/search/?api=1&query=";
 
-class EventSubMenu extends React.Component {
+class EventSubMenu extends React.PureComponent {
   state = {
     showModal: false
   };
@@ -29,27 +30,16 @@ class EventSubMenu extends React.Component {
       "https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg";
     const posterMessage = "poster";
     const location =
-      eventVenue !== eventVenue
+      eventVenue !== null
         ? eventVenue.toLocaleLowerCase().replace(/,/g, "+")
         : "";
 
     return (
-      <div className="event-information-wrap">
-        <div className="event-information-image">
-          <img src={posterImage} alt="product" />
-        </div>
-        <div className="position-glow-btn">
-          <GlowButton handleGlowBtn={this.handleOpenModal} />
-        </div>
-        <ModalPoster
-          posterImage={posterImage}
-          posterMessage={posterMessage}
-          showModal={showModal}
-        />
-        <div className="product-title">
+      <EventInfoWrap>
+        <div>
           <h3>{eventName}</h3>
         </div>
-        <div className="description header">
+        <DescHeader>
           <h5>
             <i className="fa fa-clock-o fa-2x" aria-hidden="true" />FRIDAY 28
             OCT 17:00-23:00 // 15 DAYS TO GO
@@ -60,8 +50,8 @@ class EventSubMenu extends React.Component {
               {eventVenue}
             </a>
           </h5>
-        </div>
-      </div>
+        </DescHeader>
+      </EventInfoWrap>
     );
   }
 }

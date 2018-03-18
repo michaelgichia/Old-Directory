@@ -5,7 +5,7 @@
 */
 
 import React from "react";
-import "!!style-loader!css-loader!./empty-data.css";
+import "./empty-data.css";
 
 const notFoundImage = "http://res.cloudinary.com/dw3arrxnf/image/upload/v1511331890/imageedit_8_7373918276_ku8kiu.png";
 

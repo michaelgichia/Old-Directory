@@ -15,7 +15,7 @@ module.exports = {
     name: 'type',
     message: 'Select the type of component',
     default: 'Stateless Function',
-    choices: () => ['Stateless Function', 'ES6 Class (Pure)', 'ES6 Class'],
+    choices: () => ['Stateless Function', 'React.PureComponent', 'React.Component'],
   }, {
     type: 'input',
     name: 'name',
@@ -28,26 +28,28 @@ module.exports = {
 
       return 'The name is required';
     },
+  }, {
+    type: 'confirm',
+    name: 'wantMessages',
+    default: true,
+    message: 'Do you want i18n messages (i.e. will this component use text)?',
+  }, {
+    type: 'confirm',
+    name: 'wantLoadable',
+    default: false,
+    message: 'Do you want to load the component asynchronously?',
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
     let componentTemplate;
 
     switch (data.type) {
-      case 'ES6 Class': {
-        componentTemplate = './component/es6.js.hbs';
-        break;
-      }
-      case 'ES6 Class (Pure)': {
-        componentTemplate = './component/es6.pure.js.hbs';
-        break;
-      }
       case 'Stateless Function': {
         componentTemplate = './component/stateless.js.hbs';
         break;
       }
       default: {
-        componentTemplate = './component/es6.js.hbs';
+        componentTemplate = './component/class.js.hbs';
       }
     }
 
@@ -64,14 +66,24 @@ module.exports = {
     }];
 
     // If they want a i18n messages file
-    // if (data.wantMessages) {
-    //   actions.push({
-    //     type: 'add',
-    //     path: '../../app/components/{{properCase name}}/messages.js',
-    //     templateFile: './component/messages.js.hbs',
-    //     abortOnFail: true,
-    //   });
-    // }
+    if (data.wantMessages) {
+      actions.push({
+        type: 'add',
+        path: '../../app/components/{{properCase name}}/messages.js',
+        templateFile: './component/messages.js.hbs',
+        abortOnFail: true,
+      });
+    }
+
+    // If want Loadable.js to load the component asynchronously
+    if (data.wantLoadable) {
+      actions.push({
+        type: 'add',
+        path: '../../app/components/{{properCase name}}/Loadable.js',
+        templateFile: './component/loadable.js.hbs',
+        abortOnFail: true,
+      });
+    }
 
     return actions;
   },

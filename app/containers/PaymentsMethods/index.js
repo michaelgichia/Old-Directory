@@ -14,7 +14,7 @@ import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
 import MpesaPayBill from "./MpesaPayBill";
 import { handleOrdersPayment, getOrderStatus } from "./actions";
-import "!!style-loader!css-loader!./payments-methods.css";
+import "./payments-methods.css";
 
 export class PaymentsMethods extends Component {
   state = {
@@ -51,7 +51,6 @@ export class PaymentsMethods extends Component {
     } = this.props;
     const { extraInfo } = this.state;
     const orderArray = [];
-    this.handleMpesaClick();
 
     delete customer.confirmEmail;
     Object.entries(ticketCategory).forEach(([key, value]) => {
@@ -67,6 +66,7 @@ export class PaymentsMethods extends Component {
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
+    this.handleMpesaClick();
     this.props.handleOrdersPayment(extraInfo);
   };
 
@@ -139,7 +139,6 @@ export class PaymentsMethods extends Component {
           </TabPanel>
           <TabPanel>
             <CardForm
-              onBlur={() => ({})}
               cardInfo={this.props.cardInfo}
               goTabTwo={() => this.props.goTabTwo("PAYMENT_METHODS_TAB", 1)}
               handleCardInfo={this.props.handleCardInfo}
@@ -157,7 +156,7 @@ const mapStateToProps = ({ payments, buyTicket, paymentsMethods }) => ({
   deliveryInfomation: payments.deliveryInfomation,
   customer: payments.customer,
   ticketCategory: payments.ticketCategory,
-  event: buyTicket.event,
+  event: payments.event,
   orderCreated: paymentsMethods.orderCreated,
   mpesaPushStatus: paymentsMethods.mpesaPushStatus,
   orderPK: paymentsMethods.orderPK,

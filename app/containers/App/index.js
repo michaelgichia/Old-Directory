@@ -1,6 +1,6 @@
 /**
  *
- * App.react.js
+ * App.js
  *
  * This component is the skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar)
@@ -12,37 +12,26 @@
  */
 
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Switch, Route } from 'react-router-dom';
+
+import HomePage from 'containers/HomePage';
+import EventInfomation from 'containers/EventInfomation/Loadable';
+import Event from 'containers/Event';
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Payments from "containers/Payments";
-import Footer from 'components/Footer';
-import withProgressBar from 'components/ProgressBar';
-import '!!style-loader!css-loader!./app.css';
 
-class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
-  static propTypes = {
-    children: React.PropTypes.node,
-  };
 
-  render() {
-    return (
-      <div>
-        <Helmet
-          titleTemplate="%s - Mookh | Making Commerce Social"
-          defaultTitle="Mookh | Making Commerce Social"
-          meta={[
-            { name: 'description', content: 'Mookh | Making Commerce Social' },
-          ]}
-        />
-        <div className="main">
-          {React.Children.toArray(this.props.children)}
-          <Payments />
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/events/" component={EventInfomation} />
+        <Route exact path="/tickets/:id" component={Event} />
+        <Route component={NotFoundPage} />
+      </Switch>
+      <Payments />
+    </div>
+  );
 }
-
-export default withProgressBar(App);
-
