@@ -64,6 +64,11 @@ injectGlobal`
   .ant-tabs-nav .ant-tabs-tab-active {
     color: #31383e;
   }
+
+  .ant-select-selection {
+    border: 1px solid #ccc;
+    border-right: none;
+  }
 `;
 
 
