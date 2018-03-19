@@ -65,11 +65,6 @@ injectGlobal`
     color: #31383e;
   }
 
-  .ant-select-selection {
-    border: 1px solid #ccc;
-    border-right: none;
-  }
-
   @media screen and (max-width: 768px) {
     .ant-input-group-lg .ant-select-selection--single {
       height: 45px !important;

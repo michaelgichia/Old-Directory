@@ -91,17 +91,11 @@ export default class CardForm extends Component {
                 </div>
               </div>
             </div>
-            <div className="cd-row">
-              <MookhInput
-                labelName="Valid Thru"
-                id="expiry"
-                placeholder="MM/YY"
-                wrapClass="cd-payment-input"
-                onChange={this.handleInputChange}
-                pattern="\d\d/\d\d"
-                required
-                type="tel"
-              />
+            <div className="cd-row-two">
+              <div className="mm-input-wrap">
+                <input className="mm-input" type="tel" id="expiry-month" placeholder="MM/" onChange={this.handleInputChange} required />
+                <input className="mm-input" type="tel" id="expiry-year" placeholder="YY" onChange={this.handleInputChange} required />
+              </div>
               <div className="cd-payment-input total">
                 <span>Total:</span>
                 <span>$00.00</span>

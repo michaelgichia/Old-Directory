@@ -44,6 +44,7 @@ const posterImage =
 const InputGroup = Input.Group;
 const Option = Select.Option;
 
+
 class Payment extends React.PureComponent {
   state = {
     country: '254',
@@ -91,9 +92,13 @@ class Payment extends React.PureComponent {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <InputGroup compact size="large">
-              <Select style={{width: '25%', marginBottom: 24, borderRadius: 1}} value={dialCode} onChange={this.handleDialCode}>
+              <Select
+                style={{ width: '25%', marginBottom: 24, borderRadius: 1 }}
+                value={dialCode}
+                onChange={this.handleDialCode}
+              >
                 <Option value="254">
-                  <img src={kenya} style={{ width: 40, }} />
+                  <img src={kenya} style={{ width: 40 }} />
                 </Option>
                 <Option value="256">
                   <img src={uganda} style={{ width: 40 }} />
@@ -109,7 +114,7 @@ class Payment extends React.PureComponent {
                 </Option>
               </Select>
               <EventInput
-                style={{width: '75%'}}
+                style={{ width: '75%' }}
                 onChange={this.handleCountryChange}
                 value={country}
                 type="tel"
@@ -173,7 +178,11 @@ class Payment extends React.PureComponent {
                 justify="space-between"
               >
                 <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                  <EventBtn type="primary" htmlType="submit">
+                  <EventBtn
+                    onClick={() => ({})}
+                    type="primary"
+                    htmlType="submit"
+                  >
                     MOBILE
                   </EventBtn>
                 </Col>
