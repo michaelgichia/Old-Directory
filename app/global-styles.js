@@ -69,6 +69,15 @@ injectGlobal`
     border: 1px solid #ccc;
     border-right: none;
   }
+
+  @media screen and (max-width: 768px) {
+    .ant-input-group-lg .ant-select-selection--single {
+      height: 45px !important;
+      display: flex;
+      align-items: center;
+    }
+  }
+
 `;
 
 
