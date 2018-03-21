@@ -1,34 +1,55 @@
 /**
-*
-* EventPanels
-*
-* Event panels are the components that display events -
-* information on directory landing page.
-*
-*/
+ *
+ * EventPanels
+ *
+ * Event panels are the components that display events -
+ * information on directory landing page.
+ *
+ */
 
-import React from "react";
-import { connect } from "react-redux";
-import LoadingSpinner from "components/LoadingSpinner";
-import "style-loader!css-loader!./event-panel.css";
-import { randomColor } from "utils/color-generator";
+import React, { Component } from 'react';
+import { compose } from "redux";
+import { connect } from 'react-redux';
+import { Row, Col } from 'antd';
+import LoadingSpinner from 'components/LoadingSpinner';
+import injectReducer from 'utils/injectReducer';
 // Actions
-import { fetchEvents } from "./actions";
-import { eventPosterBaseUrl } from "./constants";
+import { fetchEvents } from './actions';
+import { eventPosterBaseUrl } from './constants';
+import { randomColor } from 'utils/color-generator';
+import chunk from 'lodash/chunk';
+import getWindowSize from 'utils/getWindowSize';
+import data from './data';
+import MookhRow from './MookhRow';
+import MookhCol from './MookhCol';
+import Panel from './Panel';
+import EventPanelsWrap from './EventPanelsWrap';
+import reducer from './reducer';
 
-class EventPanels extends React.PureComponent {
+// Get device width
+const deviceWidth =  getWindowSize();
+// Calculate number of column per row
+// according to device width.
+function getItemsPerRow(width) {
+  if (width >= 992) return 3;
+  else if (width >= 576 && width < 992) return 2;
+  else return 1;
+}
+
+class EventPanels extends Component {
   state = {
-    events: []
+    appState: 'success'
   };
 
+  width = getWindowSize();
+
   componentDidMount() {
-    this.props.fetchEvents();
+    // this.props.fetchEvents();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.events.length !== this.state.events.length) {
-      this.setState(() => ({ events: nextProps.events }));
-    }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextState.events !== this.state.events) return true;
+    return false;
   }
 
   handleError = e => {
@@ -36,62 +57,49 @@ class EventPanels extends React.PureComponent {
   };
 
   render() {
-    const { events } = this.state;
-    const { isFixedNavHeight } = this.props;
-    if (events.length < 1) {
+    const { appState } = this.state;
+
+    if (this.props.events.length < 1 || appState === 'fetching') {
       return <LoadingSpinner />;
     }
     return (
-      <div className="panel-wrap">
-        {events.map(event => (
-          <div className="panel-container" key={event.id}>
-            <div
-              className="panel-img-wrap"
-              style={{ backgroundColor: `${randomColor()}` }}
-            >
-              <a href={`/event/${event.id}`}>
-                <img
-                  src={event.event_poster}
-                  alt=""
-                  onError={e => this.handleError(e)}
-                  id={event.id}
-                />
-              </a>
-            </div>
-            <div className="panel-event-info">
-              <a href={`/event/${event.id}`} alt="event">
-                {event.event_name}
-              </a>
-              <a href={`/event/${event.id}`} alt="event">
-                by {event.store_name}
-              </a>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: event.event_description
-                }}
-              />
-            </div>
-            <a
-              href={`/event/${event.id}`}
-              target="_self"
-              className="panel-event-buy"
-            >
-              VIEW STORE
-              <i className="fa fa-arrow-right fa-2x" aria-hidden="true" />
-            </a>
-          </div>
-        ))}
-      </div>
+      <EventPanelsWrap>
+        <div style={{marginTop: 32}}>
+          {this.props.events.map((v, i) => (
+            <MookhRow key={`${i}i`}>
+              {v.map((event, index) => (
+                <MookhCol
+                  key={event.id}
+                  xs={24}
+                  sm={12}
+                  md={12}
+                  lg={8}
+                  xl={8}
+                >
+                  <Panel onError={this.handleError} event={event} key={event.id} />
+                </MookhCol>
+              ))}
+            </MookhRow>
+          ))}
+        </div>
+      </EventPanelsWrap>
     );
   }
 }
 
 const mapStateToProps = ({ eventPanels }) => ({
-  events: eventPanels.events
+  events: chunk(eventPanels.events, getItemsPerRow(deviceWidth))
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchEvents: () => dispatch(fetchEvents())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventPanels);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'eventPanels', reducer });
+
+export default compose(
+  withReducer,
+  withConnect,
+)(EventPanels);

@@ -4,9 +4,9 @@
  *
  */
 
-import React, { PropTypes } from "react";
-import EmptyData from "components/EmptyData";
-// import "!!style-loader!css-loader!./EventSponsors.css";
+import React, { PropTypes } from 'react';
+import EmptyData from 'components/EmptyData';
+// import "./EventSponsors.css";
 
 export class EventSponsors extends React.Component {
   // eslint-disable-line react/prefer-stateless-function

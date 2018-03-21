@@ -4,13 +4,13 @@
  *
  */
 
-import React, { PureComponent } from "react";
-import MookhInput from "components/Forms/MookhInput";
-import MookhInputWithBtn from "components/Forms/MookhInputWithBtn";
-import TabsBottomWrap from "components/TabsBottomWrap";
-import TabsBodyWrap from "components/TabsBodyWrap";
-import { PaymentButtons } from "components/Buttons";
-import "!!!style-loader!css-loader!./payment-information.css";
+import React, { PureComponent } from 'react';
+import MookhInput from 'components/Forms/MookhInput';
+import MookhInputWithBtn from 'components/Forms/MookhInputWithBtn';
+import TabsBottomWrap from 'components/TabsBottomWrap';
+import TabsBodyWrap from 'components/TabsBodyWrap';
+import { PaymentButtons } from 'components/Buttons';
+import './payment-information.css';
 
 export default class PaymentInformationForm extends PureComponent {
   render() {
@@ -50,10 +50,10 @@ export default class PaymentInformationForm extends PureComponent {
                 wrapClass="payment-input"
                 inputError={nameError}
                 onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "name")}
+                onBlur={e => this.props.onBlur(e, 'name')}
                 value={name}
                 type="text"
-                required={true}
+                required
               />
               <MookhInput
                 labelName="Phone number"
@@ -62,10 +62,10 @@ export default class PaymentInformationForm extends PureComponent {
                 wrapClass="payment-input"
                 inputError={phone_numberError}
                 onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "phone_number")}
+                onBlur={e => this.props.onBlur(e, 'phone_number')}
                 value={phone_number}
                 type="tel"
-                required={true}
+                required
               />
             </div>
             <div className="pm-row">
@@ -76,10 +76,10 @@ export default class PaymentInformationForm extends PureComponent {
                 wrapClass="payment-input"
                 inputError={emailError}
                 onChange={this.props.handleCustomerInfo}
-                onBlur={e => this.props.onBlur(e, "email")}
+                onBlur={e => this.props.onBlur(e, 'email')}
                 value={email}
                 type="email"
-                required={true}
+                required
               />
               <MookhInput
                 labelName="Confirm E-mail address"
@@ -92,7 +92,7 @@ export default class PaymentInformationForm extends PureComponent {
                   this.props.handleConfirmEmail(email, confirmEmail)}
                 value={confirmEmail}
                 type="email"
-                required={true}
+                required
               />
             </div>
             <header className="payment-header">Delivery information</header>
@@ -107,7 +107,7 @@ export default class PaymentInformationForm extends PureComponent {
                 onBlur={() => {}}
                 value={location}
                 type="text"
-                required={true}
+                required
               />
               <MookhInput
                 labelName="Street address"
@@ -119,7 +119,7 @@ export default class PaymentInformationForm extends PureComponent {
                 onBlur={() => {}}
                 value={streetAddress}
                 type="text"
-                required={true}
+                required
               />
             </div>
             <div className="pm-row">
@@ -133,7 +133,7 @@ export default class PaymentInformationForm extends PureComponent {
                 onBlur={() => {}}
                 value={apartment}
                 type="text"
-                required={true}
+                required
               />
               <MookhInputWithBtn
                 labelName="Delivery cost estimate"
@@ -145,7 +145,7 @@ export default class PaymentInformationForm extends PureComponent {
                 onBlur={() => {}}
                 value={deliveryCost}
                 type="text"
-                required={true}
+                required
               />
             </div>
           </form>

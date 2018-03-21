@@ -9,9 +9,9 @@
 */
 
 import React from "react";
-import { browserHistory } from "react-router";
+import { browserHistory } from "react-router-dom";
 import { getPathname } from "utils/helperFunctions";
-import "!!style-loader!css-loader!./menu-tabs-large-screen.css";
+import "./menu-tabs-large-screen.css";
 import mookhLogo from "./logo-dark.png";
 
 class EventMenuBar extends React.PureComponent {

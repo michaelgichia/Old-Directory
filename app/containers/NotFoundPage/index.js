@@ -9,42 +9,17 @@
  * the linting exception.
  */
 
-import React from "react";
-import mookhLogo from "./logo-dark.png";
-import EventTopPageDisplay from "containers/EventTopPageDisplay";
-import "!!style-loader!css-loader!./not-found-page.css";
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
-export default class NotFound extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
+import messages from './messages';
+
+export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div
-        style={{
-          minHeight: "90vh",
-          position: "relative",
-          color: "#343A41",
-          backgroundColor: "#faea29"
-        }}
-      >
-        <nav className="footer-nav">
-          <ul>
-            <li>
-              <a href="/#">
-                <img src={mookhLogo} alt="" />
-              </a>
-            </li>
-            <li>
-              <a href="#">START SELLING</a>
-            </li>
-          </ul>
-        </nav>
-        <main className="not-found-main">
-          <div>
-            <h1>404</h1>
-            <h1>PAGE NOT FOUND</h1>
-          </div>
-        </main>
-      </div>
+      <h1>
+        <FormattedMessage {...messages.header} />
+      </h1>
     );
   }
 }

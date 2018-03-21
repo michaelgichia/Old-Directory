@@ -4,7 +4,7 @@ const uniq = require('lodash/uniq');
 
 const ReactBoilerplate = {
   // This refers to the react-boilerplate version this project is based on.
-  version: '3.4.0',
+  version: '3.5.0',
 
   /**
    * The DLL Plugin provides a dramatic speed increase to webpack build and hot module reloading
@@ -27,7 +27,7 @@ const ReactBoilerplate = {
         'express',
         'ip',
         'minimist',
-        'sanitize.css',
+        'sanitize.css'
       ],
 
       /**
@@ -37,7 +37,7 @@ const ReactBoilerplate = {
       include: ['core-js', 'eventsource-polyfill', 'babel-polyfill', 'lodash'],
 
       // The path where the DLL manifest and bundle will get built
-      path: resolve('../node_modules/react-boilerplate-dlls'),
+      path: resolve('../node_modules/react-boilerplate-dlls')
     },
 
     entry(pkg) {
@@ -47,10 +47,10 @@ const ReactBoilerplate = {
       const includeDependencies = uniq(dependencyNames.concat(include));
 
       return {
-        reactBoilerplateDeps: pullAll(includeDependencies, exclude),
+        reactBoilerplateDeps: pullAll(includeDependencies, exclude)
       };
-    },
-  },
+    }
+  }
 };
 
 module.exports = ReactBoilerplate;

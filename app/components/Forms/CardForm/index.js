@@ -4,74 +4,116 @@
  *
  */
 
-import React, { PureComponent } from "react";
-import TabsBottomWrap from "components/TabsBottomWrap";
-import TabsBodyWrap from "components/TabsBodyWrap";
-import MookhInput from "components/Forms/MookhInput";
-import { PaymentButtons, BackButton } from "components/Buttons";
-import "!!style-loader!css-loader!./card-form.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Select } from 'antd';
+import { Helmet } from 'react-helmet';
+import TabsBottomWrap from 'components/TabsBottomWrap';
+import TabsBodyWrap from 'components/TabsBodyWrap';
+import CreditCardInput from 'components/Forms/CreditCardInput';
+import {
+  formatCreditCardNumber,
+  formatCVC,
+  formatExpirationDate,
+  formatFormData
+} from 'utils/creditCard';
+import { PaymentButtonPrimary } from 'components/Buttons';
+import './card-form.css';
 
-export default class CardForm extends PureComponent {
+const Option = Select.Option;
+
+export default class CardForm extends Component {
+  state = {
+    currency: 'ksh'
+  };
+
+  handleInputChange = ({ target }) => {
+    if (target.name === 'number') {
+      target.value = formatCreditCardNumber(target.value);
+    } else if (target.name === 'expiry') {
+      target.value = formatExpirationDate(target.value);
+    } else if (target.name === 'cvc') {
+      target.value = formatCVC(target.value);
+    }
+    this.setState({ [target.name]: target.value });
+  };
+
+  handleChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  handlePayment = () => {
+    console.log('called')
+    window.pay()
+  };
+
   render() {
-    const { cardNumber, cvc, currency, expiresOn } = this.props.cardInfo;
-
+    const { cardNumber, cvc, currency, expiry } = this.props.cardInfo;
     return (
       <div>
         <TabsBodyWrap>
           <form onSubmit={e => e.preventDefault()}>
             <div className="cd-row">
-              <MookhInput
-                labelName="Card number"
-                id="cardNumber"
-                placeholder="0000"
-                onChange={this.props.handleCardInfo}
-                onBlur={e => this.props.onBlur(e, "cardNumber")}
-                value={cardNumber}
-                required={false}
+              <CreditCardInput
+                labelName="Card Number"
+                id="card-number"
+                onChange={this.handleChange}
+                placeholder="CARD NO"
+                pattern="[\d| ]{16,22}"
+                readOnly="readonly"
                 wrapClass="cd-payment-input"
-                inputError=""
-                type="number"
+                type="tel"
               />
               <div className="cd-payment-input">
-                <MookhInput
+                <CreditCardInput
                   labelName="CVC"
-                  id="cvc"
-                  placeholder=""
-                  onChange={this.props.handleCardInfo}
-                  onBlur={e => this.props.onBlur(e, "cvc")}
-                  value={cvc}
-                  required={false}
+                  id="security-code"
+                  onChange={this.handleChange}
+                  placeholder="CVC"
+                  pattern="\d{3,4}"
+                  readOnly="readonly"
                   wrapClass="cvc"
-                  inputError=""
-                  type="number"
+                  type="tel"
                 />
-                <MookhInput
-                  labelName="Currency"
-                  id="currency"
-                  placeholder="USD"
-                  onChange={this.props.handleCardInfo}
-                  onBlur={e => this.props.onBlur(e, "currency")}
-                  value={currency}
-                  required={false}
-                  wrapClass="cvc"
-                  inputError=""
-                  type="number"
-                />
+                <div className="cvc">
+                  <label className="mookh-label" htmlFor="fname">
+                    Currency
+                  </label>
+                  <Select
+                    dropdownStyle={{ zIndex: 9999 }}
+                    defaultValue="ksh"
+                    onChange={this.handleChange}
+                    size="large"
+                  >
+                    <Option stle={{ color: 'red' }} value="usd">
+                      USD
+                    </Option>
+                    <Option value="ksh">KSH</Option>
+                  </Select>
+                </div>
               </div>
             </div>
-            <div className="cd-row">
-              <MookhInput
-                labelName="Expires on"
-                id="expiresOn"
-                placeholder="MM/YY"
-                wrapClass="cd-payment-input"
-                onChange={this.props.handleCardInfo}
-                onBlur={e => this.props.onBlur(e, "expiresOn")}
-                value={expiresOn}
-                required={false}
-                inputError=""
-                type="number"
-              />
+            <div className="cd-row-two">
+              <div className="mm-input-wrap">
+                <input
+                  className="mm-input"
+                  type="tel"
+                  id="expiry-month"
+                  onChange={this.handleChange}
+                  placeholder="MM"
+                  readOnly={null}
+                  value="05"
+                />
+                <input
+                  className="mm-input"
+                  type="tel"
+                  id="expiry-year"
+                  onChange={this.handleChange}
+                  placeholder="YY"
+                  readOnly={null}
+                  value="21"
+                />
+              </div>
               <div className="cd-payment-input total">
                 <span>Total:</span>
                 <span>$00.00</span>
@@ -81,12 +123,10 @@ export default class CardForm extends PureComponent {
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <PaymentButtons
-              id="nextOne"
-              bsKlass="primary shadow"
-              label="CONTINUE"
-              onClick={this.props.goTabTwo}
-            />
+            <PaymentButtonPrimary id="nextOne"
+            onChange={this.handleChange} onClick={() => window.pay('card')}>
+              PAY
+            </PaymentButtonPrimary>
           </div>
         </TabsBottomWrap>
       </div>
@@ -95,8 +135,8 @@ export default class CardForm extends PureComponent {
 }
 
 CardForm.proptypes = {
-  cardInfo: React.PropTypes.object.isRequired,
-  handleCardInfo: React.PropTypes.func.isRequired,
-  onBlur: React.PropTypes.func.isRequired,
-  goTabTwo: React.PropTypes.func.isRequired
+  cardInfo: PropTypes.object.isRequired,
+  handleCardInfo: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  goTabTwo: PropTypes.func.isRequired
 };

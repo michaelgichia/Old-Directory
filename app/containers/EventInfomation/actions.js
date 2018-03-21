@@ -4,11 +4,11 @@
  *
  */
 
-import axios from "axios";
-import { EVENT_INFO, baseAPIEventInfo } from "./constants";
+import axios from 'axios';
+import { EVENT_INFO, baseAPIEventInfo } from './constants';
 
-export const fetctEventInfo = eventId => dispatch => {
-  axios.get(`${baseAPIEventInfo}/${eventId}`).then(res => {
+export const fetctEventInfo = eventId => (dispatch) => {
+  axios.get(`${baseAPIEventInfo}/${eventId}`).then((res) => {
     if (res.status === 200) {
       dispatch({
         type: EVENT_INFO.SUCCESS,

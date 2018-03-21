@@ -4,33 +4,32 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 {{#if wantHeaders}}
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 {{/if}}
 {{#if wantMessages}}
 import { FormattedMessage } from 'react-intl';
 {{/if}}
 {{#if wantActionsAndReducer}}
-import { defaultAction } from './actions';
+import { createStructuredSelector } from 'reselect';
+import makeSelect{{properCase name}} from './selectors';
 {{/if}}
 {{#if wantMessages}}
 import messages from './messages';
 {{/if}}
-// import "!!style-loader!css-loader!./{{properCase name }}.css";
 
 export class {{ properCase name }} extends React.{{{ component }}} { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
       {{#if wantHeaders}}
-        <Helmet
-          title="{{properCase name}}"
-          meta={{curly true}}[
-            {{curly true}} name: 'description', content: 'Description of {{properCase name}}' {{curly}},
-          ]{{curly}}
-        />
+        <Helmet>
+          <title>{{properCase name}}</title>
+          <meta name="description" content="Description of {{properCase name}}" />
+        </Helmet>
       {{/if}}
       {{#if wantMessages}}
         <FormattedMessage {...messages.header} />
@@ -41,18 +40,20 @@ export class {{ properCase name }} extends React.{{{ component }}} { // eslint-d
 }
 
 {{ properCase name }}.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 {{#if wantActionsAndReducer}}
-const mapStateToProps = ({}) => ({
-
+const mapStateToProps = createStructuredSelector({
+  {{name}}: makeSelect{{properCase name}}(),
 });
 {{/if}}
 
-const mapDispatchToProps = dispatch => ({
-  dispatch
-})
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
 
 {{#if wantActionsAndReducer}}
 export default connect(mapStateToProps, mapDispatchToProps)({{ properCase name }});

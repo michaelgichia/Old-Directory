@@ -4,7 +4,7 @@
  *
  */
 
-import { EVENT } from "./constants";
+import { EVENT } from './constants';
 
 const initialState = {
   event: {}

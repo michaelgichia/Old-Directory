@@ -5,7 +5,7 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  DEFAULT_ACTION
 } from './constants';
 
 const initialState = {};

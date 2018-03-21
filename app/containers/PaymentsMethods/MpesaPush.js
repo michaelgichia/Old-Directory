@@ -5,15 +5,16 @@
  */
 
 import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import classNames from "classnames";
 import MpesaPushImage from "./MpesaPushImage.png";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
-import { PaymentButtons, BackButton } from "components/Buttons";
+import { PaymentButtonSecondary, PaymentButtonRipples } from "components/Buttons";
 import { InputConstants } from "utils/constants";
 
-import "!!style-loader!css-loader!./mpesa-push.css";
+import "./mpesa-push.css";
 
 export class MpesaPush extends PureComponent {
   state = {
@@ -60,7 +61,6 @@ export class MpesaPush extends PureComponent {
               <label htmlFor="phone_number"> Confirm Mpesa No:</label>
               <div className="ebt-div-information">
                 <input
-                  style={{ padding: "4px 14px" }}
                   className={inputClassnames}
                   onChange={e =>
                     this.props.dispatch({
@@ -98,12 +98,11 @@ export class MpesaPush extends PureComponent {
               )}
 
               <div className="primary-pay-mpesa">
-                <PaymentButtons
+                <PaymentButtonRipples
                   id="pay"
-                  bsKlass="primary ripple"
-                  label="PAY NOW"
-                  onClick={this.props.handlePayment}
-                />
+                  onClick={this.props.handlePayment}>
+                  PAY NOW
+                </PaymentButtonRipples>
               </div>
               {this.props.mpesaInitiated ? (
                 <p className="go-to-paybill-p2">
@@ -120,12 +119,10 @@ export class MpesaPush extends PureComponent {
           </div>
         </TabsBodyWrap>
         <TabsBottomWrap>
-          <PaymentButtons
+          <PaymentButtonSecondary
             id="store"
-            bsKlass="secondary ripple"
-            label="RETURN TO STORE"
-            onClick={this.props.handleReturnToStore}
-          />
+            onClick={this.props.handleReturnToStore}>RETURN TO STORE
+          </PaymentButtonSecondary>
         </TabsBottomWrap>
       </div>
     );
@@ -133,8 +130,8 @@ export class MpesaPush extends PureComponent {
 }
 
 MpesaPush.proptypes = {
-  mpesaInitiated: React.PropTypes.bool.isRequired,
-  goToPayBill: React.PropTypes.func.isRequired
+  mpesaInitiated: PropTypes.bool.isRequired,
+  goToPayBill: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ payments }) => ({

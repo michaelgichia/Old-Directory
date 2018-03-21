@@ -4,11 +4,11 @@
  *
  */
 
-import axios from "axios";
-import { baseEventAPI, EVENT, PAYMENTS_MODAL } from "./constants";
+import axios from 'axios';
+import { baseEventAPI, EVENT, PAYMENTS_MODAL } from './constants';
 
-export const fetchEvent = eventId => dispatch => {
-  axios.get(`${baseEventAPI}/${eventId}`).then(res => {
+export const fetchEvent = eventId => (dispatch) => {
+  axios.get(`${baseEventAPI}/${eventId}`).then((res) => {
     if (res.status === 200) {
       dispatch({
         type: EVENT.SUCCESS,
@@ -23,17 +23,18 @@ export const fetchEvent = eventId => dispatch => {
   });
 };
 
-export function openModal(ticketCategory, customer, totalTicketsPrice) {
+export function openModal(ticketCategory, customer, totalTicketsPrice, event) {
   return {
     type: PAYMENTS_MODAL.SUCCESS,
     ticketCategory,
     customer,
-    totalTicketsPrice
+    totalTicketsPrice,
+    event
   };
 }
 
 export function closeModal() {
   return {
-    type: PAYMENTS_MODAL.ERROR,
+    type: PAYMENTS_MODAL.ERROR
   };
 }

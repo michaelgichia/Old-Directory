@@ -5,8 +5,8 @@
 * This is a spinner that you can render with preffered logic.
 */
 
-import React from "react";
-import "!!style-loader!css-loader!./loading-spinner.css";
+import React from 'react';
+import './loading-spinner.css';
 
 class LoadingSpinner extends React.PureComponent {
   render() {

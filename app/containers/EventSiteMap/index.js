@@ -4,9 +4,9 @@
  *
  */
 
-import React, { PropTypes } from "react";
-import EmptyData from "components/EmptyData";
-// import "!!style-loader!css-loader!./EventSiteMap.css";
+import React, { PropTypes } from 'react';
+import EmptyData from 'components/EmptyData';
+// import "./EventSiteMap.css";
 
 export class EventSiteMap extends React.Component {
   render() {

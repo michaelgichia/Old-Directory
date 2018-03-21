@@ -7,7 +7,7 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import classNames from "classnames";
-import "!!style-loader!css-loader!./event-menu-tabs.css";
+import "./event-menu-tabs.css";
 
 
 class EventMenuTab extends React.Component {

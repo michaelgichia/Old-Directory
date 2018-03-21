@@ -4,7 +4,7 @@
  *
  */
 
-import { asyncActionType } from "utils/helperFunctions";
+import { asyncActionType } from 'utils/helperFunctions';
 
 // Action types
 export const EVENT_INFO = asyncActionType('EVENT_INFO');

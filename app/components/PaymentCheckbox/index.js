@@ -1,5 +1,6 @@
-import React, { PureComponent } from "react";
-import "!!style-loader!css-loader!./payment-checkbox.css";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import './payment-checkbox.css';
 
 export default class PaymentCheckbox extends PureComponent {
   render() {
@@ -35,8 +36,8 @@ export default class PaymentCheckbox extends PureComponent {
 }
 
 PaymentCheckbox.proptypes = {
-  onChange: React.PropTypes.func,
-  id: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  defaultChecked: React.PropTypes.bool
+  onChange: PropTypes.func,
+  id: PropTypes.string,
+  placeholder: PropTypes.string,
+  defaultChecked: PropTypes.bool
 };

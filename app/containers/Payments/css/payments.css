@@ -50,8 +50,8 @@
     padding: 8px 4px;
     min-width: 50px;
     width: 100%;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 500;
   }
 
   .py__tab-list {
@@ -95,7 +95,7 @@
   border-bottom: 3px solid #f6f3ee;
   display: flex;
   justify-content: space-around;
-  color: #b3afaf;
+  color: #807d7d;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
@@ -113,7 +113,7 @@
 }
 
 .py__tab.react-tabs__tab--selected {
-  color: #343434;
+  color: #31383e;
   border-radius: 0;
   border-bottom: 3px solid #faea29;
   margin-bottom: -2px;

@@ -11,12 +11,12 @@
 }
 
 .confirmation-wrap p {
-  color: #807d7d;
+  color: #343434;
   font-size: 14px;
 }
 
 .confirmation-wrap p:nth-child(3) {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .feedback-wrap p {
@@ -24,11 +24,7 @@
   padding-bottom: 12px;
 }
 
-.feedback-wrap {
-  margin-top: 32px;
-  display: flex;
-  justify-content: space-between;
-}
+
 
 /* Small Screen
 ============================================*/
@@ -38,15 +34,15 @@
   }
 
   .apps-wrap {
-    margin-top: 20px;
+    margin-top: 8px;
   }
 
   .app-stores-wrap {
     width: 100%;
-    justify-content: space-around;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    display: block;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    display: flex;
   }
 
   .confirmation-wrap {
@@ -64,9 +60,7 @@
   }
 
   .app-stores-wrap a {
-    width: 50%;
     display: block;
-    float: left;
   }
 
   .play-store {
@@ -95,7 +89,7 @@
   }
 
   .apps-wrap {
-    margin-top: 50px;
+    margin-top: 16px;
   }
 
   .app-stores-wrap {
@@ -115,6 +109,9 @@
   }
 
   .feedback-wrap {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 24px;
   }
 }
@@ -123,4 +120,8 @@
 ============================================*/
 .play-store {
   display: block;
+}
+
+@media screen and (max-width: 768px) {
+
 }

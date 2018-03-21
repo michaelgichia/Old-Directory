@@ -4,20 +4,20 @@
  *
  */
 
-import axios from "axios";
+import axios from 'axios';
 import {
-  PAYMENTS_MODAL,
+  PAYMENTS_MODAL
 } from './constants';
 
 export function openModal() {
   return {
-    type: PAYMENTS_MODAL.SUCCESS,
+    type: PAYMENTS_MODAL.SUCCESS
   };
 }
 
 export function closeModal() {
   return {
-    type: PAYMENTS_MODAL.ERROR,
+    type: PAYMENTS_MODAL.ERROR
   };
 }
 

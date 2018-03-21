@@ -3,12 +3,13 @@
  * Event reducer
  *
  */
+import { combineReducers } from 'redux';
+import { EVENT } from './constants';
 
-import { EVENT } from "./constants";
 
 const initialState = {
   event: {},
-  eventError: ""
+  eventError: ''
 };
 
 function eventReducer(state = initialState, action) {

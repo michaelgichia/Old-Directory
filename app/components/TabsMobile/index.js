@@ -4,8 +4,8 @@
 *
 */
 
-import React from "react";
-import { Tabs as MobileTabs } from "antd";
+import React from 'react';
+import { Tabs as MobileTabs } from 'antd';
 const TabPane = MobileTabs.TabPane;
 
 class TabsMobile extends React.Component {

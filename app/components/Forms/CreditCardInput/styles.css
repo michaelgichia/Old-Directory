@@ -1,0 +1,59 @@
+
+
+/* Forms styles
+=========================================================*/
+/*Error color: red*/
+
+/*
+Input styles
+==========================================*/
+.mookh-input {
+  font-size: 14px;
+  color: #31383e;
+  border-radius: 1px;
+  padding:  8px 11px;
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1.5;
+  width: 100%;
+  outline: 0;
+}
+
+.ant-select-selection {
+  border: 1px solid #ccc;
+  border-radius: 1px;
+}
+
+.mookh-input-active {
+  border-color: #ccc;
+}
+
+.mookh-input:focus {
+  border-color: #fff652;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(250, 234, 41, 0.2);
+}
+
+.mookh-input:hover {
+  border-color: #fff652;
+}
+
+.mookh-input .mookh-input-error:focus {
+  border-color: #f04134;
+}
+
+.mookh-input .invalid {
+  border: 1px solid #f75a46
+}
+
+
+/* Inputs labels
+==========================================*/
+.mookh-label {
+  width: 100%;
+  display: block;
+  margin-bottom: 4px;
+  color: #31383e;
+  font-size: 15px;
+  margin-left: 4px;
+}
