@@ -20,7 +20,6 @@ import Event from 'containers/Event';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Payments from 'containers/Payments';
 
-
 export default function App() {
   return (
     <div>

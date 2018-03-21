@@ -7,6 +7,9 @@
   <!-- Make the page mobile compatible -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Allow installing the app to the homescreen -->
+  <script src="https://ap-gateway.mastercard.com/form/version/46/merchant/61056001/session.js"></script>
+
+<!-- APPLY CLICK-JACKING STYLING AND HIDE CONTENTS OF THE PAGE -->
   <link rel="manifest" href="manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="description" content="Enabling seamless and hassle free payments from consumers directly to their favorite merchants, with direct plugins for website and social media integration. SHOP - EXPLORE OUR DIRECTORY. Browse through our digital directory of merchants selling digital content, event tickets, assorted products as well as discover...">
@@ -22,10 +25,153 @@
   <!-- The app hooks into this div -->
   <div id="app"></div>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,500,700" rel="stylesheet">
+<!--   <script src="https://ap-gateway.mastercard.com/form/version/46/merchant/61056001/session.js?debug=true"></script> -->
+
+  <style id="antiClickjack"></style>
   <!-- A lot of magic happens in this file. HtmlWebpackPlugin automatically includes all assets (e.g. bundle.js, main.css) with the correct HTML tags, which is why they are missing in this HTML file. Don't add any assets here! (Check out webpackconfig.js if you want to know more) -->
+<script type="text/javascript">
+PaymentSession.configure({
+    fields: {
+        // Attach hosted fields to your payment page
+            card: {
+                number: "#card-number",
+                securityCode: "#security-code",
+                expiryMonth: "#expiry-month",
+                expiryYear: "#expiry-year"
+            },
+            giftCard: {
+                    number: "#gift-card-number",
+                    pin: "#gift-card-pin"
+                  },
+            ach: {
+                    accountType: "#ach-account-type",
+                    bankAccountHolder: "#ach-account-holder",
+                    bankAccountNumber: "#ach-account-number",
+                    routingNumber: "#ach-routing-number"
+                  }
+          },  
+    frameEmbeddingMitigation: ["javascript"],
+    callbacks: {
+        initialized: function(response) {
+            // HANDLE INITIALIZATION RESPONSE
+            if (response.status === "ok") {
+                document.getElementById("visaCheckoutButton").style.display = 'block';
+            }
+        },
 
-<!-- INCLUDE SESSION.JS JAVASCRIPT LIBRARY -->
+        formSessionUpdate: function(response) {
+            // HANDLE RESPONSE FOR UPDATE SESSION
+        if (response.status) {
+            if ("ok" == response.status) {
+                console.log("Session updated with data: " + response.session.id);
 
+                //check if the security code was provided by the user
+                if (response.sourceOfFunds.provided.card.securityCode) {
+                    console.log("Security code was provided.");
+                }
+
+                //check if the user entered a MasterCard credit card
+                if (response.sourceOfFunds.provided.card.scheme == 'MASTERCARD') {
+                    console.log("The user entered a MasterCard credit card.")
+                }
+            } else if ("fields_in_error" == response.status)  {
+
+                console.log("Session update failed with field errors.");
+                if (response.errors.cardNumber) {
+                    console.log("Card number invalid or missing.");
+                }
+                if (response.errors.expiryYear) {
+                    console.log("Expiry year invalid or missing.");
+                }
+                if (response.errors.expiryMonth) {
+                    console.log("Expiry month invalid or missing.");
+                }
+                if (response.errors.securityCode) {
+                    console.log("Security code invalid.");
+                }
+                if (response.errors.number) {
+                    console.log("Gift card number invalid or missing.");
+                }
+                if (response.errors.pin) {
+                    console.log("Pin invalid or missing.");
+                }
+                if (response.errors.bankAccountHolder) {
+                    console.log("Bank account holder invalid.");
+                }
+                if (response.errors.bankAccountNumber) {
+                    console.log("Bank account number invalid.");
+                }
+                if (response.errors.routingNumber) {
+                    console.log("Routing number invalid.");
+                }
+            } else if ("request_timeout" == response.status)  {
+                console.log("Session update failed with request timeout: " + response.errors.message);
+            } else if ("system_error" == response.status)  {
+                console.log("Session update failed with system error: " + response.errors.message);
+            }
+        } else {
+            console.log("Session update failed: " + response);
+        }
+        },
+        visaCheckout: function(response) {
+            // HANDLE VISA CHECKOUT RESPONSE
+        },
+        amexExpressCheckout: function(response) {
+           // HANDLE AMEX EXPRESS CHECKOUT RESPONSE
+        }
+    },
+    order: {
+        amount: 10.00,
+        currency: "AUD"
+    },
+    wallets: {
+        visaCheckout: {
+            enabled: true,
+            // Add Visa Checkout API specific attributes here
+            countryCode: "AU",
+            displayName: "Display name",
+            locale: "en_au",
+            logoUrl: "http://logo.logo",
+            payment: {
+                cardBrands: [
+                    "VISA"
+                ]
+            },
+            review: {
+                buttonAction: "Pay",
+                message: "Message"
+            },
+            shipping: {
+                acceptedRegions: [
+                    "AU"
+                ],
+                collectShipping: true
+            }
+        },
+        amexExpressCheckout: {
+        enabled: true,
+        // Add Amex Express Checkout API specific attributes here
+        initTags: {
+        "theme": "responsive",
+        "env": "qa",
+        "disable_btn": "false",
+        "button_color": "light",
+        "client_id": "<MSO Client Id from the Amex Express Checkout configuration page in Merchant Administration>",
+        }
+    }
+}
+});
+
+function pay(paymentType) {
+    // UPDATE THE SESSION WITH THE INPUT FROM HOSTED FIELDS
+    console.log({msg: 'Payment', paymentType})
+    if (paymentType === 'giftCard') {
+      PaymentSession.updateSessionFromForm(paymentType, '<localCardBrand>');
+    } else {
+      PaymentSession.updateSessionFromForm(paymentType);
+    }
+}
+</script>
 </body>
 
 </html>

@@ -100,19 +100,19 @@ class Payment extends React.PureComponent {
                 onChange={this.handleDialCode}
               >
                 <Option value="254">
-                  <img src={kenya} style={{ width: 40 }} />
+                  <img src={kenya} style={{ width: 30 }} />
                 </Option>
                 <Option value="256">
-                  <img src={uganda} style={{ width: 40 }} />
+                  <img src={uganda} style={{ width: 30 }} />
                 </Option>
                 <Option value="255">
-                  <img src={tanzania} style={{ width: 40 }} />
+                  <img src={tanzania} style={{ width: 30 }} />
                 </Option>
                 <Option value="250">
-                  <img src={rwanda} style={{ width: 40 }} />
+                  <img src={rwanda} style={{ width: 30 }} />
                 </Option>
                 <Option value="257">
-                  <img src={burundi} style={{ width: 40 }} />
+                  <img src={burundi} style={{ width: 30 }} />
                 </Option>
               </Select>
               <EventInput

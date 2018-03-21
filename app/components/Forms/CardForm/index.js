@@ -7,9 +7,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Select } from 'antd';
+import { Helmet } from 'react-helmet';
 import TabsBottomWrap from 'components/TabsBottomWrap';
 import TabsBodyWrap from 'components/TabsBodyWrap';
-import MookhInput from 'components/Forms/MookhInput';
+import CreditCardInput from 'components/Forms/CreditCardInput';
 import {
   formatCreditCardNumber,
   formatCVC,
@@ -21,13 +22,9 @@ import './card-form.css';
 
 const Option = Select.Option;
 
-function handleChange(value) {
-  console.log(value); // { key: "lucy", label: "Lucy (101)" }
-}
-
 export default class CardForm extends Component {
   state = {
-    currency: "ksh"
+    currency: 'ksh'
   };
 
   handleInputChange = ({ target }) => {
@@ -41,36 +38,40 @@ export default class CardForm extends Component {
     this.setState({ [target.name]: target.value });
   };
 
-  handleChange = value => {
-    this.setState({ currency: value });
-  }
+  handleChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  handlePayment = () => {
+    console.log('called')
+    window.pay()
+  };
 
   render() {
     const { cardNumber, cvc, currency, expiry } = this.props.cardInfo;
-
     return (
       <div>
         <TabsBodyWrap>
           <form onSubmit={e => e.preventDefault()}>
             <div className="cd-row">
-              <MookhInput
+              <CreditCardInput
                 labelName="Card Number"
-                id="number"
+                id="card-number"
+                onChange={this.handleChange}
                 placeholder="CARD NO"
-                onChange={this.handleInputChange}
                 pattern="[\d| ]{16,22}"
-                required
+                readOnly="readonly"
                 wrapClass="cd-payment-input"
                 type="tel"
               />
               <div className="cd-payment-input">
-                <MookhInput
+                <CreditCardInput
                   labelName="CVC"
-                  id="cvc"
+                  id="security-code"
+                  onChange={this.handleChange}
                   placeholder="CVC"
-                  onChange={this.handleInputChange}
                   pattern="\d{3,4}"
-                  required
+                  readOnly="readonly"
                   wrapClass="cvc"
                   type="tel"
                 />
@@ -81,11 +82,12 @@ export default class CardForm extends Component {
                   <Select
                     dropdownStyle={{ zIndex: 9999 }}
                     defaultValue="ksh"
-                    style={{ width: 120 }}
                     onChange={this.handleChange}
                     size="large"
                   >
-                    <Option  stle={{color: "red"}}value="usd">USD</Option>
+                    <Option stle={{ color: 'red' }} value="usd">
+                      USD
+                    </Option>
                     <Option value="ksh">KSH</Option>
                   </Select>
                 </div>
@@ -93,8 +95,24 @@ export default class CardForm extends Component {
             </div>
             <div className="cd-row-two">
               <div className="mm-input-wrap">
-                <input className="mm-input" type="tel" id="expiry-month" placeholder="MM/" onChange={this.handleInputChange} required />
-                <input className="mm-input" type="tel" id="expiry-year" placeholder="YY" onChange={this.handleInputChange} required />
+                <input
+                  className="mm-input"
+                  type="tel"
+                  id="expiry-month"
+                  onChange={this.handleChange}
+                  placeholder="MM"
+                  readOnly={null}
+                  value="05"
+                />
+                <input
+                  className="mm-input"
+                  type="tel"
+                  id="expiry-year"
+                  onChange={this.handleChange}
+                  placeholder="YY"
+                  readOnly={null}
+                  value="21"
+                />
               </div>
               <div className="cd-payment-input total">
                 <span>Total:</span>
@@ -105,8 +123,9 @@ export default class CardForm extends Component {
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <PaymentButtonPrimary id="nextOne" onClick={this.props.goTabTwo}>
-              CONTINUE
+            <PaymentButtonPrimary id="nextOne"
+            onChange={this.handleChange} onClick={() => window.pay('card')}>
+              PAY
             </PaymentButtonPrimary>
           </div>
         </TabsBottomWrap>

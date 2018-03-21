@@ -4,7 +4,6 @@
 
 import { combineReducers } from 'redux';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import globalReducer from "containers/App/reducer";
 import eventPanelsReducer from 'containers/EventPanels/reducer';
 import buyTicketReducer from 'containers/EventBuyTicket/reducer';
 import eventInfomationReducer from 'containers/EventInfomation/reducer';
@@ -31,7 +30,6 @@ export default function createReducer(injectedReducers) {
   return combineReducers({
     route: routeReducer,
     event: eventReducer,
-    global: globalReducer,
     eventPanels: eventPanelsReducer,
     buyTicket: buyTicketReducer,
     eventInfomation: eventInfomationReducer,

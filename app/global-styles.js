@@ -57,8 +57,8 @@ injectGlobal`
     height: 3px;
   }
   .ant-tabs-nav .ant-tabs-tab {
-    font-weight: 500;
-    color: #b3afaf;
+    font-weight: 700;
+    color: #807d7d;
   }
   .ant-tabs-nav .ant-tabs-tab:hover,
   .ant-tabs-nav .ant-tabs-tab-active {

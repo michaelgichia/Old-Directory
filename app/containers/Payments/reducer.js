@@ -12,7 +12,7 @@ import {
 } from './constants';
 
 const initialState = {
-  paymentModal: false,
+  paymentModal: true,
   customer: {
     email: '',
     name: '',

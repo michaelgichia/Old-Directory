@@ -23,6 +23,7 @@
   list-style-type: none;
   background-color: #f6f3ee;
   z-index: 4;
+  margin-bottom: 0;
 }
 
 /* Medium and Large Screen styles */
