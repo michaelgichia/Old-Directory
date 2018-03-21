@@ -9,15 +9,15 @@ import {
   PAYMENT_METHODS_TAB,
   PAYMENTS_MODAL_CLOSE,
   CHANGE_CUSTOMER_NO
-} from "./constants";
+} from './constants';
 
 const initialState = {
   paymentModal: true,
   customer: {
-    email: "",
-    name: "",
-    phone_number: "",
-    confirmEmail: ""
+    email: '',
+    name: '',
+    phone_number: '',
+    confirmEmail: ''
   },
   event: {},
   ticketCategory: {},
@@ -54,16 +54,16 @@ function paymentsReducer(state = initialState, action) {
         ...state,
         paymentModal: false,
         customer: {
-          email: "",
-          name: "",
-          phone_number: "",
-          confirmEmail: ""
+          email: '',
+          name: '',
+          phone_number: '',
+          confirmEmail: ''
         },
         totalTicketsPrice: 0
       };
 
     case CHANGE_CUSTOMER_NO.SUCCESS:
-      const newCustomer = {...state.customer, phone_number: action.phone_number};
+      const newCustomer = { ...state.customer, phone_number: action.phone_number };
       return {
         ...state,
         customer: newCustomer

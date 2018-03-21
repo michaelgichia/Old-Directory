@@ -5,8 +5,8 @@
  */
 
 import React, { PureComponent } from 'react';
-import PropTypes from "prop-types";
-import "./mookh-inputwith-btn.css";
+import PropTypes from 'prop-types';
+import './mookh-inputwith-btn.css';
 
 export default class MookhInputWithBtn extends PureComponent {
   render() {
@@ -20,9 +20,9 @@ export default class MookhInputWithBtn extends PureComponent {
       wrapClass,
       labelName,
       inputError,
-      placeholder,
+      placeholder
     } = this.props;
-    return(
+    return (
       <div className={`mookh-input2-wrap ${wrapClass}`}>
         <label className="mookh-label2" htmlFor="fname">{labelName}</label>
         <input
@@ -54,4 +54,4 @@ MookhInputWithBtn.propTypes = {
   onBlur: PropTypes.func.isRequired,
   value: PropTypes.any.isRequired,
   required: PropTypes.bool.isRequired
-}
+};

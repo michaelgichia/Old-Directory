@@ -8,7 +8,7 @@ function createWebpackMiddleware(compiler, publicPath) {
     logLevel: 'warn',
     publicPath,
     silent: true,
-    stats: 'errors-only',
+    stats: 'errors-only'
   });
 }
 
@@ -18,7 +18,7 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler, {
-    heartbeat: 2000,
+    heartbeat: 2000
   }));
 
   // Since webpackDevMiddleware uses memory-fs internally to store build

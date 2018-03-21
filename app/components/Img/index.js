@@ -19,10 +19,10 @@ function NormalImg(props) {
 NormalImg.propTypes = {
   src: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   alt: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 const Img = styled(NormalImg)`

@@ -5,7 +5,7 @@
  */
 
 import {
-  EVENT_INFO,
+  EVENT_INFO
 } from './constants';
 
 const initialState = {

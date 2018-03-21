@@ -1,5 +1,5 @@
 import { Input } from 'antd';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const MookhInput = styled(Input)`
   & > input {
@@ -23,6 +23,6 @@ const MookhInput = styled(Input)`
       font-weight: 500;
     }
   }
-`
+`;
 
 export default MookhInput;

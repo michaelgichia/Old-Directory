@@ -6,8 +6,8 @@
 *
 */
 
-import React from "react";
-import "./poster-modal.css";
+import React from 'react';
+import './poster-modal.css';
 
 class EventPoster extends React.PureComponent {
   render() {
@@ -17,7 +17,7 @@ class EventPoster extends React.PureComponent {
         <div
           id="modal-show"
           className="modal-wrap"
-          style={{ display: openModal === true ? "block" : "none" }}
+          style={{ display: openModal === true ? 'block' : 'none' }}
         >
           <img src={productImage} alt="product" />
         </div>

@@ -1,5 +1,5 @@
 Arguments: 
-  /home/gichia/.nvm/versions/node/v9.3.0/bin/node /usr/local/bin/yarn run start
+  /home/gichia/.nvm/versions/node/v9.3.0/bin/node /usr/local/bin/yarn i
 
 PATH: 
   /home/gichia/.nvm/versions/node/v9.3.0/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/gichia/bin:/home/gichia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/gichia/Android/Sdk/tools:/home/gichia/Android/Sdk/platform-tools
@@ -51,7 +51,7 @@ npm manifest:
       "clean:all": "npm run analyze:clean && npm run test:clean && npm run build:clean",
       "generate": "plop --plopfile internals/generators/index.js",
       "lint": "npm run lint:js && npm run lint:css",
-      "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
+      "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
       "lint:js": "npm run lint:eslint -- . ",
       "lint:css": "stylelint \"./app/**/*.js\"",
       "lint:staged": "lint-staged",
@@ -276,7 +276,7 @@ npm manifest:
       "lodash": "4.17.4",
       "minimist": "1.2.0",
       "payment": "^2.3.0",
-      "prop-types": "15.6.0",
+      "prop-types": "15.6.1",
       "react": "16.2.0",
       "react-dom": "16.2.0",
       "react-helmet": "5.2.0",
@@ -317,8 +317,8 @@ npm manifest:
       "circular-dependency-plugin": "3.0.0",
       "coveralls": "2.13.1",
       "css-loader": "0.28.10",
-      "enzyme": "3.2.0",
-      "enzyme-adapter-react-16": "1.1.0",
+      "enzyme": "3.3.0",
+      "enzyme-adapter-react-16": "1.1.1",
       "eslint": "3.19.0",
       "eslint-config-airbnb": "15.0.1",
       "eslint-config-airbnb-base": "11.2.0",
@@ -12167,16 +12167,14 @@ Lockfile:
       yeoman-environment "^1.1.0"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 1
-  Command: sh
-  Arguments: -c cross-env NODE_ENV=development node server
-  Directory: /home/gichia/Desktop/mookh/v2directory
-  Output:
-  
-      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
-      at ChildProcess.emit (events.js:159:13)
-      at maybeClose (internal/child_process.js:943:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
+  Error: Command "i" not found.
+      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:87307:17
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:116:14
+      at new Promise (<anonymous>)
+      at new F (/usr/local/lib/node_modules/yarn/lib/cli.js:23451:28)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:95:12
+      at runCommand (/usr/local/lib/node_modules/yarn/lib/cli.js:87312:22)
+      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:87412:14)

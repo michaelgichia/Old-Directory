@@ -7,11 +7,11 @@
 import { combineReducers } from 'redux';
 
 import {
-  CHANGE_LOCALE,
+  CHANGE_LOCALE
 } from './constants';
 
 import {
-  DEFAULT_LOCALE,
+  DEFAULT_LOCALE
 } from '../App/constants';
 
 function locale(state = DEFAULT_LOCALE, action) {
@@ -24,5 +24,5 @@ function locale(state = DEFAULT_LOCALE, action) {
 }
 
 export default combineReducers({
-  locale,
+  locale
 });

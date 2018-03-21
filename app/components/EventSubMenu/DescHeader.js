@@ -33,5 +33,5 @@ const DescHeader = styled.div`
     font-size: 16px;
     width: 24px;
   }
-`
+`;
 export default DescHeader;

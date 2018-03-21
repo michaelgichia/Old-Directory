@@ -7,5 +7,5 @@ const TabsWrap = styled.div`
   @media (max-width: 768px) {
     display: block;
   }
-`
+`;
 export default TabsWrap;

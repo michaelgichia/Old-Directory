@@ -5,5 +5,5 @@ const MookhButton = styled(Button)`
   @media (max-width: 576px) {
     width: 31%;
   }
-`
+`;
 export default MookhButton;

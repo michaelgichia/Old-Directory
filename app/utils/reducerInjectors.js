@@ -27,6 +27,6 @@ export default function getInjectors(store) {
   checkStore(store);
 
   return {
-    injectReducer: injectReducerFactory(store, true),
+    injectReducer: injectReducerFactory(store, true)
   };
 }

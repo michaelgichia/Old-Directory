@@ -19,5 +19,5 @@ const LogoWrap = styled.div`
     height: 92px;
     width: 300px;
   }
-`
+`;
 export default LogoWrap;

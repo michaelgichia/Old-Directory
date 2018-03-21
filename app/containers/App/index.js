@@ -18,8 +18,7 @@ import HomePage from 'containers/HomePage';
 import EventInfomation from 'containers/EventInfomation/Loadable';
 import Event from 'containers/Event';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Payments from "containers/Payments";
-
+import Payments from 'containers/Payments';
 
 
 export default function App() {

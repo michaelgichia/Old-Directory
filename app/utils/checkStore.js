@@ -12,7 +12,7 @@ export default function checkStore(store) {
     subscribe: isFunction,
     getState: isFunction,
     replaceReducer: isFunction,
-    injectedReducers: isObject,
+    injectedReducers: isObject
   };
   invariant(
     conformsTo(store, shape),

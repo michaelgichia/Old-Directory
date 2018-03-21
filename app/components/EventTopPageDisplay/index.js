@@ -5,8 +5,8 @@
 */
 
 import React from 'react';
-import "./styles.css";
-import mookhLogo from "./logo-dark.png";
+import './styles.css';
+import mookhLogo from './logo-dark.png';
 
 
 class EventTopPageDisplay extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

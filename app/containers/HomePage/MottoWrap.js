@@ -15,5 +15,5 @@ const MottoWrap = styled.div`
     max-width:100%;
     margin-bottom: 40px;
   }
-`
+`;
 export default MottoWrap;

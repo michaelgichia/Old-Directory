@@ -1,11 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { PaymentButtons } from "components/Buttons";
-import TabsBottomWrap from "components/TabsBottomWrap";
-import TabsBodyWrap from "components/TabsBodyWrap";
-import GooglePlayBadge from "./images/google.png";
-import AppleBadge from "./images/apple.png";
-import "./css/product-confirmation.css";
+import { PaymentButtons } from 'components/Buttons';
+import TabsBottomWrap from 'components/TabsBottomWrap';
+import TabsBodyWrap from 'components/TabsBodyWrap';
+import GooglePlayBadge from './images/google.png';
+import AppleBadge from './images/apple.png';
+import './css/product-confirmation.css';
 
 
 export class PaymentConfirmation extends PureComponent {

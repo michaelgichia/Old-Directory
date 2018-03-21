@@ -16,5 +16,5 @@ const EventInput = styled(Input)`
     max-height: 45px;
     min-height: 45px;
   }
-`
+`;
 export default EventInput;

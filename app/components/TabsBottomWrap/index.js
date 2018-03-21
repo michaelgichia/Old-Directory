@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import "./tabs-bottom-wrap.css";
+import './tabs-bottom-wrap.css';
 
 
 export default class TabsBottomWrap extends PureComponent {

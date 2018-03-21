@@ -8,4 +8,4 @@ export default styled(Col)`
   @media (max-width: 576px) {
     padding: 0 !important;
   }
-`
+`;

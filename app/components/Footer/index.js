@@ -5,8 +5,8 @@
 * The for of the website.
 */
 
-import React from "react";
-import "./footer.css";
+import React from 'react';
+import './footer.css';
 
 class Footer extends React.PureComponent {
   render() {
@@ -24,17 +24,17 @@ class Footer extends React.PureComponent {
         <div className="social-media-wrap">
           <a href="#">
             <span className="fa-stack fa-lg">
-              <i className="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              <i className="fa fa-twitter fa-stack-1x fa-inverse" />
             </span>
           </a>
           <a href="#">
             <span className="fa-stack fa-lg">
-              <i className="fa fa-facebook fa-stack-1x fa-inverse"></i>
+              <i className="fa fa-facebook fa-stack-1x fa-inverse" />
             </span>
           </a>
           <a href="#">
             <span className="fa-stack fa-lg">
-              <i className="fa fa-instagram fa-stack-1x fa-inverse"></i>
+              <i className="fa fa-instagram fa-stack-1x fa-inverse" />
             </span>
           </a>
         </div>

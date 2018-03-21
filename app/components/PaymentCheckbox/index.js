@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import "./payment-checkbox.css";
+import './payment-checkbox.css';
 
 export default class PaymentCheckbox extends PureComponent {
   render() {

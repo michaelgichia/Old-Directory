@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button } from 'antd';
 import styled from 'styled-components';
 
 const EventBtn = styled(Button)`
@@ -13,5 +13,5 @@ const EventBtn = styled(Button)`
     height: 40px !important;
     font-size: 14px !important;
   }
-`
+`;
 export default EventBtn;

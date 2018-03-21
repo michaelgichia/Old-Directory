@@ -4,8 +4,8 @@
  *
  */
 
-import React, { PropTypes } from "react";
-import EmptyData from "components/EmptyData";
+import React, { PropTypes } from 'react';
+import EmptyData from 'components/EmptyData';
 // import "./EventSchedules.css";
 
 export class EventSchedules extends React.Component {

@@ -25,16 +25,16 @@ export class LanguageProvider extends React.PureComponent { // eslint-disable-li
 LanguageProvider.propTypes = {
   locale: PropTypes.string,
   messages: PropTypes.object,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired
 };
 
 const mapStateToProps = ({ language }) => ({
-  locale: language.locale,
+  locale: language.locale
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatch
   };
 }
 

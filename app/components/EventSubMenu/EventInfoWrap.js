@@ -32,5 +32,5 @@ const EventInfoWrap = styled.div`
       margin-top: 0;
     }
   }
-`
+`;
 export default EventInfoWrap;

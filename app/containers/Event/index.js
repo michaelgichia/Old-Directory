@@ -9,8 +9,8 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { TabPanel } from 'react-tabs';
 import { Tabs as MobileTabs } from 'antd';
-import filter from "lodash/filter";
-import size from "lodash/size";
+import filter from 'lodash/filter';
+import size from 'lodash/size';
 import { fetchEvent } from './actions';
 import EventTopPageDisplay from 'containers/EventTopPageDisplay';
 import LoadingSpinner from 'components/LoadingSpinner';
@@ -22,7 +22,7 @@ import EventGallery from 'containers/EventGallery';
 import EventSchedules from 'containers/EventSchedules';
 import EventSiteMap from 'containers/EventSiteMap';
 import EventSponsors from 'containers/EventSponsors';
-import TabsWrap from './TabsWrap'
+import TabsWrap from './TabsWrap';
 import { getInnerText } from 'utils/helperFunctions';
 
 const TabPane = MobileTabs.TabPane;
@@ -31,7 +31,7 @@ const TabPane = MobileTabs.TabPane;
 export class Event extends React.Component {
 
   componentDidMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -114,12 +114,12 @@ export class Event extends React.Component {
   }
 }
 
-const mapStateToProps = ({ event , eventPanels }, ownProps) => {
+const mapStateToProps = ({ event, eventPanels }, ownProps) => {
   const newEvent = filter(eventPanels.events, { id: ownProps.match.params.id })[0];
   return {
-    event: newEvent,
-  }
-}
+    event: newEvent
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId))

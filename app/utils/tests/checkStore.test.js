@@ -13,7 +13,7 @@ describe('checkStore', () => {
       subscribe: () => {},
       getState: () => {},
       replaceReducer: () => {},
-      injectedReducers: {},
+      injectedReducers: {}
     };
   });
 

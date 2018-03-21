@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import "./mookh-input.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import './mookh-input.css';
 
 export default class MookhInput extends React.PureComponent {
 

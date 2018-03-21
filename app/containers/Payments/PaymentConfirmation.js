@@ -1,12 +1,12 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from "react-redux";
-import { PaymentButtonSecondary, PaymentButtonRipples } from "components/Buttons";
-import TabsBottomWrap from "components/TabsBottomWrap";
-import TabsBodyWrap from "components/TabsBodyWrap";
-import GooglePlayBadge from "./images/google.png";
-import AppleBadge from "./images/apple.png";
-import "./css/payment-confirmation.css";
+import { connect } from 'react-redux';
+import { PaymentButtonSecondary, PaymentButtonRipples } from 'components/Buttons';
+import TabsBottomWrap from 'components/TabsBottomWrap';
+import TabsBodyWrap from 'components/TabsBodyWrap';
+import GooglePlayBadge from './images/google.png';
+import AppleBadge from './images/apple.png';
+import './css/payment-confirmation.css';
 
 export class PaymentConfirmation extends PureComponent {
   render() {
@@ -55,7 +55,8 @@ export class PaymentConfirmation extends PureComponent {
           <div>
             <PaymentButtonRipples
               id="nextOne"
-              onClick={this.props.handleCloseModal}>FINISH</PaymentButtonRipples>
+              onClick={this.props.handleCloseModal}
+            >FINISH</PaymentButtonRipples>
           </div>
         </TabsBottomWrap>
       </div>

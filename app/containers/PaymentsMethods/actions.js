@@ -4,17 +4,17 @@
  *
  */
 
-import axios from "axios";
+import axios from 'axios';
 import {
   ORDERS_PAY,
   ORDERS_STATUS,
   baseEventAPI,
   ordersPayAPI,
   orderStatusAPI
-} from "./constants";
+} from './constants';
 
-export const handleOrdersPayment = info => dispatch => {
-  axios.post(ordersPayAPI, info).then(res => {
+export const handleOrdersPayment = info => (dispatch) => {
+  axios.post(ordersPayAPI, info).then((res) => {
     if (res.status === 201) {
       dispatch({
         type: ORDERS_PAY.SUCCESS,
@@ -26,16 +26,16 @@ export const handleOrdersPayment = info => dispatch => {
       });
     }
   })
-  .catch(err => {
-      dispatch({
-        type: ORDERS_PAY.ERROR
-      });
+  .catch((err) => {
+    dispatch({
+      type: ORDERS_PAY.ERROR
+    });
   });
 };
 
-export const getOrderStatus = orderPK => dispatch => {
+export const getOrderStatus = orderPK => (dispatch) => {
   // console.log({orderPK})
-  axios.get(`${orderStatusAPI}/${orderPK}`).then(res => {
+  axios.get(`${orderStatusAPI}/${orderPK}`).then((res) => {
     // console.log({res})
     if (res.status === 200 && res.data.order_status !== null) {
       dispatch({

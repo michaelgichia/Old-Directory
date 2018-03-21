@@ -11,4 +11,4 @@ export default styled(Row)`
   @media (max-width: 576px) {
     max-width: 400px;
   }
-`
+`;

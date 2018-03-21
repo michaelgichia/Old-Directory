@@ -11,5 +11,5 @@ const BtnWrap = styled.div`
   @media (max-width: 576px) {
     margin-top: 8px;
   }
-`
+`;
 export default BtnWrap;

@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./button.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './button.css';
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -22,7 +22,7 @@ const Button = styled.button`
     width: 100%;
     margin-bottom: 12px;
   }
-`
+`;
 
 const PaymentButtonSecondary = Button.extend`
   border-color: #FAEA29;
@@ -40,7 +40,7 @@ const PaymentButtonSecondary = Button.extend`
   &:active {
     background-color: #b3afaf;
   }
-`
+`;
 const PaymentButtonPrimary = Button.extend`
   background-color: #faea29;
   border: 1px solid #faea29;
@@ -49,7 +49,7 @@ const PaymentButtonPrimary = Button.extend`
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
     0 2px 10px 0 rgba(0, 0, 0, 0.05);
-`
+`;
 
 const PaymentButtonRipples = styled(PaymentButtonPrimary)`
   position: relative;
@@ -71,7 +71,7 @@ const PaymentButtonRipples = styled(PaymentButtonPrimary)`
     transition: transform 0.5s, opacity 1s;
   }
 
-`
+`;
 
 /*
  * Mookh Button
@@ -101,10 +101,10 @@ export class BackButton extends React.PureComponent {
       <button
         className={`mookh-btn back-btn ${bsKlass}`}
         id={id}
-        style={{ verticalAlign: "middle" }}
+        style={{ verticalAlign: 'middle' }}
         onClick={onClick}
       >
-        <span> </span>
+        <span />
         <span>{label}</span>
       </button>
     );
@@ -143,4 +143,4 @@ export {
   PaymentButtonSecondary,
   PaymentButtonPrimary,
   PaymentButtonRipples
-}
+};

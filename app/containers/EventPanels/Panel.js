@@ -170,7 +170,7 @@ const LogoDiv = styled.div`
       }
     }
   }
-`
+`;
 
 export class Panel extends PureComponent {
   render() {
@@ -178,12 +178,12 @@ export class Panel extends PureComponent {
     return (
       <PanelWrap>
         <LogoDiv>
-            <div>
-              <img
-                src={logo}
-                alt=""
-              />
-            </div>
+          <div>
+            <img
+              src={logo}
+              alt=""
+            />
+          </div>
         </LogoDiv>
         <PanelImgWrap>
           <NavLink to={`/tickets/${event.id}`}>

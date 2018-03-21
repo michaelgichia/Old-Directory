@@ -4,7 +4,7 @@
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import createReducer from './reducers';
 
 export default function configureStore(initialState = {}, history) {
@@ -16,7 +16,7 @@ export default function configureStore(initialState = {}, history) {
   ];
 
   const enhancers = [
-    applyMiddleware(...middlewares),
+    applyMiddleware(...middlewares)
   ];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
@@ -28,7 +28,7 @@ export default function configureStore(initialState = {}, history) {
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
         // TODO Try to remove when `react-router-redux` is out of beta, LOCATION_CHANGE should not be fired more than once after hot reloading
         // Prevent recomputing reducers for `replaceReducer`
-        shouldHotReload: false,
+        shouldHotReload: false
       })
       : compose;
   /* eslint-enable */

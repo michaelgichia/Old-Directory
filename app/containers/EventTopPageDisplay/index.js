@@ -2,13 +2,13 @@
  *
  * EventTopPageDisplay
  *
- * This component displays the company logo and start selling button. 
+ * This component displays the company logo and start selling button.
  *
  */
 
-import React from "react";
-import "./navigation-bar.css";
-import mookhLogo from "./logo-dark.png";
+import React from 'react';
+import './navigation-bar.css';
+import mookhLogo from './logo-dark.png';
 
 export class EventTopPageDisplay extends React.PureComponent {
   render() {
