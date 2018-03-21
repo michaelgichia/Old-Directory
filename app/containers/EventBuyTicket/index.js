@@ -6,16 +6,18 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from "redux";
 import isEqual from 'lodash/isEqual';
 import { Form, Icon, Input, Checkbox, Row, Col, Button, Select } from 'antd';
-
 import classNames from 'classnames';
 import { PaymentButtonRipples } from 'components/Buttons';
 import { countryList } from 'utils/countryList';
 import Payments from 'containers/Payments';
 import { InputConstants } from 'utils/constants';
+import injectReducer from 'utils/injectReducer';
 import './buy-tickets.css';
 import { openModal, closeModal } from './actions';
+import reducer from './reducer';
 import {
   phonenumberValidate,
   nameValidate,
@@ -377,9 +379,10 @@ export class EventBuyTicket extends React.PureComponent {
   }
 }
 
-const mapStateToProps = ({ payments }) => ({
+const mapStateToProps = ({ payments, event }) => ({
   customer: payments.customer,
-  totalTicketsPrice: payments.totalTicketsPrice
+  totalTicketsPrice: payments.totalTicketsPrice,
+  eventError: event.eventError
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -388,7 +391,11 @@ const mapDispatchToProps = dispatch => ({
   closeModal: () => dispatch(closeModal())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventBuyTicket);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: "eventBuyTicket", reducer })
+
+export default compose(withReducer, withConnect)(EventBuyTicket);
 
 // <form
 //   onSubmit={e => e.preventDefault()}

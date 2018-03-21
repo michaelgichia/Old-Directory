@@ -12,6 +12,8 @@ import { compose } from 'redux';
 import EventTopPageDisplay from 'components/EventTopPageDisplay';
 import EventSubMenu from 'components/EventSubMenu';
 import EventPoster from 'components/EventPoster';
+import injectReducer from "utils/injectReducer";
+import reducer from './reducer';
 import './styles.css';
 
 const posterImage =
@@ -62,7 +64,7 @@ export class EventInfomation extends React.Component {
 }
 
 EventInfomation.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func
 };
 
 function mapDispatchToProps(dispatch) {
@@ -73,4 +75,6 @@ function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(null, mapDispatchToProps);
 
-export default compose(withConnect)(EventInfomation);
+const withReducer = injectReducer({ key: "eventInfomation", reducer })
+
+export default compose(withReducer, withConnect)(EventInfomation);

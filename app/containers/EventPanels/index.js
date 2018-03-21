@@ -8,9 +8,11 @@
  */
 
 import React, { Component } from 'react';
+import { compose } from "redux";
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
 import LoadingSpinner from 'components/LoadingSpinner';
+import injectReducer from 'utils/injectReducer';
 // Actions
 import { fetchEvents } from './actions';
 import { eventPosterBaseUrl } from './constants';
@@ -22,6 +24,7 @@ import MookhRow from './MookhRow';
 import MookhCol from './MookhCol';
 import Panel from './Panel';
 import EventPanelsWrap from './EventPanelsWrap';
+import reducer from './reducer';
 
 // Get device width
 const deviceWidth =  getWindowSize();
@@ -92,4 +95,11 @@ const mapDispatchToProps = dispatch => ({
   fetchEvents: () => dispatch(fetchEvents())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventPanels);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'eventPanels', reducer });
+
+export default compose(
+  withReducer,
+  withConnect,
+)(EventPanels);

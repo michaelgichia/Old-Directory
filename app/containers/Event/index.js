@@ -5,13 +5,14 @@
  */
 
 import React, { PropTypes, Fragment } from 'react';
+import { compose } from "redux";
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { TabPanel } from 'react-tabs';
 import { Tabs as MobileTabs } from 'antd';
 import filter from 'lodash/filter';
 import size from 'lodash/size';
-import { fetchEvent } from './actions';
+import injectReducer from 'utils/injectReducer';
 import EventTopPageDisplay from 'containers/EventTopPageDisplay';
 import LoadingSpinner from 'components/LoadingSpinner';
 import EventSubMenu from 'components/EventSubMenu';
@@ -22,8 +23,10 @@ import EventGallery from 'containers/EventGallery';
 import EventSchedules from 'containers/EventSchedules';
 import EventSiteMap from 'containers/EventSiteMap';
 import EventSponsors from 'containers/EventSponsors';
-import TabsWrap from './TabsWrap';
 import { getInnerText } from 'utils/helperFunctions';
+import { fetchEvent } from './actions';
+import reducer from './reducer';
+import TabsWrap from './TabsWrap';
 
 const TabPane = MobileTabs.TabPane;
 
@@ -125,4 +128,11 @@ const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Event);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'event', reducer });
+
+export default compose(
+  withReducer,
+  withConnect,
+)(Event);

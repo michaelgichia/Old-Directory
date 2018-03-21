@@ -5,11 +5,14 @@
  */
 
 import React, { PropTypes } from 'react';
+import { compose } from "redux";
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ReactModal from 'react-modal';
 import PaymentsMethods from 'containers/PaymentsMethods';
 import PaymentConfirmation from './PaymentConfirmation';
+import injectReducer from "utils/injectReducer";
+import reducer from './reducer';
 import './css/payments.css';
 
 export class Payments extends React.Component {
@@ -106,7 +109,11 @@ const mapStateToProps = ({ payments }) => ({
   tabIndex: payments.tabIndex
 });
 
-export default connect(mapStateToProps, null)(Payments);
+const withConnect = connect(mapStateToProps, null);
+
+const withReducer = injectReducer({ key: 'payments', reducer })
+
+export default compose(withReducer, withConnect)(Payments);
 
 // handleConfirmEmail = (email, confirmEmail) => {
 //   const { customerErrors } = this.state;

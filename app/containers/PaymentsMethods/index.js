@@ -6,14 +6,16 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ReactDOM from "react-dom";
-import PaymentCheckbox from "components/PaymentCheckbox";
+import { compose } from "redux";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import injectReducer from "utils/injectReducer";
+import PaymentCheckbox from "components/PaymentCheckbox";
 import TabsBodyWrap from "components/TabsBodyWrap";
 import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
 import MpesaPayBill from "./MpesaPayBill";
 import { handleOrdersPayment, getOrderStatus } from "./actions";
+import reducer from "./reducer";
 import "./payments-methods.css";
 
 export class PaymentsMethods extends Component {
@@ -169,4 +171,8 @@ const mapDispatchToProps = dispatch => ({
   getOrderStatus: orderPK => dispatch(getOrderStatus(orderPK))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentsMethods);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({key: "paymentsMethods", reducer}) 
+
+export default compose(withReducer, withConnect)(PaymentsMethods);
