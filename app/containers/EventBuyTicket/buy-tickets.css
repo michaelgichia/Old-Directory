@@ -229,10 +229,17 @@ input.error {
     font-weight: 500;
   }
 
+  .ticket-desc-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .ticket-description-wrap {
     padding: 32px 70px;
     box-sizing: border-box;
     margin-top: 16px;
+    max-width: 1300px;
   }
 
   .ticket-description-wrap > div:first-child {

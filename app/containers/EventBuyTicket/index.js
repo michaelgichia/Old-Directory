@@ -113,7 +113,7 @@ export class EventBuyTicket extends React.PureComponent {
     const inputClassnames = classNames({ 'ebt-input-error': error });
 
     return (
-      <div>
+      <div className="ticket-desc-wrapper">
         <div className="ticket-description-wrap">
           <div className="event-buy-image">
             <img src={posterImage} alt="product" />
