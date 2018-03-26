@@ -10,7 +10,7 @@ import { Select } from 'antd';
 import { Helmet } from 'react-helmet';
 import TabsBottomWrap from 'components/TabsBottomWrap';
 import TabsBodyWrap from 'components/TabsBodyWrap';
-import CreditCardInput from 'components/Forms/CreditCardInput';
+import MookhInput from 'components/Forms/MookhInput';
 import {
   formatCreditCardNumber,
   formatCVC,
@@ -24,53 +24,71 @@ const Option = Select.Option;
 
 export default class CardForm extends Component {
   state = {
-    currency: 'ksh'
+    currency: 'ksh',
+    cardNumber: '',
+    cardSecurityCode: '',
+    currency: '',
+    expiry: ''
   };
 
   handleInputChange = ({ target }) => {
-    if (target.name === 'number') {
+    if (target.id === 'cardNumber') {
       target.value = formatCreditCardNumber(target.value);
-    } else if (target.name === 'expiry') {
+    } else if (target.id === 'expiry') {
       target.value = formatExpirationDate(target.value);
-    } else if (target.name === 'cvc') {
+    } else if (target.id === 'cardSecurityCode') {
       target.value = formatCVC(target.value);
     }
-    this.setState({ [target.name]: target.value });
+    this.setState({ [target.id]: target.value });
   };
 
   handleChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
 
+  handleCallback = res => {
+    console.log({ res });
+  };
+
   handlePayment = () => {
-    window.pay()
+    const newCardNumber = this.state.cardNumber.replace(/\s/g, '');
+    const newCardExpiryMonth = this.state.expiry.slice(0, 2);
+    const newCardExpiryYear = this.state.expiry.slice(3);
+    const sessionDetails = {
+      cardNumber: newCardNumber,
+      cardExpiryMonth: newCardExpiryMonth,
+      cardExpiryYear: newCardExpiryYear,
+      cardSecurityCode: this.state.cardSecurityCode
+    };
+    window.HostedForm.createSession(sessionDetails, this.handleCallback);
   };
 
   render() {
-    const { cardNumber, cvc, currency, expiry } = this.props.cardInfo;
+    const { cardNumber, cardSecurityCode, currency, expiry } = this.state;
     return (
       <div>
         <TabsBodyWrap>
           <form onSubmit={e => e.preventDefault()}>
             <div className="cd-row">
-              <CreditCardInput
+              <MookhInput
                 labelName="Card Number"
-                id="card-number"
-                onChange={this.handleChange}
+                id="cardNumber"
+                ref="cardNumber"
+                value={cardNumber}
+                onChange={this.handleInputChange}
                 placeholder="CARD NO"
                 pattern="[\d| ]{16,22}"
-                readOnly={undefined}
                 wrapClass="cd-payment-input"
                 type="tel"
               />
               <div className="cd-payment-input">
-                <CreditCardInput
+                <MookhInput
                   labelName="CVC"
-                  id="security-code"
+                  id="cardSecurityCode"
+                  value={cardSecurityCode}
                   onChange={this.handleChange}
                   placeholder="CVC"
                   pattern="\d{3,4}"
-                  readOnly="readonly"
                   wrapClass="cvc"
                   type="tel"
                 />
@@ -97,20 +115,10 @@ export default class CardForm extends Component {
                 <input
                   className="mm-input"
                   type="tel"
-                  id="expiry-month"
-                  onChange={this.handleChange}
-                  placeholder="MM"
-                  readOnly={null}
-                  value="05"
-                />
-                <input
-                  className="mm-input"
-                  type="tel"
-                  id="expiry-year"
-                  onChange={this.handleChange}
-                  placeholder="YY"
-                  readOnly={null}
-                  value="21"
+                  id="expiry"
+                  onChange={this.handleInputChange}
+                  placeholder="MM/YY"
+                  value={expiry}
                 />
               </div>
               <div className="cd-payment-input total">
@@ -122,8 +130,7 @@ export default class CardForm extends Component {
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <PaymentButtonPrimary id="nextOne"
-            onChange={this.handleChange} onClick={() => window.pay('card')}>
+            <PaymentButtonPrimary id="nextOne" onClick={this.handlePayment}>
               PAY
             </PaymentButtonPrimary>
           </div>
