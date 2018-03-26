@@ -6,7 +6,7 @@
 
 import axios from 'axios';
 import {
-  PAYMENTS_MODAL
+  PAYMENTS_MODAL,
 } from './constants';
 
 export function openModal() {

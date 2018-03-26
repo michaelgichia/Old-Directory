@@ -43,7 +43,6 @@ export default class CardForm extends Component {
   };
 
   handlePayment = () => {
-    console.log('called')
     window.pay()
   };
 
@@ -60,7 +59,7 @@ export default class CardForm extends Component {
                 onChange={this.handleChange}
                 placeholder="CARD NO"
                 pattern="[\d| ]{16,22}"
-                readOnly="readonly"
+                readOnly={undefined}
                 wrapClass="cd-payment-input"
                 type="tel"
               />

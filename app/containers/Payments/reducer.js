@@ -8,7 +8,8 @@ import {
   PAYMENTS_MODAL,
   PAYMENT_METHODS_TAB,
   PAYMENTS_MODAL_CLOSE,
-  CHANGE_CUSTOMER_NO
+  CHANGE_CUSTOMER_NO,
+  TOTAL_TICKETS_PRICE
 } from './constants';
 
 const initialState = {
@@ -27,6 +28,12 @@ const initialState = {
 
 function paymentsReducer(state = initialState, action) {
   switch (action.type) {
+    case TOTAL_TICKETS_PRICE.SUCCESS:
+      return {
+        ...state,
+        totalTicketsPrice: action.cost
+      };
+
     case PAYMENTS_MODAL.SUCCESS:
       return {
         ...state,

@@ -68,7 +68,7 @@ export class MpesaPush extends PureComponent {
                       phone_number: e.target.value
                     })}
                   id="phone_number"
-                  defaultValue={phone_number}
+                  value={phone_number}
                   type="tel"
                   placeholder="Phone number"
                   required
