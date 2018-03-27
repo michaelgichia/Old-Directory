@@ -29,7 +29,7 @@
 /* Medium and Large Screen styles */
 @media (min-width: 768px) {
   .nav-event-page {
-    margin-top: 82px;
+    margin-top: 80px;
   }
 
   .nav-event-page ul {
@@ -42,12 +42,11 @@
     padding: 0;
     background-color: #f6f3ee;
     max-height: 82px;
-    z-index: 4;
+    z-index: 99999;
   }
 
   .nav-event-page li:last-child a {
-    font-size: 1rem;
-    line-height: 2rem;
+    font-size: 16px;
     padding: 8px 20px;
     letter-spacing: 0.5px;
     border-radius: 24px;

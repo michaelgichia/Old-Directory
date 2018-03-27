@@ -243,14 +243,14 @@ input.error {
   }
 
   .ticket-description-wrap > div:first-child {
-    flex: 5;
-    padding: 0px 32px;
+    flex-basis: 350px;
+    padding: 0px;
     box-sizing: border-box;
   }
 
   .ticket-description-wrap > div:last-child {
-    flex: 9;
-    padding: 0px 32px;
+    flex-basis: calc(100% - 350px);
+    padding: 0px 70px;
     box-sizing: border-box;
   }
 

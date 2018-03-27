@@ -20,8 +20,7 @@ const DescHeader = styled.div`
     line-height: 20px;
     font-size: 14px;
     font-weight: 700;
-    width: 100%;
-    max-width: 1200px;
+    width: calc(100% - 70px);
   }
 
   & a:hover {

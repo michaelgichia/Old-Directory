@@ -91,7 +91,7 @@ class Payment extends React.PureComponent {
               </Select>
               {getFieldDecorator('phone_number')(
                 <EventInput
-                  style={{ width: '75%' }}
+                  style={{ width: '75%', fontSize: 14 }}
                   type="tel"
                   placeholder="Phone number"
                 />

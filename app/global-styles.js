@@ -73,5 +73,14 @@ injectGlobal`
     }
   }
 
+  .ant-select {
+    max-width: 80px !important;
+  }
+
+  .ant-input-group.ant-input-group-compact > .ant-select:first-child > .ant-select-selection {
+    border-top-left-radius: 1px !important;
+    border-bottom-left-radius: 1px !important;
+  }
+
 `;
 

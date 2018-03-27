@@ -17,8 +17,7 @@ const EventInfoWrap = styled.div`
     }
     & > h3 {
       text-transform: uppercase;
-      width: 100%;
-      max-width: 1200px;
+      width: calc(100% - 70px);
       font-weight: 500;
     }
 
