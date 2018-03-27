@@ -18,6 +18,8 @@ import './buy-tickets.css';
 const InputGroup = Input.Group;
 const Option = Select.Option;
 
+const dialCodeArray = ['254', '256', '255', '250', '257'];
+
 class Payment extends React.PureComponent {
   state = {
     country: '254',
@@ -55,7 +57,7 @@ class Payment extends React.PureComponent {
                 rules: [
                   {
                     required: true,
-                    message: 'Please input your username!'
+                    message: 'Please input your name!'
                   }
                 ]
               })(
@@ -69,7 +71,7 @@ class Payment extends React.PureComponent {
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <InputGroup compact size="large">
               <Select
-                style={{ width: '25%', marginBottom: 24, borderRadius: 1 }}
+                style={{ width: 80, marginBottom: 24, borderRadius: 1 }}
                 value={dialCode}
                 onChange={this.handleDialCode}
               >
@@ -89,9 +91,14 @@ class Payment extends React.PureComponent {
                   <img src={burundi} style={{ width: 30 }} />
                 </Option>
               </Select>
-              {getFieldDecorator('phone_number')(
+              {getFieldDecorator('phone_number', {
+                initialValue: dialCode,
+                rules: [
+                  { required: true, message: 'Please input your phone number' }
+                ]
+              })(
                 <EventInput
-                  style={{ width: '75%', fontSize: 14 }}
+                  style={{ width: 'calc(100% - 80px)', fontSize: 14 }}
                   type="tel"
                   placeholder="Phone number"
                 />
@@ -106,7 +113,7 @@ class Payment extends React.PureComponent {
                 rules: [
                   {
                     required: true,
-                    message: 'Please input your Email!'
+                    message: 'Please input your email address'
                   }
                 ]
               })(
@@ -124,7 +131,7 @@ class Payment extends React.PureComponent {
                 rules: [
                   {
                     required: true,
-                    message: 'Please confirm your Email!'
+                    message: 'Please confirm your email address'
                   }
                 ]
               })(
@@ -156,18 +163,12 @@ class Payment extends React.PureComponent {
                 justify="space-between"
               >
                 <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                  <EventBtn
-                    type="primary"
-                    htmlType="submit"
-                  >
+                  <EventBtn type="primary" htmlType="submit">
                     MOBILE PAYMENT
                   </EventBtn>
                 </Col>
                 <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                  <EventBtn
-                    type="primary"
-                    htmlType="submit"
-                  >
+                  <EventBtn type="primary" htmlType="submit">
                     CARD PAYMENT
                   </EventBtn>
                 </Col>
