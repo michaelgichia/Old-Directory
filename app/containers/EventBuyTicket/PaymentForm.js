@@ -53,7 +53,7 @@ class Payment extends React.PureComponent {
         <Row gutter={{ xs: 8, sm: 16, md: 16, lg: 16 }}>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <MookhFormItem>
-              {getFieldDecorator('Name', {
+              {getFieldDecorator('name', {
                 rules: [
                   {
                     required: true,
