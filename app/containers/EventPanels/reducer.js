@@ -8,16 +8,24 @@ import { EVENTS } from './constants';
 import data from './data';
 
 const initialState = {
-  events: data
+  events: [],
+  appState: 'fetching'
 };
 
 function eventPanelsReducer(state = initialState, action) {
-
   switch (action.type) {
+    case EVENTS.PENDING:
+      return {
+        ...state,
+        events: action.events,
+        appState: 'fetching'
+      };
+
     case EVENTS.SUCCESS:
       return {
         ...state,
-        events: action.events
+        events: [],
+        appState: 'success'
       };
 
     default:

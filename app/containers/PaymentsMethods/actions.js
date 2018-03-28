@@ -27,6 +27,7 @@ export const handleOrdersPayment = info => (dispatch) => {
     }
   })
   .catch((err) => {
+    console.log({err})
     dispatch({
       type: ORDERS_PAY.ERROR
     });

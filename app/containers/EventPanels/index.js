@@ -8,13 +8,14 @@
  */
 
 import React, { Component } from 'react';
-import { compose } from "redux";
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
 import LoadingSpinner from 'components/LoadingSpinner';
 import injectReducer from 'utils/injectReducer';
 // Actions
 import { fetchEvents } from './actions';
+import reducer from './reducer';
 import { eventPosterBaseUrl } from './constants';
 import { randomColor } from 'utils/color-generator';
 import chunk from 'lodash/chunk';
@@ -24,10 +25,12 @@ import MookhRow from './MookhRow';
 import MookhCol from './MookhCol';
 import Panel from './Panel';
 import EventPanelsWrap from './EventPanelsWrap';
-import reducer from './reducer';
+import Wrapper from './Wrapper';
+import NoEventsDiv from './NoEventsDiv';
+import noevents from './images/no-events.png';
 
 // Get device width
-const deviceWidth =  getWindowSize();
+const deviceWidth = getWindowSize();
 // Calculate number of column per row
 // according to device width.
 function getItemsPerRow(width) {
@@ -37,19 +40,10 @@ function getItemsPerRow(width) {
 }
 
 class EventPanels extends Component {
-  state = {
-    appState: 'success'
-  };
-
   width = getWindowSize();
 
   componentDidMount() {
-    // this.props.fetchEvents();
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.events !== this.state.events) return true;
-    return false;
+    this.props.fetchEvents();
   }
 
   handleError = e => {
@@ -57,38 +51,49 @@ class EventPanels extends Component {
   };
 
   render() {
-    const { appState } = this.state;
+    const { appState } = this.props;
+    console.log({appState, events: this.props.events });
 
-    if (this.props.events.length < 1 || appState === 'fetching') {
+    if (appState === 'fetching') {
       return <LoadingSpinner />;
     }
+
+    if (appState === 'success' && this.props.events.length < 1) {
+      return (
+        <Wrapper>
+          <NoEventsDiv>
+            <img src={noevents} />
+            <h4>no available events at the moment</h4>
+          </NoEventsDiv>
+        </Wrapper>
+      );
+    }
+
     return (
       <EventPanelsWrap>
-        <div style={{marginTop: 32}}>
+        <Wrapper>
           {this.props.events.map((v, i) => (
             <MookhRow key={`${i}i`}>
               {v.map((event, index) => (
-                <MookhCol
-                  key={event.id}
-                  xs={24}
-                  sm={12}
-                  md={12}
-                  lg={8}
-                  xl={8}
-                >
-                  <Panel onError={this.handleError} event={event} key={event.id} />
+                <MookhCol key={event.id} xs={24} sm={12} md={12} lg={8} xl={8}>
+                  <Panel
+                    onError={this.handleError}
+                    event={event}
+                    key={event.id}
+                  />
                 </MookhCol>
               ))}
             </MookhRow>
           ))}
-        </div>
+        </Wrapper>
       </EventPanelsWrap>
     );
   }
 }
 
 const mapStateToProps = ({ eventPanels }) => ({
-  events: chunk(eventPanels.events, getItemsPerRow(deviceWidth))
+  events: chunk(eventPanels.events, getItemsPerRow(deviceWidth)),
+  appState: eventPanels.appState
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -99,7 +104,4 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer({ key: 'eventPanels', reducer });
 
-export default compose(
-  withReducer,
-  withConnect,
-)(EventPanels);
+export default compose(withReducer, withConnect)(EventPanels);
