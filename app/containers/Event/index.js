@@ -32,7 +32,10 @@ const TabPane = MobileTabs.TabPane;
 
 
 export class Event extends React.Component {
-
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    this.props.fetchEvent(id)
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -117,12 +120,18 @@ export class Event extends React.Component {
   }
 }
 
-const mapStateToProps = ({ event, eventPanels }, ownProps) => {
-  const newEvent = filter(eventPanels.events, { id: ownProps.match.params.id })[0];
-  return {
-    event: newEvent
-  };
-};
+// const mapStateToProps = ({ event, eventPanels }, ownProps) => {
+//   console.log({eventPanels, ownProps})
+//   const newEvent = filter(eventPanels.events, { id: ownProps.match.params.id })[0];
+//   return {
+//     event: newEvent,
+//     eventQ: event.eve
+//   };
+// };
+
+const mapStateToProps = ({ event }) => ({
+  event: event.event
+})
 
 const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId))
