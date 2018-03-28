@@ -44,6 +44,15 @@ class Payment extends React.PureComponent {
     this.setState({ country: value, dialCode: value });
   };
 
+  compareToFirstEmail = (rule, value, callback) => {
+    const form = this.props.form;
+    if (value && value !== form.getFieldValue('email')) {
+      callback('Please confirm your email address');
+    } else {
+      callback();
+    }
+  };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const { ticketCategory, customer, totalTicketsPrice } = this.props;
@@ -132,6 +141,9 @@ class Payment extends React.PureComponent {
                   {
                     required: true,
                     message: 'Please confirm your email address'
+                  },
+                  {
+                    validator: this.compareToFirstEmail
                   }
                 ]
               })(
