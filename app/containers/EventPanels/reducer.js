@@ -24,7 +24,7 @@ function eventPanelsReducer(state = initialState, action) {
     case EVENTS.SUCCESS:
       return {
         ...state,
-        events: [],
+        events: action.events,
         appState: 'success'
       };
 

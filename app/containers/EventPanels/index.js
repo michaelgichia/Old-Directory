@@ -52,7 +52,6 @@ class EventPanels extends Component {
 
   render() {
     const { appState } = this.props;
-    console.log({appState, events: this.props.events });
 
     if (appState === 'fetching') {
       return <LoadingSpinner />;

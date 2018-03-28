@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  max-width: 100%;
 `
 
 export default Wrapper;
