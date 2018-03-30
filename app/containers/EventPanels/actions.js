@@ -9,7 +9,6 @@ import { EVENTS, getEventsAPI } from './constants';
 export const fetchEvents = () => (dispatch) => {
   dispatch({type: EVENTS.PENDING});
   axios.get(getEventsAPI).then((res) => {
-    console.log({res})
     if (res.status === 200) {
       dispatch({
         type: EVENTS.SUCCESS,

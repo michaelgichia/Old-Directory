@@ -16,6 +16,7 @@ import injectReducer from 'utils/injectReducer';
 import './buy-tickets.css';
 import reducer from './reducer';
 import { TOTAL_TICKETS_PRICE } from "containers/Payments/constants";
+import noImage from "./no_img.svg";
 
 const posterImage =
   'https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg';
@@ -116,7 +117,7 @@ export class EventBuyTicket extends React.PureComponent {
       <div style={{display: "flex", justifyContent: "center"}}>
         <div className="ticket-description-wrap">
           <div className="event-buy-image">
-            <img src={posterImage} alt="product" />
+            <img src={event.event_poster === null ? noImage : posterImage} alt="product" />
           </div>
           <div className="price-table">
             <table>

@@ -31,7 +31,7 @@ export class PaymentsMethods extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.orderCreated) {
-      this.props.getOrderStatus(nextProps.orderPK);
+      //this.props.getOrderStatus(nextProps.orderPK);
     }
 
     if (nextProps.mpesaPushStatus) {
@@ -69,7 +69,6 @@ export class PaymentsMethods extends Component {
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
     this.handleMpesaClick();
-    console.log({extraInfo})
     this.props.handleOrdersPayment(extraInfo);
   };
 
