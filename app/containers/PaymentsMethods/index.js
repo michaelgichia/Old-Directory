@@ -31,7 +31,7 @@ export class PaymentsMethods extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.orderCreated) {
-      //this.props.getOrderStatus(nextProps.orderPK);
+      setTimeout(() => this.props.getOrderStatus(nextProps.orderPK), 15000);
     }
 
     if (nextProps.mpesaPushStatus) {
