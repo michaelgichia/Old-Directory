@@ -13,11 +13,12 @@ import EventTopPageDisplay from 'components/EventTopPageDisplay';
 import EventSubMenu from 'components/EventSubMenu';
 import EventPoster from 'components/EventPoster';
 import injectReducer from "utils/injectReducer";
+import Img from "components/Img";
 import reducer from './reducer';
 import './styles.css';
 
-const posterImage =
-  'https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg';
+// const event.event_poster =
+//   'https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg';
 
 export class EventInfomation extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -28,30 +29,22 @@ export class EventInfomation extends React.Component {
   render() {
     const { openModal } = this.state;
     const { event } = this.props;
+    console.log({event})
     return (
       <div>
-        <EventPoster productImage={posterImage} openModal={openModal} />
+        <EventPoster productImage={event.event_poster} openModal={openModal} />
 
         <div className="ticket-description-wrap">
           <div className="event-buy-image">
-            <img src={posterImage} alt="product" />
+          <Img src={event.event_poster} className="" alt="product" />
           </div>
 
           <div className="information">
             <header>ABOUT THIS EVENT</header>
             <div className="more-details">
+              <p dangerouslySetInnerHTML={{__html: event.event_description && event.event_description }} />
               <p>
-                Amplify the voice of Kenyan women on a global platform through
-                TED Talks. Print this page to PDF for thr complete set of
-                vectors. Or to use thr desltop, install FontAwesome.ptf, set it
-                as thr font in your application, and copy and paste the icons
-                (not the unicode) directly from this page intp your designs
-              </p>
-              <p>
-                Strictly age 21 and over. No animals will be permitted to enter.
-              </p>
-              <p>
-                <span>CONTACT: 0710123123</span>
+                <span><code>Dummy</code> CONTACT: 0710123123</span>
                 <span>hello@example.com</span>
                 <span>www.example.com</span>
               </p>

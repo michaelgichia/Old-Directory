@@ -3,7 +3,7 @@ const pullAll = require('lodash/pullAll');
 const uniq = require('lodash/uniq');
 
 const ReactBoilerplate = {
-  // This refers to the react-boilerplate version this project is based on.
+  // This refers to the mookh version this project is based on.
   version: '3.5.0',
 
   /**
@@ -37,7 +37,7 @@ const ReactBoilerplate = {
       include: ['core-js', 'eventsource-polyfill', 'babel-polyfill', 'lodash'],
 
       // The path where the DLL manifest and bundle will get built
-      path: resolve('../node_modules/react-boilerplate-dlls')
+      path: resolve('../node_modules/mookh-dlls')
     },
 
     entry(pkg) {

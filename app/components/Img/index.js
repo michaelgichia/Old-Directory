@@ -8,19 +8,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import noImage from './no_img.svg';
 
-function NormalImg(props) {
+function NormalImg({ src, className, alt }) {
+  console.log({src})
   return (
-    <img className={props.className} src={props.src} alt={props.alt} />
+    <img className={className} src={src !== null ? src : noImage} alt={alt} />
   );
 }
 
 // We require the use of src and alt, only enforced by react in dev mode
 NormalImg.propTypes = {
-  src: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  src: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   alt: PropTypes.string.isRequired,
   className: PropTypes.string
 };
@@ -30,4 +29,3 @@ const Img = styled(NormalImg)`
 `;
 
 export default Img;
-

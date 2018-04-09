@@ -188,7 +188,7 @@ export class Panel extends PureComponent {
         <PanelImgWrap>
           <NavLink to={`/tickets/${event.id}`}>
             <Img
-              src={event.event_poster}
+              src={event.event_poster ==! null ? event.event_poster:""}
               alt=""
               onError={this.props.onError}
               id={event.id}

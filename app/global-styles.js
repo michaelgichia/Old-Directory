@@ -78,5 +78,8 @@ injectGlobal`
     border-bottom-left-radius: 1px !important;
   }
 
+  ol, ul, dl {
+    margin-bottom: 0;
+  }
 `;
 
