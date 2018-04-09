@@ -17,6 +17,7 @@ import './buy-tickets.css';
 
 const InputGroup = Input.Group;
 const Option = Select.Option;
+const FormItem = Form.Item;
 
 const dialCodeArray = ['254', '256', '255', '250', '257'];
 
@@ -30,6 +31,7 @@ class Payment extends React.PureComponent {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        values.phone_number = `${values.prefix}${values.phone}`
         this.props.handleCustomerDetailsSubmition(values);
       }
     });
@@ -56,6 +58,18 @@ class Payment extends React.PureComponent {
     const { getFieldDecorator } = this.props.form;
     const { ticketCategory, customer, totalTicketsPrice } = this.props;
     const { country, dialCode } = this.state;
+    const prefixSelector = getFieldDecorator('prefix', {
+      initialValue: '254'
+    })(
+      <Select style={{ width: 80 }}>
+        <Option value="254">254</Option>
+        <Option value="256">256</Option>
+        <Option value="255">255</Option>
+        <Option value="250">250</Option>
+        <Option value="257">257</Option>
+      </Select>
+    );
+
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Row gutter={{ xs: 8, sm: 16, md: 16, lg: 16 }}>
@@ -77,41 +91,15 @@ class Payment extends React.PureComponent {
             </MookhFormItem>
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <InputGroup compact size="large">
-              <Select
-                style={{ width: 80, marginBottom: 24, borderRadius: 1 }}
-                value={dialCode}
-                onChange={this.handleDialCode}
-              >
-                <Option value="254">
-                  <img src={kenya} style={{ width: 30 }} />
-                </Option>
-                <Option value="256">
-                  <img src={uganda} style={{ width: 30 }} />
-                </Option>
-                <Option value="255">
-                  <img src={tanzania} style={{ width: 30 }} />
-                </Option>
-                <Option value="250">
-                  <img src={rwanda} style={{ width: 30 }} />
-                </Option>
-                <Option value="257">
-                  <img src={burundi} style={{ width: 30 }} />
-                </Option>
-              </Select>
-              {getFieldDecorator('phone_number', {
-                initialValue: dialCode,
+            <FormItem>
+              {getFieldDecorator('phone', {
                 rules: [
-                  { required: true, message: 'Please input your phone number' }
+                  { required: true, message: 'Please input your phone number!' }
                 ]
               })(
-                <EventInput
-                  style={{ width: 'calc(100% - 80px)', fontSize: 14 }}
-                  type="tel"
-                  placeholder="Phone number"
-                />
+                <EventInput addonBefore={prefixSelector} style={{ width: '100%' }} pattern="[0-9]{9}" title="example: 700 000 000" placeholder="Phone number" maxLength="9" />
               )}
-            </InputGroup>
+            </FormItem>
           </Col>
         </Row>
         <Row gutter={{ xs: 8, sm: 16, md: 16, lg: 16 }}>
@@ -202,3 +190,50 @@ const withConnect = connect(mapStateToProps);
 const withReduxForm = Form.create();
 
 export default compose(withReduxForm, withConnect)(Payment);
+
+          // <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          //   <InputGroup compact size="large">
+          //     {getFieldDecorator('dialCode', {
+          //       initialValue: dialCode,
+          //       rules: [
+          //         { required: true, message: 'Please select country code.' }
+          //       ]
+          //     })(
+          //       <Select
+          //         style={{ width: 80, marginBottom: 24, borderRadius: 1 }}
+          //         onChange={this.handleDialCode}
+          //       >
+          //         <Option value="254">
+          //           <img src={kenya} style={{ width: 30 }} />
+          //         </Option>
+          //         <Option value="256">
+          //           <img src={uganda} style={{ width: 30 }} />
+          //         </Option>
+          //         <Option value="255">
+          //           <img src={tanzania} style={{ width: 30 }} />
+          //         </Option>
+          //         <Option value="250">
+          //           <img src={rwanda} style={{ width: 30 }} />
+          //         </Option>
+          //         <Option value="257">
+          //           <img src={burundi} style={{ width: 30 }} />
+          //         </Option>
+          //       </Select>
+          //     )}
+          //     {getFieldDecorator('phone_number', {
+          //       initialValue: dialCode,
+          //       rules: [
+          //         { required: true, message: 'Please input your phone number' }
+          //       ]
+          //     })(
+          //       <EventInput
+          //         style={{ width: 'calc(100% - 80px)', fontSize: 14 }}
+          //         type="tel"
+          //         placeholder="Phone number"
+          //         required={true}
+          //         pattern="[0-9]{12}"
+          //         title="example: 254 711 111 111"
+          //       />
+          //     )}
+          //   </InputGroup>
+          // </Col>
