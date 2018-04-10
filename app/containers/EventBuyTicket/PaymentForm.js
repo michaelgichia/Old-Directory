@@ -33,6 +33,7 @@ class Payment extends React.PureComponent {
       if (!err) {
         values.phone_number = `${values.prefix}${values.phone}`
         this.props.handleCustomerDetailsSubmition(values);
+        this.props.form.resetFields();
       }
     });
   };
@@ -97,7 +98,7 @@ class Payment extends React.PureComponent {
                   { required: true, message: 'Please input your phone number!' }
                 ]
               })(
-                <EventInput addonBefore={prefixSelector} style={{ width: '100%' }} pattern="[0-9]{9}" title="example: 700 000 000" placeholder="Phone number" maxLength="9" />
+                <EventInput addonBefore={prefixSelector} pattern="[0-9]{9}" title="example: 700 000 000" placeholder="Phone number" maxLength="9" />
               )}
             </FormItem>
           </Col>

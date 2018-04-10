@@ -5,7 +5,6 @@
  */
 
 import { EVENTS } from './constants';
-import data from './data';
 
 const initialState = {
   events: [],

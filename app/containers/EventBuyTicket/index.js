@@ -24,6 +24,7 @@ const posterImage =
 export class EventBuyTicket extends React.PureComponent {
   state = {
     ticketCategory: {},
+    unmountKey: "ticketCategory",
     customer: {
       email: '',
       name: '',
@@ -96,7 +97,7 @@ export class EventBuyTicket extends React.PureComponent {
     const { ticketCategory } = this.state;
     const { totalTicketsPrice } = this.props;
     if (totalTicketsPrice < 1) {
-      this.setState((state, props) => ({ error: true }));
+      this.setState({ error: true });
       return;
     }
     this.props.openModal(
@@ -105,16 +106,17 @@ export class EventBuyTicket extends React.PureComponent {
       totalTicketsPrice,
       this.props.event
     );
+    this.setState({unmountKey: "funnykey"});
   };
 
   render() {
-    const { error, ticketCategory } = this.state;
+    const { error, ticketCategory, unmountKey } = this.state;
     const { event, totalTicketsPrice } = this.props;
     const totalPriceClassnames = classNames('ticket-total', { errors: error });
     const inputClassnames = classNames({ 'ebt-input-error': error });
 
     return (
-      <div style={{display: "flex", justifyContent: "center"}}>
+      <div key={unmountKey} style={{display: "flex", justifyContent: "center"}}>
         <div className="ticket-description-wrap">
           <div className="event-buy-image">
             <img src={event.event_poster === null ? noImage : posterImage} alt="product" />

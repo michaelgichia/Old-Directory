@@ -20,7 +20,6 @@ import { eventPosterBaseUrl } from './constants';
 import { randomColor } from 'utils/color-generator';
 import chunk from 'lodash/chunk';
 import getWindowSize from 'utils/getWindowSize';
-import data from './data';
 import MookhRow from './MookhRow';
 import MookhCol from './MookhCol';
 import Panel from './Panel';

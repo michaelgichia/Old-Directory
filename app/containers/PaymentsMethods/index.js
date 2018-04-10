@@ -31,7 +31,7 @@ export class PaymentsMethods extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.orderCreated) {
-      setTimeout(() => this.props.getOrderStatus(nextProps.orderPK), 15000);
+      setTimeout(() => this.props.getOrderStatus(nextProps.orderPK), 20000);
     }
 
     if (nextProps.mpesaPushStatus) {
@@ -60,7 +60,7 @@ export class PaymentsMethods extends Component {
         Object.assign(
           {},
           { name: this.getOrderName(tickets_count_by_category, key) },
-          { items_id: key },
+          { item_id: key },
           { item_quantity: value }
         )
       );

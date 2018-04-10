@@ -37,51 +37,25 @@ export const handleOrdersPayment = info => dispatch => {
     });
 };
 
-// export const handleOrdersPayment = info => dispatch => {
-//   axios
-//     .post(ordersPayAPI, info)
-//     .then(response => {
-//       console.log({one: response});
-//       return axios.get(`${orderStatusAPI}/${response.data.id}`);
-//     })
-//     .then(res => {
-//         console.log({two: res})
-//       if (res.status === 200 && res.data.order_status !== null) {
-//         dispatch({
-//           type: ORDERS_STATUS.SUCCESS
-//         });
-//       } else {
-//         dispatch({
-//           type: ORDERS_STATUS.ERROR
-//         });
-//       }
-//     })
-//     .catch(err => {
-//       console.log({ err });
-//       dispatch({
-//         type: ORDERS_PAY.ERROR
-//       });
-//     });
-// };
-
 export const getOrderStatus = orderPK => dispatch => {
-  return axios.get(`${orderStatusAPI}/${orderPK}`).then(res => {
-    console.log({ res });
-    if (res.status === 200 && res.data.order_status === 'PAID') {
+  return axios.get(`${orderStatusAPI}/${orderPK}`)
+  .then(first => {
+    console.log({ first });
+    if (first.status.includes("20") && first.data.order_status === 'PAID') {
       dispatch({
         type: ORDERS_STATUS.SUCCESS
       });
     } else {
-      return axios.get(`${orderStatusAPI}/${orderPK}`).then(res2 => {
-        console.log({res2})
-        if (res2.status === 200 && res2.data.order_status === 'PAID') {
+      return axios.get(`${orderStatusAPI}/${orderPK}`).then(second => {
+        console.log({second})
+        if (second.status.includes("20") && second.data.order_status === 'PAID') {
           dispatch({
             type: ORDERS_STATUS.SUCCESS
           });
         } else {
-          return axios.get(`${orderStatusAPI}/${orderPK}`).then(res3 => {
-            console.log({res3})
-            if (res3.status === 200 && res3.data.order_status === 'PAID') {
+          return axios.get(`${orderStatusAPI}/${orderPK}`).then(third => {
+            console.log({third})
+            if (third.status.includes("20") && third.data.order_status === 'PAID') {
               dispatch({
                 type: ORDERS_STATUS.SUCCESS
               });
@@ -96,3 +70,4 @@ export const getOrderStatus = orderPK => dispatch => {
     }
   });
 };
+

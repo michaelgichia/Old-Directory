@@ -66,7 +66,8 @@ function paymentsReducer(state = initialState, action) {
           phone_number: '',
           confirmEmail: ''
         },
-        totalTicketsPrice: 0
+        totalTicketsPrice: 0,
+        tabIndex: 0
       };
 
     case CHANGE_CUSTOMER_NO.SUCCESS:

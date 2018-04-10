@@ -48,6 +48,7 @@ injectGlobal`
   }
   .ant-input {
     border-radius: 1px !important;
+    height: 36px;
   }
   .ant-tabs-nav-container {
     background-color: #f6f3ee;
@@ -63,6 +64,10 @@ injectGlobal`
   .ant-tabs-nav .ant-tabs-tab:hover,
   .ant-tabs-nav .ant-tabs-tab-active {
     color: #31383e;
+  }
+
+  :focus {
+    outline: inherit;
   }
 
   @media screen and (max-width: 768px) {

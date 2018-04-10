@@ -43,9 +43,9 @@ export class Payments extends React.Component {
     return (
       <ReactModal
         isOpen={this.props.paymentModal}
-        contentLabel="onRequestClose Example"
+        contentLabel="onRequestClose"
         onRequestClose={() =>
-          this.props.dispatch({ type: 'PAYMENTS_MODAL_ERROR' })
+          this.props.dispatch({ type: 'PAYMENTS_MODAL_CLOSE' })
         }
         className="py-modal"
         overlayClassName="py-overlay"
