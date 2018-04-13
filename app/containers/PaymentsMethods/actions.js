@@ -38,24 +38,32 @@ export const handleOrdersPayment = info => dispatch => {
 };
 
 export const getOrderStatus = orderPK => dispatch => {
-  return axios.get(`${orderStatusAPI}/${orderPK}`)
-  .then(first => {
+  return axios.get(`${orderStatusAPI}/${orderPK}`).then(first => {
     console.log({ first });
-    if (first.status.includes("20") && first.data.order_status === 'PAID') {
+    if (
+      `${first.status}`.includes('20') &&
+      first.data.order_status === 'PAID'
+    ) {
       dispatch({
         type: ORDERS_STATUS.SUCCESS
       });
     } else {
       return axios.get(`${orderStatusAPI}/${orderPK}`).then(second => {
-        console.log({second})
-        if (second.status.includes("20") && second.data.order_status === 'PAID') {
+        console.log({ second });
+        if (
+          `${second.status}`.includes('20') &&
+          second.data.order_status === 'PAID'
+        ) {
           dispatch({
             type: ORDERS_STATUS.SUCCESS
           });
         } else {
           return axios.get(`${orderStatusAPI}/${orderPK}`).then(third => {
-            console.log({third})
-            if (third.status.includes("20") && third.data.order_status === 'PAID') {
+            console.log({ third });
+            if (
+              `${third.status}`.includes('20') &&
+              third.data.order_status === 'PAID'
+            ) {
               dispatch({
                 type: ORDERS_STATUS.SUCCESS
               });
@@ -70,4 +78,3 @@ export const getOrderStatus = orderPK => dispatch => {
     }
   });
 };
-
