@@ -8,6 +8,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import delay from "lodash/delay";
 import injectReducer from "utils/injectReducer";
 import PaymentCheckbox from "components/PaymentCheckbox";
 import TabsBodyWrap from "components/TabsBodyWrap";
@@ -15,13 +16,13 @@ import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
 import MpesaPayBill from "./MpesaPayBill";
 import { handleOrdersPayment, getOrderStatus } from "./actions";
+import { ORDERS_PAY } from "./constants";
 import reducer from "./reducer";
 import "./payments-methods.css";
 
 export class PaymentsMethods extends Component {
   state = {
     mpesaPage: 1,
-    mpesaInitiated: false,
     event: {},
     extraInfo: {
       store_fk: "",
@@ -29,16 +30,23 @@ export class PaymentsMethods extends Component {
     }
   };
 
+  interValId = null;
+
   componentWillReceiveProps(nextProps) {
-    if (nextProps.orderCreated) {
-      setTimeout(() => this.props.getOrderStatus(nextProps.orderPK), 20000);
+    if (nextProps.orderCreated && nextProps.orderPK && nextProps.timeout > 0) {
+      delay(() => this.props.getOrderStatus(nextProps.orderPK), 3000)
     }
 
     if (nextProps.mpesaPushStatus) {
       this.props.goTabTwo("PAYMENT_METHODS_TAB", 1);
     }
+
     if (nextProps.mpesaPushStatus === false) {
-      this.setState({ mpesaPage: 2, mpesaInitiated: false });
+      this.setState({ mpesaPage: 2 });
+    }
+
+    if (nextProps.timeout < 1) {
+      this.props.clearDefault();
     }
   }
 
@@ -68,20 +76,14 @@ export class PaymentsMethods extends Component {
     extraInfo["order_detail"] = orderArray;
     extraInfo["customer"] = customer;
     extraInfo["store_fk"] = store_fk;
-    this.handleMpesaClick();
     console.log({extraInfo})
     this.props.handleOrdersPayment(extraInfo);
   };
 
-  handleMpesaClick = () => this.setState({ mpesaInitiated: true });
-
   goMpesaPush = () => this.setState(() => ({ mpesaPage: 1 }));
 
   handleNextPage = () =>
-    this.setState(() => ({
-      mpesaPage: this.state.mpesaPage + 1,
-      mpesaInitiated: false
-    }));
+    this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1 }));
 
   getOrderName = (ticketCategory, key) => {
     let name;
@@ -95,8 +97,8 @@ export class PaymentsMethods extends Component {
   };
 
   render() {
-    const { mpesaPage, mpesaInitiated } = this.state;
-    const { customer: { phone_number } } = this.props;
+    const { mpesaPage } = this.state;
+    const { customer: { phone_number }, mpesaInitiated } = this.props;
     return (
       <div>
         <Tabs>
@@ -163,17 +165,20 @@ const mapStateToProps = ({ payments, buyTicket, paymentsMethods }) => ({
   orderCreated: paymentsMethods.orderCreated,
   mpesaPushStatus: paymentsMethods.mpesaPushStatus,
   orderPK: paymentsMethods.orderPK,
-  totalTicketsPrice: payments.totalTicketsPrice
+  totalTicketsPrice: payments.totalTicketsPrice,
+  timeout: paymentsMethods.timeout,
+  mpesaInitiated: paymentsMethods.mpesaInitiated
 });
 
 const mapDispatchToProps = dispatch => ({
   handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo)),
   goTabTwo: (type, tabIndex) => dispatch({ type, tabIndex }),
-  getOrderStatus: orderPK => dispatch(getOrderStatus(orderPK))
+  getOrderStatus: orderPK => dispatch(getOrderStatus(orderPK)),
+  clearDefault: () => dispatch({type: ORDERS_PAY.ERROR})
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({key: "paymentsMethods", reducer}) 
+const withReducer = injectReducer({key: "paymentsMethods", reducer});
 
 export default compose(withReducer, withConnect)(PaymentsMethods);
