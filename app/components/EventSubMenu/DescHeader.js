@@ -3,8 +3,7 @@ import styled from 'styled-components';
 const DescHeader = styled.div`
   background-color: #31383e;
   color: #f6f3ee;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px 16px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -20,7 +19,7 @@ const DescHeader = styled.div`
     line-height: 20px;
     font-size: 14px;
     font-weight: 700;
-    width: calc(100% - 70px);
+    width: 100%;
   }
 
   & a:hover {

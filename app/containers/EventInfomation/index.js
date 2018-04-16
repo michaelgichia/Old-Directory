@@ -29,7 +29,6 @@ export class EventInfomation extends React.Component {
   render() {
     const { openModal } = this.state;
     const { event } = this.props;
-    console.log({event})
     return (
       <div>
         <EventPoster productImage={event.event_poster} openModal={openModal} />

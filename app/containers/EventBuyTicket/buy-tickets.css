@@ -521,7 +521,7 @@ input.error {
   }
 
   table input[type="number"] {
-    max-width: 50px;
+    width: 60px;
   }
 
   tr:nth-child(2n + 3) td {

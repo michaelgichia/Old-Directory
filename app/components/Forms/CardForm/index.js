@@ -66,6 +66,12 @@ export default class CardForm extends Component {
   render() {
     const { cardNumber, cardSecurityCode, currency, expiry } = this.state;
     return (
+      <React.Fragment>
+      <Helmet
+      >
+        <script id="hpfScript" src="https://ap-gateway.mastercard.com/form/v3/hpf.js"></script>
+        <script async>HostedForm.setMerchant(61056001);</script>
+      </Helmet>
       <div>
         <TabsBodyWrap>
           <form onSubmit={e => e.preventDefault()}>
@@ -136,6 +142,7 @@ export default class CardForm extends Component {
           </div>
         </TabsBottomWrap>
       </div>
+      </React.Fragment>
     );
   }
 }

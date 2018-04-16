@@ -46,10 +46,7 @@ injectGlobal`
   .ant-btn-dashed:focus {
     border: 1px solid #faea29 !important;
   }
-  .ant-input {
-    border-radius: 1px !important;
-    height: 36px;
-  }
+
   .ant-tabs-nav-container {
     background-color: #f6f3ee;
   }
@@ -70,11 +67,26 @@ injectGlobal`
     outline: inherit;
   }
 
+  .ant-input-group-addon {
+    border-radius: 1px;
+  }
+
   @media screen and (max-width: 768px) {
     .ant-input-group-lg .ant-select-selection--single {
       height: 45px !important;
       display: flex;
       align-items: center;
+    }
+    .ant-input {
+      border-radius: 1px !important;
+      height: 45px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .ant-input {
+      border-radius: 1px !important;
+      height: 36px;
     }
   }
 

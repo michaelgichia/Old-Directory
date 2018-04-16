@@ -5,7 +5,7 @@
  */
 
 import React, { PropTypes, Fragment } from 'react';
-import { compose } from "redux";
+import { compose } from 'redux';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { TabPanel } from 'react-tabs';
@@ -30,18 +30,35 @@ import TabsWrap from './TabsWrap';
 
 const TabPane = MobileTabs.TabPane;
 
-
 export class Event extends React.Component {
+  constructor(props) {
+    super(props);
+    const data =
+      props.events.length > 0
+        ? filter(props.events, event => event.id === props.match.params.id)[0]
+        : {};
+    this.state = {
+      event: data
+    };
+  }
   componentWillMount() {
-    const { id } = this.props.match.params;
-    this.props.fetchEvent(id)
+    if (this.props.events.length < 1) {
+      const { id } = this.props.match.params;
+      this.props.fetchEvent(id);
+    }
   }
   componentDidMount() {
     window.scrollTo(0, 0);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.event !== this.state.event) {
+      this.setState({ event: nextProps.event });
+    }
+  }
+
   render() {
-    const { event } = this.props;
+    const { event } = this.state;
     if (size(event) < 1) {
       return (
         <div className="loading-exit">
@@ -120,18 +137,10 @@ export class Event extends React.Component {
   }
 }
 
-// const mapStateToProps = ({ event, eventPanels }, ownProps) => {
-//   console.log({eventPanels, ownProps})
-//   const newEvent = filter(eventPanels.events, { id: ownProps.match.params.id })[0];
-//   return {
-//     event: newEvent,
-//     eventQ: event.eve
-//   };
-// };
-
-const mapStateToProps = ({ event }) => ({
-  event: event.event
-})
+const mapStateToProps = ({ event, eventPanels }) => ({
+  event: event.event,
+  events: eventPanels.events
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchEvent: eventId => dispatch(fetchEvent(eventId))
@@ -141,7 +150,4 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer({ key: 'event', reducer });
 
-export default compose(
-  withReducer,
-  withConnect,
-)(Event);
+export default compose(withReducer, withConnect)(Event);

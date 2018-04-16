@@ -11,7 +11,7 @@ const initialState = {
   mpesaInitiated: false,
   orderPK: null,
   mpesaPushStatus: null,
-  timeout: 20000
+  timeout: 15000
 };
 
 function paymentsMethodsReducer(state = initialState, action) {

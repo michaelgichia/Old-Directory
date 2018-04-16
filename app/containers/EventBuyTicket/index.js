@@ -37,7 +37,7 @@ export class EventBuyTicket extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     if (!isEqual(nextProps.customer, this.state.customer)) {
-      this.setState(() => ({ customer: nextProps.customer }));
+      this.setState({ customer: nextProps.customer });
     }
   }
 
@@ -49,17 +49,18 @@ export class EventBuyTicket extends React.PureComponent {
     }
 
     if (prevProps.totalTicketsPrice > 0) {
-      this.setState(() => ({ error: false }));
+      this.setState({ error: false });
     }
   }
 
   handleInputChange = e => {
-    this.setState({
+    e.persist()
+    this.setState(() => ({
       ticketCategory: {
         ...this.state.ticketCategory,
         [e.target.id]: e.target.value
       }
-    });
+    }));
   };
 
   handleTicketsTotalCost = priceValueForEvent => {
@@ -93,6 +94,10 @@ export class EventBuyTicket extends React.PureComponent {
     return name;
   };
 
+  createError = (bool) => {
+    this.setState(() => ({ error: bool }));
+  };
+
   handleCustomerDetailsSubmition = values => {
     const { ticketCategory } = this.state;
     const { totalTicketsPrice } = this.props;
@@ -100,13 +105,13 @@ export class EventBuyTicket extends React.PureComponent {
       this.setState({ error: true });
       return;
     }
+    this.setState(() => ({unmountKey: "funnykey"}));
     this.props.openModal(
       ticketCategory,
       values,
       totalTicketsPrice,
       this.props.event
     );
-    this.setState({unmountKey: "funnykey"});
   };
 
   render() {
@@ -183,6 +188,7 @@ export class EventBuyTicket extends React.PureComponent {
             <div className="ebt-information">
               <h4>SEND TICKETS TO:</h4>
               <PaymentForm
+                createError={this.createError}
                 ticketCategory={ticketCategory}
                 handleCustomerDetailsSubmition={
                   this.handleCustomerDetailsSubmition

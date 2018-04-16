@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import noImage from './no_img.svg';
 
 function NormalImg({ src, className, alt }) {
-  console.log({src})
   return (
     <img className={className} src={src !== null ? src : noImage} alt={alt} />
   );
