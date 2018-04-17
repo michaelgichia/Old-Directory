@@ -10,11 +10,15 @@ const EventInfoWrap = styled.div`
     width: 100%;
     background-color: #faea29;
     color: #343a41;
-    padding: 8px 0;
 
     @media (max-width: 576px) {
       padding: 8px 16px;
     }
+
+    @media (min-width: 576px) {
+      padding: 8px 50px;
+    }
+
     & > h3 {
       text-transform: uppercase;
       width: 100%;

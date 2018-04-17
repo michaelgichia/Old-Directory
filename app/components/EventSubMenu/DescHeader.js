@@ -3,11 +3,14 @@ import styled from 'styled-components';
 const DescHeader = styled.div`
   background-color: #31383e;
   color: #f6f3ee;
-  padding: 8px 16px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 567px) {
+    padding: 8px 40px;
+  }
 
   @media (max-width: 567px) {
     padding-left: 16px;
