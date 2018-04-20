@@ -16,7 +16,7 @@ import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
 import MpesaPayBill from "./MpesaPayBill";
 import { handleOrdersPayment, getOrderStatus } from "./actions";
-import { ORDERS_PAY } from "./constants";
+import { ORDERS_PAY, ORDERS_STATUS } from "./constants";
 import reducer from "./reducer";
 import "./payments-methods.css";
 
@@ -82,8 +82,10 @@ export class PaymentsMethods extends Component {
 
   goMpesaPush = () => this.setState(() => ({ mpesaPage: 1 }));
 
-  handleNextPage = () =>
+  handleNextPage = () => {
+    this.props.clearMpesaInitiated();
     this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1 }));
+  }
 
   getOrderName = (ticketCategory, key) => {
     let name;
@@ -174,7 +176,8 @@ const mapDispatchToProps = dispatch => ({
   handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo)),
   goTabTwo: (type, tabIndex) => dispatch({ type, tabIndex }),
   getOrderStatus: orderPK => dispatch(getOrderStatus(orderPK)),
-  clearDefault: () => dispatch({type: ORDERS_PAY.ERROR})
+  clearDefault: () => dispatch({type: ORDERS_PAY.ERROR}),
+  clearMpesaInitiated: () => dispatch({ type: ORDERS_STATUS.ERROR })
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

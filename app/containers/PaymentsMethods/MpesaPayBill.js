@@ -33,7 +33,7 @@ export class MpesaPayBill extends PureComponent {
               <p>3. Select Paybill</p>
               <span>
                 <p>4. Enter Business Number</p>
-                <p>570937</p>
+                <p>570936</p>
               </span>
               <span>
                 <p>5. Enter Account Number</p>

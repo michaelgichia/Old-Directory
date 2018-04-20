@@ -99,12 +99,13 @@ export class MpesaPush extends PureComponent {
 
               <div className="primary-pay-mpesa">
                 <PaymentButtonRipples
+                  disabled={this.props.mpesaInitiated}
                   id="pay"
                   onClick={this.props.handlePayment}>
                   PAY NOW
                 </PaymentButtonRipples>
               </div>
-              {this.props.mpesaInitiated ? (
+              {this.props.mpesaInitiated !== null ? (
                 <p className="go-to-paybill-p2">
                   Did not see prompt on your phone? To pay manually via Paybill,{" "}
                   <a onClick={this.props.goToPayBill}>click here</a>
@@ -131,11 +132,12 @@ export class MpesaPush extends PureComponent {
 
 MpesaPush.proptypes = {
   mpesaInitiated: PropTypes.bool.isRequired,
-  goToPayBill: PropTypes.func.isRequired
+  goToPayBill: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ payments }) => ({
-  customer: payments.customer
+const mapStateToProps = ({ payments, paymentsMethods }) => ({
+  customer: payments.customer,
+  mpesaPushStatus: paymentsMethods.mpesaPushStatus
 });
 
 export default connect(mapStateToProps, null)(MpesaPush);

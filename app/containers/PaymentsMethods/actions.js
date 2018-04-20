@@ -14,34 +14,18 @@ import {
   ORDERS_STATUS_PENDING
 } from './constants';
 
-// export const handleOrdersPayment = info => dispatch => {
-//   axios
-//     .post(ordersPayAPI, info)
-//     .then(res => {
-//       console.log({ one: res });
-//       if (res.status === 201) {
-//         dispatch({
-//           type: ORDERS_PAY.SUCCESS,
-//           orderPK: res.data.id
-//         });
-//       } else {
-//         dispatch({
-//           type: ORDERS_PAY.ERROR
-//         });
-//       }
-//     })
-//     .catch(err => {
-//       console.log({ err });
-//       dispatch({
-//         type: ORDERS_PAY.ERROR
-//       });
-//     });
-// };
+const CancelToken = axios.CancelToken;
 
+let cancelpayMent;
 export const handleOrdersPayment = info => dispatch => {
-  dispatch({ type: ORDERS_PAY.PENDING })
+  dispatch({ type: ORDERS_PAY.PENDING });
   axios
-    .post(`${ordersPayAPI}/`, info)
+    .post(`${ordersPayAPI}/`, {
+      ...info,
+      cancelToken: new CancelToken(function executor(c) {
+        cancelpayMent = c;
+      })
+    })
     .then(
       res =>
         dispatch({
@@ -61,28 +45,42 @@ export const handleOrdersPayment = info => dispatch => {
     });
 };
 
+export const handleCancelpayMent = () => {
+  return cancelpayMent();
+}
+
+let cancelStatus;
 export const getOrderStatus = orderPK => dispatch =>
-  axios.get(`${ordersPayAPI}/?order_number=${orderPK}`).then(
-    res => {
-      console.log({status: res.data.results[0].order_status});
-      if (res.data.results[0].order_status === "PAID") {
+  axios
+    .get(`${ordersPayAPI}/?order_number=${orderPK}`, {
+      cancelToken: new CancelToken(function executor(c) {
+        cancelStatus = c;
+      })
+    })
+    .then(
+      res => {
+        console.log({ status: res.data.results[0].order_status });
+        if (res.data.results[0].order_status === 'PAID') {
+          dispatch({
+            type: ORDERS_STATUS.SUCCESS
+          });
+        } else {
+          dispatch({
+            type: ORDERS_STATUS_PENDING
+          });
+        }
+      },
+      err => {
+        console.log({ err });
         dispatch({
-          type: ORDERS_STATUS.SUCCESS
-        });
-      } else {
-        dispatch({
-          type: ORDERS_STATUS_PENDING
+          type: ORDERS_STATUS.ERROR
         });
       }
-    },
-    err => {
-      console.log({err});
-      dispatch({
-        type: ORDERS_STATUS.ERROR
-      });
-    }
-  );
+    );
 
+export const handleCancelStatus = () => {
+  return cancelStatus();
+}
 
 // const status = orderPK => {
 //   return axios.get(`${ordersPayAPI}/${orderPK}`).then(res => {

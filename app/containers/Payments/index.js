@@ -39,7 +39,6 @@ export class Payments extends React.Component {
       deliveryInfomation,
       deliveryInfomationErrors
     } = this.state;
-    console.log({mpesaPushStatus: this.props.mpesaPushStatus})
     return (
       <ReactModal
         isOpen={this.props.paymentModal}

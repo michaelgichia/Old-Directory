@@ -60,7 +60,7 @@ injectGlobal`
   }
   .ant-tabs-nav .ant-tabs-tab:hover,
   .ant-tabs-nav .ant-tabs-tab-active {
-    color: #31383e;
+    color: #31383e !important;
   }
 
   :focus {
@@ -69,6 +69,10 @@ injectGlobal`
 
   .ant-input-group-addon {
     border-radius: 1px;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
   }
 
   @media screen and (max-width: 768px) {
