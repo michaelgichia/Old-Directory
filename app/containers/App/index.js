@@ -25,7 +25,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/events/" component={EventInfomation} />
-        <Route exact path="/payments/:id" component={Event} />
+        <Route exact path="/tickets/:id" component={PaymentSystem} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
