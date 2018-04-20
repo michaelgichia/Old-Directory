@@ -98,5 +98,11 @@ injectGlobal`
   ol, ul, dl {
     margin-bottom: 0;
   }
+  ::selection {
+    background: #b3d4fc !important; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #b3d4fc !important; /* Gecko Browsers */
+  }
 `;
 

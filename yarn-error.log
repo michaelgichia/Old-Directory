@@ -1,5 +1,5 @@
 Arguments: 
-  /home/gichia/.nvm/versions/node/v9.3.0/bin/node /usr/local/bin/yarn run start
+  /home/gichia/.nvm/versions/node/v9.3.0/bin/node /usr/local/bin/yarn
 
 PATH: 
   /home/gichia/.nvm/versions/node/v9.3.0/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/gichia/bin:/home/gichia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/gichia/Android/Sdk/tools:/home/gichia/Android/Sdk/platform-tools
@@ -289,7 +289,6 @@ npm manifest:
       "react-tabs": "^2.2.1",
       "redux": "3.7.2",
       "redux-thunk": "^2.2.0",
-      "reqwest": "^2.0.5",
       "sanitize.css": "4.1.0",
       "styled-components": "2.3.0",
       "warning": "3.0.0",
@@ -368,16 +367,7 @@ Lockfile:
   No lockfile
 
 Trace: 
-  Error: Command failed.
-  Exit code: 1
-  Command: sh
-  Arguments: -c cross-env NODE_ENV=development node server
-  Directory: /home/gichia/Desktop/mookh/v2directory
-  Output:
-  
-      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
-      at ChildProcess.emit (events.js:159:13)
-      at maybeClose (internal/child_process.js:943:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com:443
+      at Object._errnoException (util.js:999:13)
+      at errnoException (dns.js:60:15)
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:97:26)

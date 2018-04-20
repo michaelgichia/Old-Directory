@@ -14,6 +14,7 @@ import {
 
 const initialState = {
   paymentModal: false,
+  // paymentModal: true,
   customer: {
     email: '',
     name: '',

@@ -110,6 +110,7 @@
   cursor: pointer;
   width: 140px;
   text-align: center;
+  transform: all 0.3s ease-in-out;
 }
 
 .py__tab.react-tabs__tab--selected {

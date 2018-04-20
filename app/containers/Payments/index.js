@@ -39,7 +39,7 @@ export class Payments extends React.Component {
       deliveryInfomation,
       deliveryInfomationErrors
     } = this.state;
-
+    console.log({mpesaPushStatus: this.props.mpesaPushStatus})
     return (
       <ReactModal
         isOpen={this.props.paymentModal}
@@ -66,7 +66,7 @@ export class Payments extends React.Component {
             <Tab className="py__tab" tabIndex="1">
               Payment
             </Tab>
-            <Tab className="py__tab" tabIndex="2">
+            <Tab className="py__tab" tabIndex="2" disabled={!this.props.mpesaPushStatus}>
               Confirmation
             </Tab>
           </TabList>
@@ -93,8 +93,10 @@ export class Payments extends React.Component {
           </TabPanel>
           <TabPanel>
             <PaymentConfirmation
-              handleCloseModal={() =>
-                this.props.dispatch({ type: 'PAYMENTS_MODAL_CLOSE' })
+              handleCloseModal={() => {
+                this.props.dispatch({ type: 'PAYMENTS_MODAL_CLOSE' });
+                this.props.dispatch({ type: 'CLEAR_MPESA_PUSH'});
+              }
               }
             />
           </TabPanel>
@@ -104,9 +106,10 @@ export class Payments extends React.Component {
   }
 }
 
-const mapStateToProps = ({ payments }) => ({
+const mapStateToProps = ({ payments, paymentsMethods }) => ({
   paymentModal: payments.paymentModal,
-  tabIndex: payments.tabIndex
+  tabIndex: payments.tabIndex,
+  mpesaPushStatus: paymentsMethods.mpesaPushStatus
 });
 
 const withConnect = connect(mapStateToProps, null);

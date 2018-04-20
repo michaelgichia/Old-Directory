@@ -4,14 +4,19 @@
  *
  */
 
-import { ORDERS_PAY, ORDERS_STATUS, ORDERS_STATUS_PENDING } from './constants';
+import {
+  ORDERS_PAY,
+  ORDERS_STATUS,
+  ORDERS_STATUS_PENDING,
+  CLEAR_MPESA_PUSH
+} from './constants';
 
 const initialState = {
   orderCreated: false,
   mpesaInitiated: false,
   orderPK: null,
   mpesaPushStatus: null,
-  timeout: 15000
+  timeout: 30000
 };
 
 function paymentsMethodsReducer(state = initialState, action) {
@@ -41,7 +46,7 @@ function paymentsMethodsReducer(state = initialState, action) {
       return {
         ...state,
         orderCreated: true,
-        timeout: state.timeout - 2000,
+        timeout: state.timeout - 2000
       };
 
     case ORDERS_STATUS.SUCCESS:
@@ -53,11 +58,17 @@ function paymentsMethodsReducer(state = initialState, action) {
         timeout: state.timeout - 1000
       };
 
+    case CLEAR_MPESA_PUSH:
+      return {
+        ...state,
+        mpesaPushStatus: null
+      };
+
     case ORDERS_STATUS.ERROR:
       return {
         ...state,
-        mpesaPushStatus: false,
-         mpesaInitiated: false,
+        mpesaPushStatus: null,
+        mpesaInitiated: false
       };
 
     default:

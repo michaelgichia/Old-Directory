@@ -26,8 +26,6 @@ class EventSubMenu extends React.PureComponent {
   render() {
     const { eventName, eventVenue } = this.props;
     const { showModal } = this.state;
-    const posterImage =
-      "https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg";
     const posterMessage = "poster";
     const location =
       eventVenue !== null

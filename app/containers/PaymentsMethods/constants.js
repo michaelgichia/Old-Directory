@@ -15,3 +15,4 @@ export const orderStatusAPI = 'https://api.mymookh.com/stores/orders/order_statu
 export const ORDERS_PAY = asyncActionType('ORDERS_PAY');
 export const ORDERS_STATUS = asyncActionType('ORDERS_STATUS');
 export const ORDERS_STATUS_PENDING = "ORDERS_STATUS_PENDING";
+export const CLEAR_MPESA_PUSH = 'CLEAR_MPESA_PUSH';

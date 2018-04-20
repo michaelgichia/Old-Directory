@@ -24,7 +24,6 @@ export const fetchEvents = () => (dispatch) => {
 };
 
 export const fetchMoreEvents = (page) => (dispatch) => {
-  console.log({page})
   dispatch({type: EVENTS_MORE.PENDING});
   axios.get(`${getEventsAPI}?page=${page}`).then((res) => {
     if (res.status === 200) {

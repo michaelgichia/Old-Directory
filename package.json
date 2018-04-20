@@ -273,7 +273,6 @@
     "react-tabs": "^2.2.1",
     "redux": "3.7.2",
     "redux-thunk": "^2.2.0",
-    "reqwest": "^2.0.5",
     "sanitize.css": "4.1.0",
     "styled-components": "2.3.0",
     "warning": "3.0.0",

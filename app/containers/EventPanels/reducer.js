@@ -42,7 +42,6 @@ function eventPanelsReducer(state = initialState, action) {
       };
 
     case EVENTS_MORE.SUCCESS:
-      console.log({ actions: action.events });
       const { pagination } = action.events;
       return {
         ...state,

@@ -27,6 +27,8 @@ import { getInnerText } from 'utils/helperFunctions';
 import { fetchEvent } from './actions';
 import reducer from './reducer';
 import TabsWrap from './TabsWrap';
+import Payments from 'containers/Payments/Loadable';
+
 
 const TabPane = MobileTabs.TabPane;
 
@@ -42,9 +44,7 @@ export class Event extends React.Component {
     };
   }
   componentWillMount() {
-    // const { id } = this.props.match.params;
-    // this.props.fetchEvent(id);
-    if (this.props.events.length < 1) {
+    if (size(this.state.event) < 1) {
       const { id } = this.props.match.params;
       this.props.fetchEvent(id);
     }
@@ -56,6 +56,13 @@ export class Event extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.event !== this.state.event) {
       this.setState({ event: nextProps.event });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (size(this.state.event) < 1) {
+      const { id } = this.props.match.params;
+      this.props.fetchEvent(id);
     }
   }
 
@@ -134,6 +141,7 @@ export class Event extends React.Component {
             <EventSponsors />
           </TabPanel>
         </EventMenuTab>
+        <Payments />
       </Fragment>
     );
   }
