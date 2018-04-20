@@ -19,6 +19,7 @@ import EventInfomation from 'containers/EventInfomation/Loadable';
 import Event from 'containers/Event';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Payments from 'containers/Payments';
+import InfiniteScroll from  'containers/InfiniteScroll';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/events/" component={EventInfomation} />
+        <Route exact path="/infinite/" component={InfiniteScroll} />
         <Route exact path="/tickets/:id" component={Event} />
         <Route component={NotFoundPage} />
       </Switch>
