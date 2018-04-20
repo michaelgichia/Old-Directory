@@ -96,16 +96,16 @@ class HomePage extends PureComponent {
                     size={this.responsiveButtons(this.width)}
                     type="primary"
                   >
-                    Learn More
+                    Learn more
                   </MookhButton>
                   <MookhButton size={this.responsiveButtons(this.width)}>
-                    Seller Sign Up
+                    Seller signup
                   </MookhButton>
                   <MookhButton
                     size={this.responsiveButtons(this.width)}
                     type="dashed"
                   >
-                    Seller Sign In
+                    Seller login
                   </MookhButton>
                 </BtnWrap>
               </MottoWrap>

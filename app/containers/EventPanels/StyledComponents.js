@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   margin-top: 32px;
   width: 100%;
   display: flex;
@@ -9,6 +9,8 @@ const Wrapper = styled.div`
   max-width: 100%;
   flex-direction: column;
   align-items: center;
-`
+`;
 
-export default Wrapper;
+export default {
+  Wrapper
+};
