@@ -19,10 +19,6 @@ import EventSubMenu from 'components/EventSubMenu';
 import EventMenuTab from 'components/EventMenuTab';
 import EventInfomation from 'containers/EventInfomation';
 import EventBuyTicket from 'containers/EventBuyTicket';
-import EventGallery from 'containers/EventGallery';
-import EventSchedules from 'containers/EventSchedules';
-import EventSiteMap from 'containers/EventSiteMap';
-import EventSponsors from 'containers/EventSponsors';
 import { getInnerText } from 'utils/helperFunctions';
 import { fetchEvent } from './actions';
 import reducer from './reducer';
@@ -106,18 +102,6 @@ export class Event extends React.Component {
             <TabPane tab="EVENT INFO" key="2">
               <EventInfomation event={event} />
             </TabPane>
-            <TabPane tab="GALLERY" key="3">
-              <EventGallery />
-            </TabPane>
-            <TabPane tab="SITE MAP" key="4">
-              <EventSiteMap />
-            </TabPane>
-            <TabPane tab="SCHEDULES $ SPEAKERS" key="5">
-              <EventSchedules />
-            </TabPane>
-            <TabPane tab="SPONSORS" key="6">
-              <EventSponsors />
-            </TabPane>
           </MobileTabs>
         </TabsWrap>
 
@@ -127,18 +111,6 @@ export class Event extends React.Component {
           </TabPanel>
           <TabPanel>
             <EventInfomation event={event} />
-          </TabPanel>
-          <TabPanel>
-            <EventGallery />
-          </TabPanel>
-          <TabPanel>
-            <EventSiteMap />
-          </TabPanel>
-          <TabPanel>
-            <EventSchedules />
-          </TabPanel>
-          <TabPanel>
-            <EventSponsors />
           </TabPanel>
         </EventMenuTab>
         <Payments />
@@ -161,3 +133,42 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'event', reducer });
 
 export default compose(withReducer, withConnect)(Event);
+
+        // <EventMenuTab>
+        //   <TabPanel>
+        //     <EventBuyTicket event={event} />
+        //   </TabPanel>
+        //   <TabPanel>
+        //     <EventInfomation event={event} />
+        //   </TabPanel>
+        //   <TabPanel>
+        //     <EventGallery />
+        //   </TabPanel>
+        //   <TabPanel>
+        //     <EventSiteMap />
+        //   </TabPanel>
+        //   <TabPanel>
+        //     <EventSchedules />
+        //   </TabPanel>
+        //   <TabPanel>
+        //     <EventSponsors />
+        //   </TabPanel>
+        // </EventMenuTab>
+
+            // <TabPane tab="GALLERY" key="3">
+            //   <EventGallery />
+            // </TabPane>
+            // <TabPane tab="SITE MAP" key="4">
+            //   <EventSiteMap />
+            // </TabPane>
+            // <TabPane tab="SCHEDULES $ SPEAKERS" key="5">
+            //   <EventSchedules />
+            // </TabPane>
+            // <TabPane tab="SPONSORS" key="6">
+            //   <EventSponsors />
+            // </TabPane>
+
+// import EventGallery from 'containers/EventGallery';
+// import EventSchedules from 'containers/EventSchedules';
+// import EventSiteMap from 'containers/EventSiteMap';
+// import EventSponsors from 'containers/EventSponsors';

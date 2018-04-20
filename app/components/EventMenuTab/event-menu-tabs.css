@@ -6,9 +6,9 @@
 @media screen and (min-width: 990px) {
   .event-menu-tabs__tab-list {
     display: flex;
-    justify-content: space-between;
     height: 40px;
     background-color: #f6f3ee;
+    border-bottom: 1px solid #e6e1e1;
   }
 
   .event-menu-tabs__tab {
@@ -21,8 +21,8 @@
     color: #343434;
     border-top: 1px solid #f6f3ee;
     border-right: 1px solid #e6e1e1;
-    border-bottom: 1px solid #e6e1e1;
-    text-align: center;
+/*    border-bottom: 1px solid #e6e1e1;
+*/    text-align: center;
     position: relative;
     cursor: pointer;
     -webkit-transition: background-color 0.1s ease-in-out;
@@ -31,7 +31,7 @@
   }
 
   .event-menu-tabs__tab:last-of-type {
-    border-right: 1px solid #f6f3ee;
+    border-right: 1px solid #e6e1e1;
   }
 
   .event-menu-tabs__tab.event-menu-tabs__tab--selected,

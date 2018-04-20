@@ -39,19 +39,6 @@ class EventMenuTab extends React.Component {
           <Tab className="event-menu-tabs__tab">
             <i className="fa fa-ticket fa-2x" aria-hidden="true" />EVENT INFO
           </Tab>
-          <Tab className="event-menu-tabs__tab">
-            <i className="fa fa-picture-o fa-2x" aria-hidden="true" />GALLERY
-          </Tab>
-          <Tab className="event-menu-tabs__tab">
-            <i className="fa fa-map fa-2x" aria-hidden="true" />SITE MAP
-          </Tab>
-
-          <Tab className="event-menu-tabs__tab">
-            <i className="fa fa-calendar-minus-o fa-2x" aria-hidden="true" />SCHEDULES $ SPEAKERS
-          </Tab>
-          <Tab className="event-menu-tabs__tab">
-            <i className="fa fa-cubes fa-2x" aria-hidden="true" />SPONSORS
-          </Tab>
         </TabList>
         {this.props.children}
       </Tabs>
@@ -62,3 +49,23 @@ class EventMenuTab extends React.Component {
 EventMenuTab.propTypes = {};
 
 export default EventMenuTab;
+
+          // <Tab className="event-menu-tabs__tab">
+          //   <i className="fa fa-users fa-2x" aria-hidden="true" />BUY TICKETS
+          // </Tab>
+          // <Tab className="event-menu-tabs__tab">
+          //   <i className="fa fa-ticket fa-2x" aria-hidden="true" />EVENT INFO
+          // </Tab>
+          // <Tab className="event-menu-tabs__tab">
+          //   <i className="fa fa-picture-o fa-2x" aria-hidden="true" />GALLERY
+          // </Tab>
+          // <Tab className="event-menu-tabs__tab">
+          //   <i className="fa fa-map fa-2x" aria-hidden="true" />SITE MAP
+          // </Tab>
+
+          // <Tab className="event-menu-tabs__tab">
+          //   <i className="fa fa-calendar-minus-o fa-2x" aria-hidden="true" />SCHEDULES $ SPEAKERS
+          // </Tab>
+          // <Tab className="event-menu-tabs__tab">
+          //   <i className="fa fa-cubes fa-2x" aria-hidden="true" />SPONSORS
+          // </Tab>
