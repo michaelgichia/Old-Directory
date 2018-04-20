@@ -11,15 +11,41 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Button } from 'antd';
+import { push } from 'react-router-redux';
+import { connect } from 'react-redux';
+
 
 import messages from './messages';
 
-export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+// Css
+import './not-found-page.css';
+
+export class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <h1>
+    <div className="exception">
+      <div className="imgBlock">
+        <div
+          className="imgEle"
+        />
+      </div>
+      <div className="content">
+        <h1>404</h1>
         <FormattedMessage {...messages.header} />
-      </h1>
+        <div className="actions">
+        <br/>
+        <Button size="large" onClick={() => this.props.dispatchRoute("/#")} type="primary">Return to Home</Button>
+        </div>
+      </div>
+    </div>
     );
   }
 }
+
+
+const mapDispatchToProps = dispatch => ({
+  dispatchRoute: route => dispatch(push(route))
+});
+
+export default connect(null, mapDispatchToProps)(NotFound);

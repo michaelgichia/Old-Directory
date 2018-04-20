@@ -16,7 +16,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage';
 import EventInfomation from 'containers/EventInfomation/Loadable';
-import Event from 'containers/Event/Loadable';
+import PaymentSystem from 'containers/PaymentSystem';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/events/" component={EventInfomation} />
-        <Route exact path="/tickets/:id" component={Event} />
+        <Route exact path="/payments/:id" component={Event} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

@@ -11,6 +11,7 @@ import paymentsReducer from 'containers/Payments/reducer';
 import paymentsMethodsReducer from 'containers/PaymentsMethods/reducer';
 import eventReducer from 'containers/Event/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import paymentSystemReducer from 'containers/PaymentSystem/reducer';
 
 export function location(state = null, action) {
   switch (action.type) {
@@ -34,6 +35,7 @@ export default function createReducer(injectedReducers) {
     buyTicket: buyTicketReducer,
     eventInfomation: eventInfomationReducer,
     payments: paymentsReducer,
+    paymentSystem: paymentSystemReducer,
     paymentsMethods: paymentsMethodsReducer,
     language: languageProviderReducer,
     ...injectedReducers
