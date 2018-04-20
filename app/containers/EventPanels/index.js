@@ -11,31 +11,28 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
+import InfiniteScroll from 'react-infinite-scroller';
+import { message, Spin } from 'antd';
 import LoadingSpinner from 'components/LoadingSpinner';
 import injectReducer from 'utils/injectReducer';
-// Actions
+import { eventPosterBaseUrl } from './constants';
 import { fetchEvents, fetchMoreEvents } from './actions';
 import reducer from './reducer';
-import { eventPosterBaseUrl } from './constants';
 import { randomColor } from 'utils/color-generator';
 import chunk from 'lodash/chunk';
 import getWindowSize from 'utils/getWindowSize';
-import MookhRow from './MookhRow';
-import MookhCol from './MookhCol';
 import Panel from './Panel';
-import EventPanelsWrap from './EventPanelsWrap';
-// import Wrapper from './Wrapper';
-import NoEventsDiv from './NoEventsDiv';
-import { Wrapper } from './StyledComponents';
+import {
+  Wrapper,
+  MookhRow,
+  MookhCol,
+  EventPanelsWrap,
+  NoEventsDiv
+} from './StyledComponents';
 import noevents from './images/no-events.png';
-// Infinite scroll
-import InfiniteScroll from 'react-infinite-scroller';
-import { message, Spin } from 'antd';
 
-// Get device width
+
 const deviceWidth = getWindowSize();
-// Calculate number of column per row
-// according to device width.
 function getItemsPerRow(width) {
   if (width >= 992) return 3;
   else if (width >= 576 && width < 992) return 2;
@@ -44,7 +41,7 @@ function getItemsPerRow(width) {
 
 message.config({
   top: 100,
-  duration: 5,
+  duration: 5
 });
 
 class EventPanels extends Component {

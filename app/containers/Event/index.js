@@ -42,6 +42,8 @@ export class Event extends React.Component {
     };
   }
   componentWillMount() {
+    // const { id } = this.props.match.params;
+    // this.props.fetchEvent(id);
     if (this.props.events.length < 1) {
       const { id } = this.props.match.params;
       this.props.fetchEvent(id);
