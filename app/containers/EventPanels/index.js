@@ -31,7 +31,6 @@ import {
 } from './StyledComponents';
 import noevents from './images/no-events.png';
 
-
 const deviceWidth = getWindowSize();
 function getItemsPerRow(width) {
   if (width >= 992) return 3;
@@ -106,43 +105,40 @@ class EventPanels extends Component {
             useWindow
           >
             <Wrapper>
-              {this.props.events.map((v, i) => (
-                <MookhRow key={`${i}${Math.random()}`}>
-                  {v.map((event, index) => (
-                    <MookhCol
+              <MookhRow>
+                {this.props.events.map((event, index) => (
+                  <MookhCol
+                    key={event.id}
+                    xs={24}
+                    sm={12}
+                    md={12}
+                    lg={8}
+                    xl={8}
+                  >
+                    <Panel
+                      onError={this.handleError}
+                      event={event}
                       key={event.id}
-                      xs={24}
-                      sm={12}
-                      md={12}
-                      lg={8}
-                      xl={8}
-                    >
-                      <Panel
-                        onError={this.handleError}
-                        event={event}
-                        key={event.id}
-                      />
-                    </MookhCol>
-                  ))}
-                </MookhRow>
-              ))}
+                    />
+                  </MookhCol>
+                ))}
+              </MookhRow>
             </Wrapper>
           </InfiniteScroll>
         </EventPanelsWrap>
-        {isInfiniteLoading && (
-          <div
-            style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-          >
-            <Spin size="large" />
-          </div>
-        )}
+        <div
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+        >
+          {isInfiniteLoading && <Spin size="large" />}
+        </div>
       </Wrapper>
     );
   }
 }
 
 const mapStateToProps = ({ eventPanels }) => ({
-  events: chunk(eventPanels.events, getItemsPerRow(deviceWidth)),
+  // events: chunk(eventPanels.events, getItemsPerRow(deviceWidth)),
+  events: eventPanels.events,
   appState: eventPanels.appState,
   pagination: eventPanels.pagination,
   isInfiniteLoading: eventPanels.isInfiniteLoading
@@ -158,3 +154,36 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'eventPanels', reducer });
 
 export default compose(withReducer, withConnect)(EventPanels);
+
+// <EventPanelsWrap>
+//   <InfiniteScroll
+//     initialLoad={false}
+//     pageStart={0}
+//     loadMore={this.handleInfiniteLoad}
+//     hasMore={hasMore}
+//     useWindow
+//   >
+//     <Wrapper>
+//       {this.props.events.map((v, i) => (
+//         <MookhRow key={`${i}${Math.random()}`}>
+//           {v.map((event, index) => (
+//             <MookhCol
+//               key={event.id}
+//               xs={24}
+//               sm={12}
+//               md={12}
+//               lg={8}
+//               xl={8}
+//             >
+//               <Panel
+//                 onError={this.handleError}
+//                 event={event}
+//                 key={event.id}
+//               />
+//             </MookhCol>
+//           ))}
+//         </MookhRow>
+//       ))}
+//     </Wrapper>
+//   </InfiniteScroll>
+// </EventPanelsWrap>
