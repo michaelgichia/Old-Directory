@@ -103,10 +103,10 @@ export class PaymentModal extends React.Component {
   }
 }
 
-const mapStateToProps = ({ paymentSystem, paymentsMethods }) => ({
+const mapStateToProps = ({ paymentSystem }) => ({
   paymentModal: paymentSystem.paymentModal,
   tabIndex: paymentSystem.tabIndex,
-  mpesaPushStatus: paymentsMethods.mpesaPushStatus
+  mpesaPushStatus: paymentSystem.mpesaPushStatus
 });
 
 export default connect(mapStateToProps, null)(PaymentModal);

@@ -7,7 +7,7 @@
 */
 
 import React from 'react';
-import '../css/event_poster_modal.css';
+import './css/event_poster_modal.css';
 
 class EventPoster extends React.PureComponent {
   render() {

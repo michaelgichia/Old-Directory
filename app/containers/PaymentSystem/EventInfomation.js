@@ -7,17 +7,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { compose } from 'redux';
-import EventTopPageDisplay from 'components/EventTopPageDisplay';
 import EventSubMenu from 'components/EventSubMenu';
-import EventPoster from './EventPoster';
 import Img from "components/Img";
-import reducer from './reducer';
-import './styles.css';
 
-// const event.event_poster =
-//   'https://mymookh.com/tickets/uploads/posters/big-image-1cf2bde29cc323599a0375d73c85e7d7.jpg';
+import EventPoster from './EventPoster';
+import reducer from './reducer';
+import './css/event-info.css';
+
 
 export class EventInfomation extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -58,5 +54,4 @@ EventInfomation.propTypes = {
   dispatch: PropTypes.func
 };
 
-const withConnect = connect(null, mapDispatchToProps);
-export default compose(withReducer, withConnect)(EventInfomation);
+export default EventInfomation;

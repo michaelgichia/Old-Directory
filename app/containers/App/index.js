@@ -15,7 +15,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage';
-import EventInfomation from 'containers/EventInfomation/Loadable';
+// import EventInfomation from 'containers/EventInfomation/Loadable';
 import PaymentSystem from 'containers/PaymentSystem';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
@@ -24,10 +24,10 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/events/" component={EventInfomation} />
         <Route exact path="/tickets/:id" component={PaymentSystem} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
 }
+        // <Route exact path="/events/" component={EventInfomation} />

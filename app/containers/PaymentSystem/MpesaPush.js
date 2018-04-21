@@ -135,9 +135,9 @@ MpesaPush.proptypes = {
   goToPayBill: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ payments, paymentsMethods }) => ({
-  customer: payments.customer,
-  mpesaPushStatus: paymentsMethods.mpesaPushStatus
+const mapStateToProps = ({ paymentSystem }) => ({
+  customer: paymentSystem.customer,
+  mpesaPushStatus: paymentSystem.mpesaPushStatus
 });
 
 export default connect(mapStateToProps, null)(MpesaPush);

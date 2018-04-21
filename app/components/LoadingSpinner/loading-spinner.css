@@ -34,7 +34,7 @@ div.loader {
 .loader:before,
 .loader:after {
   -webkit-animation: load1 1s infinite ease-in-out;
-  animation: load1 1s infinite ease-in-out;
+  animation: load1 .85s infinite ease-in-out;
   width: 10px;
   height: 64px;
 }

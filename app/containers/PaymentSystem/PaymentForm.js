@@ -7,7 +7,7 @@ import EventBtn from './EventBtn';
 import { PaymentButtonRipples } from 'components/Buttons';
 import { countryList } from 'utils/countryList';
 
-import './buy-tickets.css';
+// import './buy-tickets.css';
 
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -194,9 +194,9 @@ class Payment extends React.PureComponent {
   }
 }
 
-const mapStateToProps = ({ payments }) => ({
-  customer: payments.customer,
-  totalTicketsPrice: payments.totalTicketsPrice
+const mapStateToProps = ({ paymentSystem }) => ({
+  customer: paymentSystem.customer,
+  totalTicketsPrice: paymentSystem.totalTicketsPrice
 });
 
 const withConnect = connect(mapStateToProps);

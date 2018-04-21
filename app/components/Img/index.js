@@ -8,7 +8,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import noImage from './no_img.svg';
+import noImage from 'images/no_image.svg';
 
 function NormalImg({ src, className, alt }) {
   return (

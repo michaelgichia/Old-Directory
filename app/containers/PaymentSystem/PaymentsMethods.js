@@ -158,7 +158,7 @@ export class PaymentsMethods extends Component {
   }
 }
 
-const mapStateToProps = ({ buyTicket, paymentSystem }) => ({
+const mapStateToProps = ({ paymentSystem }) => ({
   deliveryInfomation: paymentSystem.deliveryInfomation,
   deliveryInfomation: paymentSystem.deliveryInfomation,
   customer: paymentSystem.customer,

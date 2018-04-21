@@ -5,11 +5,11 @@
 import { combineReducers } from 'redux';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import eventPanelsReducer from 'containers/EventPanels/reducer';
-import buyTicketReducer from 'containers/EventBuyTicket/reducer';
-import eventInfomationReducer from 'containers/EventInfomation/reducer';
-import paymentsReducer from 'containers/Payments/reducer';
-import paymentsMethodsReducer from 'containers/PaymentsMethods/reducer';
-import eventReducer from 'containers/Event/reducer';
+// import buyTicketReducer from 'containers/EventBuyTicket/reducer';
+// import eventInfomationReducer from 'containers/EventInfomation/reducer';
+// import paymentsReducer from 'containers/Payments/reducer';
+// import paymentsMethodsReducer from 'containers/PaymentsMethods/reducer';
+// import eventReducer from 'containers/Event/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import paymentSystemReducer from 'containers/PaymentSystem/reducer';
 
@@ -30,13 +30,9 @@ const routeReducer = combineReducers({ location });
 export default function createReducer(injectedReducers) {
   return combineReducers({
     route: routeReducer,
-    event: eventReducer,
     eventPanels: eventPanelsReducer,
-    buyTicket: buyTicketReducer,
-    eventInfomation: eventInfomationReducer,
-    payments: paymentsReducer,
+    // buyTicket: buyTicketReducer,
     paymentSystem: paymentSystemReducer,
-    paymentsMethods: paymentsMethodsReducer,
     language: languageProviderReducer,
     ...injectedReducers
   });

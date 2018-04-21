@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import "./css/top-page-display.css";
 import mookhLogo from 'images/logo-dark.png';
 
 export class TopPageDisplay extends React.PureComponent {

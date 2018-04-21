@@ -1,6 +1,6 @@
 /*
  *
- * EventBuyTicket
+ * BuyTicket
  *
  */
 
@@ -12,14 +12,12 @@ import classNames from 'classnames';
 
 import { openModal, closeModal } from './actions';
 import PaymentForm from './PaymentForm';
-import injectReducer from 'utils/injectReducer';
-import './buy-tickets.css';
-import reducer from './reducer';
-import { TOTAL_TICKETS_PRICE } from "containers/Payments/constants";
-import noImage from "./no_img.svg";
+import { TOTAL_TICKETS_PRICE } from "./constants";
+import noImage from "images/no_image.svg";
+import './css/buy-tickets.css';
 
 
-export class EventBuyTicket extends React.PureComponent {
+export class BuyTicket extends React.PureComponent {
   state = {
     ticketCategory: {},
     unmountKey: "ticketCategory",
@@ -184,7 +182,7 @@ export class EventBuyTicket extends React.PureComponent {
               </h5>
             )}
             <div className="ebt-information">
-              <h4>SEND TICKETS TO:</h4>
+              <h6 style={{fontWeight: "bold", marginBottom: 8}}>SEND TICKETS TO:</h6>
               <PaymentForm
                 createError={this.createError}
                 ticketCategory={ticketCategory}
@@ -200,10 +198,10 @@ export class EventBuyTicket extends React.PureComponent {
   }
 }
 
-const mapStateToProps = ({ payments, event }) => ({
-  customer: payments.customer,
-  totalTicketsPrice: payments.totalTicketsPrice,
-  eventError: event.eventError
+const mapStateToProps = ({ paymentSystem }) => ({
+  customer: paymentSystem.customer,
+  totalTicketsPrice: paymentSystem.totalTicketsPrice,
+  eventError: paymentSystem.eventError
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -213,8 +211,5 @@ const mapDispatchToProps = dispatch => ({
   closeModal: () => dispatch(closeModal())
 });
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'eventBuyTicket', reducer });
-
-export default compose(withReducer, withConnect)(EventBuyTicket);
+export default connect(mapStateToProps, mapDispatchToProps)(BuyTicket);

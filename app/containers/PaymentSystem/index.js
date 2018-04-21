@@ -21,8 +21,8 @@ import { TabsWrap } from './StyledComponents';
 import PaymentModal from './PaymentModal';
 import EventSubMenu from 'components/EventSubMenu';
 import EventMenuTab from 'components/EventMenuTab';
-import EventInfomation from 'containers/EventInfomation';
-import EventBuyTicket from 'containers/EventBuyTicket';
+import EventInfomation from './EventInfomation';
+import BuyTicket from './BuyTicket';
 // Funcs
 import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
@@ -100,7 +100,7 @@ export class PaymentSystem extends React.Component {
             style={{ minHeight: '50vh' }}
           >
             <TabPane tab="BUY TICKETS" key="1">
-              <EventBuyTicket event={event} />
+              <BuyTicket event={event} />
             </TabPane>
             <TabPane tab="EVENT INFO" key="2">
               <EventInfomation event={event} />
@@ -110,7 +110,7 @@ export class PaymentSystem extends React.Component {
 
         <EventMenuTab>
           <TabPanel>
-            <EventBuyTicket event={event} />
+            <BuyTicket event={event} />
           </TabPanel>
           <TabPanel>
             <EventInfomation event={event} />
@@ -124,8 +124,8 @@ export class PaymentSystem extends React.Component {
 
 PaymentSystem.propTypes = {};
 
-const mapStateToProps = ({ event, eventPanels }) => ({
-  event: event.event,
+const mapStateToProps = ({ paymentSystem, eventPanels }) => ({
+  event: paymentSystem.event,
   events: eventPanels.events
 });
 
