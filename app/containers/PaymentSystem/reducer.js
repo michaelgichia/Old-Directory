@@ -13,18 +13,18 @@ import {
   EVENT,
   ORDERS_PAY,
   ORDERS_STATUS,
-  ORDERS_STATUS_PENDING,
   CLEAR_MPESA_PUSH,
-  CARD_MPESA_TABS
+  CARD_MPESA_TABS,
+  orderStatus
 } from './constants';
 
+console.log({initialState: orderStatus.start})
+
 const initialState = {
-  orderCreated: false,
-  mpesaInitiated: false,
   orderPK: null,
-  mpesaPushStatus: null,
-  timeout: 30000,
+  timeout: 10000,
   paymentModal: false,
+  orderStatus: orderStatus.start,
   // paymentModal: true,
   event: {},
   eventError: '',
@@ -110,59 +110,47 @@ function paymentSystemReducer(state = initialState, action) {
     case ORDERS_PAY.PENDING:
       return {
         ...state,
-        mpesaInitiated: true
+        orderStatus: orderStatus.inProgress
       };
 
     case ORDERS_PAY.SUCCESS:
       return {
         ...state,
-        orderCreated: true,
+        orderStatus: orderStatus.created,
         orderPK: action.orderPK
       };
 
     case ORDERS_PAY.ERROR:
       return {
         ...state,
-        orderCreated: false,
-        mpesaPushStatus: false,
-        mpesaInitiated: false
+        orderStatus: orderStatus.notCreated
       };
 
-    case ORDERS_STATUS_PENDING:
+    case ORDERS_STATUS.PENDING:
       return {
         ...state,
-        orderCreated: true,
+        orderStatus: orderStatus.pending,
         timeout: state.timeout - 2000
       };
 
     case ORDERS_STATUS.SUCCESS:
       return {
         ...state,
-        mpesaPushStatus: true,
-        orderCreated: false,
-        mpesaInitiated: false,
+        orderStatus: orderStatus.paid,
         timeout: state.timeout - 1000
-      };
-
-    case CLEAR_MPESA_PUSH:
-      return {
-        ...state,
-        mpesaPushStatus: null
       };
 
     case ORDERS_STATUS.ERROR:
       return {
         ...state,
-        mpesaPushStatus: null,
-        mpesaInitiated: false
+        orderStatus: orderStatus.failure
       };
 
     case CARD_MPESA_TABS.SET:
-
       return {
         ...state,
         cardOrMpesaTabIndex: action.cardOrMpesaTabIndex
-      }
+      };
 
     default:
       return state;

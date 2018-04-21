@@ -24,10 +24,20 @@ export const orderStatusAPI = 'https://api.mymookh.com/stores/orders/order_statu
 // Action Types
 export const ORDERS_PAY = asyncActionType('ORDERS_PAY');
 export const ORDERS_STATUS = asyncActionType('ORDERS_STATUS');
-export const ORDERS_STATUS_PENDING = "ORDERS_STATUS_PENDING";
 export const CLEAR_MPESA_PUSH = 'CLEAR_MPESA_PUSH';
 // Card or Mpesa tabs
 export const CARD_MPESA_TABS = asyncActionType("CARD_MPESA_TABS");
 // Modal parent tabs
 export const PAYMENT_METHODS_TAB = asyncActionType("PAYMENT_METHODS_TAB");
+// Order status
+export const orderStatus = {
+  start: 'start',
+  inProgress: 'inProgress',
+  notCreated: 'notCreated',
+  created: 'created',
+  pending: 'pending',
+  paid: 'paid',
+  failure: 'failure',
+  finished: 'finished'
+};
 

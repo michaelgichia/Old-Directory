@@ -25,9 +25,7 @@ class Payment extends React.PureComponent {
   };
 
   handleSubmit = tabIndex => {
-    console.log({tabIndex})
     this.props.setCardOrMpesaTabIndex(tabIndex);
-
     if (this.props.totalTicketsPrice < 1) {
       this.props.createError(true);
       return;

@@ -5,14 +5,18 @@
  */
 
 import React, { PureComponent } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classNames from "classnames";
 import MpesaPushImage from "images/MpesaPushImage.png";
 import TabsBottomWrap from "components/TabsBottomWrap";
 import TabsBodyWrap from "components/TabsBodyWrap";
-import { PaymentButtonSecondary, PaymentButtonRipples } from "components/Buttons";
+import {
+  PaymentButtonSecondary,
+  PaymentButtonRipples
+} from "components/Buttons";
 import { InputConstants } from "utils/constants";
+import { orderStatus } from "./constants";
 
 import "./css/mpesa-push.css";
 
@@ -48,11 +52,51 @@ export class MpesaPush extends PureComponent {
     }
   };
 
+  paymentButtonRipplesState = state => {
+    let initialState = {
+      name: "PAY NOW",
+      state: false
+    };
+    let newState;
+    switch (state) {
+      case orderStatus.inProgress:
+        newState = {
+          name: "IN PROGESS..",
+          state: true
+        };
+        break;
+      case orderStatus.pending:
+      case orderStatus.created:
+        newState = {
+          name: "ORDER PLACED..",
+          state: true
+        };
+        break;
+      case orderStatus.paid:
+      case orderStatus.failure:
+      case orderStatus.notCreated:
+        newState = initialState;
+        break;
+      default:
+        newState = initialState;
+        break;
+    }
+
+    return newState;
+  };
+
   render() {
     const error = "";
     const inputClassnames = classNames({ "ebt-input-error": error });
-    const { customer: { phone_number } } = this.props;
-    const { customerErrors: { phone_numberError } } = this.state;
+    const {
+      customer: { phone_number }
+    } = this.props;
+    const {
+      customerErrors: { phone_numberError }
+    } = this.state;
+    console.log({
+      orderStatus: this.paymentButtonRipplesState(this.props.orderStatus).name
+    });
     return (
       <div>
         <TabsBodyWrap>
@@ -66,7 +110,8 @@ export class MpesaPush extends PureComponent {
                     this.props.dispatch({
                       type: "CHANGE_CUSTOMER_NO_SUCCESS",
                       phone_number: e.target.value
-                    })}
+                    })
+                  }
                   id="phone_number"
                   value={phone_number}
                   type="tel"
@@ -89,7 +134,7 @@ export class MpesaPush extends PureComponent {
                 on your screen.
               </p>
 
-              {this.props.mpesaInitiated ? (
+              {this.paymentButtonRipplesState(this.props.orderStatus).state ? (
                 <section className="mpesa-push-loader-wrap">
                   <div className="mpesa-spinner" />
                 </section>
@@ -99,13 +144,15 @@ export class MpesaPush extends PureComponent {
 
               <div className="primary-pay-mpesa">
                 <PaymentButtonRipples
-                  disabled={this.props.mpesaInitiated}
+                  disabled={this.paymentButtonRipplesState(this.props.orderStatus).state}
                   id="pay"
-                  onClick={this.props.handlePayment}>
-                  PAY NOW
+                  onClick={this.props.handleMobilePayment}
+                >
+                  {this.paymentButtonRipplesState(this.props.orderStatus).name}
                 </PaymentButtonRipples>
               </div>
-              {this.props.mpesaInitiated !== null ? (
+              {this.props.orderStatus === orderStatus.notCreated ||
+              this.props.orderStatus === orderStatus.failure ? (
                 <p className="go-to-paybill-p2">
                   Did not see prompt on your phone? To pay manually via Paybill,{" "}
                   <a onClick={this.props.goToPayBill}>click here</a>
@@ -122,7 +169,9 @@ export class MpesaPush extends PureComponent {
         <TabsBottomWrap>
           <PaymentButtonSecondary
             id="store"
-            onClick={this.props.handleReturnToStore}>RETURN TO STORE
+            onClick={this.props.handleReturnToStore}
+          >
+            RETURN TO STORE
           </PaymentButtonSecondary>
         </TabsBottomWrap>
       </div>
@@ -131,13 +180,13 @@ export class MpesaPush extends PureComponent {
 }
 
 MpesaPush.proptypes = {
-  mpesaInitiated: PropTypes.bool.isRequired,
-  goToPayBill: PropTypes.func.isRequired,
+  orderStatus: PropTypes.bool.isRequired,
+  goToPayBill: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ paymentSystem }) => ({
   customer: paymentSystem.customer,
-  mpesaPushStatus: paymentSystem.mpesaPushStatus
+  orderStatus: paymentSystem.orderStatus
 });
 
 export default connect(mapStateToProps, null)(MpesaPush);

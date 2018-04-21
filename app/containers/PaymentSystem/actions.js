@@ -36,10 +36,12 @@ export const handleOrdersPayment = info => dispatch => {
           type: ORDERS_PAY.SUCCESS,
           orderPK: res.data.order_number
         }),
-      err =>
+      err => {
+        console.log({err});
         dispatch({
           type: ORDERS_PAY.ERROR
         })
+      }
     )
     .catch(err => {
       console.log({ err });
@@ -70,7 +72,7 @@ export const getOrderStatus = orderPK => dispatch =>
           });
         } else {
           dispatch({
-            type: ORDERS_STATUS_PENDING
+            type: ORDERS_STATUS.PENDING
           });
         }
       },

@@ -16,7 +16,7 @@ import {
   closeModal,
   setTicketModalTabIndex
 } from './actions';
-import { PAYMENTS_MODAL } from './constants';
+import { PAYMENTS_MODAL, orderStatus } from './constants';
 import './css/payments.css';
 
 export class PaymentModal extends React.Component {
@@ -38,11 +38,9 @@ export class PaymentModal extends React.Component {
     const {
       cardInfo,
       customer,
-      ticketModalTabIndex,
       customerErrors,
-      deliveryInfomation,
-      deliveryInfomationErrors
     } = this.state;
+    const { ticketModalTabIndex } = this.props;
     return (
       <ReactModal
         isOpen={this.props.paymentModal}
@@ -58,17 +56,17 @@ export class PaymentModal extends React.Component {
         <Tabs
           className="py__tabs"
           defaultFocus
-          selectedIndex={this.props.ticketModalTabIndex}
+          selectedIndex={ticketModalTabIndex}
           onSelect={(ticketModalTabIndex) => () => this.props.setTicketModalTabIndex(ticketModalTabIndex)}
         >
           <TabList className="py__tab-list">
-            <Tab className="py__tab" ticketModalTabIndex="1">
+            <Tab className="py__tab" tabIndex="0">
               Payment
             </Tab>
             <Tab
               className="py__tab"
-              ticketModalTabIndex="2"
-              disabled={!this.props.mpesaPushStatus}
+              tabIndex="1"
+              disabled={this.props.orderStatus !== orderStatus.paid}
             >
               Confirmation
             </Tab>
@@ -99,7 +97,7 @@ export class PaymentModal extends React.Component {
 const mapStateToProps = ({ paymentSystem }) => ({
   paymentModal: paymentSystem.paymentModal,
   ticketModalTabIndex: paymentSystem.ticketModalTabIndex,
-  mpesaPushStatus: paymentSystem.mpesaPushStatus,
+  orderStatus: paymentSystem.orderStatus,
   cardOrMpesaTabIndex: paymentSystem.cardOrMpesaTabIndex
 });
 
