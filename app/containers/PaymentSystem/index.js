@@ -87,7 +87,9 @@ export class PaymentSystem extends React.Component {
               content: `${getInnerText(event.event_description)}`
             }
           ]}
-        />
+        >
+        <script id="hpfScript" src="https://ap-gateway.mastercard.com/form/v3/hpf.js" async></script>
+      </Helmet>
         <TopPageDisplay />
         <EventSubMenu
           eventName={event.event_name}

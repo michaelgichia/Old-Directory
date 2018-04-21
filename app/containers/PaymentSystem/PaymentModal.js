@@ -6,11 +6,17 @@
 
 import React, { PropTypes } from 'react';
 import ReactModal from 'react-modal';
-import { compose } from "redux";
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentsMethods from './PaymentsMethods';
 import ConfirmationPageTab from './ConfirmationPageTab';
+import {
+  setCardOrMpesaTabIndex,
+  closeModal,
+  setTicketModalTabIndex
+} from './actions';
+import { PAYMENTS_MODAL } from './constants';
 import './css/payments.css';
 
 export class PaymentModal extends React.Component {
@@ -32,7 +38,7 @@ export class PaymentModal extends React.Component {
     const {
       cardInfo,
       customer,
-      tabIndex,
+      ticketModalTabIndex,
       customerErrors,
       deliveryInfomation,
       deliveryInfomationErrors
@@ -41,9 +47,7 @@ export class PaymentModal extends React.Component {
       <ReactModal
         isOpen={this.props.paymentModal}
         contentLabel="onRequestClose"
-        onRequestClose={() =>
-          this.props.dispatch({ type: 'PAYMENTS_MODAL_CLOSE' })
-        }
+        onRequestClose={() => this.props.closeModal()}
         className="py-modal"
         overlayClassName="py-overlay"
         aria={{
@@ -54,47 +58,36 @@ export class PaymentModal extends React.Component {
         <Tabs
           className="py__tabs"
           defaultFocus
-          selectedIndex={this.props.tabIndex}
-          onSelect={(tabIndex, lastIndex, e) =>
-            this.props.dispatch({ type: 'PAYMENT_METHODS_TAB', tabIndex })
-          }
+          selectedIndex={this.props.ticketModalTabIndex}
+          onSelect={(ticketModalTabIndex) => () => this.props.setTicketModalTabIndex(ticketModalTabIndex)}
         >
           <TabList className="py__tab-list">
-            <Tab className="py__tab" tabIndex="1">
+            <Tab className="py__tab" ticketModalTabIndex="1">
               Payment
             </Tab>
-            <Tab className="py__tab" tabIndex="2" disabled={!this.props.mpesaPushStatus}>
+            <Tab
+              className="py__tab"
+              ticketModalTabIndex="2"
+              disabled={!this.props.mpesaPushStatus}
+            >
               Confirmation
             </Tab>
           </TabList>
           <TabPanel>
             <PaymentsMethods
               cardInfo={cardInfo}
-              goTabOne={() =>
-                this.props.dispatch({
-                  type: 'PAYMENT_METHODS_TAB',
-                  tabIndex: 0
-                })
-              }
-              goTabThree={() =>
-                this.props.dispatch({
-                  type: 'PAYMENT_METHODS_TAB',
-                  tabIndex: 1
-                })
-              }
+              goTabOne={() => this.props.setTicketModalTabIndex(0)}
+              goTabTwo={() => this.props.setTicketModalTabIndex(1)}
               handleCardInfo={this.handleCardInfo}
-              handleReturnToStore={() =>
-                this.props.dispatch({ type: 'PAYMENTS_MODAL_ERROR' })
-              }
+              handleReturnToStore={() => this.props.closeModal()}
             />
           </TabPanel>
           <TabPanel>
             <ConfirmationPageTab
               handleCloseModal={() => {
-                this.props.dispatch({ type: 'PAYMENTS_MODAL_CLOSE' });
-                this.props.dispatch({ type: 'CLEAR_MPESA_PUSH'});
-              }
-              }
+                this.props.closeModal();
+                this.props.dispatch({ type: 'CLEAR_MPESA_PUSH' });
+              }}
             />
           </TabPanel>
         </Tabs>
@@ -105,8 +98,17 @@ export class PaymentModal extends React.Component {
 
 const mapStateToProps = ({ paymentSystem }) => ({
   paymentModal: paymentSystem.paymentModal,
-  tabIndex: paymentSystem.tabIndex,
-  mpesaPushStatus: paymentSystem.mpesaPushStatus
+  ticketModalTabIndex: paymentSystem.ticketModalTabIndex,
+  mpesaPushStatus: paymentSystem.mpesaPushStatus,
+  cardOrMpesaTabIndex: paymentSystem.cardOrMpesaTabIndex
 });
 
-export default connect(mapStateToProps, null)(PaymentModal);
+const mapDispatchToProps = dispatch => ({
+  setCardOrMpesaTabIndex: cardOrMpesaTabIndex =>
+    dispatch(setCardOrMpesaTabIndex(cardOrMpesaTabIndex)),
+  setTicketModalTabIndex: ticketModalTabIndex =>
+    dispatch(setTicketModalTabIndex(cardOrMpesaTabIndex)),
+  closeModal: () => dispatch(closeModal())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentModal);

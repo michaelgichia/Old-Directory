@@ -14,7 +14,7 @@ import {
   PaymentButtonSecondary,
   PaymentButtonRipples
 } from 'components/Buttons';
-
+import { setTicketModalTabIndex } from "./actions";
 import './css/mpesa-paybill.css';
 
 export class MpesaPayBill extends PureComponent {
@@ -56,12 +56,7 @@ export class MpesaPayBill extends PureComponent {
           <div>
             <PaymentButtonRipples
               id="nextOne"
-              onClick={() =>
-                this.props.dispatch({
-                  type: 'PAYMENT_METHODS_TAB',
-                  tabIndex: 1
-                })
-              }
+              onClick={() => this.props.setTicketModalTabIndex(1)}
             >
               CONTINUE
             </PaymentButtonRipples>
@@ -74,7 +69,12 @@ export class MpesaPayBill extends PureComponent {
 
 MpesaPayBill.proptypes = {
   goMpesaPush: PropTypes.func.isRequired,
-  goTabThree: PropTypes.func.isRequired
+  goTabTwo: PropTypes.func.isRequired
 };
 
-export default connect()(MpesaPayBill);
+const mapDispatchToProps = dispatch => ({
+  setTicketModalTabIndex: ticketModalTabIndex =>
+    dispatch(setTicketModalTabIndex(cardOrMpesaTabIndex))
+  });
+
+export default connect(null, mapDispatchToProps)(MpesaPayBill);

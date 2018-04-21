@@ -3,11 +3,14 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Row, Col, Select } from 'antd';
 import MookhFormItem from './MookhFormItem';
-import EventBtn from './EventBtn';
+import { EventBtn } from './StyledComponents';
 import { PaymentButtonRipples } from 'components/Buttons';
 import { countryList } from 'utils/countryList';
 
-// import './buy-tickets.css';
+import {
+  setCardOrMpesaTabIndex,
+} from './actions';
+
 
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -21,8 +24,10 @@ class Payment extends React.PureComponent {
     dialCode: '254'
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = tabIndex => {
+    console.log({tabIndex})
+    this.props.setCardOrMpesaTabIndex(tabIndex);
+
     if (this.props.totalTicketsPrice < 1) {
       this.props.createError(true);
       return;
@@ -74,7 +79,7 @@ class Payment extends React.PureComponent {
     );
 
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
+      <Form onSubmit={evt => evt.preventDefault()} className="login-form">
         <Row gutter={{ xs: 8, sm: 16, md: 16, lg: 16 }}>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <MookhFormItem>
@@ -176,12 +181,12 @@ class Payment extends React.PureComponent {
                 justify="space-between"
               >
                 <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                  <EventBtn type="primary" htmlType="submit">
+                  <EventBtn type="primary" onClick={() => this.handleSubmit(0)}>
                     MOBILE PAYMENT
                   </EventBtn>
                 </Col>
                 <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                  <EventBtn type="primary" htmlType="submit">
+                  <EventBtn type="primary" onClick={() => this.handleSubmit(1)}>
                     CARD PAYMENT
                   </EventBtn>
                 </Col>
@@ -199,7 +204,12 @@ const mapStateToProps = ({ paymentSystem }) => ({
   totalTicketsPrice: paymentSystem.totalTicketsPrice
 });
 
-const withConnect = connect(mapStateToProps);
+const mapDispatchToProps = dispatch => ({
+  setCardOrMpesaTabIndex: cardOrMpesaTabIndex =>
+    dispatch(setCardOrMpesaTabIndex(cardOrMpesaTabIndex)),
+});
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReduxForm = Form.create();
 

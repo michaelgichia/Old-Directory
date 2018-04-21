@@ -13,7 +13,9 @@ import {
   orderStatusAPI,
   ORDERS_STATUS_PENDING,
   EVENT,
-  PAYMENTS_MODAL
+  PAYMENTS_MODAL,
+  CARD_MPESA_TABS,
+  PAYMENT_METHODS_TAB
 } from './constants';
 
 const CancelToken = axios.CancelToken;
@@ -99,6 +101,36 @@ export const fetchEvent = eventId => dispatch => {
   });
 };
 
+export function openModal(ticketCategory, customer, totalTicketsPrice, event) {
+  return {
+    type: PAYMENTS_MODAL.OPEN,
+    ticketCategory,
+    customer,
+    totalTicketsPrice,
+    event
+  };
+}
+
+export function closeModal() {
+  return {
+    type: PAYMENTS_MODAL.CLOSE
+  };
+}
+
+export function setTicketModalTabIndex(ticketModalTabIndex) {
+  return {
+    type: PAYMENT_METHODS_TAB.SET,
+    ticketModalTabIndex
+  };
+}
+
+export function setCardOrMpesaTabIndex(cardOrMpesaTabIndex) {
+  return {
+    type: CARD_MPESA_TABS.SET,
+    cardOrMpesaTabIndex
+  };
+}
+
 // export const fetchEvent = eventId => (dispatch) => {
 //   axios.get(`${baseEventAPI}/${eventId}`).then((res) => {
 //     if (res.status === 200) {
@@ -114,19 +146,3 @@ export const fetchEvent = eventId => dispatch => {
 //     }
 //   });
 // };
-
-export function openModal(ticketCategory, customer, totalTicketsPrice, event) {
-  return {
-    type: PAYMENTS_MODAL.SUCCESS,
-    ticketCategory,
-    customer,
-    totalTicketsPrice,
-    event
-  };
-}
-
-export function closeModal() {
-  return {
-    type: PAYMENTS_MODAL.ERROR
-  };
-}

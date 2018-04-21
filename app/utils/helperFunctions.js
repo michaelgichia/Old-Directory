@@ -1,7 +1,14 @@
 export const asyncActionType = type => ({
   PENDING: `${type}_PENDING`,
   SUCCESS: `${type}_SUCCESS`,
-  ERROR: `${type}_ERROR`
+  ERROR: `${type}_ERROR`,
+  ON: `${type}_ON`,
+  OFF: `${type}_OFF`,
+  TOGGLE: `${type}_TOGGLE`,
+  RESET: `${type}_RESET`,
+  SET: `${type}_SET`,
+  OPEN: `${type}_OPEN`,
+  CLOSE: `${type}_CLOSE`
 });
 
 

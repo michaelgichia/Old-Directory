@@ -14,7 +14,8 @@ import {
   ORDERS_PAY,
   ORDERS_STATUS,
   ORDERS_STATUS_PENDING,
-  CLEAR_MPESA_PUSH
+  CLEAR_MPESA_PUSH,
+  CARD_MPESA_TABS
 } from './constants';
 
 const initialState = {
@@ -36,7 +37,8 @@ const initialState = {
   event: {},
   ticketCategory: {},
   totalTicketsPrice: 0,
-  tabIndex: 0
+  ticketModalTabIndex: 0,
+  cardOrMpesaTabIndex: 0
 };
 
 function paymentSystemReducer(state = initialState, action) {
@@ -47,7 +49,7 @@ function paymentSystemReducer(state = initialState, action) {
         totalTicketsPrice: action.cost
       };
 
-    case PAYMENTS_MODAL.SUCCESS:
+    case PAYMENTS_MODAL.OPEN:
       return {
         ...state,
         paymentModal: true,
@@ -57,16 +59,16 @@ function paymentSystemReducer(state = initialState, action) {
         event: action.event
       };
 
-    case PAYMENTS_MODAL.ERROR:
+    case PAYMENTS_MODAL.CLOSE:
       return {
         ...state,
         paymentModal: false
       };
 
-    case PAYMENT_METHODS_TAB:
+    case PAYMENT_METHODS_TAB.SET:
       return {
         ...state,
-        tabIndex: action.tabIndex
+        ticketModalTabIndex: action.ticketModalTabIndex
       };
 
     case PAYMENTS_MODAL_CLOSE:
@@ -80,7 +82,7 @@ function paymentSystemReducer(state = initialState, action) {
           confirmEmail: ''
         },
         totalTicketsPrice: 0,
-        tabIndex: 0
+        ticketModalTabIndex: 0
       };
 
     case CHANGE_CUSTOMER_NO.SUCCESS:
@@ -154,6 +156,13 @@ function paymentSystemReducer(state = initialState, action) {
         mpesaPushStatus: null,
         mpesaInitiated: false
       };
+
+    case CARD_MPESA_TABS.SET:
+
+      return {
+        ...state,
+        cardOrMpesaTabIndex: action.cardOrMpesaTabIndex
+      }
 
     default:
       return state;

@@ -15,7 +15,7 @@ import TabsBodyWrap from "components/TabsBodyWrap";
 import CardForm from "components/Forms/CardForm";
 import MpesaPush from "./MpesaPush";
 import MpesaPayBill from "./MpesaPayBill";
-import { handleOrdersPayment, getOrderStatus } from "./actions";
+import { handleOrdersPayment, getOrderStatus, setTicketModalTabIndex } from "./actions";
 import { ORDERS_PAY, ORDERS_STATUS } from "./constants";
 import reducer from "./reducer";
 import "./css/payments-methods.css";
@@ -100,10 +100,11 @@ export class PaymentsMethods extends Component {
 
   render() {
     const { mpesaPage } = this.state;
-    const { customer: { phone_number }, mpesaInitiated } = this.props;
+    const { customer: { phone_number }, mpesaInitiated, cardOrMpesaTabIndex } = this.props;
+    console.log({cardOrMpesaTabIndex})
     return (
       <div>
-        <Tabs>
+        <Tabs defaultIndex={cardOrMpesaTabIndex}>
           <TabsBodyWrap>
             <TabList className="pm__tab-list">
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
@@ -111,7 +112,6 @@ export class PaymentsMethods extends Component {
                   id="mobile-payment"
                   onChange={() => console.log("Mpesa")}
                   placeholder="Mpesa Payment"
-                  wrapKlass=""
                   defaultChecked={false}
                 />
               </Tab>
@@ -120,7 +120,6 @@ export class PaymentsMethods extends Component {
                   id="card-payment"
                   onChange={() => console.log("Card")}
                   placeholder="Card Payment"
-                  wrapKlass=""
                   defaultChecked={false}
                 />
               </Tab>
@@ -139,7 +138,7 @@ export class PaymentsMethods extends Component {
             ) : (
               <MpesaPayBill
                 goMpesaPush={this.goMpesaPush}
-                goTabThree={this.props.goTabThree}
+                goTabTwo={this.props.goTabTwo}
                 totalTicketsPrice={this.props.totalTicketsPrice}
               />
             )}
@@ -147,7 +146,7 @@ export class PaymentsMethods extends Component {
           <TabPanel>
             <CardForm
               cardInfo={this.props.cardInfo}
-              goTabTwo={() => this.props.goTabTwo("PAYMENT_METHODS_TAB", 1)}
+              goTabTwo={() => this.props.setTicketModalTabIndex(1)}
               handleCardInfo={this.props.handleCardInfo}
               handleCustomerInfo={this.props.handleCustomerInfo}
             />
@@ -169,16 +168,20 @@ const mapStateToProps = ({ paymentSystem }) => ({
   orderPK: paymentSystem.orderPK,
   totalTicketsPrice: paymentSystem.totalTicketsPrice,
   timeout: paymentSystem.timeout,
-  mpesaInitiated: paymentSystem.mpesaInitiated
+  mpesaInitiated: paymentSystem.mpesaInitiated,
+  cardOrMpesaTabIndex: paymentSystem.cardOrMpesaTabIndex
 });
 
 const mapDispatchToProps = dispatch => ({
   handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo)),
-  goTabTwo: (type, tabIndex) => dispatch({ type, tabIndex }),
+  goTabTwo: (type, ticketModalTabIndex) => dispatch({ type, ticketModalTabIndex }),
   getOrderStatus: orderPK => dispatch(getOrderStatus(orderPK)),
   clearDefault: () => dispatch({type: ORDERS_PAY.ERROR}),
-  clearMpesaInitiated: () => dispatch({ type: ORDERS_STATUS.ERROR })
+  clearMpesaInitiated: () => dispatch({ type: ORDERS_STATUS.ERROR }),
+  setTicketModalTabIndex: ticketModalTabIndex =>
+    dispatch(setTicketModalTabIndex(cardOrMpesaTabIndex))
 });
+
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
