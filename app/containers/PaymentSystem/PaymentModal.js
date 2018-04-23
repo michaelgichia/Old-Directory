@@ -14,7 +14,8 @@ import ConfirmationPageTab from './ConfirmationPageTab';
 import {
   setCardOrMpesaTabIndex,
   closeModal,
-  setTicketModalTabIndex
+  setTicketModalTabIndex,
+  closeModalAndPayment
 } from './actions';
 import { PAYMENTS_MODAL, orderStatus } from './constants';
 import './css/payments.css';
@@ -45,6 +46,7 @@ export class PaymentModal extends React.Component {
       <ReactModal
         isOpen={this.props.paymentModal}
         contentLabel="onRequestClose"
+        shouldCloseOnOverlayClick={false}
         onRequestClose={() => this.props.closeModal()}
         className="py-modal"
         overlayClassName="py-overlay"
@@ -83,8 +85,7 @@ export class PaymentModal extends React.Component {
           <TabPanel>
             <ConfirmationPageTab
               handleCloseModal={() => {
-                this.props.closeModal();
-                this.props.dispatch({ type: 'CLEAR_MPESA_PUSH' });
+                this.props.closeModalAndPayment();
               }}
             />
           </TabPanel>
@@ -106,7 +107,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setCardOrMpesaTabIndex(cardOrMpesaTabIndex)),
   setTicketModalTabIndex: ticketModalTabIndex =>
     dispatch(setTicketModalTabIndex(cardOrMpesaTabIndex)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  closeModalAndPayment: () => dispatch(closeModalAndPayment())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentModal);

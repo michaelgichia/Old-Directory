@@ -6,11 +6,8 @@ import MookhFormItem from './MookhFormItem';
 import { EventBtn } from './StyledComponents';
 import { PaymentButtonRipples } from 'components/Buttons';
 import { countryList } from 'utils/countryList';
-
-import {
-  setCardOrMpesaTabIndex,
-} from './actions';
-
+import { orderStatus } from './constants';
+import { setCardOrMpesaTabIndex } from './actions';
 
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -24,6 +21,12 @@ class Payment extends React.PureComponent {
     dialCode: '254'
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.orderStatus === this.props.orderStatus.finished) {
+      this.props.form.resetFields();
+    }
+  }
+
   handleSubmit = tabIndex => {
     this.props.setCardOrMpesaTabIndex(tabIndex);
     if (this.props.totalTicketsPrice < 1) {
@@ -35,7 +38,6 @@ class Payment extends React.PureComponent {
         if (!err) {
           values.phone_number = `${values.prefix.trim()}${values.phone.trim()}`;
           this.props.handleCustomerDetailsSubmition(values);
-          this.props.form.resetFields();
         }
       });
     }
@@ -51,14 +53,14 @@ class Payment extends React.PureComponent {
   };
 
   phonenumberValidator = (rule, value, callback) => {
-    if (value && value[0] !== "7") {
+    if (value && value[0] !== '7') {
       callback('Phone number must start with 7');
-    } else if ( value && value.trim().length > 9) {
-      callback("Incorrect format. example 712 123 456");
+    } else if (value && value.trim().length > 9) {
+      callback('Incorrect format. example 712 123 456');
     } else {
-      callback()
+      callback();
     }
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -199,12 +201,13 @@ class Payment extends React.PureComponent {
 
 const mapStateToProps = ({ paymentSystem }) => ({
   customer: paymentSystem.customer,
-  totalTicketsPrice: paymentSystem.totalTicketsPrice
+  totalTicketsPrice: paymentSystem.totalTicketsPrice,
+  orderStatus: paymentSystem.orderStatus
 });
 
 const mapDispatchToProps = dispatch => ({
   setCardOrMpesaTabIndex: cardOrMpesaTabIndex =>
-    dispatch(setCardOrMpesaTabIndex(cardOrMpesaTabIndex)),
+    dispatch(setCardOrMpesaTabIndex(cardOrMpesaTabIndex))
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

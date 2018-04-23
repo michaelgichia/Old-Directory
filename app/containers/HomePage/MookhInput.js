@@ -22,6 +22,9 @@ const MookhInput = styled(Input)`
       color: white;
       font-weight: 500;
     }
+    @media (max-width: 768px) {
+      height: 34px;
+    }
   }
 `;
 

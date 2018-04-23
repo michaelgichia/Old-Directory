@@ -8,7 +8,8 @@ export const asyncActionType = type => ({
   RESET: `${type}_RESET`,
   SET: `${type}_SET`,
   OPEN: `${type}_OPEN`,
-  CLOSE: `${type}_CLOSE`
+  CLOSE: `${type}_CLOSE`,
+  FINISH: `${type}_FINISH`
 });
 
 

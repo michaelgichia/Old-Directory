@@ -12,7 +12,7 @@ const initialState = {
   pagination: {
     isInfiniteLoading: false,
     numPages: 0,
-    currentPage: 2,
+    currentPage: 1,
     hasMore: true
   }
 };

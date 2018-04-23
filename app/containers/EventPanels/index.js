@@ -67,8 +67,8 @@ class EventPanels extends Component {
 
   handleInfiniteLoad = () => {
     const { pagination: { hasMore, currentPage } } = this.props;
-    if (hasMore && currentPage !== this.state.currentPage) {
-      this.props.fetchMoreEvents(currentPage);
+    if (currentPage > 1 && hasMore && currentPage !== this.state.currentPage) {
+      this.props.fetchMoreEvents(currentPage + 1);
       this.setState({ currentPage });
     }
   };

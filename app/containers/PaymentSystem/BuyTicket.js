@@ -11,9 +11,9 @@ import isEqual from 'lodash/isEqual';
 import omitBy from 'lodash/omitBy';
 import classNames from 'classnames';
 
-import { openModal, closeModal } from './actions';
+import { openModal, closeModal, handleTotalCost } from './actions';
+import { orderStatus } from './constants';
 import PaymentForm from './PaymentForm';
-import { TOTAL_TICKETS_PRICE } from './constants';
 import noImage from 'images/no_image.svg';
 import './css/buy-tickets.css';
 
@@ -45,12 +45,27 @@ export class BuyTicket extends React.PureComponent {
     if (nextProps.totalTicketsPrice > 0) {
       this.setState({ error: false });
     }
+
+    if (nextProps.orderStatus === orderStatus.finished) {
+      this.setState((state, props) => {
+        const newTicketCategory = {};
+        Object.entries({ ...state.ticketCategory }).forEach(([k, v]) => {
+          newTicketCategory[k] = '';
+        });
+        return {
+          ticketCategory: newTicketCategory
+        };
+      });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.ticketCategory !== this.state.ticketCategory) {
-      const priceValueForEvent = this.getTicketPrices(this.props.event);
-      const totalTicketsPrice = this.handleTicketsTotalCost(priceValueForEvent);
+      const valueForEachTicket = this.getTicketsPrices(this.props.event);
+      const totalTicketsPrice = this.handleTicketsTotalCost(
+        valueForEachTicket,
+        this.state.ticketCategory
+      );
       this.props.handleTotalCost(totalTicketsPrice);
     }
 
@@ -61,48 +76,33 @@ export class BuyTicket extends React.PureComponent {
 
   handleInputChange = e => {
     e.persist();
-    this.setState(() => ({
+    this.setState(state => ({
       ticketCategory: {
-        ...this.state.ticketCategory,
+        ...state.ticketCategory,
         [e.target.id]: e.target.value
       }
     }));
   };
 
-  handleTicketsTotalCost = priceValueForEvent => {
-    const { ticketCategory } = this.state;
+  handleTicketsTotalCost = (valueForEachTicket, ticketCategory) => {
     let total = 0;
-    if (Object.keys(ticketCategory).length < 1) return;
     for (let [key, value] of Object.entries(ticketCategory)) {
-      total += priceValueForEvent[key] * value;
+      total += valueForEachTicket[key] * value;
     }
     return total;
   };
 
-  getTicketPrices = event => {
-    if (Object.keys(event).length > 1) {
-      const eventAndPrice = {};
-      this.props.event.tickets_count_by_category.map(
-        ticket => (eventAndPrice[ticket.id] = ticket.ticket_value)
+  getTicketsPrices = event => {
+    const mapTicketandPriceObj = {};
+    if (event) {
+      event.tickets_count_by_category.map(
+        ticket => (mapTicketandPriceObj[ticket.id] = ticket.ticket_value)
       );
-      return eventAndPrice;
     }
+    return mapTicketandPriceObj;
   };
 
-  getOrderName = (ticketCategory, key) => {
-    let name;
-    ticketCategory.filter(value => {
-      if (value.id === key) {
-        name = value.ticket_name;
-        return name;
-      }
-    });
-    return name;
-  };
-
-  createError = bool => {
-    this.setState(() => ({ error: bool }));
-  };
+  throwNewError = bool => this.setState({ error: bool });
 
   handleCustomerDetailsSubmition = values => {
     const ticketCategory = omitBy(
@@ -111,7 +111,7 @@ export class BuyTicket extends React.PureComponent {
     );
     const { totalTicketsPrice } = this.props;
     if (totalTicketsPrice < 1) {
-      this.createError(true);
+      this.throwNewError(true);
       return;
     }
     this.props.openModal(
@@ -120,15 +120,6 @@ export class BuyTicket extends React.PureComponent {
       totalTicketsPrice,
       this.props.event
     );
-    this.setState((state, props) => {
-      const newTicketCategory = {};
-      Object.entries({ ...state.ticketCategory }).forEach(([k, v]) => {
-        newTicketCategory[k] = '';
-      });
-      return {
-        ticketCategory: newTicketCategory
-      };
-    });
   };
 
   render() {
@@ -211,7 +202,7 @@ export class BuyTicket extends React.PureComponent {
                 SEND TICKETS TO:
               </h6>
               <PaymentForm
-                createError={this.createError}
+                createError={this.throwNewError}
                 ticketCategory={ticketCategory}
                 handleCustomerDetailsSubmition={
                   this.handleCustomerDetailsSubmition
@@ -228,15 +219,25 @@ export class BuyTicket extends React.PureComponent {
 const mapStateToProps = ({ paymentSystem }) => ({
   customer: paymentSystem.customer,
   totalTicketsPrice: paymentSystem.totalTicketsPrice,
-  eventError: paymentSystem.eventError
+  orderStatus: paymentSystem.orderStatus
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleTotalCost: cost =>
-    dispatch({ type: TOTAL_TICKETS_PRICE.SUCCESS, cost }),
+  handleTotalCost: cost => dispatch(handleTotalCost(cost)),
   openModal: (ticketCategory, customer, totalTicketsPrice, event) =>
     dispatch(openModal(ticketCategory, customer, totalTicketsPrice, event)),
   closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyTicket);
+
+// getOrderName = (ticketCategory, key) => {
+//   let name;
+//   ticketCategory.filter(value => {
+//     if (value.id === key) {
+//       name = value.ticket_name;
+//       return name;
+//     }
+//   });
+//   return name;
+// };

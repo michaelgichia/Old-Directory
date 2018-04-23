@@ -135,8 +135,8 @@ export default class CardForm extends Component {
         </TabsBodyWrap>
         <TabsBottomWrap>
           <div>
-            <PaymentButtonPrimary id="nextOne" onClick={this.handlePayment}>
-              PAY
+            <PaymentButtonPrimary disabled id="nextOne" onClick={this.handlePayment}>
+              PAY NOW
             </PaymentButtonPrimary>
           </div>
         </TabsBottomWrap>

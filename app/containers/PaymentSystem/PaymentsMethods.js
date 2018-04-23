@@ -26,7 +26,7 @@ import './css/payments-methods.css';
 
 export class PaymentsMethods extends Component {
   state = {
-    mpesaPage: 1,
+    mpesaPaymentMethod: 'pushPayment',
     event: {},
     extraInfo: {
       store_fk: '',
@@ -42,7 +42,7 @@ export class PaymentsMethods extends Component {
       nextProps.orderPK &&
       nextProps.timeout > 0
     ) {
-      delay(() => this.props.getOrderStatus(nextProps.orderPK), 3000);
+      delay(() => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK), 3000);
     }
 
     if (
@@ -50,7 +50,7 @@ export class PaymentsMethods extends Component {
       nextProps.orderPK &&
       nextProps.timeout > 0
     ) {
-      delay(() => this.props.getOrderStatus(nextProps.orderPK), 1000);
+      delay(() => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK), 1000);
     }
 
     if (nextProps.orderStatus === orderStatus.paid) {
@@ -61,7 +61,7 @@ export class PaymentsMethods extends Component {
       nextProps.orderStatus === orderStatus.notCreated ||
       nextProps.orderStatus === orderStatus.failure
     ) {
-      this.setState({ mpesaPage: 2 });
+      this.handleMpesaPaymentMethod('manualPayment');
     }
 
     if (nextProps.timeout < 1) {
@@ -96,10 +96,8 @@ export class PaymentsMethods extends Component {
     this.props.handleOrdersPayment(extraInfo);
   };
 
-  goMpesaPush = () => this.setState(() => ({ mpesaPage: 1 }));
-
-  goToPayBill = () => {
-    this.setState(() => ({ mpesaPage: this.state.mpesaPage + 1 }));
+  handleMpesaPaymentMethod = method => {
+    this.setState({ mpesaPaymentMethod: method });
   };
 
   getOrderName = (ticketCategory, key) => {
@@ -114,10 +112,11 @@ export class PaymentsMethods extends Component {
   };
 
   render() {
-    const { mpesaPage } = this.state;
+    const { mpesaPaymentMethod } = this.state;
     const {
       customer: { phone_number },
-      cardOrMpesaTabIndex
+      cardOrMpesaTabIndex,
+      orderStatus
     } = this.props;
     return (
       <div>
@@ -143,18 +142,18 @@ export class PaymentsMethods extends Component {
             </TabList>
           </TabsBodyWrap>
           <TabPanel>
-            {mpesaPage === 1 ? (
+            {mpesaPaymentMethod === 'pushPayment' ? (
               <MpesaPush
-                goToPayBill={this.goToPayBill}
+                goToPayBill={() =>
+                  this.handleMpesaPaymentMethod('manualPayment')
+                }
                 handleMobilePayment={this.handleMobilePayment}
-                totalTicketsPrice={this.props.totalTicketsPrice}
                 handleReturnToStore={this.props.handleReturnToStore}
               />
             ) : (
               <MpesaPayBill
-                goMpesaPush={this.goMpesaPush}
+                goMpesaPush={() => this.handleMpesaPaymentMethod('pushPayment')}
                 goTabTwo={this.props.goTabTwo}
-                totalTicketsPrice={this.props.totalTicketsPrice}
               />
             )}
           </TabPanel>
@@ -177,20 +176,20 @@ const mapStateToProps = ({ paymentSystem }) => ({
   ticketCategory: paymentSystem.ticketCategory,
   event: paymentSystem.event,
   orderPK: paymentSystem.orderPK,
-  totalTicketsPrice: paymentSystem.totalTicketsPrice,
   timeout: paymentSystem.timeout,
   cardOrMpesaTabIndex: paymentSystem.cardOrMpesaTabIndex,
-  orderStatus: paymentSystem.orderStatus
+  orderStatus: paymentSystem.orderStatus,
+  orderId: paymentSystem.orderId
 });
 
 const mapDispatchToProps = dispatch => ({
   handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo)),
   goTabTwo: (type, ticketModalTabIndex) =>
     dispatch({ type, ticketModalTabIndex }),
-  getOrderStatus: orderPK => dispatch(getOrderStatus(orderPK)),
+  getOrderStatus: (orderId, orderPK) => dispatch(getOrderStatus(orderId, orderPK)),
   handleTimeOut: () => dispatch({ type: ORDERS_STATUS.ERROR }),
   setTicketModalTabIndex: ticketModalTabIndex =>
-    dispatch(setTicketModalTabIndex(cardOrMpesaTabIndex))
+    dispatch(setTicketModalTabIndex(ticketModalTabIndex))
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

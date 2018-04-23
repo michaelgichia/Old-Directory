@@ -15,19 +15,17 @@ import {
   ORDERS_STATUS,
   CLEAR_MPESA_PUSH,
   CARD_MPESA_TABS,
-  orderStatus
+  orderStatus,
+  ORDERS_STATUS_MANUAL_FAILURE
 } from './constants';
 
-console.log({initialState: orderStatus.start})
 
 const initialState = {
   orderPK: null,
-  timeout: 10000,
+  orderId: null,
+  timeout: 20000,
   paymentModal: false,
   orderStatus: orderStatus.start,
-  // paymentModal: true,
-  event: {},
-  eventError: '',
   customer: {
     email: '',
     name: '',
@@ -56,13 +54,14 @@ function paymentSystemReducer(state = initialState, action) {
         ticketCategory: action.ticketCategory,
         customer: action.customer,
         totalTicketsPrice: action.totalTicketsPrice,
-        event: action.event
+        event: action.event,
+
       };
 
     case PAYMENTS_MODAL.CLOSE:
       return {
         ...state,
-        paymentModal: false
+        paymentModal: false,
       };
 
     case PAYMENT_METHODS_TAB.SET:
@@ -71,10 +70,18 @@ function paymentSystemReducer(state = initialState, action) {
         ticketModalTabIndex: action.ticketModalTabIndex
       };
 
-    case PAYMENTS_MODAL_CLOSE:
+    case PAYMENTS_MODAL.CLOSE:
       return {
         ...state,
         paymentModal: false,
+      };
+
+    case PAYMENTS_MODAL.FINISH:
+      return {
+        ...state,
+        paymentModal: false,
+        orderPK: null,
+        orderId: null,
         customer: {
           email: '',
           name: '',
@@ -82,7 +89,8 @@ function paymentSystemReducer(state = initialState, action) {
           confirmEmail: ''
         },
         totalTicketsPrice: 0,
-        ticketModalTabIndex: 0
+        ticketModalTabIndex: 0,
+        orderStatus: orderStatus.start
       };
 
     case CHANGE_CUSTOMER_NO.SUCCESS:
@@ -101,10 +109,10 @@ function paymentSystemReducer(state = initialState, action) {
         event: action.event
       };
 
-    case EVENT.ERROR:
+    case ORDERS_PAY.RESET:
       return {
         ...state,
-        eventError: action.error
+        orderStatus: orderStatus.start
       };
 
     case ORDERS_PAY.PENDING:
@@ -117,7 +125,8 @@ function paymentSystemReducer(state = initialState, action) {
       return {
         ...state,
         orderStatus: orderStatus.created,
-        orderPK: action.orderPK
+        orderPK: action.orderPK,
+        orderId: action.orderId
       };
 
     case ORDERS_PAY.ERROR:
@@ -130,7 +139,7 @@ function paymentSystemReducer(state = initialState, action) {
       return {
         ...state,
         orderStatus: orderStatus.pending,
-        timeout: state.timeout - 2000
+        timeout: state.timeout - 1000
       };
 
     case ORDERS_STATUS.SUCCESS:
@@ -143,7 +152,15 @@ function paymentSystemReducer(state = initialState, action) {
     case ORDERS_STATUS.ERROR:
       return {
         ...state,
-        orderStatus: orderStatus.failure
+        orderStatus: orderStatus.failure,
+        timeout: 10000
+      };
+
+    case ORDERS_STATUS_MANUAL_FAILURE:
+      return {
+        ...state,
+        orderStatus: orderStatus.manualFailure,
+        timeout: 10000
       };
 
     case CARD_MPESA_TABS.SET:
