@@ -40,6 +40,5 @@ export const EventBtn = styled(Button)`
 
 export const H5Error = styled.h5`
   width: 100%;
-  padding: 0 16px;
   color: #f81d22;
 `

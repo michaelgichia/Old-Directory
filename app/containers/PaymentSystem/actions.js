@@ -48,7 +48,7 @@ export const handleOrdersPayment = info => dispatch => {
 };
 
 export const getOrderStatus = (orderId, orderPK) => dispatch =>
-  axios.get(`${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`).then(
+  axios.get(`${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`, {timeout: 100}).then(
     res => {
       console.log({ status: res.data.results[0].order_status });
       if (
