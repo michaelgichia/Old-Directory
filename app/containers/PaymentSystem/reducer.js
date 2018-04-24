@@ -16,8 +16,7 @@ import {
   CLEAR_MPESA_PUSH,
   CARD_MPESA_TABS,
   orderStatus
-} from './constants';
-
+} from "./constants";
 
 const initialState = {
   orderPK: null,
@@ -26,16 +25,16 @@ const initialState = {
   paymentModal: false,
   orderStatus: orderStatus.start,
   customer: {
-    email: '',
-    name: '',
-    phone_number: '',
-    confirmEmail: ''
+    email: "",
+    name: "",
+    phone_number: "",
+    confirmEmail: ""
   },
   event: {},
   ticketCategory: {},
   totalTicketsPrice: 0,
   ticketModalTabIndex: 0,
-  cardOrMpesaTabIndex: 0
+  cardOrMpesaTabIndex: 0,
 };
 
 function paymentSystemReducer(state = initialState, action) {
@@ -53,14 +52,13 @@ function paymentSystemReducer(state = initialState, action) {
         ticketCategory: action.ticketCategory,
         customer: action.customer,
         totalTicketsPrice: action.totalTicketsPrice,
-        event: action.event,
-
+        event: action.event
       };
 
     case PAYMENTS_MODAL.CLOSE:
       return {
         ...state,
-        paymentModal: false,
+        paymentModal: false
       };
 
     case PAYMENT_METHODS_TAB.SET:
@@ -72,26 +70,24 @@ function paymentSystemReducer(state = initialState, action) {
     case PAYMENTS_MODAL.CLOSE:
       return {
         ...state,
-        paymentModal: false,
+        paymentModal: false
       };
 
     case PAYMENTS_MODAL.FINISH:
-      console.log('reached to finish')
-      return {
-        ...state,
+      console.log("reached to finish");
+      return Object.assign({}, state, {
         orderStatus: orderStatus.start,
-        paymentModal: false,
         orderPK: null,
         orderId: null,
-        customer: {
-          email: '',
-          name: '',
-          phone_number: '',
-          confirmEmail: ''
-        },
+        customer: Object.assign({}, state.customer, {
+          email: "",
+          name: "",
+          phone_number: "",
+          confirmEmail: ""
+        }),
         totalTicketsPrice: 0,
-        ticketModalTabIndex: 0,
-      };
+        ticketModalTabIndex: 0
+      });
 
     case CHANGE_CUSTOMER_NO.SUCCESS:
       const newCustomer = {
@@ -169,15 +165,15 @@ function paymentSystemReducer(state = initialState, action) {
 
 export default paymentSystemReducer;
 
-    // case PAYBILL.ERROR:
-    //   return {
-    //     ...state,
-    //     orderStatus: orderStatus.paybillFailure,
-    //     timeout: 10000
-    //   };
+// case PAYBILL.ERROR:
+//   return {
+//     ...state,
+//     orderStatus: orderStatus.paybillFailure,
+//     timeout: 10000
+//   };
 
-    // case PAYBILL.PENDING:
-    //   return {
-    //     ...state,
-    //     orderStatus: orderStatus.paybillPending
-    //   };
+// case PAYBILL.PENDING:
+//   return {
+//     ...state,
+//     orderStatus: orderStatus.paybillPending
+//   };

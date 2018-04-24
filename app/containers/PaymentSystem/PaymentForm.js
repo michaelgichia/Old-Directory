@@ -21,12 +21,6 @@ class Payment extends React.PureComponent {
     dialCode: '254'
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.orderStatus === this.props.orderStatus.finished || nextProps.orderStatus === this.props.orderStatus.paid) {
-      this.props.form.resetFields();
-    }
-  }
-
   handleSubmit = tabIndex => {
     this.props.setCardOrMpesaTabIndex(tabIndex);
     if (this.props.totalTicketsPrice < 1) {
@@ -38,6 +32,7 @@ class Payment extends React.PureComponent {
         if (!err) {
           values.phone_number = `${values.prefix.trim()}${values.phone.trim()}`;
           this.props.handleCustomerDetailsSubmition(values);
+          this.props.form.resetFields();
         }
       });
     }

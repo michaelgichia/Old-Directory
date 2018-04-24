@@ -9,7 +9,7 @@ import TabsBottomWrap from 'components/TabsBottomWrap';
 import TabsBodyWrap from 'components/TabsBodyWrap';
 import GooglePlayBadge from 'images/google.png';
 import AppleBadge from 'images/apple.png';
-import { closeModalAndPayment } from './actions';
+import { closeModal } from './actions';
 import './css/payment-confirmation.css';
 
 export class ConfirmationPageTab extends PureComponent {
@@ -63,7 +63,7 @@ export class ConfirmationPageTab extends PureComponent {
           <div>
             <PaymentButtonRipples
               id="nextOne"
-              onClick={this.props.closeModalAndPayment}
+              onClick={this.props.closeModal}
             >
               FINISH
             </PaymentButtonRipples>
@@ -75,11 +75,11 @@ export class ConfirmationPageTab extends PureComponent {
 }
 
 ConfirmationPageTab.proptypes = {
-  closeModalAndPayment: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
-  closeModalAndPayment: () => dispatch(closeModalAndPayment())
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(null, mapDispatchToProps)(ConfirmationPageTab);

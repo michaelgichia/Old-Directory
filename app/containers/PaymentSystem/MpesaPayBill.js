@@ -16,31 +16,39 @@ import {
   PaymentButtonRipples
 } from 'components/Buttons';
 import { H5Error } from './StyledComponents';
-import { setTicketModalTabIndex } from './actions';
+import {
+  setTicketModalTabIndex,
+  closeModal,
+  closeModalAndPayment
+} from './actions';
 import { orderStatus } from './constants';
 import './css/mpesa-paybill.css';
 
 export class MpesaPayBill extends PureComponent {
   state = {
     orderPK: null,
-    error: false
-  };
-
-  handlePreviousPage = () => {
-    this.props.resetPaymentProcess();
-    this.props.goMpesaPush();
+    error: null
   };
 
   _handleChange = evt => {
     this.setState({ orderPK: evt.target.value });
   };
 
+  _handleCloseModal = () => {
+    this.props.closeModalAndPayment();
+    this.props.closeModal();
+  };
+
   _handleVerifyOrderNumber = evt => {
     evt.preventDefault();
+    if (this.state.orderPK.length < 1) {
+      this.setState({error: 'Order REF cannot be empty!'});
+    }
     if (this.props.orderPK !== this.state.orderPK) {
-      this.setState({ error: true });
+      this.setState({ error: "Order REF is not valid" });
     } else {
       this.props.setTicketModalTabIndex(1);
+      this.props.closeModalAndPayment();
     }
   };
 
@@ -81,12 +89,19 @@ export class MpesaPayBill extends PureComponent {
                 placeholder="Reference number(REF) from Mookh sms"
                 value={orderPK}
                 onChange={this._handleChange}
-                required
               />
             </div>
-            {error && <H5Error>Order REF is not valid</H5Error>}
+            {error && <H5Error>{error}</H5Error>}
           </TabsBodyWrap>
           <TabsBottomWrap>
+            <div>
+              <PaymentButtonSecondary
+                id="store"
+                onClick={this._handleCloseModal}
+              >
+                RETURN TO STORE
+              </PaymentButtonSecondary>
+            </div>
             <div>
               <PaymentButtonRipples id="nextOne" type="submit">
                 VERYFY PAYMENT
@@ -106,7 +121,9 @@ MpesaPayBill.proptypes = {
 
 const mapDispatchToProps = dispatch => ({
   setTicketModalTabIndex: ticketModalTabIndex =>
-    dispatch(setTicketModalTabIndex(ticketModalTabIndex))
+    dispatch(setTicketModalTabIndex(ticketModalTabIndex)),
+  closeModal: () => dispatch(closeModal()),
+  closeModalAndPayment: () => dispatch(closeModalAndPayment())
 });
 
 const mapStateToProps = ({ paymentSystem }) => ({

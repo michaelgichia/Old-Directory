@@ -45,18 +45,6 @@ export class BuyTicket extends React.PureComponent {
     if (nextProps.totalTicketsPrice > 0) {
       this.setState({ error: false });
     }
-
-    if (nextProps.orderStatus === orderStatus.finished) {
-      this.setState((state, props) => {
-        const newTicketCategory = {};
-        Object.entries({ ...state.ticketCategory }).forEach(([k, v]) => {
-          newTicketCategory[k] = '';
-        });
-        return {
-          ticketCategory: newTicketCategory
-        };
-      });
-    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -71,6 +59,18 @@ export class BuyTicket extends React.PureComponent {
 
     if (prevProps.totalTicketsPrice > 0) {
       this.setState({ error: false });
+    }
+
+    if (prevProps.paymentModal && !this.props.paymentModal) {
+      this.setState((state, props) => {
+        const newTicketCategory = {};
+        Object.entries({ ...state.ticketCategory }).forEach(([k, v]) => {
+          newTicketCategory[k] = '';
+        });
+        return {
+          ticketCategory: newTicketCategory
+        };
+      });
     }
   }
 
@@ -219,7 +219,8 @@ export class BuyTicket extends React.PureComponent {
 const mapStateToProps = ({ paymentSystem }) => ({
   customer: paymentSystem.customer,
   totalTicketsPrice: paymentSystem.totalTicketsPrice,
-  orderStatus: paymentSystem.orderStatus
+  orderStatus: paymentSystem.orderStatus,
+  paymentModal: paymentSystem.paymentModal
 });
 
 const mapDispatchToProps = dispatch => ({
