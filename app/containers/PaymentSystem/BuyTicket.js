@@ -11,7 +11,7 @@ import isEqual from 'lodash/isEqual';
 import omitBy from 'lodash/omitBy';
 import classNames from 'classnames';
 
-import { openModal, closeModal, handleTotalCost } from './actions';
+import { openModal, closeModal, handleTotalCost, closeModalAndPayment } from './actions';
 import { orderStatus } from './constants';
 import PaymentForm from './PaymentForm';
 import noImage from 'images/no_image.svg';
@@ -62,6 +62,7 @@ export class BuyTicket extends React.PureComponent {
     }
 
     if (prevProps.paymentModal && !this.props.paymentModal) {
+      this.props.closeModalAndPayment();
       this.setState((state, props) => {
         const newTicketCategory = {};
         Object.entries({ ...state.ticketCategory }).forEach(([k, v]) => {
@@ -227,7 +228,8 @@ const mapDispatchToProps = dispatch => ({
   handleTotalCost: cost => dispatch(handleTotalCost(cost)),
   openModal: (ticketCategory, customer, totalTicketsPrice, event) =>
     dispatch(openModal(ticketCategory, customer, totalTicketsPrice, event)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  closeModalAndPayment: () => dispatch(closeModalAndPayment())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyTicket);

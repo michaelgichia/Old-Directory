@@ -26,7 +26,7 @@ import './css/mpesa-paybill.css';
 
 export class MpesaPayBill extends PureComponent {
   state = {
-    orderPK: null,
+    orderPK: '',
     error: null
   };
 
@@ -41,14 +41,14 @@ export class MpesaPayBill extends PureComponent {
 
   _handleVerifyOrderNumber = evt => {
     evt.preventDefault();
+    console.log({ props: this.props.orderPK, state: this.state.orderPK });
     if (this.state.orderPK.length < 1) {
-      this.setState({error: 'Order REF cannot be empty!'});
+      this.setState({ error: 'Order REF cannot be empty!' });
     }
     if (this.props.orderPK !== this.state.orderPK) {
-      this.setState({ error: "Order REF is not valid" });
+      this.setState({ error: 'Order REF is not valid' });
     } else {
       this.props.setTicketModalTabIndex(1);
-      this.props.closeModalAndPayment();
     }
   };
 
@@ -85,27 +85,27 @@ export class MpesaPayBill extends PureComponent {
               </div>
             </div>
             <div style={{ margin: 16 }}>
+              {error && <H5Error>{error}</H5Error>}
               <Input
                 placeholder="Reference number(REF) from Mookh sms"
                 value={orderPK}
                 onChange={this._handleChange}
               />
             </div>
-            {error && <H5Error>{error}</H5Error>}
           </TabsBodyWrap>
           <TabsBottomWrap>
             <div>
+              <div>
+                <PaymentButtonRipples id="nextOne" type="submit">
+                  VERYFY PAYMENT
+                </PaymentButtonRipples>
+              </div>
               <PaymentButtonSecondary
                 id="store"
                 onClick={this._handleCloseModal}
               >
                 RETURN TO STORE
               </PaymentButtonSecondary>
-            </div>
-            <div>
-              <PaymentButtonRipples id="nextOne" type="submit">
-                VERYFY PAYMENT
-              </PaymentButtonRipples>
             </div>
           </TabsBottomWrap>
         </form>

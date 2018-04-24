@@ -14,9 +14,11 @@ export class Panel extends PureComponent {
       <PanelWrap>
         <LogoDiv>
           <div>
-            <img
-              src={logo}
+            <Img
+              src={event.event_poster ==! null ? event.event_poster:""}
               alt=""
+              onError={this.props.onError}
+              id={event.id}
             />
           </div>
         </LogoDiv>

@@ -58,7 +58,9 @@ function paymentSystemReducer(state = initialState, action) {
     case PAYMENTS_MODAL.CLOSE:
       return {
         ...state,
-        paymentModal: false
+        paymentModal: false,
+        ticketModalTabIndex: 0,
+        cardOrMpesaTabIndex: 0
       };
 
     case PAYMENT_METHODS_TAB.SET:
@@ -149,7 +151,7 @@ function paymentSystemReducer(state = initialState, action) {
       return {
         ...state,
         orderStatus: orderStatus.failure,
-        timeout: 10000
+        timeout: 20000
       };
 
     case CARD_MPESA_TABS.SET:
