@@ -37,9 +37,9 @@ export class PaymentsMethods extends Component {
   interValId = null;
 
   componentWillReceiveProps(nextProps) {
+    console.log({currentorderStatus: nextProps.orderStatus})
     if (
       nextProps.orderStatus === orderStatus.created &&
-      nextProps.orderPK &&
       nextProps.timeout > 0
     ) {
       delay(() => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK), 3000);
@@ -47,7 +47,6 @@ export class PaymentsMethods extends Component {
 
     if (
       nextProps.orderStatus === orderStatus.pending &&
-      nextProps.orderPK &&
       nextProps.timeout > 0
     ) {
       delay(() => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK), 1000);

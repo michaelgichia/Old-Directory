@@ -16,7 +16,7 @@ import {
   CLEAR_MPESA_PUSH,
   CARD_MPESA_TABS,
   orderStatus,
-  ORDERS_STATUS_MANUAL_FAILURE
+  PAYBILL
 } from './constants';
 
 
@@ -121,6 +121,12 @@ function paymentSystemReducer(state = initialState, action) {
         orderStatus: orderStatus.inProgress
       };
 
+    case PAYBILL.PENDING:
+      return {
+        ...state,
+        orderStatus: orderStatus.paybillPending
+      };
+
     case ORDERS_PAY.SUCCESS:
       return {
         ...state,
@@ -156,10 +162,10 @@ function paymentSystemReducer(state = initialState, action) {
         timeout: 10000
       };
 
-    case ORDERS_STATUS_MANUAL_FAILURE:
+    case PAYBILL.ERROR:
       return {
         ...state,
-        orderStatus: orderStatus.manualFailure,
+        orderStatus: orderStatus.paybillFailure,
         timeout: 10000
       };
 

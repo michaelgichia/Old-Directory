@@ -29,7 +29,7 @@ export const CLEAR_MPESA_PUSH = 'CLEAR_MPESA_PUSH';
 export const CARD_MPESA_TABS = asyncActionType("CARD_MPESA_TABS");
 // Modal parent tabs
 export const PAYMENT_METHODS_TAB = asyncActionType("PAYMENT_METHODS_TAB");
-export const ORDERS_STATUS_MANUAL_FAILURE = "ORDERS_STATUS_MANUAL_FAILURE";
+export const PAYBILL = asyncActionType("PAYBILL");
 // Order status
 export const orderStatus = {
   start: 'start',
@@ -39,8 +39,9 @@ export const orderStatus = {
   pending: 'pending',
   paid: 'paid',
   failure: 'failure',
-  manualFailure: 'manualFailure',
-  manualSuccess: 'manualSuccess',
+  paybillPending: 'paybillPending',
+  paybillFailure: 'paybillFailure',
+  paybillSuccess: 'paybillSuccess',
   finished: 'finished'
 };
 

@@ -29,14 +29,6 @@ export class MpesaPayBill extends PureComponent {
     orderPK: null
   };
 
-  componentWillReceiveProps(nextProps) {
-    console.log({jane: nextProps.orderStatus})
-    if (nextProps.orderStatus === orderStatus.manualFailure) {
-      console.error('Order reference is incorrect!')
-      message.error('Order reference is incorrect!');
-    }
-  }
-
   handlePreviousPage = () => {
     this.props.resetPaymentProcess();
     this.props.goMpesaPush();
@@ -44,7 +36,6 @@ export class MpesaPayBill extends PureComponent {
 
   _handleManualPayment = (evt) => {
     evt.preventDefault();
-    this.props.getManualOrderStatus(this.props.orderId, this.state.orderPK);
     // () => this.props.setTicketModalTabIndex(1)
   };
 
@@ -54,8 +45,9 @@ export class MpesaPayBill extends PureComponent {
 
   render() {
     const { orderPK } = this.state;
+    console.log({mpesapaybill: this.props.orderStatus})
     const suffix =
-      this.props.orderStatus === orderStatus.pending ? (
+      this.props.orderStatus === orderStatus.paybillPending ? (
         <Icon type="loading" />
       ) : null;
 
@@ -104,7 +96,7 @@ export class MpesaPayBill extends PureComponent {
               id="store"
               onClick={this.handlePreviousPage}
               disabled={
-                this.props.orderStatus === orderStatus.pending ? true : false
+                this.props.orderStatus === orderStatus.paybillPending ? true : false
               }
             >
               PREVIOUS
@@ -113,12 +105,13 @@ export class MpesaPayBill extends PureComponent {
           <div>
             <PaymentButtonRipples
               id="nextOne"
-              type="submit"
+              type="button"
+              onClick={() => this.props.getManualOrderStatus(this.props.orderId, this.state.orderPK)}
               disabled={
-                this.props.orderStatus === orderStatus.pending ? true : false
+                this.props.orderStatus === orderStatus.paybillPending ? true : false
               }
             >
-              {this.props.orderStatus === orderStatus.pending ? "VERYFYING...":"CONTINUE" }
+              {this.props.orderStatus === orderStatus.paybillPending ? "VERYFYING...":"VERYFY PAYMENT" }
             </PaymentButtonRipples>
           </div>
         </TabsBottomWrap>
