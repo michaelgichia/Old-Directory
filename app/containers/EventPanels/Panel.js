@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Icon } from 'antd';
 import Img from 'components/Img';
 import { randomColor } from 'utils/color-generator';
-import logo from './logo.jpg';
 import { NavLink } from 'react-router-dom';
 import { LogoDiv,  PanelImgWrap, PanelEventInfo, PanelWrap, EventLink } from "./StyledComponents";
 

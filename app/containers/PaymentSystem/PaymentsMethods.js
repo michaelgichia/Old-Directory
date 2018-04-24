@@ -140,7 +140,7 @@ export class PaymentsMethods extends Component {
             </TabList>
           </TabsBodyWrap>
           <TabPanel>
-            {mpesaPaymentMethod === 'manualPayment' ? (
+            {mpesaPaymentMethod === 'pushPayment' ? (
               <MpesaPush
                 goToPayBill={() =>
                   this.handleMpesaPaymentMethod('manualPayment')
