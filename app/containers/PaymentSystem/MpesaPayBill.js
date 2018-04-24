@@ -95,11 +95,11 @@ export class MpesaPayBill extends PureComponent {
           </TabsBodyWrap>
           <TabsBottomWrap>
             <div>
-              <div>
-                <PaymentButtonRipples id="nextOne" type="submit">
-                  VERYFY PAYMENT
-                </PaymentButtonRipples>
-              </div>
+              <PaymentButtonRipples id="nextOne" type="submit">
+                VERYFY PAYMENT
+              </PaymentButtonRipples>
+            </div>
+            <div>
               <PaymentButtonSecondary
                 id="store"
                 onClick={this._handleCloseModal}

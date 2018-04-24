@@ -22,7 +22,7 @@ const initialState = {
   orderPK: null,
   orderId: null,
   timeout: 20000,
-  paymentModal: false,
+  paymentModal: true,
   orderStatus: orderStatus.start,
   customer: {
     email: "",
