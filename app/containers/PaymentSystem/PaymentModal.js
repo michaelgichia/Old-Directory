@@ -14,8 +14,7 @@ import ConfirmationPageTab from './ConfirmationPageTab';
 import {
   setCardOrMpesaTabIndex,
   closeModal,
-  setTicketModalTabIndex,
-  closeModalAndPayment
+  setTicketModalTabIndex
 } from './actions';
 import { PAYMENTS_MODAL, orderStatus } from './constants';
 import './css/payments.css';
@@ -36,11 +35,7 @@ export class PaymentModal extends React.Component {
     });
 
   render() {
-    const {
-      cardInfo,
-      customer,
-      customerErrors,
-    } = this.state;
+    const { cardInfo, customer, customerErrors } = this.state;
     const { ticketModalTabIndex } = this.props;
     return (
       <ReactModal
@@ -59,7 +54,8 @@ export class PaymentModal extends React.Component {
           className="py__tabs"
           defaultFocus
           selectedIndex={ticketModalTabIndex}
-          onSelect={(ticketModalTabIndex) => () => this.props.setTicketModalTabIndex(ticketModalTabIndex)}
+          onSelect={ticketModalTabIndex => () =>
+            this.props.setTicketModalTabIndex(ticketModalTabIndex)}
         >
           <TabList className="py__tab-list">
             <Tab className="py__tab" tabIndex="0">
@@ -83,11 +79,7 @@ export class PaymentModal extends React.Component {
             />
           </TabPanel>
           <TabPanel>
-            <ConfirmationPageTab
-              handleCloseModal={() => {
-                this.props.closeModalAndPayment();
-              }}
-            />
+            <ConfirmationPageTab />
           </TabPanel>
         </Tabs>
       </ReactModal>
@@ -107,8 +99,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setCardOrMpesaTabIndex(cardOrMpesaTabIndex)),
   setTicketModalTabIndex: ticketModalTabIndex =>
     dispatch(setTicketModalTabIndex(cardOrMpesaTabIndex)),
-  closeModal: () => dispatch(closeModal()),
-  closeModalAndPayment: () => dispatch(closeModalAndPayment())
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentModal);

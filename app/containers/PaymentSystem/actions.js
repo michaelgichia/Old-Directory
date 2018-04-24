@@ -17,7 +17,6 @@ import {
   CARD_MPESA_TABS,
   PAYMENT_METHODS_TAB,
   TOTAL_TICKETS_PRICE,
-  PAYBILL
 } from './constants';
 
 export const handleOrdersPayment = info => dispatch => {
@@ -26,7 +25,7 @@ export const handleOrdersPayment = info => dispatch => {
     .post(`${ordersPayAPI}/`, info)
     .then(
       res => {
-        console.log({ res });
+        console.log({ res: "created" });
         dispatch({
           type: ORDERS_PAY.SUCCESS,
           orderPK: res.data.order_number,
@@ -73,36 +72,6 @@ export const getOrderStatus = (orderId, orderPK) => dispatch =>
     }
   );
 
-export const getManualOrderStatus = (orderId, orderPK) => dispatch => {
-  console.log('manual payment');
-  const API = `${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`;
-  dispatch({ type: PAYBILL.PENDING });
-  return axios.get(API).then(
-    res => {
-      const { results } = res.data;
-      if (results.length > 0 && results[0].order_status === 'PAID') {
-        dispatch({
-          type: ORDERS_STATUS.SUCCESS
-        });
-      } else if (results.length < 1) {
-        dispatch({
-          type: PAYBILL.ERROR
-        });
-      } else {
-        dispatch({
-          type: ORDERS_STATUS.PENDING
-        });
-      }
-    },
-    err => {
-      console.log({ err });
-      dispatch({
-        type: PAYBILL.ERROR
-      });
-    }
-  );
-};
-
 export const fetchEvent = eventId => dispatch => {
   axios.get(`${baseEventAPI}/${eventId}`).then(res => {
     if (res.status === 200) {
@@ -136,6 +105,7 @@ export function closeModal() {
 }
 
 export function closeModalAndPayment() {
+  console.log('called')
   return {
     type: PAYMENTS_MODAL.FINISH
   };
@@ -167,3 +137,33 @@ export function handleTotalCost(cost) {
     cost
   };
 }
+
+// export const getManualOrderStatus = (orderId, orderPK) => dispatch => {
+//   console.log('manual payment');
+//   const API = `${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`;
+//   dispatch({ type: PAYBILL.PENDING });
+//   return axios.get(API).then(
+//     res => {
+//       const { results } = res.data;
+//       if (results.length > 0 && results[0].order_status === 'PAID') {
+//         dispatch({
+//           type: ORDERS_STATUS.SUCCESS
+//         });
+//       } else if (results.length < 1) {
+//         dispatch({
+//           type: PAYBILL.ERROR
+//         });
+//       } else {
+//         dispatch({
+//           type: ORDERS_STATUS.PENDING
+//         });
+//       }
+//     },
+//     err => {
+//       console.log({ err });
+//       dispatch({
+//         type: PAYBILL.ERROR
+//       });
+//     }
+//   );
+// };

@@ -169,6 +169,9 @@ export class MpesaPush extends PureComponent {
           <PaymentButtonSecondary
             id="store"
             onClick={this.props.handleReturnToStore}
+            disabled={
+              this.paymentButtonRipplesState(this.props.orderStatus).state
+            }
           >
             RETURN TO STORE
           </PaymentButtonSecondary>

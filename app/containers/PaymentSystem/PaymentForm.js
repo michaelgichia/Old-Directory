@@ -22,7 +22,7 @@ class Payment extends React.PureComponent {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.orderStatus === this.props.orderStatus.finished) {
+    if (nextProps.orderStatus === this.props.orderStatus.finished || nextProps.orderStatus === this.props.orderStatus.paid) {
       this.props.form.resetFields();
     }
   }

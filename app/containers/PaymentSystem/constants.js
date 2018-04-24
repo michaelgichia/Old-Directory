@@ -39,9 +39,6 @@ export const orderStatus = {
   pending: 'pending',
   paid: 'paid',
   failure: 'failure',
-  paybillPending: 'paybillPending',
-  paybillFailure: 'paybillFailure',
-  paybillSuccess: 'paybillSuccess',
   finished: 'finished'
 };
 

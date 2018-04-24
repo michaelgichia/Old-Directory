@@ -37,3 +37,9 @@ export const EventBtn = styled(Button)`
     0 2px 10px 0 rgba(0, 0, 0, 0.05);
   }
 `;
+
+export const H5Error = styled.h5`
+  width: 100%;
+  padding: 16px;
+  color: #f81d22;
+`

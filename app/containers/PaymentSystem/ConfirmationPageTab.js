@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { PaymentButtonSecondary, PaymentButtonRipples } from 'components/Buttons';
+import {
+  PaymentButtonSecondary,
+  PaymentButtonRipples
+} from 'components/Buttons';
 import TabsBottomWrap from 'components/TabsBottomWrap';
 import TabsBodyWrap from 'components/TabsBodyWrap';
 import GooglePlayBadge from 'images/google.png';
 import AppleBadge from 'images/apple.png';
+import { closeModalAndPayment } from './actions';
 import './css/payment-confirmation.css';
 
 export class ConfirmationPageTab extends PureComponent {
@@ -31,7 +35,9 @@ export class ConfirmationPageTab extends PureComponent {
                 </svg>
               </h3>
               <p>Your order has been completed</p>
-              <p>Check your email for the tickets you have bought and receipt</p>
+              <p>
+                Check your email for the tickets you have bought and receipt
+              </p>
               <p>For inquiries contact us: hello@mymookh.com</p>
             </header>
             <div className="apps-wrap">
@@ -47,7 +53,9 @@ export class ConfirmationPageTab extends PureComponent {
             </div>
             <div className="feedback-wrap">
               <p>powered by MOOKHPAY.</p>
-              <PaymentButtonSecondary id="store">Give us feedback</PaymentButtonSecondary>
+              <PaymentButtonSecondary id="store">
+                Give us feedback
+              </PaymentButtonSecondary>
             </div>
           </div>
         </TabsBodyWrap>
@@ -55,8 +63,10 @@ export class ConfirmationPageTab extends PureComponent {
           <div>
             <PaymentButtonRipples
               id="nextOne"
-              onClick={this.props.handleCloseModal}
-            >FINISH</PaymentButtonRipples>
+              onClick={this.props.closeModalAndPayment}
+            >
+              FINISH
+            </PaymentButtonRipples>
           </div>
         </TabsBottomWrap>
       </div>
@@ -65,7 +75,11 @@ export class ConfirmationPageTab extends PureComponent {
 }
 
 ConfirmationPageTab.proptypes = {
-  handleCloseModal: PropTypes.func.isRequired
+  closeModalAndPayment: PropTypes.func.isRequired
 };
 
-export default ConfirmationPageTab;
+const mapDispatchToProps = dispatch => ({
+  closeModalAndPayment: () => dispatch(closeModalAndPayment())
+});
+
+export default connect(null, mapDispatchToProps)(ConfirmationPageTab);

@@ -37,7 +37,6 @@ export class PaymentsMethods extends Component {
   interValId = null;
 
   componentWillReceiveProps(nextProps) {
-    console.log({currentorderStatus: nextProps.orderStatus})
     if (
       nextProps.orderStatus === orderStatus.created &&
       nextProps.timeout > 0
