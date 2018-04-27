@@ -1,7 +1,7 @@
 {
   "name": "Mookh",
   "short_name": "mookh",
-  "theme_color": "#faea29",
+  "theme_color": "#f6f3ee",
   "background_color": "#f6f3ee",
   "display": "standalone",
   "Scope": "/",
