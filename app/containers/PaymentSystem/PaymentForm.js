@@ -109,7 +109,7 @@ class Payment extends React.PureComponent {
                 <Input
                   addonBefore={prefixSelector}
                   title="example: 712 123 456"
-                  placeholder="Phone number. example: 712 123 456"
+                  placeholder="Phone number. e.g 712 123 456"
                   maxLength="12"
                 />
               )}

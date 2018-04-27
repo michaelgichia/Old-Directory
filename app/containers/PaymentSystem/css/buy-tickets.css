@@ -244,6 +244,7 @@ input.error {
 
   .ticket-description-wrap > div:first-child {
     flex-basis: 350px;
+    min-height: 370px;
     border: 1px solid #ccc;
     padding: 0px;
     box-sizing: border-box;

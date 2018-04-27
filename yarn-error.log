@@ -11823,7 +11823,7 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 126
+  Exit code: 1
   Command: sh
   Arguments: -c cross-env NODE_ENV=development node server
   Directory: /home/gichia/Desktop/mookh/v2directory
