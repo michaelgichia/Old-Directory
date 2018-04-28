@@ -18,7 +18,8 @@ import MpesaPayBill from './MpesaPayBill';
 import {
   handleOrdersPayment,
   getOrderStatus,
-  setTicketModalTabIndex
+  setTicketModalTabIndex,
+  setPaymentMethod
 } from './actions';
 import { ORDERS_STATUS, orderStatus } from './constants';
 import reducer from './reducer';
@@ -117,6 +118,7 @@ export class PaymentsMethods extends Component {
       cardOrMpesaTabIndex,
       orderStatus
     } = this.props;
+    console.log({paymentMethod: this.props.payment_method})
     return (
       <div>
         <Tabs defaultIndex={cardOrMpesaTabIndex}>
@@ -125,7 +127,7 @@ export class PaymentsMethods extends Component {
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
                 <PaymentCheckbox
                   id="mobile-payment"
-                  onChange={() => console.log('Mpesa')}
+                  onChange={() => this.props.setPaymentMethod('MPESA')}
                   placeholder="Mpesa Payment"
                   defaultChecked={false}
                 />
@@ -133,7 +135,7 @@ export class PaymentsMethods extends Component {
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
                 <PaymentCheckbox
                   id="card-payment"
-                  onChange={() => console.log('Card')}
+                  onChange={() => this.props.setPaymentMethod('CARD')}
                   placeholder="Card Payment"
                   defaultChecked={false}
                 />
@@ -175,7 +177,8 @@ const mapStateToProps = ({ paymentSystem }) => ({
   timeout: paymentSystem.timeout,
   cardOrMpesaTabIndex: paymentSystem.cardOrMpesaTabIndex,
   orderStatus: paymentSystem.orderStatus,
-  orderId: paymentSystem.orderId
+  orderId: paymentSystem.orderId,
+  payment_method: paymentSystem.payment_method
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -185,7 +188,8 @@ const mapDispatchToProps = dispatch => ({
   getOrderStatus: (orderId, orderPK) => dispatch(getOrderStatus(orderId, orderPK)),
   handleTimeOut: () => dispatch({ type: ORDERS_STATUS.ERROR }),
   setTicketModalTabIndex: ticketModalTabIndex =>
-    dispatch(setTicketModalTabIndex(ticketModalTabIndex))
+    dispatch(setTicketModalTabIndex(ticketModalTabIndex)),
+    setPaymentMethod: payment_method => dispatch(setPaymentMethod(payment_method))
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
