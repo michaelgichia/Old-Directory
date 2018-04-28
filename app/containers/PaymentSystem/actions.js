@@ -17,6 +17,7 @@ import {
   CARD_MPESA_TABS,
   PAYMENT_METHODS_TAB,
   TOTAL_TICKETS_PRICE,
+  PAYMENT_METHOD
 } from './constants';
 
 export const handleOrdersPayment = info => dispatch => {
@@ -124,6 +125,14 @@ export function setCardOrMpesaTabIndex(cardOrMpesaTabIndex) {
     cardOrMpesaTabIndex
   };
 }
+
+export function setPaymentMethod(payment_method) {
+  return {
+    type: PAYMENT_METHOD.SET,
+    payment_method
+  };
+}
+
 
 export function resetPaymentProcess() {
   return {

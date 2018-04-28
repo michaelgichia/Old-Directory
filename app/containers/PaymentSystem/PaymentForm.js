@@ -7,7 +7,7 @@ import { EventBtn } from './StyledComponents';
 import { PaymentButtonRipples } from 'components/Buttons';
 import { countryList } from 'utils/countryList';
 import { orderStatus } from './constants';
-import { setCardOrMpesaTabIndex } from './actions';
+import { setCardOrMpesaTabIndex, setPaymentMethod } from './actions';
 
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -21,8 +21,9 @@ class Payment extends React.PureComponent {
     dialCode: '254'
   };
 
-  handleSubmit = tabIndex => {
+  handleSubmit = (tabIndex, payment_method) => {
     this.props.setCardOrMpesaTabIndex(tabIndex);
+    this.props.setPaymentMethod(payment_method);
     if (this.props.totalTicketsPrice < 1) {
       this.props.createError(true);
       return;
@@ -176,12 +177,12 @@ class Payment extends React.PureComponent {
                 justify="space-between"
               >
                 <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                  <EventBtn type="primary" onClick={() => this.handleSubmit(0)}>
+                  <EventBtn type="primary" onClick={() => this.handleSubmit(0, "MPESA")}>
                     MOBILE PAYMENT
                   </EventBtn>
                 </Col>
                 <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                  <EventBtn type="primary" onClick={() => this.handleSubmit(1)}>
+                  <EventBtn type="primary" onClick={() => this.handleSubmit(1, "CARD")}>
                     CARD PAYMENT
                   </EventBtn>
                 </Col>
@@ -202,7 +203,8 @@ const mapStateToProps = ({ paymentSystem }) => ({
 
 const mapDispatchToProps = dispatch => ({
   setCardOrMpesaTabIndex: cardOrMpesaTabIndex =>
-    dispatch(setCardOrMpesaTabIndex(cardOrMpesaTabIndex))
+    dispatch(setCardOrMpesaTabIndex(cardOrMpesaTabIndex)),
+  setPaymentMethod: payment_method => dispatch(setPaymentMethod(payment_method))
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

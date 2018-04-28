@@ -30,7 +30,6 @@ export class PaymentsMethods extends Component {
     event: {},
     extraInfo: {
       store_fk: '',
-      payment_method: 'mpesa'
     }
   };
 
@@ -72,7 +71,8 @@ export class PaymentsMethods extends Component {
       event: { id, event_name, tickets_count_by_category, store_fk },
       event,
       ticketCategory,
-      customer
+      customer,
+      payment_method
     } = this.props;
     const extraInfo = { ...this.state.extraInfo };
     const orderArray = [];
@@ -91,6 +91,7 @@ export class PaymentsMethods extends Component {
     extraInfo['order_detail'] = orderArray;
     extraInfo['customer'] = customer;
     extraInfo['store_fk'] = store_fk;
+    extraInfo['payment_method'] = payment_method;
     this.props.handleOrdersPayment(extraInfo);
   };
 

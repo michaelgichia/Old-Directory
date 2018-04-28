@@ -15,6 +15,7 @@ import {
   ORDERS_STATUS,
   CLEAR_MPESA_PUSH,
   CARD_MPESA_TABS,
+  PAYMENT_METHOD,
   orderStatus
 } from "./constants";
 
@@ -35,6 +36,7 @@ const initialState = {
   totalTicketsPrice: 0,
   ticketModalTabIndex: 0,
   cardOrMpesaTabIndex: 0,
+  payment_method: ''
 };
 
 function paymentSystemReducer(state = initialState, action) {
@@ -158,6 +160,12 @@ function paymentSystemReducer(state = initialState, action) {
       return {
         ...state,
         cardOrMpesaTabIndex: action.cardOrMpesaTabIndex
+      };
+
+    case PAYMENT_METHOD.SET:
+      return {
+        ...state,
+        payment_method: action.payment_method
       };
 
     default:
