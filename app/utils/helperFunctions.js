@@ -2,6 +2,7 @@ export const asyncActionType = type => ({
   PENDING: `${type}_PENDING`,
   SUCCESS: `${type}_SUCCESS`,
   ERROR: `${type}_ERROR`,
+  FAILURE: `${type}_FAILURE`,
   ON: `${type}_ON`,
   OFF: `${type}_OFF`,
   TOGGLE: `${type}_TOGGLE`,

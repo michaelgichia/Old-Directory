@@ -26,7 +26,7 @@ export const handleOrdersPayment = info => dispatch => {
     .post(`${ordersPayAPI}/`, info)
     .then(
       res => {
-        console.log({ res: "created" });
+        console.log({ res: 'created' });
         dispatch({
           type: ORDERS_PAY.SUCCESS,
           orderPK: res.data.order_number,
@@ -49,29 +49,39 @@ export const handleOrdersPayment = info => dispatch => {
 };
 
 export const getOrderStatus = (orderId, orderPK) => dispatch =>
-  axios.get(`${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`, {timeout: 100}).then(
-    res => {
-      console.log({ status: res.data.results[0].order_status });
-      if (
-        res.data.results.length > 0 &&
-        res.data.results[0].order_status === 'PAID'
-      ) {
+  axios
+    .get(`${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`)
+    .then(
+      res => {
+        console.log({ status: res.data.results[0].order_status });
+        if (
+          res.data.results.length > 0 &&
+          res.data.results[0].order_status === 'PAID'
+        ) {
+          dispatch({
+            type: ORDERS_STATUS.SUCCESS
+          });
+        } else if (
+          res.data.results.length > 0 &&
+          res.data.results[0].order_status === 'FAILED'
+        ) {
+          console.log({cardfailed: res})
+          dispatch({
+            type: ORDERS_STATUS.FAILURE
+          });
+        } else {
+          dispatch({
+            type: ORDERS_STATUS.PENDING
+          });
+        }
+      },
+      err => {
+        console.log({ err });
         dispatch({
-          type: ORDERS_STATUS.SUCCESS
-        });
-      } else {
-        dispatch({
-          type: ORDERS_STATUS.PENDING
+          type: ORDERS_STATUS.ERROR
         });
       }
-    },
-    err => {
-      console.log({ err });
-      dispatch({
-        type: ORDERS_STATUS.ERROR
-      });
-    }
-  );
+    );
 
 export const fetchEvent = eventId => dispatch => {
   axios.get(`${baseEventAPI}/${eventId}`).then(res => {
@@ -106,7 +116,7 @@ export function closeModal() {
 }
 
 export function closeModalAndPayment() {
-  console.log('called')
+  console.log('called');
   return {
     type: PAYMENTS_MODAL.FINISH
   };
@@ -132,7 +142,6 @@ export function setPaymentMethod(payment_method) {
     payment_method
   };
 }
-
 
 export function resetPaymentProcess() {
   return {

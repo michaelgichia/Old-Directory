@@ -41,6 +41,7 @@ export const orderStatus = {
   pending: 'pending',
   paid: 'paid',
   failure: 'failure',
+  cardFailure: 'cardFailure',
   finished: 'finished'
 };
 

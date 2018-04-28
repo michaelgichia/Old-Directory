@@ -156,6 +156,13 @@ function paymentSystemReducer(state = initialState, action) {
         timeout: 20000
       };
 
+    case ORDERS_STATUS.FAILURE:
+      return {
+        ...state,
+        orderStatus: orderStatus.cardFailure,
+        timeout: 20000
+      };
+
     case CARD_MPESA_TABS.SET:
       return {
         ...state,

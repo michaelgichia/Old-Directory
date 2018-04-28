@@ -30,7 +30,7 @@ export class PaymentsMethods extends Component {
     mpesaPaymentMethod: 'pushPayment',
     event: {},
     extraInfo: {
-      store_fk: '',
+      store_fk: ''
     }
   };
 
@@ -41,14 +41,20 @@ export class PaymentsMethods extends Component {
       nextProps.orderStatus === orderStatus.created &&
       nextProps.timeout > 0
     ) {
-      delay(() => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK), 3000);
+      delay(
+        () => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK),
+        3000
+      );
     }
 
     if (
       nextProps.orderStatus === orderStatus.pending &&
       nextProps.timeout > 0
     ) {
-      delay(() => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK), 1000);
+      delay(
+        () => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK),
+        2000
+      );
     }
 
     if (nextProps.orderStatus === orderStatus.paid) {
@@ -59,7 +65,9 @@ export class PaymentsMethods extends Component {
       nextProps.orderStatus === orderStatus.notCreated ||
       nextProps.orderStatus === orderStatus.failure
     ) {
-      this.handleMpesaPaymentMethod('manualPayment');
+      if (this.props.payment_method === 'MPESA') {
+        this.handleMpesaPaymentMethod('manualPayment');
+      }
     }
 
     if (nextProps.timeout < 1) {
@@ -67,7 +75,7 @@ export class PaymentsMethods extends Component {
     }
   }
 
-  handleMobilePayment = () => {
+  handleMobilePayment = card => {
     const {
       event: { id, event_name, tickets_count_by_category, store_fk },
       event,
@@ -93,7 +101,16 @@ export class PaymentsMethods extends Component {
     extraInfo['customer'] = customer;
     extraInfo['store_fk'] = store_fk;
     extraInfo['payment_method'] = payment_method;
-    this.props.handleOrdersPayment(extraInfo);
+    extraInfo['card'] = card;
+    console.log({ extraInfo });
+
+    if (this.props.orderPK && this.props.orderId) {
+      const { orderId, orderPK } = this.props;
+      this.props.getOrderStatus(orderId, orderPK);
+      this.props.dispatchPending();
+    } else {
+      this.props.handleOrdersPayment(extraInfo);
+    }
   };
 
   handleMpesaPaymentMethod = method => {
@@ -118,7 +135,6 @@ export class PaymentsMethods extends Component {
       cardOrMpesaTabIndex,
       orderStatus
     } = this.props;
-    console.log({paymentMethod: this.props.payment_method})
     return (
       <div>
         <Tabs defaultIndex={cardOrMpesaTabIndex}>
@@ -160,7 +176,7 @@ export class PaymentsMethods extends Component {
             <CardForm
               cardInfo={this.props.cardInfo}
               handleCardInfo={this.props.handleCardInfo}
-              handleCustomerInfo={() => ({})}
+              handleMobilePayment={this.handleMobilePayment}
             />
           </TabPanel>
         </Tabs>
@@ -185,11 +201,13 @@ const mapDispatchToProps = dispatch => ({
   handleOrdersPayment: extraInfo => dispatch(handleOrdersPayment(extraInfo)),
   goTabTwo: (type, ticketModalTabIndex) =>
     dispatch({ type, ticketModalTabIndex }),
-  getOrderStatus: (orderId, orderPK) => dispatch(getOrderStatus(orderId, orderPK)),
+  getOrderStatus: (orderId, orderPK) =>
+    dispatch(getOrderStatus(orderId, orderPK)),
   handleTimeOut: () => dispatch({ type: ORDERS_STATUS.ERROR }),
   setTicketModalTabIndex: ticketModalTabIndex =>
     dispatch(setTicketModalTabIndex(ticketModalTabIndex)),
-    setPaymentMethod: payment_method => dispatch(setPaymentMethod(payment_method))
+  setPaymentMethod: payment_method => dispatch(setPaymentMethod(payment_method)),
+  dispatchPending: () => dispatch({ type: ORDERS_STATUS.PENDING })
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

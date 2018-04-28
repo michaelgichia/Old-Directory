@@ -53,11 +53,23 @@ export class MpesaPush extends PureComponent {
     }
   };
 
+  handleRedirect = () => {
+    if (
+      this.props.orderStatus === orderStatus.notCreated ||
+      this.props.orderStatus === orderStatus.failure
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   render() {
     const error = '';
     const inputClassnames = classNames({ 'ebt-input-error': error });
     const {
-      customer: { phone_number }
+      customer: { phone_number },
+      payment_method
     } = this.props;
     const {
       customerErrors: { phone_numberError }
@@ -113,13 +125,14 @@ export class MpesaPush extends PureComponent {
                     paymentButtonRipplesState(this.props.orderStatus).state
                   }
                   id="pay"
-                  onClick={this.props.handleMobilePayment}
+                  onClick={() => this.props.handleMobilePayment({})}
                 >
-                  {paymentButtonRipplesState(this.props.orderStatus).name}
+                  {payment_method === 'MPESA'
+                    ? paymentButtonRipplesState(this.props.orderStatus).name
+                    : 'PAY NOW'}
                 </PaymentButtonRipples>
               </div>
-              {this.props.orderStatus === orderStatus.notCreated ||
-              this.props.orderStatus === orderStatus.failure ? (
+              {payment_method === 'MPESA' && this.handleRedirect() ? (
                 <p className="go-to-paybill-p2">
                   Did not see prompt on your phone? To pay manually via Paybill,{' '}
                   <a onClick={this.props.goToPayBill}>click here</a>
