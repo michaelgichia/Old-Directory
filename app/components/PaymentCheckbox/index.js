@@ -4,7 +4,7 @@ import './payment-checkbox.css';
 
 export default class PaymentCheckbox extends PureComponent {
   render() {
-    const { id, onChange, placeholder, wrapKlass, defaultChecked } = this.props;
+    const { id, onChange, placeholder, wrapKlass, defaultChecked, disabled } = this.props;
     return (
       <div className={`pc-wrap ${wrapKlass}`}>
         <input
@@ -12,6 +12,7 @@ export default class PaymentCheckbox extends PureComponent {
           type="checkbox"
           onChange={onChange}
           defaultChecked={defaultChecked}
+          disabled={disabled}
         />
         <label htmlFor={id}>
           <span>{placeholder}</span>

@@ -28,8 +28,8 @@ export const paymentButtonRipplesState = state => {
         break;
       case orderStatus.cardFailure:
         newState = {
-          name: 'FAILED. TRY AGAIN',
-          state: false
+          name: 'FAILED',
+          state: true
         };
         break;
       case orderStatus.paid:

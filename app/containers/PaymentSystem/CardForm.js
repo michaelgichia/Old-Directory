@@ -132,7 +132,12 @@ class CardForm extends React.Component {
               </div>
             </div>
             <div style={{ marginBottom: 8 }}>
-              <PaymentButtonPrimary type="submit">
+              <PaymentButtonPrimary
+                type="submit"
+                disabled={
+                  paymentButtonRipplesState(this.props.orderStatus).state
+                }
+              >
                 {payment_method === 'CARD'
                   ? paymentButtonRipplesState(this.props.orderStatus).name
                   : 'PAY NOW'}
