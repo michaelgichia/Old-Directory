@@ -17,7 +17,8 @@ import {
 } from 'components/Buttons';
 import { InputConstants } from 'utils/constants';
 import { orderStatus } from './constants';
-
+import { paymentButtonRipplesState } from './util';
+import { closeModal } from './actions';
 import './css/mpesa-push.css';
 
 export class MpesaPush extends PureComponent {
@@ -50,39 +51,6 @@ export class MpesaPush extends PureComponent {
             }
       }));
     }
-  };
-
-  paymentButtonRipplesState = state => {
-    let initialState = {
-      name: 'PAY NOW',
-      state: false
-    };
-    let newState;
-    switch (state) {
-      case orderStatus.inProgress:
-        newState = {
-          name: 'IN PROGESS...',
-          state: true
-        };
-        break;
-      case orderStatus.pending:
-      case orderStatus.created:
-        newState = {
-          name: 'ORDER PLACED...',
-          state: true
-        };
-        break;
-      case orderStatus.paid:
-      case orderStatus.failure:
-      case orderStatus.notCreated:
-        newState = initialState;
-        break;
-      default:
-        newState = initialState;
-        break;
-    }
-
-    return newState;
   };
 
   render() {
@@ -131,7 +99,7 @@ export class MpesaPush extends PureComponent {
                 on your screen.
               </p>
 
-              {this.paymentButtonRipplesState(this.props.orderStatus).state ? (
+              {paymentButtonRipplesState(this.props.orderStatus).state ? (
                 <section className="mpesa-push-loader-wrap">
                   <div className="mpesa-spinner" />
                 </section>
@@ -142,12 +110,12 @@ export class MpesaPush extends PureComponent {
               <div className="primary-pay-mpesa">
                 <PaymentButtonRipples
                   disabled={
-                    this.paymentButtonRipplesState(this.props.orderStatus).state
+                    paymentButtonRipplesState(this.props.orderStatus).state
                   }
                   id="pay"
                   onClick={this.props.handleMobilePayment}
                 >
-                  {this.paymentButtonRipplesState(this.props.orderStatus).name}
+                  {paymentButtonRipplesState(this.props.orderStatus).name}
                 </PaymentButtonRipples>
               </div>
               {this.props.orderStatus === orderStatus.notCreated ||
@@ -168,10 +136,8 @@ export class MpesaPush extends PureComponent {
         <TabsBottomWrap>
           <PaymentButtonSecondary
             id="store"
-            onClick={this.props.handleReturnToStore}
-            disabled={
-              this.paymentButtonRipplesState(this.props.orderStatus).state
-            }
+            onClick={this.props.closeModal}
+            disabled={paymentButtonRipplesState(this.props.orderStatus).state}
           >
             RETURN TO STORE
           </PaymentButtonSecondary>
@@ -192,4 +158,8 @@ const mapStateToProps = ({ paymentSystem }) => ({
   totalTicketsPrice: paymentSystem.totalTicketsPrice
 });
 
-export default connect(mapStateToProps, null)(MpesaPush);
+const mapDispatchToProps = dispatch => ({
+  closeModal: () => dispatch(closeModal())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MpesaPush);

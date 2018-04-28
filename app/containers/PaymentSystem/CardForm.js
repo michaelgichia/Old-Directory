@@ -4,7 +4,8 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Select } from 'antd';
 import { Helmet } from 'react-helmet';
@@ -17,26 +18,30 @@ import {
   formatExpirationDate,
   formatFormData
 } from 'utils/creditCard';
-import { PaymentButtonPrimary } from 'components/Buttons';
-import './card-form.css';
+import { closeModal } from './actions';
+import {
+  PaymentButtonPrimary,
+  PaymentButtonSecondary
+} from 'components/Buttons';
+import './css/card-form.css';
+import { paymentButtonRipplesState } from './util';
 
 const Option = Select.Option;
 
-export default class CardForm extends Component {
+class CardForm extends React.Component {
   state = {
-    currency: 'ksh',
-    cardNumber: '',
-    cardSecurityCode: '',
-    currency: '',
-    expiry: ''
+    card_currency: 'KES',
+    card_number: '',
+    card_cvv: '',
+    card_expiry: ''
   };
 
   handleInputChange = ({ target }) => {
-    if (target.id === 'cardNumber') {
+    if (target.id === 'card_number') {
       target.value = formatCreditCardNumber(target.value);
-    } else if (target.id === 'expiry') {
+    } else if (target.id === 'card_expiry') {
       target.value = formatExpirationDate(target.value);
-    } else if (target.id === 'cardSecurityCode') {
+    } else if (target.id === 'card_cvv') {
       target.value = formatCVC(target.value);
     }
     this.setState({ [target.id]: target.value });
@@ -46,40 +51,31 @@ export default class CardForm extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  handleCallback = res => {
-    console.log({ res });
-  };
-
-  handlePayment = () => {
-    const newCardNumber = this.state.cardNumber.replace(/\s/g, '');
-    const newCardExpiryMonth = this.state.expiry.slice(0, 2);
-    const newCardExpiryYear = this.state.expiry.slice(3);
+  handlePayment = evt => {
+    evt.preventDefault();
+    // const newCardNumber = this.state.card_number.replace(/\s/g, '');
+    // const newCardExpiryMonth = this.state.expiry.slice(0, 2);
+    // const newCardExpiryYear = this.state.expiry.slice(3);
     const sessionDetails = {
-      cardNumber: newCardNumber,
-      cardExpiryMonth: newCardExpiryMonth,
-      cardExpiryYear: newCardExpiryYear,
-      cardSecurityCode: this.state.cardSecurityCode
+      card_number: this.state.card_number,
+      card_expiry: this.state.card_expiry,
+      card_cvv: this.state.card_cvv,
+      card_currency: this.state.card_currency
     };
-    window.HostedForm.createSession(sessionDetails, this.handleCallback);
   };
 
   render() {
-    const { cardNumber, cardSecurityCode, currency, expiry } = this.state;
+    const { card_number, card_cvv, card_currency, card_expiry } = this.state;
+    const { totalTicketsPrice } = this.props;
     return (
-      <React.Fragment>
-      <Helmet
-      >
-        <script async>HostedForm.setMerchant(61056001);</script>
-      </Helmet>
       <div>
         <TabsBodyWrap>
-          <form onSubmit={e => e.preventDefault()}>
+          <form onSubmit={this.handlePayment}>
             <div className="cd-row">
               <MookhInput
                 labelName="Card Number"
-                id="cardNumber"
-                ref="cardNumber"
-                value={cardNumber}
+                id="card_number"
+                value={card_number}
                 onChange={this.handleInputChange}
                 placeholder="CARD NO"
                 pattern="[\d| ]{16,22}"
@@ -89,11 +85,12 @@ export default class CardForm extends Component {
               <div className="cd-payment-input">
                 <MookhInput
                   labelName="CVC"
-                  id="cardSecurityCode"
-                  value={cardSecurityCode}
+                  id="card_cvv"
+                  value={card_cvv}
                   onChange={this.handleChange}
                   placeholder="CVC"
                   pattern="\d{3,4}"
+                  title="Incorrect CVC format"
                   wrapClass="cvc"
                   type="tel"
                 />
@@ -103,9 +100,10 @@ export default class CardForm extends Component {
                   </label>
                   <Select
                     dropdownStyle={{ zIndex: 9999 }}
-                    defaultValue="ksh"
+                    defaultValue={card_currency}
                     onChange={this.handleChange}
                     size="large"
+                    id="card_currency"
                   >
                     <Option stle={{ color: 'red' }} value="usd">
                       USD
@@ -120,28 +118,34 @@ export default class CardForm extends Component {
                 <input
                   className="mm-input"
                   type="tel"
-                  id="expiry"
+                  id="card_expiry"
                   onChange={this.handleInputChange}
                   placeholder="MM/YY"
-                  value={expiry}
+                  value={card_expiry}
                 />
               </div>
               <div className="cd-payment-input total">
                 <span>Total:</span>
-                <span>$00.00</span>
+                <span>KES {`${totalTicketsPrice.toFixed(2)}`}</span>
               </div>
+            </div>
+            <div style={{ marginBottom: 8 }}>
+              <PaymentButtonPrimary type="submit">
+                PAY NOW
+              </PaymentButtonPrimary>
             </div>
           </form>
         </TabsBodyWrap>
         <TabsBottomWrap>
-          <div>
-            <PaymentButtonPrimary disabled id="nextOne" onClick={this.handlePayment}>
-              PAY NOW
-            </PaymentButtonPrimary>
-          </div>
+          <PaymentButtonSecondary
+            id="store"
+            onClick={this.props.closeModal}
+            disabled={paymentButtonRipplesState(this.props.orderStatus).state}
+          >
+            RETURN TO STORE
+          </PaymentButtonSecondary>
         </TabsBottomWrap>
       </div>
-      </React.Fragment>
     );
   }
 }
@@ -150,5 +154,14 @@ CardForm.proptypes = {
   cardInfo: PropTypes.object.isRequired,
   handleCardInfo: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
-  goTabTwo: PropTypes.func.isRequired
 };
+
+const mapStateToProps = ({ paymentSystem }) => ({
+  totalTicketsPrice: paymentSystem.totalTicketsPrice
+});
+
+const mapDispatchToProps = dispatch => ({
+  closeModal: () => dispatch(closeModal()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardForm);

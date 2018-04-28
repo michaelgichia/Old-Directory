@@ -116,7 +116,6 @@ export class MpesaPayBill extends PureComponent {
 
 MpesaPayBill.proptypes = {
   goMpesaPush: PropTypes.func.isRequired,
-  goTabTwo: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({

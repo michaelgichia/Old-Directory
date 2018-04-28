@@ -12,7 +12,7 @@ import delay from 'lodash/delay';
 import injectReducer from 'utils/injectReducer';
 import PaymentCheckbox from 'components/PaymentCheckbox';
 import TabsBodyWrap from 'components/TabsBodyWrap';
-import CardForm from 'components/Forms/CardForm';
+import CardForm from './CardForm';
 import MpesaPush from './MpesaPush';
 import MpesaPayBill from './MpesaPayBill';
 import {
@@ -146,19 +146,16 @@ export class PaymentsMethods extends Component {
                   this.handleMpesaPaymentMethod('manualPayment')
                 }
                 handleMobilePayment={this.handleMobilePayment}
-                handleReturnToStore={this.props.handleReturnToStore}
               />
             ) : (
               <MpesaPayBill
                 goMpesaPush={() => this.handleMpesaPaymentMethod('pushPayment')}
-                goTabTwo={this.props.goTabTwo}
               />
             )}
           </TabPanel>
           <TabPanel>
             <CardForm
               cardInfo={this.props.cardInfo}
-              goTabTwo={() => this.props.setTicketModalTabIndex(1)}
               handleCardInfo={this.props.handleCardInfo}
               handleCustomerInfo={() => ({})}
             />

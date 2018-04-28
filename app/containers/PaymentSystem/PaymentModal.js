@@ -75,7 +75,6 @@ export class PaymentModal extends React.Component {
               goTabOne={() => this.props.setTicketModalTabIndex(0)}
               goTabTwo={() => this.props.setTicketModalTabIndex(1)}
               handleCardInfo={this.handleCardInfo}
-              handleReturnToStore={() => this.props.closeModal()}
             />
           </TabPanel>
           <TabPanel>
