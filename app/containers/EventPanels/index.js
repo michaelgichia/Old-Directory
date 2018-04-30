@@ -99,6 +99,7 @@ class EventPanels extends Component {
         <EventPanelsWrap>
           <InfiniteScroll
             initialLoad={false}
+            style={{width: "100%"}}
             pageStart={0}
             loadMore={this.handleInfiniteLoad}
             hasMore={hasMore}

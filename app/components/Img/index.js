@@ -12,7 +12,7 @@ import noImage from 'images/no_image.svg';
 
 function NormalImg({ src, className, alt }) {
   return (
-    <img className={className} src={src !== null ? src : noImage} alt={alt} />
+    <img className={className} src={src} alt={alt} />
   );
 }
 
