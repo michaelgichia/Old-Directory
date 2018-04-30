@@ -25,6 +25,7 @@ NormalImg.propTypes = {
 
 const Img = styled(NormalImg)`
   width: 100%;
+  min-height: 100%;
 `;
 
 export default Img;
