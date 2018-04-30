@@ -101,7 +101,9 @@ export class PaymentsMethods extends Component {
     extraInfo['customer'] = customer;
     extraInfo['store_fk'] = store_fk;
     extraInfo['payment_method'] = payment_method;
-    extraInfo['card'] = card;
+    if (payment_method === "CARD") {
+      extraInfo['card'] = card;
+    }
     console.log({ extraInfo });
 
     if (this.props.orderPK && this.props.orderId) {
