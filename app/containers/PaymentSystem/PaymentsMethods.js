@@ -4,33 +4,33 @@
  *
  */
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import delay from 'lodash/delay';
-import injectReducer from 'utils/injectReducer';
-import PaymentCheckbox from 'components/PaymentCheckbox';
-import TabsBodyWrap from 'components/TabsBodyWrap';
-import CardForm from './CardForm';
-import MpesaPush from './MpesaPush';
-import MpesaPayBill from './MpesaPayBill';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import delay from "lodash/delay";
+import injectReducer from "utils/injectReducer";
+import PaymentCheckbox from "components/PaymentCheckbox";
+import TabsBodyWrap from "components/TabsBodyWrap";
+import CardForm from "./CardForm";
+import MpesaPush from "./MpesaPush";
+import MpesaPayBill from "./MpesaPayBill";
 import {
   handleOrdersPayment,
   getOrderStatus,
   setTicketModalTabIndex,
   setPaymentMethod
-} from './actions';
-import { ORDERS_STATUS, orderStatus } from './constants';
-import reducer from './reducer';
-import './css/payments-methods.css';
+} from "./actions";
+import { ORDERS_STATUS, orderStatus } from "./constants";
+import reducer from "./reducer";
+import "./css/payments-methods.css";
 
 export class PaymentsMethods extends Component {
   state = {
-    mpesaPaymentMethod: 'pushPayment',
+    mpesaPaymentMethod: "pushPayment",
     event: {},
     extraInfo: {
-      store_fk: ''
+      store_fk: ""
     }
   };
 
@@ -41,6 +41,11 @@ export class PaymentsMethods extends Component {
       nextProps.orderStatus === orderStatus.created &&
       nextProps.timeout > 0
     ) {
+      // delay(
+      //   param => this.props.getOrderStatus(param.orderId, param.orderPK),
+      //   3000,
+      //   { ordeId: this.props.orderId, orderPk: nextProps.orderPK }
+      // );
       delay(
         () => this.props.getOrderStatus(this.props.orderId, nextProps.orderPK),
         3000
@@ -65,8 +70,8 @@ export class PaymentsMethods extends Component {
       nextProps.orderStatus === orderStatus.notCreated ||
       nextProps.orderStatus === orderStatus.failure
     ) {
-      if (this.props.payment_method === 'MPESA') {
-        this.handleMpesaPaymentMethod('manualPayment');
+      if (this.props.payment_method === "MPESA") {
+        this.handleMpesaPaymentMethod("manualPayment");
       }
     }
 
@@ -97,12 +102,12 @@ export class PaymentsMethods extends Component {
         )
       );
     });
-    extraInfo['order_detail'] = orderArray;
-    extraInfo['customer'] = customer;
-    extraInfo['store_fk'] = store_fk;
-    extraInfo['payment_method'] = payment_method;
+    extraInfo["order_detail"] = orderArray;
+    extraInfo["customer"] = customer;
+    extraInfo["store_fk"] = store_fk;
+    extraInfo["payment_method"] = payment_method;
     if (payment_method === "CARD") {
-      extraInfo['card'] = card;
+      extraInfo["card"] = card;
     }
     console.log({ extraInfo });
 
@@ -145,7 +150,7 @@ export class PaymentsMethods extends Component {
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
                 <PaymentCheckbox
                   id="mobile-payment"
-                  onChange={() => this.props.setPaymentMethod('MPESA')}
+                  onChange={() => this.props.setPaymentMethod("MPESA")}
                   placeholder="Mpesa Payment"
                   defaultChecked={false}
                 />
@@ -153,7 +158,7 @@ export class PaymentsMethods extends Component {
               <Tab className="pm__tabs" selectedClassName="pm__tab--selected">
                 <PaymentCheckbox
                   id="card-payment"
-                  onChange={() => this.props.setPaymentMethod('CARD')}
+                  onChange={() => this.props.setPaymentMethod("CARD")}
                   placeholder="Card Payment"
                   defaultChecked={false}
                 />
@@ -161,16 +166,16 @@ export class PaymentsMethods extends Component {
             </TabList>
           </TabsBodyWrap>
           <TabPanel>
-            {mpesaPaymentMethod === 'pushPayment' ? (
+            {mpesaPaymentMethod === "pushPayment" ? (
               <MpesaPush
                 goToPayBill={() =>
-                  this.handleMpesaPaymentMethod('manualPayment')
+                  this.handleMpesaPaymentMethod("manualPayment")
                 }
                 handleMobilePayment={this.handleMobilePayment}
               />
             ) : (
               <MpesaPayBill
-                goMpesaPush={() => this.handleMpesaPaymentMethod('pushPayment')}
+                goMpesaPush={() => this.handleMpesaPaymentMethod("pushPayment")}
               />
             )}
           </TabPanel>
@@ -208,12 +213,13 @@ const mapDispatchToProps = dispatch => ({
   handleTimeOut: () => dispatch({ type: ORDERS_STATUS.ERROR }),
   setTicketModalTabIndex: ticketModalTabIndex =>
     dispatch(setTicketModalTabIndex(ticketModalTabIndex)),
-  setPaymentMethod: payment_method => dispatch(setPaymentMethod(payment_method)),
+  setPaymentMethod: payment_method =>
+    dispatch(setPaymentMethod(payment_method)),
   dispatchPending: () => dispatch({ type: ORDERS_STATUS.PENDING })
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'paymentsMethods', reducer });
+const withReducer = injectReducer({ key: "paymentsMethods", reducer });
 
 export default compose(withReducer, withConnect)(PaymentsMethods);

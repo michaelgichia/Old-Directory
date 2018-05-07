@@ -4,33 +4,38 @@
  *
  */
 
-import React from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import isEqual from 'lodash/isEqual';
-import omitBy from 'lodash/omitBy';
-import classNames from 'classnames';
+import React from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import isEqual from "lodash/isEqual";
+import omitBy from "lodash/omitBy";
+import classNames from "classnames";
 
-import { openModal, closeModal, handleTotalCost, closeModalAndPayment } from './actions';
-import { orderStatus } from './constants';
-import PaymentForm from './PaymentForm';
-import noImage from 'images/no_image.svg';
-import './css/buy-tickets.css';
+import {
+  openModal,
+  closeModal,
+  handleTotalCost,
+  closeModalAndPayment
+} from "./actions";
+import { orderStatus } from "./constants";
+import PaymentForm from "./PaymentForm";
+import noImage from "images/no_image.svg";
+import "./css/buy-tickets.css";
 
 export class BuyTicket extends React.PureComponent {
   constructor(props) {
     super(props);
     const ticketCategory = {};
     props.event.tickets_count_by_category.map(
-      ticket => (ticketCategory[ticket.id] = '')
+      ticket => (ticketCategory[ticket.id] = "")
     );
     this.state = {
       ticketCategory: ticketCategory,
       customer: {
-        email: '',
-        name: '',
-        phone_number: '',
-        confirmEmail: ''
+        email: "",
+        name: "",
+        phone_number: "",
+        confirmEmail: ""
       },
       TicketPrices: {},
       error: false
@@ -66,7 +71,7 @@ export class BuyTicket extends React.PureComponent {
       this.setState((state, props) => {
         const newTicketCategory = {};
         Object.entries({ ...state.ticketCategory }).forEach(([k, v]) => {
-          newTicketCategory[k] = '';
+          newTicketCategory[k] = "";
         });
         return {
           ticketCategory: newTicketCategory
@@ -126,11 +131,11 @@ export class BuyTicket extends React.PureComponent {
   render() {
     const { error, ticketCategory } = this.state;
     const { event, totalTicketsPrice } = this.props;
-    const totalPriceClassnames = classNames('ticket-total', { errors: error });
-    const inputClassnames = classNames({ 'ebt-input-error': error });
+    const totalPriceClassnames = classNames("ticket-total", { errors: error });
+    const inputClassnames = classNames({ "ebt-input-error": error });
 
     return (
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div className="ticket-description-wrap">
           <div className="event-buy-image">
             <img
@@ -188,18 +193,18 @@ export class BuyTicket extends React.PureComponent {
             {error && (
               <h5
                 style={{
-                  color: 'red',
-                  margin: '8px 0px',
-                  textAlign: 'right',
-                  width: '100%',
-                  display: 'block'
+                  color: "red",
+                  margin: "8px 0px",
+                  textAlign: "right",
+                  width: "100%",
+                  display: "block"
                 }}
               >
                 You have not selected a ticket.
               </h5>
             )}
             <div className="ebt-information">
-              <h6 style={{ fontWeight: 'bold', marginBottom: 8 }}>
+              <h6 style={{ fontWeight: "bold", marginBottom: 8 }}>
                 SEND TICKETS TO:
               </h6>
               <PaymentForm

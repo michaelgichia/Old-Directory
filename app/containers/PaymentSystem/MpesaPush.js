@@ -4,27 +4,27 @@
  *
  */
 
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import classNames from 'classnames';
-import MpesaPushImage from 'images/MpesaPushImage.png';
-import TabsBottomWrap from 'components/TabsBottomWrap';
-import TabsBodyWrap from 'components/TabsBodyWrap';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import classNames from "classnames";
+import MpesaPushImage from "images/MpesaPushImage.png";
+import TabsBottomWrap from "components/TabsBottomWrap";
+import TabsBodyWrap from "components/TabsBodyWrap";
 import {
   PaymentButtonSecondary,
   PaymentButtonRipples
-} from 'components/Buttons';
-import { InputConstants } from 'utils/constants';
-import { orderStatus } from './constants';
-import { paymentButtonRipplesState } from './util';
-import { closeModal } from './actions';
-import './css/mpesa-push.css';
+} from "components/Buttons";
+import { InputConstants } from "utils/constants";
+import { orderStatus } from "./constants";
+import { mpesaPushStatus } from "./util";
+import { closeModal } from "./actions";
+import "./css/mpesa-push.css";
 
 export class MpesaPush extends PureComponent {
   state = {
     customerErrors: {
-      phone_numberError: ''
+      phone_numberError: ""
     }
   };
 
@@ -32,7 +32,7 @@ export class MpesaPush extends PureComponent {
     e.persist();
     const { customerErrors } = this.state;
     const { value } = e.target;
-    const requiredFields = ['phone_number'];
+    const requiredFields = ["phone_number"];
 
     if (requiredFields.indexOf(name) > -1 && value.length < 1) {
       this.setState(() => ({
@@ -43,8 +43,8 @@ export class MpesaPush extends PureComponent {
       }));
     } else {
       this.setState(() => ({
-        customerErrors: InputConstants[name]['regex'].test(value)
-          ? { ...customerErrors, [`${name}Error`]: '' }
+        customerErrors: InputConstants[name]["regex"].test(value)
+          ? { ...customerErrors, [`${name}Error`]: "" }
           : {
               ...customerErrors,
               [`${name}Error`]: InputConstants[name].error
@@ -65,8 +65,8 @@ export class MpesaPush extends PureComponent {
   };
 
   render() {
-    const error = '';
-    const inputClassnames = classNames({ 'ebt-input-error': error });
+    const error = "";
+    const inputClassnames = classNames({ "ebt-input-error": error });
     const {
       customer: { phone_number },
       payment_method
@@ -74,6 +74,7 @@ export class MpesaPush extends PureComponent {
     const {
       customerErrors: { phone_numberError }
     } = this.state;
+    console.log({ zee: this.props.orderStatus, payment_method });
     return (
       <div>
         <TabsBodyWrap>
@@ -85,7 +86,7 @@ export class MpesaPush extends PureComponent {
                   className={inputClassnames}
                   onChange={e =>
                     this.props.dispatch({
-                      type: 'CHANGE_CUSTOMER_NO_SUCCESS',
+                      type: "CHANGE_CUSTOMER_NO_SUCCESS",
                       phone_number: e.target.value
                     })
                   }
@@ -94,7 +95,7 @@ export class MpesaPush extends PureComponent {
                   type="tel"
                   placeholder="Phone number"
                   required
-                  onBlur={e => this.onBlur(e, 'phone_number')}
+                  onBlur={e => this.onBlur(e, "phone_number")}
                 />
                 <span>{phone_numberError}</span>
               </div>
@@ -111,7 +112,7 @@ export class MpesaPush extends PureComponent {
                 on your screen.
               </p>
 
-              {paymentButtonRipplesState(this.props.orderStatus).state ? (
+              {mpesaPushStatus(this.props.orderStatus).state ? (
                 <section className="mpesa-push-loader-wrap">
                   <div className="mpesa-spinner" />
                 </section>
@@ -121,20 +122,18 @@ export class MpesaPush extends PureComponent {
 
               <div className="primary-pay-mpesa">
                 <PaymentButtonRipples
-                  disabled={
-                    paymentButtonRipplesState(this.props.orderStatus).state
-                  }
+                  disabled={mpesaPushStatus(this.props.orderStatus).state}
                   id="pay"
                   onClick={() => this.props.handleMobilePayment({})}
                 >
-                  {payment_method === 'MPESA'
-                    ? paymentButtonRipplesState(this.props.orderStatus).name
-                    : 'PAY NOW'}
+                  {payment_method === "MPESA"
+                    ? mpesaPushStatus(this.props.orderStatus).name
+                    : "PAY NOW"}
                 </PaymentButtonRipples>
               </div>
-              {payment_method === 'MPESA' && this.handleRedirect() ? (
+              {payment_method === "MPESA" && this.handleRedirect() ? (
                 <p className="go-to-paybill-p2">
-                  Did not see prompt on your phone? To pay manually via Paybill,{' '}
+                  Did not see prompt on your phone? To pay manually via Paybill,{" "}
                   <a onClick={this.props.goToPayBill}>click here</a>
                 </p>
               ) : (
@@ -150,7 +149,7 @@ export class MpesaPush extends PureComponent {
           <PaymentButtonSecondary
             id="store"
             onClick={this.props.closeModal}
-            disabled={paymentButtonRipplesState(this.props.orderStatus).state}
+            disabled={mpesaPushStatus(this.props.orderStatus).state}
           >
             RETURN TO STORE
           </PaymentButtonSecondary>
@@ -168,7 +167,8 @@ MpesaPush.proptypes = {
 const mapStateToProps = ({ paymentSystem }) => ({
   customer: paymentSystem.customer,
   orderStatus: paymentSystem.orderStatus,
-  totalTicketsPrice: paymentSystem.totalTicketsPrice
+  totalTicketsPrice: paymentSystem.totalTicketsPrice,
+  payment_method: paymentSystem.payment_method
 });
 
 const mapDispatchToProps = dispatch => ({
