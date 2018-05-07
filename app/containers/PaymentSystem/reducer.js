@@ -16,6 +16,8 @@ import {
   CLEAR_MPESA_PUSH,
   CARD_MPESA_TABS,
   PAYMENT_METHOD,
+  ORDERPK_ORDERID,
+  ORDERS_CARD,
   orderStatus
 } from "./constants";
 
@@ -46,6 +48,14 @@ function paymentSystemReducer(state = initialState, action) {
         ...state,
         totalTicketsPrice: action.cost
       };
+
+    case ORDERPK_ORDERID.RESET:
+      return {
+        ...state,
+        orderId: null,
+        orderPK: null,
+        orderStatus: orderStatus.start,
+      }
 
     case PAYMENTS_MODAL.OPEN:
       return {
@@ -78,7 +88,6 @@ function paymentSystemReducer(state = initialState, action) {
       };
 
     case PAYMENTS_MODAL.FINISH:
-      console.log("reached to finish");
       return Object.assign({}, state, {
         orderStatus: orderStatus.start,
         orderPK: null,

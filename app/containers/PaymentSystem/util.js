@@ -20,13 +20,8 @@ export const paymentButtonRipplesState = state => {
         state: true
       };
       break;
-    case orderStatus.failure:
-      newState = {
-        name: "FAILED",
-        state: false
-      };
-      break;
     case orderStatus.cardFailure:
+    case orderStatus.failure:
       newState = {
         name: "FAILED",
         state: false

@@ -74,7 +74,6 @@ export class MpesaPush extends PureComponent {
     const {
       customerErrors: { phone_numberError }
     } = this.state;
-    console.log({ zee: this.props.orderStatus, payment_method });
     return (
       <div>
         <TabsBodyWrap>

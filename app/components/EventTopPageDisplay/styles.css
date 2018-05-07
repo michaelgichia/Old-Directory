@@ -42,7 +42,7 @@
     padding: 0;
     background-color: #f6f3ee;
     max-height: 82px;
-    z-index: 99999;
+    z-index: 30;
   }
 
   .nav-event-page li:last-child a {

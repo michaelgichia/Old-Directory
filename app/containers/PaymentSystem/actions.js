@@ -4,20 +4,22 @@
  *
  */
 import axios from 'axios';
+import size from 'lodash/size';
 
 import {
   ORDERS_PAY,
   ORDERS_STATUS,
-  baseEventAPI,
-  ordersPayAPI,
-  orderStatusAPI,
   ORDERS_STATUS_PENDING,
   EVENT,
   PAYMENTS_MODAL,
   CARD_MPESA_TABS,
   PAYMENT_METHODS_TAB,
   TOTAL_TICKETS_PRICE,
-  PAYMENT_METHOD
+  ORDERPK_ORDERID,
+  PAYMENT_METHOD,
+  baseEventAPI,
+  ordersPayAPI,
+  orderStatusAPI
 } from './constants';
 
 export const handleOrdersPayment = info => dispatch => {
@@ -48,40 +50,74 @@ export const handleOrdersPayment = info => dispatch => {
     });
 };
 
-export const getOrderStatus = (orderId, orderPK) => dispatch =>
-  axios
-    .get(`${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`)
-    .then(
-      res => {
-        console.log({ status: res.data.results[0].order_status });
-        if (
-          res.data.results.length > 0 &&
-          res.data.results[0].order_status === 'PAID'
-        ) {
-          dispatch({
-            type: ORDERS_STATUS.SUCCESS
-          });
-        } else if (
-          res.data.results.length > 0 &&
-          res.data.results[0].order_status === 'FAILED'
-        ) {
-          console.log({cardfailed: res})
-          dispatch({
-            type: ORDERS_STATUS.FAILURE
-          });
-        } else {
-          dispatch({
-            type: ORDERS_STATUS.PENDING
-          });
+export const getOrderStatus = (orderId, orderPK) => dispatch => {
+  const url = `${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`;
+  return axios
+    .get(url)
+    .then(res => {
+      const { results } = res.data;
+      if (size(results) > 0) {
+        const order = results[0];
+        const status = order.order_status;
+        console.log({ status });
+
+        if (status === 'PAID') {
+          dispatch({ type: ORDERS_STATUS.SUCCESS });
         }
-      },
-      err => {
-        console.log({ err });
-        dispatch({
-          type: ORDERS_STATUS.ERROR
-        });
+
+        if (status === 'FAILED') {
+          dispatch({ type: ORDERS_STATUS.FAILURE });
+        }
+
+        if (status === 'PENDING') {
+          dispatch({ type: ORDERS_STATUS.PENDING });
+        }
+      } else {
+        dispatch({ type: ORDERS_STATUS.PENDING });
       }
-    );
+    })
+    .catch(err => {
+      console.log({ err });
+      dispatch({
+        type: ORDERS_STATUS.ERROR
+      });
+    });
+};
+
+// export const getOrderStatus = (orderId, orderPK) => dispatch => {
+//   const url = `${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`;
+//   axios.get(url).then(
+//     res => {
+//       const { results } = res.data;
+//       if (
+//         res.data.results.length > 0 &&
+//         res.data.results[0].order_status === 'PAID'
+//       ) {
+//         dispatch({
+//           type: ORDERS_STATUS.SUCCESS
+//         });
+//       } else if (
+//         res.data.results.length > 0 &&
+//         res.data.results[0].order_status === 'FAILED'
+//       ) {
+//         console.log({ cardfailed: res });
+//         dispatch({
+//           type: ORDERS_STATUS.FAILURE
+//         });
+//       } else {
+//         dispatch({
+//           type: ORDERS_STATUS.PENDING
+//         });
+//       }
+//     },
+//     err => {
+//       console.log({ err });
+//       dispatch({
+//         type: ORDERS_STATUS.ERROR
+//       });
+//     }
+//   )
+// }
 
 export const fetchEvent = eventId => dispatch => {
   axios.get(`${baseEventAPI}/${eventId}`).then(res => {
@@ -156,32 +192,8 @@ export function handleTotalCost(cost) {
   };
 }
 
-// export const getManualOrderStatus = (orderId, orderPK) => dispatch => {
-//   console.log('manual payment');
-//   const API = `${ordersPayAPI}/?id=${orderId}&order_number=${orderPK}`;
-//   dispatch({ type: PAYBILL.PENDING });
-//   return axios.get(API).then(
-//     res => {
-//       const { results } = res.data;
-//       if (results.length > 0 && results[0].order_status === 'PAID') {
-//         dispatch({
-//           type: ORDERS_STATUS.SUCCESS
-//         });
-//       } else if (results.length < 1) {
-//         dispatch({
-//           type: PAYBILL.ERROR
-//         });
-//       } else {
-//         dispatch({
-//           type: ORDERS_STATUS.PENDING
-//         });
-//       }
-//     },
-//     err => {
-//       console.log({ err });
-//       dispatch({
-//         type: PAYBILL.ERROR
-//       });
-//     }
-//   );
-// };
+export function clearOrderPKOrderId() {
+  return {
+    type: ORDERPK_ORDERID.RESET
+  };
+}

@@ -41,7 +41,6 @@ export class MpesaPayBill extends PureComponent {
 
   _handleVerifyOrderNumber = evt => {
     evt.preventDefault();
-    console.log({ props: this.props.orderPK, state: this.state.orderPK });
     if (this.state.orderPK.length < 1) {
       this.setState({ error: 'Order REF cannot be empty!' });
     }

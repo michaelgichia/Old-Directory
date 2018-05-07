@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Select } from 'antd';
 import { Helmet } from 'react-helmet';
+import { message, Button } from 'antd';
 import TabsBottomWrap from 'components/TabsBottomWrap';
 import TabsBodyWrap from 'components/TabsBodyWrap';
 import MookhInput from 'components/Forms/MookhInput';
@@ -28,6 +29,10 @@ import { paymentButtonRipplesState } from './util';
 import { orderStatus } from './constants';
 
 const Option = Select.Option;
+message.config({
+  top: 100,
+  duration: 10
+});
 
 class CardForm extends React.Component {
   state = {
@@ -36,6 +41,19 @@ class CardForm extends React.Component {
     card_cvv: '',
     card_expiry: ''
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.orderStatus === orderStatus.cardFailure)
+      message.error(
+        'Card payment failed. Please try to pay with mpesa',
+        10,
+        () => console.log('Console')
+      );
+  }
+
+  componentWillUnmount() {
+    message.destroy();
+  }
 
   handleInputChange = ({ target }) => {
     if (target.id === 'card_number') {
@@ -68,7 +86,6 @@ class CardForm extends React.Component {
   render() {
     const { card_number, card_cvv, card_currency, card_expiry } = this.state;
     const { totalTicketsPrice, payment_method } = this.props;
-    console.log({ payment_method });
     return (
       <div>
         <TabsBodyWrap>
@@ -101,7 +118,7 @@ class CardForm extends React.Component {
                     Currency
                   </label>
                   <Select
-                    dropdownStyle={{ zIndex: 9999 }}
+                    dropdownStyle={{ zIndex: 20 }}
                     defaultValue={card_currency}
                     onChange={this.handleChange}
                     size="large"
