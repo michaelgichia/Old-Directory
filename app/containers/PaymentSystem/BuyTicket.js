@@ -4,46 +4,49 @@
  *
  */
 
-import React from "react";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import isEqual from "lodash/isEqual";
-import omitBy from "lodash/omitBy";
-import classNames from "classnames";
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import isEqual from 'lodash/isEqual';
+import omitBy from 'lodash/omitBy';
+import classNames from 'classnames';
+import { message, Button } from 'antd';
 import {
   openModal,
   closeModal,
   handleTotalCost,
   closeModalAndPayment
-} from "./actions";
-import { orderStatus } from "./constants";
-import PaymentForm from "./PaymentForm";
-import noImage from "images/no_image.svg";
-import "./css/buy-tickets.css";
+} from './actions';
+import { orderStatus } from './constants';
+import PaymentForm from './PaymentForm';
+import noImage from 'images/no_image.svg';
+import './css/buy-tickets.css';
 
 export class BuyTicket extends React.PureComponent {
   constructor(props) {
     super(props);
     const ticketCategory = {};
-    // props.event.tickets.map(ticket => (ticketCategory[ticket.id] = ""));
-
+    const ticketAvailable = {};
+    const ticketName = {};
     props.event.tickets.map(ticket => {
-      ticketCategory[ticket.id] = {};
-      ticketCategory[ticket.id]["ticketQuantity"] = "";
-      ticketCategory[ticket.id]["ticketAvailable"] = ticket.tickets_available;
+      ticketCategory[ticket.id] = '';
+      ticketAvailable[ticket.id] = ticket.tickets_available;
+      ticketName[ticket.id] = ticket.ticket_name;
     });
-    console.log({ ticketCategory });
+
     this.state = {
       ticketCategory: ticketCategory,
+      ticketAvailable: ticketAvailable,
+      ticketName: ticketName,
       customer: {
-        email: "",
-        name: "",
-        phone_number: "",
-        confirmEmail: ""
+        email: '',
+        name: '',
+        phone_number: '',
+        confirmEmail: ''
       },
       TicketPrices: {},
-      error: false
+      error: false,
+      ticketAvailablityError: ''
     };
   }
 
@@ -76,47 +79,58 @@ export class BuyTicket extends React.PureComponent {
       this.setState((state, props) => {
         const newTicketCategory = {};
         Object.entries({ ...state.ticketCategory }).forEach(([k, v]) => {
-          newTicketCategory[k] = "";
+          newTicketCategory[k] = '';
         });
         return {
           ticketCategory: newTicketCategory
         };
       });
     }
+
+    if (prevState.ticketAvailablityError.length > 0) {
+      message.warning(prevState.ticketAvailablityError, 10, () =>
+        this.setState({ ticketAvailablityError: '' })
+      );
+    }
   }
 
   handleInputChange = e => {
     e.persist();
-    this.setState(state => ({
-      ticketCategory: {
-        ...state.ticketCategory,
-        [e.target.id]: e.target.value
+    this.setState((state, props) => {
+      if (e.target.value > state.ticketAvailable[e.target.id]) {
+        return {
+          ticketCategory: {
+            ...state.ticketCategory,
+            [e.target.id]: state.ticketAvailable[e.target.id]
+          },
+          ticketAvailablityError: `You can only buy ${
+            state.ticketAvailable[e.target.id]
+          } on ${this.state.ticketName[e.target.id]} tickets.`
+        };
+      } else {
+        return {
+          ticketCategory: {
+            ...state.ticketCategory,
+            [e.target.id]: e.target.value
+          }
+        };
       }
-    }));
+    });
   };
 
   handleTicketsTotalCost = (valueForEachTicket, ticketCategory) => {
     let total = 0;
     for (let [key, value] of Object.entries(ticketCategory)) {
+      console.log;
       total += valueForEachTicket[key] * value;
     }
     return total;
   };
 
-  // getTicketsPrices = event => {
-  //   const mapTicketandPriceObj = {};
-  //   if (event) {
-  //     event.tickets_count_by_category.map(
-  //       ticket => (mapTicketandPriceObj[ticket.id] = ticket.ticket_value)
-  //     );
-  //   }
-  //   return mapTicketandPriceObj;
-  // };
-
   getTicketsPrices = event => {
     const mapTicketandPriceObj = {};
     if (event) {
-      event.tickets.map(
+      event.tickets_count_by_category.map(
         ticket => (mapTicketandPriceObj[ticket.id] = ticket.ticket_value)
       );
     }
@@ -144,13 +158,17 @@ export class BuyTicket extends React.PureComponent {
   };
 
   render() {
-    const { error, ticketCategory } = this.state;
+    const {
+      error,
+      ticketCategory,
+      ticketAvailable,
+      ticketAvailablityError
+    } = this.state;
     const { event, totalTicketsPrice } = this.props;
-    const totalPriceClassnames = classNames("ticket-total", { errors: error });
-    const inputClassnames = classNames({ "ebt-input-error": error });
-
+    const totalPriceClassnames = classNames('ticket-total', { errors: error });
+    const inputClassnames = classNames({ 'ebt-input-error': error });
     return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div className="ticket-description-wrap">
           <div className="event-buy-image">
             <img
@@ -208,18 +226,18 @@ export class BuyTicket extends React.PureComponent {
             {error && (
               <h5
                 style={{
-                  color: "red",
-                  margin: "8px 0px",
-                  textAlign: "right",
-                  width: "100%",
-                  display: "block"
+                  color: 'red',
+                  margin: '8px 0px',
+                  textAlign: 'right',
+                  width: '100%',
+                  display: 'block'
                 }}
               >
                 You have not selected a ticket.
               </h5>
             )}
             <div className="ebt-information">
-              <h6 style={{ fontWeight: "bold", marginBottom: 8 }}>
+              <h6 style={{ fontWeight: 'bold', marginBottom: 8 }}>
                 SEND TICKETS TO:
               </h6>
               <PaymentForm
@@ -264,3 +282,23 @@ export default connect(mapStateToProps, mapDispatchToProps)(BuyTicket);
 //   });
 //   return name;
 // };
+
+// const success = () => {
+//   message.success('This is a message of success');
+// };
+
+// const error = () => {
+//   message.error('This is a message of error');
+// };
+
+// const warning = () => {
+//   message.warning('This is message of warning');
+// };
+
+// ReactDOM.render(
+//   <div>
+//     <Button onClick={success}>Success</Button>
+//     <Button onClick={error}>Error</Button>
+//     <Button onClick={warning}>Warning</Button>
+//   </div>
+// , mountNode);
