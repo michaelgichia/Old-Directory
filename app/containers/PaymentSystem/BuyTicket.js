@@ -26,9 +26,14 @@ export class BuyTicket extends React.PureComponent {
   constructor(props) {
     super(props);
     const ticketCategory = {};
-    props.event.tickets_count_by_category.map(
-      ticket => (ticketCategory[ticket.id] = "")
-    );
+    // props.event.tickets.map(ticket => (ticketCategory[ticket.id] = ""));
+
+    props.event.tickets.map(ticket => {
+      ticketCategory[ticket.id] = {};
+      ticketCategory[ticket.id]["ticketQuantity"] = "";
+      ticketCategory[ticket.id]["ticketAvailable"] = ticket.tickets_available;
+    });
+    console.log({ ticketCategory });
     this.state = {
       ticketCategory: ticketCategory,
       customer: {
@@ -98,10 +103,20 @@ export class BuyTicket extends React.PureComponent {
     return total;
   };
 
+  // getTicketsPrices = event => {
+  //   const mapTicketandPriceObj = {};
+  //   if (event) {
+  //     event.tickets_count_by_category.map(
+  //       ticket => (mapTicketandPriceObj[ticket.id] = ticket.ticket_value)
+  //     );
+  //   }
+  //   return mapTicketandPriceObj;
+  // };
+
   getTicketsPrices = event => {
     const mapTicketandPriceObj = {};
     if (event) {
-      event.tickets_count_by_category.map(
+      event.tickets.map(
         ticket => (mapTicketandPriceObj[ticket.id] = ticket.ticket_value)
       );
     }
