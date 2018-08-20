@@ -6,7 +6,7 @@
 import { asyncActionType } from 'utils/helperFunctions';
 
 // APIs
-export const getEventsAPI = 'https://api.mymookh.com/stores/event/public/';
+export const getEventsAPI = 'https://staging.mymookh.com/stores/event/public/';
 
 // Action Type
 export const EVENTS = asyncActionType('EVENTS');
