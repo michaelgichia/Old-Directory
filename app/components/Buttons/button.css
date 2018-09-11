@@ -1,0 +1,146 @@
+/* Glowing Button - Used to open poster modal
+=============================================================*/
+button.button-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  color: #343434;
+  background-color: rgb(250, 234, 41);
+  border: none;
+  cursor: pointer;
+}
+
+.glow-wrap {
+  position: relative;
+  border-radius: 50%;
+  height: 76px;
+  width: 76px;
+}
+
+.btn-glow-wrap {
+  position: absolute;
+  display: block;
+  height: 76px;
+  width: 76px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  margin: -38px 0 0 -38px;
+  animation-name: glowing;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: glowing;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  cursor: pointer;
+}
+
+.glow-wrap:hover .btn-glow-wrap {
+  background-color: rgba(250, 234, 41, 0.6);
+}
+
+@keyframes glowing {
+  0% {
+    background-color: rgba(250, 234, 41, 0.2);
+  }
+  50% {
+    background-color: rgba(250, 234, 41, 0.6);
+  }
+  100% {
+    background-color: rgba(250, 234, 41, 0.2);
+  }
+}
+
+.button-glow svg {
+  display: inline-block;
+  color: #343434;
+  fill: currentcolor;
+  height: 24px;
+  width: 24px;
+  user-select: none;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+/* Back Button - This button has a back arrow icon.
+===============================================================*/
+.back-btn {
+  background-color: pink;
+  background-color: #ffffff;
+  border: 1px solid #807d7d;
+  color: #343434;
+  border-radius: 4px;
+}
+
+.back-btn span {
+  cursor: pointer;
+  transition: 0.5s;
+  color: #343434;
+  display: flex;
+}
+
+.back-btn span:first-of-type {
+  position: relative;
+  font-size: 28px;
+}
+
+.back-btn span:first-of-type:before {
+  display: block;
+  content: "\00ab";
+  position: absolute;
+  opacity: 0;
+  top: -13px;
+  left: -10px;
+  transition: 0.5s;
+}
+
+.back-btn:hover {
+  background-color: #f6f3ee;
+}
+
+
+@media screen and (min-width: 768px) {
+  .back-btn {
+    width: 180px;
+    padding-left: 40px;
+    padding-right: 20px;
+  }
+
+  .back-btn:hover span:last-of-type {
+    padding-left: 20px;
+  }
+
+  .back-btn span:last-of-type {
+    padding-left: 10px;
+  }
+
+  .back-btn:hover span:first-of-type:before {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .back-btn {
+    width: 100%;
+    margin-bottom: 12px;
+    padding-left: 30%;
+    padding-right: 10%;
+  }
+
+  .back-btn span:last-of-type {
+    padding-left: 18%;
+  }
+
+  .back-btn span:first-of-type:before {
+    left: -10%;
+  }
+
+  .back-btn span:first-of-type:before {
+    opacity: 1;
+    left: 0;
+  }
+}

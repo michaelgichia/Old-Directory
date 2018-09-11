@@ -1,0 +1,42 @@
+{
+  "name": "Mookh",
+  "short_name": "mookh",
+  "theme_color": "#f6f3ee",
+  "background_color": "#f6f3ee",
+  "display": "standalone",
+  "Scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icon-72x72.png",
+      "sizes": "72x72",
+      "type": "images/png"
+    },
+    {
+      "src": "icon-96x96.png",
+      "sizes": "96x96",
+      "type": "images/png"
+    },
+    {
+      "src": "icon-120x120.png",
+      "sizes": "120x120",
+      "type": "images/png"
+    },
+    {
+      "src": "icon-144x144.png",
+      "sizes": "144x144",
+      "type": "images/png"
+    },
+    {
+      "src": "icon-152x152.png",
+      "sizes": "152x152",
+      "type": "images/png"
+    },
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "images/png"
+    }
+  ],
+  "splash_pages": null
+}

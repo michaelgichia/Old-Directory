@@ -1,0 +1,22 @@
+.not-found-wrap {
+  display: block;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.not-found-wrap > div {
+  margin-top: 10vh;
+}
+
+.not-found-image > img {
+  max-width: 190px;
+}
+
+.not-found-wrap h3 {
+  color: #b3afaf;
+  font-size: 16px;
+}

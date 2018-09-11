@@ -1,0 +1,147 @@
+.event-information-wrap {
+  position: relative;
+  display: block;
+}
+
+.position-glow-btn {
+  display: none;
+}
+
+.product-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #faea29;
+  color: #343a41;
+  padding: 16px;
+}
+
+.product-title h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-left: 3px;
+  font-size: 16px;
+}
+
+.description {
+  width: 100%;
+  min-height: 30px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.description h5 {
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.description.header h5,
+.description.header {
+  background-color: #31383e;
+  color: #f6f3ee;
+}
+
+.description h5 a {
+  color: #faea29;
+  text-decoration: underline;
+}
+
+.description i,
+.description a i {
+  text-decoration: none;
+  font-size: 16px;
+  width: 24px;
+}
+
+.description [href]:hover {
+  text-decoration: none;
+}
+
+/* Large Screen styles */
+@media (min-width: 990px) and (max-width: 1920px) {
+  .product-title {
+    min-height: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-top: 2px solid #faea29;
+  }
+
+  .description.header {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+/* Large Screen styles */
+@media (min-width: 768px) and (max-width: 990px) {
+  .description {
+    padding-left: 16px;
+  }
+}
+
+/* Large and Medium Screen styles */
+@media (min-width: 768px) and (max-width: 1920px) {
+  .event-information-image {
+    display: none;
+  }
+}
+
+/* Small Screen styles */
+@media (max-width: 768px) {
+  .product-title {
+    padding: 16px 8px;
+    min-height: 40px;
+    margin-top: 0;
+  }
+
+  .description h5 {
+    font-size: 14px;
+  }
+
+  .description {
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #f6f3ee;
+    letter-spacing: 0.5px;
+  }
+
+  .description i {
+    display: none;
+  }
+
+  .header h5 i {
+    display: none;
+  }
+
+  .information header {
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px;
+  }
+
+  .position-glow-btn {
+    margin-top: -82px;
+    padding-right: 4px;
+    float: right;
+  }
+
+  .position-glow-btn {
+    display: block;
+  }
+
+  .event-information-image {
+    height: 150px;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+  }
+
+  .event-information-image img {
+    max-width: 100%;
+    background: #ececed;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,23 @@
+.information-form {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .information-form {
+    width: 100%;
+    max-height: 60vh;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 4px;
+    overflow-x: hidden;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .information-form {
+    width: 100%;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}

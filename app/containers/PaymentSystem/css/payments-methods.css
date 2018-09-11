@@ -1,0 +1,94 @@
+.payment-wrap {
+  display: block;
+  width: 100%;
+}
+
+.payment-wrap:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.payment-wrap .payment {
+  width: calc(50% - 16px);
+  float: left;
+}
+
+.payment:first-of-type {
+  margin-right: 16px;
+}
+
+.payment:last-of-type {
+  margin-left: 16px;
+}
+
+/* Form headers
+==========================================*/
+.cd-header {
+  font-size: 16px;
+  color: #b3afaf;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid #f6f3ee;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  padding-bottom: 8px;
+}
+
+/* Tabs Styles
+=====================================================*/
+.pm__tabs {
+  display: block;
+  float: left;
+}
+
+.pm__tab-list {
+  padding-top: 8px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f6f3ee;
+  margin-bottom: 16px;
+}
+
+.pm__tab-list:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+/* Large Screen
+==========================================*/
+@media screen and (min-width: 768px) {
+  /* Tabs Styles
+  =====================================================*/
+  .pm__tabs {
+    width: calc(50% - 16px);
+  }
+
+  .pm__tabs:first-of-type {
+    margin-right: 16px;
+  }
+
+  .pm__tabs:last-of-type {
+    margin-left: 16px;
+  }
+}
+
+
+/* Small Screen
+==========================================*/
+@media screen and (max-width: 768px) {
+  /* Tabs Styles
+  =====================================================*/
+  .pm__tabs {
+    width: calc(50% - 4px);
+  }
+
+  .pm__tabs:first-of-type {
+    margin-right: 4px;
+  }
+
+  .pm__tabs:last-of-type {
+    margin-left: 4px;
+  }
+}
